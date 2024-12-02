@@ -1,6 +1,6 @@
 ---
 listing:
-  contents: "day/*/index.qmd"
+  contents: "day*.qmd"
   feed: true
   sort: "date desc"
   type: grid
