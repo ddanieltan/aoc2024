@@ -13,10 +13,12 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@main
-      - uses: actions/setup-python@v5
+
+      - name: Install Python and dependencies
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          cache: 'pip' # caching pip dependencies
+          cache: 'pip'
       - run: pip install -r requirements.txt
 
       - name: Set up Quarto
