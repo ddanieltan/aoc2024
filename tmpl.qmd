@@ -1,0 +1,15 @@
+---
+title: "Day 0"
+---
+
+![Prompt:](images/01.webp){width="500" fig-align="center"}
+
+## Part 1
+
+::: {.callout-note title="Prompt" collapse="true"}
+:::
+
+## Part 2
+
+::: {.callout-note title="Prompt" collapse="true"}
+:::
