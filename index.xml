@@ -5,12 +5,12 @@
       xmlns:dc="http://purl.org/dc/elements/1.1/" 
       version="2.0">
 <channel>
-<title>🎅 Advent of Code 2024</title>
+<title>Advent of Code 2024</title>
 <link>https://ddanieltan.github.io/aoc2024/</link>
 <atom:link href="https://ddanieltan.github.io/aoc2024/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.39</generator>
-<lastBuildDate>Mon, 02 Dec 2024 12:13:16 GMT</lastBuildDate>
+<lastBuildDate>Mon, 02 Dec 2024 12:39:54 GMT</lastBuildDate>
 <item>
   <title>Day 1: Historian Hysteria</title>
   <link>https://ddanieltan.github.io/aoc2024/day01.html</link>
@@ -63,7 +63,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="462fe2f5" class="cell" data-execution_count="1">
+<div id="ae9cd8fc" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -194,7 +194,7 @@ font-style: inherit;">zip</span>(A,B)])</span>
 <pre><code>11</code></pre>
 </div>
 </div>
-<div id="0ae68f0f" class="cell" data-execution_count="2">
+<div id="ef1e52c2" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -245,7 +245,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="2f3f55f3" class="cell" data-execution_count="3">
+<div id="7a53204e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> collections <span class="im" style="color: #00769E;
@@ -290,7 +290,7 @@ font-style: inherit;">sum</span>(calc)</span>
 <pre><code>31</code></pre>
 </div>
 </div>
-<div id="f85ae3b8" class="cell" data-execution_count="4">
+<div id="bc69de73" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>23609874</code></pre>
@@ -302,7 +302,7 @@ font-style: inherit;">sum</span>(calc)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day01.html</guid>
-  <pubDate>Mon, 02 Dec 2024 12:13:16 GMT</pubDate>
+  <pubDate>Mon, 02 Dec 2024 12:39:54 GMT</pubDate>
 </item>
 <item>
   <title>Day 2: Red-Nosed Reports</title>
@@ -351,7 +351,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="fbfcbec8" class="cell" data-execution_count="1">
+<div id="e93998f6" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -579,7 +579,7 @@ font-style: inherit;">return</span> cnt</span>
 <pre><code>2</code></pre>
 </div>
 </div>
-<div id="09234ec7" class="cell" data-execution_count="2">
+<div id="258ca167" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -629,7 +629,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="1efaaee5" class="cell" data-execution_count="3">
+<div id="b0ff3d02" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -728,7 +728,7 @@ font-style: inherit;">return</span> cnt</span>
 <pre><code>4</code></pre>
 </div>
 </div>
-<div id="6cc52f42" class="cell" data-execution_count="4">
+<div id="4bda3966" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>337</code></pre>
@@ -740,7 +740,7 @@ font-style: inherit;">return</span> cnt</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day02.html</guid>
-  <pubDate>Mon, 02 Dec 2024 12:13:16 GMT</pubDate>
+  <pubDate>Mon, 02 Dec 2024 12:39:54 GMT</pubDate>
 </item>
 </channel>
 </rss>
