@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://ddanieltan.github.io/aoc2024/index.html</loc>
+    <lastmod>2024-12-02T04:21:37.943Z</lastmod>
+  </url>
+  <url>
     <loc>https://ddanieltan.github.io/aoc2024/about.html</loc>
-    <lastmod>2024-12-02T03:55:41.367Z</lastmod>
+    <lastmod>2024-12-02T04:21:37.939Z</lastmod>
   </url>
   <url>
     <loc>https://ddanieltan.github.io/aoc2024/day/01/index.html</loc>
-    <lastmod>2024-12-02T03:55:41.367Z</lastmod>
+    <lastmod>2024-12-02T04:21:37.939Z</lastmod>
   </url>
 </urlset>

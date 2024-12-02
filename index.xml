@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>🎅🏼 Advent of Code 2024</title>
+<link>https://ddanieltan.github.io/aoc2024/</link>
+<atom:link href="https://ddanieltan.github.io/aoc2024/index.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.6.39</generator>
+<lastBuildDate>Mon, 02 Dec 2024 04:22:27 GMT</lastBuildDate>
+<item>
+  <title>Day 1: Historian Hysteria</title>
+  <link>https://ddanieltan.github.io/aoc2024/day/01/</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://ddanieltan.github.io/aoc2024/day/01/day1.webp" class="img-fluid figure-img" width="500"></p>
+<figcaption>christmas red and green, photo of confused historian holding 2 lists of numeric numbers</figcaption>
+</figure>
+</div>
+<section id="part-1" class="level2">
+<h2 class="anchored" data-anchor-id="part-1">Part 1</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Prompt">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prompt
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>There’s just one problem: by holding the two lists up side by side (your puzzle input), it quickly becomes clear that the lists aren’t very similar. Maybe you can help The Historians reconcile their lists?</p>
+<p>For example:</p>
+<pre><code>3   4
+4   3
+2   5
+1   3
+3   9
+3   3</code></pre>
+<p>Maybe the lists are only off by a small amount! To find out, pair up the numbers and measure how far apart they are. Pair up the smallest number in the left list with the smallest number in the right list, then the second-smallest left number with the second-smallest right number, and so on.</p>
+<p>Within each pair, figure out how far apart the two numbers are; you’ll need to add up all of those distances. For example, if you pair up a 3 from the left list with a 7 from the right list, the distance apart is 4; if you pair up a 9 with a 3, the distance apart is 6.</p>
+<p>In the example list above, the pairs and distances would be as follows:</p>
+<ul>
+<li>The smallest number in the left list is 1, and the smallest number in the right list is 3. The distance between them is 2.</li>
+<li>The second-smallest number in the left list is 2, and the second-smallest number in the right list is another 3. The distance between them is 1.</li>
+<li>The third-smallest number in both lists is 3, so the distance between them is 0.</li>
+<li>The next numbers to pair up are 3 and 4, a distance of 1.</li>
+<li>The fifth-smallest numbers in each list are 3 and 5, a distance of 2.</li>
+<li>Finally, the largest number in the left list is 4, while the largest number in the right list is 9; these are a distance 5 apart.</li>
+</ul>
+<p>To find the total distance between the left list and the right list, add up the distances between all of the pairs you found. In the example above, this is 2 + 1 + 0 + 1 + 2 + 5, a total distance of 11!</p>
+<p>Your actual left and right lists contain many location IDs. What is the total distance between your lists?</p>
+</div>
+</div>
+</div>
+<div id="c9f28c04" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">eg <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"""3   4</span></span>
+<span id="cb2-2"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">4   3</span></span>
+<span id="cb2-3"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">2   5</span></span>
+<span id="cb2-4"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">1   3</span></span>
+<span id="cb2-5"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">3   9</span></span>
+<span id="cb2-6"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">3   3</span></span>
+<span id="cb2-7"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb2-8"></span>
+<span id="cb2-9"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> parse(inp:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">tuple</span>[<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>[<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>], <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>[<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>]]:</span>
+<span id="cb2-10">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Parse input into 2 lists</span></span>
+<span id="cb2-11">    A <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>()</span>
+<span id="cb2-12">    B <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>()</span>
+<span id="cb2-13">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> line <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> inp.splitlines():</span>
+<span id="cb2-14">        a, b <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> line.split()</span>
+<span id="cb2-15">        A.append(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>(a))</span>
+<span id="cb2-16">        B.append(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>(b))</span>
+<span id="cb2-17"></span>
+<span id="cb2-18">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Sort and zip</span></span>
+<span id="cb2-19">    A <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sorted</span>(A)</span>
+<span id="cb2-20">    B <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sorted</span>(B)</span>
+<span id="cb2-21"></span>
+<span id="cb2-22">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> (A,B)</span>
+<span id="cb2-23"></span>
+<span id="cb2-24"></span>
+<span id="cb2-25"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> part1(inp:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>:</span>
+<span id="cb2-26">    A,B <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> parse(inp)</span>
+<span id="cb2-27">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>([<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">abs</span>(a<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>b) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> a,b <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">zip</span>(A,B)])</span>
+<span id="cb2-28"></span>
+<span id="cb2-29"></span>
+<span id="cb2-30">part1(eg)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>11</code></pre>
+</div>
+</div>
+<div id="3175485f" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"input.txt"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"r"</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> f:</span>
+<span id="cb4-2">    inp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> f.read()</span>
+<span id="cb4-3">part1(inp)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>1646452</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2" class="level2">
+<h2 class="anchored" data-anchor-id="part-2">Part 2</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Prompt">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prompt
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This time, you’ll need to figure out exactly how often each number from the left list appears in the right list. Calculate a total similarity score by adding up each number in the left list after multiplying it by the number of times that number appears in the right list.</p>
+<p>For these example lists, here is the process of finding the similarity score:</p>
+<ul>
+<li>The first number in the left list is 3. It appears in the right list three times, so the similarity score increases by 3 * 3 = 9.</li>
+<li>The second number in the left list is 4. It appears in the right list once, so the similarity score increases by 4 * 1 = 4.</li>
+<li>The third number in the left list is 2. It does not appear in the right list, so the similarity score does not increase (2 * 0 = 0).</li>
+<li>The fourth number, 1, also does not appear in the right list.</li>
+<li>The fifth number, 3, appears in the right list three times; the similarity score increases by 9.</li>
+<li>The last number, 3, appears in the right list three times; the similarity score again increases by 9.</li>
+</ul>
+<p>So, for these example lists, the similarity score at the end of this process is 31 (9 + 4 + 0 + 0 + 9 + 9).</p>
+<p>Once again consider your left and right lists. What is their similarity score?</p>
+</div>
+</div>
+</div>
+<div id="3f1d5d98" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> collections <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> Counter</span>
+<span id="cb6-2"></span>
+<span id="cb6-3"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> part2(inp:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>):</span>
+<span id="cb6-4">    A, B <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> parse(inp)</span>
+<span id="cb6-5">    cnts <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Counter(B)</span>
+<span id="cb6-6">    calc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [a <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> cnts.get(a,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> a <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> A]</span>
+<span id="cb6-7"></span>
+<span id="cb6-8">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>(calc)</span>
+<span id="cb6-9"></span>
+<span id="cb6-10">part2(eg)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>31</code></pre>
+</div>
+</div>
+<div id="89c876dd" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">part2(inp)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>23609874</code></pre>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://ddanieltan.github.io/aoc2024/day/01/</guid>
+  <pubDate>Mon, 02 Dec 2024 04:22:27 GMT</pubDate>
+</item>
+</channel>
+</rss>
