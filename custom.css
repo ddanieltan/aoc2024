@@ -58,3 +58,44 @@ body {
     font-weight: bold;
     text-align: center;
 }
+
+.card.quarto-grid-item {
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Candy cane card border */
+.card.quarto-grid-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: repeating-linear-gradient(
+        45deg,
+        #ff0000 0, #ff0000 10px,
+        #ffffff 10px, #ffffff 20px
+    );
+    z-index: 1;
+    animation: rotate 10s linear infinite;
+}
+
+.card.quarto-grid-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    z-index: 2;
+    margin: 5px;
+}
+
+.card.quarto-grid-item .card-body,
+.card.quarto-grid-item .card-img-top {
+    position: relative;
+    z-index: 3;
+}

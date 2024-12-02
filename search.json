@@ -2,9 +2,51 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "🎅Advent of Code 2024",
+    "title": "🎅 Advent of Code 2024",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\nDay 1: Historian Hysteria\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\nDay 1: Historian Hysteria\n\n\n\n\n\n\n\n\n\n\n\nDay 2: Red-Nosed Reports\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "day02.html",
+    "href": "day02.html",
+    "title": "Day 2: Red-Nosed Reports",
+    "section": "",
+    "text": "Prompt:red nose reindeer who is holding a clipboard with checklist and looking at a nuclear reactor with nuke logo"
+  },
+  {
+    "objectID": "day02.html#part-1",
+    "href": "day02.html#part-1",
+    "title": "Day 2: Red-Nosed Reports",
+    "section": "Part 1",
+    "text": "Part 1\n\n\n\n\n\n\nPrompt\n\n\n\n\n\nThe unusual data (your puzzle input) consists of many reports, one report per line. Each report is a list of numbers called levels that are separated by spaces. For example:\n7 6 4 2 1\n1 2 7 8 9\n9 7 6 2 1\n1 3 2 4 5\n8 6 4 4 1\n1 3 6 7 9\nThis example data contains six reports each containing five levels.\nThe engineers are trying to figure out which reports are safe. The Red-Nosed reactor safety systems can only tolerate levels that are either gradually increasing or gradually decreasing. So, a report only counts as safe if both of the following are true:\n\nThe levels are either all increasing or all decreasing.\nAny two adjacent levels differ by at least one and at most three.\n\nIn the example above, the reports can be found safe or unsafe by checking those rules:\n7 6 4 2 1: Safe because the levels are all decreasing by 1 or 2. 1 2 7 8 9: Unsafe because 2 7 is an increase of 5. 9 7 6 2 1: Unsafe because 6 2 is a decrease of 4. 1 3 2 4 5: Unsafe because 1 3 is increasing but 3 2 is decreasing. 8 6 4 4 1: Unsafe because 4 4 is neither an increase or a decrease. 1 3 6 7 9: Safe because the levels are all increasing by 1, 2, or 3. So, in this example, 2 reports are safe.\nAnalyze the unusual data from the engineers. How many reports are safe?\n\n\n\n\neg = \"\"\"7 6 4 2 1\n1 2 7 8 9\n9 7 6 2 1\n1 3 2 4 5\n8 6 4 4 1\n1 3 6 7 9\n\"\"\"\n\ndef parse(inp:str) -&gt; list[list[int]]:\n    res = []\n    for line in inp.splitlines():\n        row = line.split()\n        res.append([int(x) for x in row])\n    return res\n\n\ndef cond1(row:list[int]) -&gt; bool:\n    # Condition 1: Always inc or dec\n    inc = sorted(row)\n    dec = sorted(row, reverse=True)\n    return all([r == x for r,x in zip(row, inc)]) or all([r == x for r,x in zip(row, dec)])\n\n\ndef cond2(row:list[int]) -&gt; bool:\n    # Condition 2: Delta between 1-3\n    pairs = zip(row[:-1], row[1:])\n    return all([1 &lt;= abs(x-y) &lt;= 3 for x,y in pairs])\n\n\ndef part1(inp:str) -&gt; int:\n    rows = parse(inp)\n    cnt = 0\n    for row in rows:\n        if cond1(row) and cond2(row):\n            cnt += 1\n    return cnt\n\npart1(eg)\n\n2\n\n\n\nwith open(\"inputs/02\",\"r\") as f:\n    inp = f.read()\npart1(inp)\n\n269"
+  },
+  {
+    "objectID": "day02.html#part-2",
+    "href": "day02.html#part-2",
+    "title": "Day 2: Red-Nosed Reports",
+    "section": "Part 2",
+    "text": "Part 2\n\n\n\n\n\n\nPrompt\n\n\n\n\n\nNow, the same rules apply as before, except if removing a single level from an unsafe report would make it safe, the report instead counts as safe.\nMore of the above example’s reports are now safe:\n\n7 6 4 2 1: Safe without removing any level.\n1 2 7 8 9: Unsafe regardless of which level is removed.\n9 7 6 2 1: Unsafe regardless of which level is removed.\n1 3 2 4 5: Safe by removing the second level, 3.\n8 6 4 4 1: Safe by removing the third level, 4.\n1 3 6 7 9: Safe without removing any level.\n\nThanks to the Problem Dampener, 4 reports are actually safe!\n\n\n\n\ndef part2(inp: str) -&gt; int:\n    rows = parse(inp)\n    cnt = 0\n    for row in rows:\n        # Check if original full row passes\n        if cond1(row) and cond2(row):\n            cnt += 1\n1            continue\n        # Check if shortened rows pass\n        for i in range(len(row)):\n            short_row = row.copy()\n            short_row.pop(i)\n            if cond1(short_row) and cond2(short_row):\n                cnt += 1\n                break\n\n    return cnt\n\n\npart2(eg)\n\n\n1\n\nGood refresher on the difference between continue and break\n\n\n\n\n4\n\n\n\npart2(inp)\n\n337"
+  },
+  {
+    "objectID": "tmpl.html",
+    "href": "tmpl.html",
+    "title": "Day 0",
+    "section": "",
+    "text": "Prompt:"
+  },
+  {
+    "objectID": "tmpl.html#part-1",
+    "href": "tmpl.html#part-1",
+    "title": "Day 0",
+    "section": "Part 1",
+    "text": "Part 1\n\n\n\n\n\n\nPrompt"
+  },
+  {
+    "objectID": "tmpl.html#part-2",
+    "href": "tmpl.html#part-2",
+    "title": "Day 0",
+    "section": "Part 2",
+    "text": "Part 2\n\n\n\n\n\n\nPrompt"
   },
   {
     "objectID": "about.html",
@@ -18,7 +60,7 @@
     "href": "day01.html",
     "title": "Day 1: Historian Hysteria",
     "section": "",
-    "text": "christmas red and green, photo of confused historian holding 2 lists of numeric numbers"
+    "text": "Prompt: christmas red and green, photo of confused historian holding 2 lists of numeric numbers"
   },
   {
     "objectID": "day01.html#part-1",
