@@ -6,10 +6,10 @@ title: "Day 0"
 
 ## Part 1
 
-::: {.callout-note title="Prompt" collapse="true"}
+::: {.callout-note title="Puzzle Info" collapse="true"}
 :::
 
 ## Part 2
 
-::: {.callout-note title="Prompt" collapse="true"}
+::: {.callout-note title="Puzzle Info" collapse="true"}
 :::

@@ -6,7 +6,7 @@ title: "Day 2: Red-Nosed Reports"
 
 ## Part 1
 
-::: {.callout-note title="Prompt" collapse="true"}
+::: {.callout-note title="Puzzle Info" collapse="true"}
 The unusual data (your puzzle input) consists of many reports, one report per line. Each report is a list of numbers called levels that are separated by spaces. For example:
 ```
 7 6 4 2 1
@@ -86,7 +86,7 @@ part1(inp)
 
 ## Part 2
 
-::: {.callout-note title="Prompt" collapse="true"}
+::: {.callout-note title="Puzzle Info" collapse="true"}
 Now, the same rules apply as before, except if removing a single level from an unsafe report would make it safe, the report instead counts as safe.
 
 More of the above example's reports are now safe:

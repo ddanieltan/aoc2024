@@ -6,7 +6,7 @@ title: "Day 1: Historian Hysteria"
 
 ## Part 1
 
-::: {.callout-note title="Prompt" collapse="true"}
+::: {.callout-note title="Puzzle Info" collapse="true"}
 There's just one problem: by holding the two lists up side by side (your puzzle input), it quickly becomes clear that the lists aren't very similar. Maybe you can help The Historians reconcile their lists?
 
 For example:
@@ -79,7 +79,7 @@ part1(inp)
 
 ## Part 2
 
-::: {.callout-note title="Prompt" collapse="true"}
+::: {.callout-note title="Puzzle Info" collapse="true"}
 This time, you'll need to figure out exactly how often each number from the left list appears in the right list. Calculate a total similarity score by adding up each number in the left list after multiplying it by the number of times that number appears in the right list.
 
 For these example lists, here is the process of finding the similarity score:
