@@ -1,9 +1,8 @@
 ---
 title: "Day 1: Historian Hysteria"
-highlight-style: nord
 ---
 
-![christmas red and green, photo of confused historian holding 2 lists of numeric numbers](images/01.webp){width="500" fig-align="center"}
+![Prompt: christmas red and green, photo of confused historian holding 2 lists of numeric numbers](images/01.webp){width="500" fig-align="center"}
 
 ## Part 1
 
