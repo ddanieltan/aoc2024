@@ -2,8 +2,13 @@ project:
   type: website
 
 website:
-  title: "Advent Of Code 2024"
+  title: "🎅🏼 Advent of Code 2024"
+  site-url: "https://ddanieltan.github.io/aoc2024/"
   navbar:
+    right:
+      - icon: github
+        aria-label: github
+        href: https://github.com/ddanieltan/aoc2023-quarto
     left:
       - href: index.qmd
         text: Home
@@ -12,7 +17,7 @@ website:
 format:
   html:
     theme: cosmo
-    css: styles.css
+    css: custom.css
     toc: true
 
 

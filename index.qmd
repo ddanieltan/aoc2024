@@ -1,5 +1,14 @@
 ---
-title: "Advent Of Code 2024"
+listing:
+  contents: "day/*/index.qmd"
+  feed: true
+  sort: "date desc"
+  type: grid
+  sort-ui: true
+  filter-ui: true
+  fields: [image, date, title]
+page-layout: full
+title-block-banner: true
 ---
 
 
