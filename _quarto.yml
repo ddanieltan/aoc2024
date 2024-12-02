@@ -2,7 +2,8 @@ project:
   type: website
 
 website:
-  title: "🎅 Advent of Code 2024"
+  title: "Advent of Code 2024"
+  favicon: "images/favico.svg"
   site-url: "https://ddanieltan.github.io/aoc2024/"
   navbar:
     right:
