@@ -84,13 +84,18 @@ def part2(inp:str) -> int:
     # Find valid calcs
     calcs = []
     valid = True
+
     for i in instructions:
-        if valid and "mul" in i:
-            calcs.append(i)
-        if valid and i == "don't()":
-            valid = False
-        if not valid and i == "do()":
-            valid = True
+        match (i, valid): # <1>
+            case (_, True) if "mul" in i: # <2>
+                calcs.append(i)
+            case ("don't()", True):
+                valid = False
+            case ("do()", False):
+                valid = True
+            case _: # <3>
+                #print(f"Unexpected case : {i, valid} ")
+                ...
 
     pattern_nums = r"\d+"
     nums = [re.findall(pattern_nums, c) for c in calcs ]
@@ -100,6 +105,9 @@ def part2(inp:str) -> int:
 
 part2(eg2)
 ```
+1. Good opportunity to use case matching. Recall like Scala, `_` represents a catchall
+2. Example of how to chain an `if` check after a case match
+3. Since we're using case matching, build the habit of catching all unexpected cases (even if there's no action required for these cases)
 
 
 ```{python}
