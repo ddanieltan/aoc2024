@@ -78,7 +78,7 @@ def part1(inp:str) -> int:
 
 part1(eg)
 ```
-1. Reminder that `zip` can take inputs of different lengths without error
+1. Reminder that `zip` can take inputs of different lengths without error, so I can pass `row` instead of `row[:-1]`
 
 ```{python}
 with open("inputs/02","r") as f:
