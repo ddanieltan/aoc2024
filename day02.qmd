@@ -64,7 +64,7 @@ def cond1(row:list[int]) -> bool:
 
 def cond2(row:list[int]) -> bool:
     # Condition 2: Delta between 1-3
-    pairs = zip(row[:-1], row[1:])
+    pairs = zip(row, row[1:]) # <1>
     return all([1 <= abs(x-y) <= 3 for x,y in pairs])
 
 
@@ -78,6 +78,7 @@ def part1(inp:str) -> int:
 
 part1(eg)
 ```
+1. Reminder that `zip` can take inputs of different lengths without error
 
 ```{python}
 with open("inputs/02","r") as f:
