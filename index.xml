@@ -10,7 +10,7 @@
 <atom:link href="https://ddanieltan.github.io/aoc2024/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.39</generator>
-<lastBuildDate>Tue, 03 Dec 2024 07:29:31 GMT</lastBuildDate>
+<lastBuildDate>Tue, 03 Dec 2024 08:00:39 GMT</lastBuildDate>
 <item>
   <title>Day 1: Historian Hysteria</title>
   <link>https://ddanieltan.github.io/aoc2024/day01.html</link>
@@ -63,7 +63,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="8b55f037" class="cell" data-execution_count="1">
+<div id="de7521fc" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -194,7 +194,7 @@ font-style: inherit;">zip</span>(A,B)])</span>
 <pre><code>11</code></pre>
 </div>
 </div>
-<div id="b63ba507" class="cell" data-execution_count="2">
+<div id="4f0e6db6" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -245,7 +245,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="47405b33" class="cell" data-execution_count="3">
+<div id="2b454390" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> collections <span class="im" style="color: #00769E;
@@ -290,7 +290,7 @@ font-style: inherit;">sum</span>(calc)</span>
 <pre><code>31</code></pre>
 </div>
 </div>
-<div id="349513d0" class="cell" data-execution_count="4">
+<div id="df63fb31" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>23609874</code></pre>
@@ -302,7 +302,7 @@ font-style: inherit;">sum</span>(calc)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day01.html</guid>
-  <pubDate>Tue, 03 Dec 2024 07:29:31 GMT</pubDate>
+  <pubDate>Tue, 03 Dec 2024 08:00:39 GMT</pubDate>
 </item>
 <item>
   <title>Day 2: Red-Nosed Reports</title>
@@ -359,7 +359,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="25480092" class="cell" data-execution_count="1">
+<div id="69ebba47" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -591,7 +591,7 @@ font-style: inherit;">return</span> cnt</span>
 <pre><code>2</code></pre>
 </div>
 </div>
-<div id="d2ffe877" class="cell" data-execution_count="2">
+<div id="2b7b3055" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -641,7 +641,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="5715f253" class="cell" data-execution_count="3">
+<div id="2b587813" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -740,7 +740,7 @@ font-style: inherit;">return</span> cnt</span>
 <pre><code>4</code></pre>
 </div>
 </div>
-<div id="c266296f" class="cell" data-execution_count="4">
+<div id="78cb64b3" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>337</code></pre>
@@ -752,7 +752,7 @@ font-style: inherit;">return</span> cnt</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day02.html</guid>
-  <pubDate>Tue, 03 Dec 2024 07:29:31 GMT</pubDate>
+  <pubDate>Tue, 03 Dec 2024 08:00:39 GMT</pubDate>
 </item>
 <item>
   <title>Day 3: Mull It Over</title>
@@ -792,7 +792,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="4e52dbe9" class="cell" data-execution_count="1">
+<div id="8ca30e49" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> re</span>
@@ -875,7 +875,7 @@ font-style: inherit;">sum</span>(products)</span>
 <pre><code>161</code></pre>
 </div>
 </div>
-<div id="8019a708" class="cell" data-execution_count="2">
+<div id="e51ce5d6" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -922,14 +922,14 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="02536bb0" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">eg2 <span class="op" style="color: #5E5E5E;
+<div id="51f2c464" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1">eg2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"xmul(2,4)&amp;mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"</span></span>
-<span id="cb5-2"></span>
-<span id="cb5-3"><span class="kw" style="color: #003B4F;
+<span id="annotated-cell-3-2"></span>
+<span id="annotated-cell-3-3"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> part2(inp:<span class="bu" style="color: null;
@@ -939,92 +939,86 @@ background-color: null;
 font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">int</span>:</span>
-<span id="cb5-4"></span>
-<span id="cb5-5">    <span class="co" style="color: #5E5E5E;
+<span id="annotated-cell-3-4"></span>
+<span id="annotated-cell-3-5">    <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Extract mul(x,y) or don't() or do()</span></span>
-<span id="cb5-6">    pattern <span class="op" style="color: #5E5E5E;
+<span id="annotated-cell-3-6">    pattern <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">r"mul\(\d+,\d+\)|don\'t\(\)|do\(\)"</span></span>
-<span id="cb5-7">    instructions <span class="op" style="color: #5E5E5E;
+<span id="annotated-cell-3-7">    instructions <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> re.findall(pattern, inp)</span>
-<span id="cb5-8"></span>
-<span id="cb5-9">    <span class="co" style="color: #5E5E5E;
+<span id="annotated-cell-3-8"></span>
+<span id="annotated-cell-3-9">    <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Find valid calcs</span></span>
-<span id="cb5-10">    calcs <span class="op" style="color: #5E5E5E;
+<span id="annotated-cell-3-10">    calcs <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> []</span>
-<span id="cb5-11">    valid <span class="op" style="color: #5E5E5E;
+<span id="annotated-cell-3-11">    valid <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">True</span></span>
-<span id="cb5-12">    <span class="cf" style="color: #003B4F;
+<span id="annotated-cell-3-12"></span>
+<span id="annotated-cell-3-13">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">in</span> instructions:</span>
-<span id="cb5-13">        <span class="cf" style="color: #003B4F;
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-14" class="code-annotation-target">        match (i, valid):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-15" class="code-annotation-target">            case (_, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>) <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">if</span> valid <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">and</span> <span class="st" style="color: #20794D;
+font-style: inherit;">if</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"mul"</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">in</span> i:</span>
-<span id="cb5-14">            calcs.append(i)</span>
-<span id="cb5-15">        <span class="cf" style="color: #003B4F;
+<span id="annotated-cell-3-16">                calcs.append(i)</span>
+<span id="annotated-cell-3-17">            case (<span class="st" style="color: #20794D;
 background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> valid <span class="kw" style="color: #003B4F;
+font-style: inherit;">"don't()"</span>, <span class="va" style="color: #111111;
 background-color: null;
-font-weight: bold;
-font-style: inherit;">and</span> i <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"don't()"</span>:</span>
-<span id="cb5-16">            valid <span class="op" style="color: #5E5E5E;
+font-style: inherit;">True</span>):</span>
+<span id="annotated-cell-3-18">                valid <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">False</span></span>
-<span id="cb5-17">        <span class="cf" style="color: #003B4F;
+<span id="annotated-cell-3-19">            case (<span class="st" style="color: #20794D;
 background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
+font-style: inherit;">"do()"</span>, <span class="va" style="color: #111111;
 background-color: null;
-font-weight: bold;
-font-style: inherit;">not</span> valid <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">and</span> i <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"do()"</span>:</span>
-<span id="cb5-18">            valid <span class="op" style="color: #5E5E5E;
+font-style: inherit;">False</span>):</span>
+<span id="annotated-cell-3-20">                valid <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">True</span></span>
-<span id="cb5-19"></span>
-<span id="cb5-20">    pattern_nums <span class="op" style="color: #5E5E5E;
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-3-21" class="code-annotation-target">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">case</span> _:</span>
+<span id="annotated-cell-3-22">                <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#print(f"Unexpected case : {i, valid} ")</span></span>
+<span id="annotated-cell-3-23">                ...</span>
+<span id="annotated-cell-3-24"></span>
+<span id="annotated-cell-3-25">    pattern_nums <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">r"\d+"</span></span>
-<span id="cb5-21">    nums <span class="op" style="color: #5E5E5E;
+<span id="annotated-cell-3-26">    nums <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [re.findall(pattern_nums, c) <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -1033,7 +1027,7 @@ font-style: inherit;">for</span> c <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">in</span> calcs ]</span>
-<span id="cb5-22">    products <span class="op" style="color: #5E5E5E;
+<span id="annotated-cell-3-27">    products <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [<span class="bu" style="color: null;
 background-color: null;
@@ -1052,21 +1046,37 @@ font-style: inherit;">for</span> n <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">in</span> nums]</span>
-<span id="cb5-23"></span>
-<span id="cb5-24">    <span class="cf" style="color: #003B4F;
+<span id="annotated-cell-3-28"></span>
+<span id="annotated-cell-3-29">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">sum</span>(products)</span>
-<span id="cb5-25"></span>
-<span id="cb5-26">part2(eg2)</span></code></pre></div>
+<span id="annotated-cell-3-30"></span>
+<span id="annotated-cell-3-31">part2(eg2)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="14" data-code-annotation="1">Good opportunity to use case matching. Recall like Scala, <code>_</code> represents a catchall</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="15" data-code-annotation="2">Example of how to chain an <code>if</code> check after a case match</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="21" data-code-annotation="3">Since we’re using case matching, build the habit of catching all unexpected cases (even if there’s no action required for these cases)</span>
+</dd>
+</dl>
+</div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>48</code></pre>
 </div>
 </div>
-<div id="9e1c0cb6" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">part2(inp)</span></code></pre></div>
+<div id="0ebd9f07" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>76729637</code></pre>
 </div>
@@ -1077,7 +1087,7 @@ font-style: inherit;">sum</span>(products)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day03.html</guid>
-  <pubDate>Tue, 03 Dec 2024 07:29:31 GMT</pubDate>
+  <pubDate>Tue, 03 Dec 2024 08:00:39 GMT</pubDate>
 </item>
 </channel>
 </rss>
