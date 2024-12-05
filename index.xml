@@ -10,7 +10,7 @@
 <atom:link href="https://ddanieltan.github.io/aoc2024/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.39</generator>
-<lastBuildDate>Tue, 03 Dec 2024 08:00:39 GMT</lastBuildDate>
+<lastBuildDate>Thu, 05 Dec 2024 07:38:45 GMT</lastBuildDate>
 <item>
   <title>Day 1: Historian Hysteria</title>
   <link>https://ddanieltan.github.io/aoc2024/day01.html</link>
@@ -63,7 +63,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="de7521fc" class="cell" data-execution_count="1">
+<div id="aa7a0692" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -194,7 +194,7 @@ font-style: inherit;">zip</span>(A,B)])</span>
 <pre><code>11</code></pre>
 </div>
 </div>
-<div id="4f0e6db6" class="cell" data-execution_count="2">
+<div id="52bcca77" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -245,7 +245,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="2b454390" class="cell" data-execution_count="3">
+<div id="2174f945" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> collections <span class="im" style="color: #00769E;
@@ -290,7 +290,7 @@ font-style: inherit;">sum</span>(calc)</span>
 <pre><code>31</code></pre>
 </div>
 </div>
-<div id="df63fb31" class="cell" data-execution_count="4">
+<div id="59161cc1" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>23609874</code></pre>
@@ -302,7 +302,7 @@ font-style: inherit;">sum</span>(calc)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day01.html</guid>
-  <pubDate>Tue, 03 Dec 2024 08:00:39 GMT</pubDate>
+  <pubDate>Thu, 05 Dec 2024 07:38:45 GMT</pubDate>
 </item>
 <item>
   <title>Day 2: Red-Nosed Reports</title>
@@ -359,7 +359,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="69ebba47" class="cell" data-execution_count="1">
+<div id="871fde51" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -591,7 +591,7 @@ font-style: inherit;">return</span> cnt</span>
 <pre><code>2</code></pre>
 </div>
 </div>
-<div id="2b7b3055" class="cell" data-execution_count="2">
+<div id="00df162e" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -641,7 +641,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="2b587813" class="cell" data-execution_count="3">
+<div id="5320fdd2" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -740,7 +740,7 @@ font-style: inherit;">return</span> cnt</span>
 <pre><code>4</code></pre>
 </div>
 </div>
-<div id="78cb64b3" class="cell" data-execution_count="4">
+<div id="4b02d0e5" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>337</code></pre>
@@ -752,7 +752,7 @@ font-style: inherit;">return</span> cnt</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day02.html</guid>
-  <pubDate>Tue, 03 Dec 2024 08:00:39 GMT</pubDate>
+  <pubDate>Thu, 05 Dec 2024 07:38:45 GMT</pubDate>
 </item>
 <item>
   <title>Day 3: Mull It Over</title>
@@ -792,7 +792,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="8ca30e49" class="cell" data-execution_count="1">
+<div id="937535cd" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> re</span>
@@ -875,7 +875,7 @@ font-style: inherit;">sum</span>(products)</span>
 <pre><code>161</code></pre>
 </div>
 </div>
-<div id="e51ce5d6" class="cell" data-execution_count="2">
+<div id="0691b2b0" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -922,7 +922,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="51f2c464" class="cell" data-execution_count="3">
+<div id="c56f08d7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1">eg2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -1075,7 +1075,7 @@ font-style: inherit;">sum</span>(products)</span>
 <pre><code>48</code></pre>
 </div>
 </div>
-<div id="0ebd9f07" class="cell" data-execution_count="4">
+<div id="d7e6bd9f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>76729637</code></pre>
@@ -1087,7 +1087,719 @@ font-style: inherit;">sum</span>(products)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day03.html</guid>
-  <pubDate>Tue, 03 Dec 2024 08:00:39 GMT</pubDate>
+  <pubDate>Thu, 05 Dec 2024 07:38:45 GMT</pubDate>
+</item>
+<item>
+  <title>Day 4: Ceres Search</title>
+  <link>https://ddanieltan.github.io/aoc2024/day04.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://ddanieltan.github.io/aoc2024/images/01.webp" class="img-fluid figure-img" width="500"></p>
+<figcaption>Prompt: The letters “X”, “M”, “A”, “S” repeated multiple times in a grid in christmas colours</figcaption>
+</figure>
+</div>
+<section id="part-1" class="level2">
+<h2 class="anchored" data-anchor-id="part-1">Part 1</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Puzzle Info">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Puzzle Info
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>As the search for the Chief continues, a small Elf who lives on the station tugs on your shirt; she’d like to know if you could help her with her word search (your puzzle input). She only has to find one word: XMAS.</p>
+<p>This word search allows words to be horizontal, vertical, diagonal, written backwards, or even overlapping other words. It’s a little unusual, though, as you don’t merely need to find one instance of XMAS - you need to find all of them. Here are a few ways XMAS might appear, where irrelevant characters have been replaced with .:</p>
+<pre><code>..X...
+.SAMX.
+.A..A.
+XMAS.S
+.X....</code></pre>
+<p>The actual word search will be full of letters instead. For example:</p>
+<pre><code>MMMSXXMASM
+MSAMXMSMSA
+AMXSXMAAMM
+MSAMASMSMX
+XMASAMXAMM
+XXAMMXXAMA
+SMSMSASXSS
+SAXAMASAAA
+MAMMMXMMMM
+MXMXAXMASX</code></pre>
+<p>In this word search, XMAS occurs a total of 18 times; here’s the same word search again, but where letters not involved in any XMAS have been replaced with .:</p>
+<pre><code>....XXMAS.
+.SAMXMS...
+...S..A...
+..A.A.MS.X
+XMASAMX.MM
+X.....XA.A
+S.S.S.S.SS
+.A.A.A.A.A
+..M.M.M.MM
+.X.X.XMASX</code></pre>
+<p>Take a look at the little Elf’s word search. How many times does XMAS appear?</p>
+</div>
+</div>
+</div>
+<div id="b9b33cb5" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">eg <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"""MMMSXXMASM</span></span>
+<span id="cb4-2"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">MSAMXMSMSA</span></span>
+<span id="cb4-3"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">AMXSXMAAMM</span></span>
+<span id="cb4-4"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">MSAMASMSMX</span></span>
+<span id="cb4-5"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">XMASAMXAMM</span></span>
+<span id="cb4-6"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">XXAMMXXAMA</span></span>
+<span id="cb4-7"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">SMSMSASXSS</span></span>
+<span id="cb4-8"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">SAXAMASAAA</span></span>
+<span id="cb4-9"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">MAMMMXMMMM</span></span>
+<span id="cb4-10"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">MXMXAXMASX</span></span>
+<span id="cb4-11"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb4-12"></span>
+<span id="cb4-13"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> part1(inp:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>:</span>
+<span id="cb4-14"></span>
+<span id="cb4-15">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> within_grid(x:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>, y:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span>:</span>
+<span id="cb4-16">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> (x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">and</span> (x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> max_X) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">and</span> (y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">and</span> (y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> max_Y)</span>
+<span id="cb4-17"></span>
+<span id="cb4-18">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> trace(x:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>, y:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>, dir_x:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>, dir_y:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>):</span>
+<span id="cb4-19">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb4-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">        Given a starting x,y node, trace down `dir` direction</span></span>
+<span id="cb4-21"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">        - if out of bounds of wrong letter, end func</span></span>
+<span id="cb4-22"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">        - if we found a complete XMAS then update solution set</span></span>
+<span id="cb4-23"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">        """</span></span>
+<span id="cb4-24">        coords <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">tuple</span>((x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>i<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>dir_x, y<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>i<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>dir_y ) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>))</span>
+<span id="cb4-25">        target <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"XMAS"</span></span>
+<span id="cb4-26"></span>
+<span id="cb4-27">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> (x,y) , letter <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">zip</span>(coords, target):</span>
+<span id="cb4-28">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span> within_grid(x,y):</span>
+<span id="cb4-29">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span></span>
+<span id="cb4-30">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">elif</span> grid[x][y] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!=</span> letter:</span>
+<span id="cb4-31">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span></span>
+<span id="cb4-32"></span>
+<span id="cb4-33">        solutions.add(coords)</span>
+<span id="cb4-34"></span>
+<span id="cb4-35"></span>
+<span id="cb4-36">    grid <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> inp.splitlines()</span>
+<span id="cb4-37">    max_X <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(grid)</span>
+<span id="cb4-38">    max_Y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(grid[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>])</span>
+<span id="cb4-39">    solutions <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">set</span>()</span>
+<span id="cb4-40">    DIRECTIONS <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [</span>
+<span id="cb4-41">        (<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># North</span></span>
+<span id="cb4-42">        (<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># NE</span></span>
+<span id="cb4-43">        (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># East</span></span>
+<span id="cb4-44">        (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># SE</span></span>
+<span id="cb4-45">        (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># South</span></span>
+<span id="cb4-46">        (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># SW</span></span>
+<span id="cb4-47">        (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># West</span></span>
+<span id="cb4-48">        (<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># NW</span></span>
+<span id="cb4-49">    ]</span>
+<span id="cb4-50"></span>
+<span id="cb4-51">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> x <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(max_X):</span>
+<span id="cb4-52">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> y <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(max_Y):</span>
+<span id="cb4-53">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> grid[x][y] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"X"</span>:</span>
+<span id="cb4-54">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> (dir_x, dir_y) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> DIRECTIONS:</span>
+<span id="cb4-55">                    trace(x, y, dir_x, dir_y)</span>
+<span id="cb4-56"></span>
+<span id="cb4-57">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(solutions)</span>
+<span id="cb4-58"></span>
+<span id="cb4-59">part1(eg)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>18</code></pre>
+</div>
+</div>
+<div id="3122f3bb" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"inputs/04"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"r"</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> f:</span>
+<span id="cb6-2">    inp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> f.read()</span>
+<span id="cb6-3">part1(inp)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>2458</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2" class="level2">
+<h2 class="anchored" data-anchor-id="part-2">Part 2</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Puzzle Info">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Puzzle Info
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Looking for the instructions, you flip over the word search to find that this isn’t actually an XMAS puzzle; it’s an X-MAS puzzle in which you’re supposed to find two MAS in the shape of an X. One way to achieve that is like this:</p>
+<pre><code>M.S
+.A.
+M.S</code></pre>
+<p>Irrelevant characters have again been replaced with . in the above diagram. Within the X, each MAS can be written forwards or backwards.</p>
+<p>Here’s the same example from before, but this time all of the X-MASes have been kept instead:</p>
+<pre><code>.M.S......
+..A..MSMS.
+.M.S.MAA..
+..A.ASMSM.
+.M.S.M....
+..........
+S.S.S.S.S.
+.A.A.A.A..
+M.M.M.M.M.
+..........</code></pre>
+<p>In this example, an X-MAS appears 9 times.</p>
+<p>Flip the word search from the instructions back over to the word search side and try again. How many times does an X-MAS appear?</p>
+</div>
+</div>
+</div>
+<div id="013f59ba" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> collections <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> Counter</span>
+<span id="cb10-2"></span>
+<span id="cb10-3"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> part2(inp:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>:</span>
+<span id="cb10-4"></span>
+<span id="cb10-5">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> within_grid(x:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>, y:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span>:</span>
+<span id="cb10-6">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> (x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">and</span> (x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> max_X) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">and</span> (y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">and</span> (y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> max_Y)</span>
+<span id="cb10-7"></span>
+<span id="cb10-8">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> check_corner_letters(x:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>, y:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">tuple</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>:</span>
+<span id="cb10-9"></span>
+<span id="cb10-10">        DIRECTIONS <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [</span>
+<span id="cb10-11">            (<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># NE</span></span>
+<span id="cb10-12">            (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># SE</span></span>
+<span id="cb10-13">            (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># SW</span></span>
+<span id="cb10-14">            (<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># NW</span></span>
+<span id="cb10-15">        ]</span>
+<span id="cb10-16"></span>
+<span id="cb10-17">        coords <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">tuple</span>( (x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> dir_x, y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> dir_y) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> (dir_x, dir_y) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> DIRECTIONS)</span>
+<span id="cb10-18"></span>
+<span id="cb10-19">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Check no corners are out of bounds</span></span>
+<span id="cb10-20">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> x, y <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> coords:</span>
+<span id="cb10-21">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span> within_grid(x,y):</span>
+<span id="cb10-22">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span></span>
+<span id="cb10-23"></span>
+<span id="cb10-24">        ne, se, sw, nw <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">tuple</span>(grid[x][y] <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> x,y <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> coords)</span>
+<span id="cb10-25"></span>
+<span id="cb10-26">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Check we see 2S and 2M in the corners</span></span>
+<span id="cb10-27">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> Counter((ne,se,sw,nw)) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> Counter((<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"M"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"M"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"S"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"S"</span>)):</span>
+<span id="cb10-28">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Exclude edge case where only diagonals are alike</span></span>
+<span id="cb10-29">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span>(ne <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> sw) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">or</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span> (nw <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> se):</span>
+<span id="cb10-30">                solutions.add(coords)</span>
+<span id="cb10-31"></span>
+<span id="cb10-32">    grid <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> inp.splitlines()</span>
+<span id="cb10-33">    max_X <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(grid)</span>
+<span id="cb10-34">    max_Y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(grid[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>])</span>
+<span id="cb10-35">    solutions <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">set</span>()</span>
+<span id="cb10-36"></span>
+<span id="cb10-37">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> x <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(max_X):</span>
+<span id="cb10-38">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> y <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(max_Y):</span>
+<span id="cb10-39">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> grid[x][y] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"A"</span>:</span>
+<span id="cb10-40">                check_corner_letters(x,y)</span>
+<span id="cb10-41"></span>
+<span id="cb10-42">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(solutions)</span>
+<span id="cb10-43"></span>
+<span id="cb10-44">part2(eg)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>9</code></pre>
+</div>
+</div>
+<div id="3b743305" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">part2(inp)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>1945</code></pre>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://ddanieltan.github.io/aoc2024/day04.html</guid>
+  <pubDate>Thu, 05 Dec 2024 07:38:45 GMT</pubDate>
 </item>
 </channel>
 </rss>

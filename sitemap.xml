@@ -2,26 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ddanieltan.github.io/aoc2024/index.html</loc>
-    <lastmod>2024-12-03T07:59:49.255Z</lastmod>
+    <lastmod>2024-12-05T07:37:47.990Z</lastmod>
   </url>
   <url>
     <loc>https://ddanieltan.github.io/aoc2024/day02.html</loc>
-    <lastmod>2024-12-03T07:59:49.251Z</lastmod>
+    <lastmod>2024-12-05T07:37:47.986Z</lastmod>
   </url>
   <url>
-    <loc>https://ddanieltan.github.io/aoc2024/day03.html</loc>
-    <lastmod>2024-12-03T07:59:49.251Z</lastmod>
+    <loc>https://ddanieltan.github.io/aoc2024/day04.html</loc>
+    <lastmod>2024-12-05T07:37:47.986Z</lastmod>
   </url>
   <url>
     <loc>https://ddanieltan.github.io/aoc2024/tmpl.html</loc>
-    <lastmod>2024-12-03T07:59:49.255Z</lastmod>
+    <lastmod>2024-12-05T07:37:47.990Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ddanieltan.github.io/aoc2024/day03.html</loc>
+    <lastmod>2024-12-05T07:37:47.986Z</lastmod>
   </url>
   <url>
     <loc>https://ddanieltan.github.io/aoc2024/about.html</loc>
-    <lastmod>2024-12-03T07:59:49.251Z</lastmod>
+    <lastmod>2024-12-05T07:37:47.986Z</lastmod>
   </url>
   <url>
     <loc>https://ddanieltan.github.io/aoc2024/day01.html</loc>
-    <lastmod>2024-12-03T07:59:49.251Z</lastmod>
+    <lastmod>2024-12-05T07:37:47.986Z</lastmod>
   </url>
 </urlset>
