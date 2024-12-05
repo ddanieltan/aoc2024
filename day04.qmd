@@ -1,0 +1,208 @@
+---
+title: "Day 4: Ceres Search"
+---
+
+![Prompt: The letters "X", "M", "A", "S" repeated multiple times in a grid in christmas colours](images/01.webp){width="500" fig-align="center"}
+
+## Part 1
+
+::: {.callout-note title="Puzzle Info" collapse="true"}
+As the search for the Chief continues, a small Elf who lives on the station tugs on your shirt; she'd like to know if you could help her with her word search (your puzzle input). She only has to find one word: XMAS.
+
+This word search allows words to be horizontal, vertical, diagonal, written backwards, or even overlapping other words. It's a little unusual, though, as you don't merely need to find one instance of XMAS - you need to find all of them. Here are a few ways XMAS might appear, where irrelevant characters have been replaced with .:
+
+```
+..X...
+.SAMX.
+.A..A.
+XMAS.S
+.X....
+```
+
+The actual word search will be full of letters instead. For example:
+
+```
+MMMSXXMASM
+MSAMXMSMSA
+AMXSXMAAMM
+MSAMASMSMX
+XMASAMXAMM
+XXAMMXXAMA
+SMSMSASXSS
+SAXAMASAAA
+MAMMMXMMMM
+MXMXAXMASX
+```
+
+In this word search, XMAS occurs a total of 18 times; here's the same word search again, but where letters not involved in any XMAS have been replaced with .:
+
+```
+....XXMAS.
+.SAMXMS...
+...S..A...
+..A.A.MS.X
+XMASAMX.MM
+X.....XA.A
+S.S.S.S.SS
+.A.A.A.A.A
+..M.M.M.MM
+.X.X.XMASX
+```
+
+Take a look at the little Elf's word search. How many times does XMAS appear?
+:::
+
+```{python}
+eg = """MMMSXXMASM
+MSAMXMSMSA
+AMXSXMAAMM
+MSAMASMSMX
+XMASAMXAMM
+XXAMMXXAMA
+SMSMSASXSS
+SAXAMASAAA
+MAMMMXMMMM
+MXMXAXMASX
+"""
+
+def part1(inp:str) -> int:
+
+    def within_grid(x:int, y:int) -> bool:
+        return (x >= 0) and (x < max_X) and (y >= 0) and (y < max_Y)
+
+    def trace(x:int, y:int, dir_x:int, dir_y:int):
+        """
+        Given a starting x,y node, trace down `dir` direction
+        - if out of bounds of wrong letter, end func
+        - if we found a complete XMAS then update solution set
+        """
+        coords = tuple((x+i*dir_x, y+i*dir_y ) for i in range(4))
+        target = "XMAS"
+
+        for (x,y) , letter in zip(coords, target):
+            if not within_grid(x,y):
+                return
+            elif grid[x][y] != letter:
+                return
+
+        solutions.add(coords)
+
+
+    grid = inp.splitlines()
+    max_X = len(grid)
+    max_Y = len(grid[0])
+    solutions = set()
+    DIRECTIONS = [
+        (-1, 0), # North
+        (-1, 1), # NE
+        (0, 1), # East
+        (1, 1), # SE
+        (1, 0), # South
+        (1, -1), # SW
+        (0, -1), # West
+        (-1, -1) # NW
+    ]
+
+    for x in range(max_X):
+        for y in range(max_Y):
+            if grid[x][y] == "X":
+                for (dir_x, dir_y) in DIRECTIONS:
+                    trace(x, y, dir_x, dir_y)
+
+    return len(solutions)
+
+part1(eg)
+```
+
+```{python}
+with open("inputs/04", "r") as f:
+    inp = f.read()
+part1(inp)
+```
+
+
+## Part 2
+
+::: {.callout-note title="Puzzle Info" collapse="true"}
+Looking for the instructions, you flip over the word search to find that this isn't actually an XMAS puzzle; it's an X-MAS puzzle in which you're supposed to find two MAS in the shape of an X. One way to achieve that is like this:
+
+```
+M.S
+.A.
+M.S
+```
+
+Irrelevant characters have again been replaced with . in the above diagram. Within the X, each MAS can be written forwards or backwards.
+
+Here's the same example from before, but this time all of the X-MASes have been kept instead:
+
+```
+.M.S......
+..A..MSMS.
+.M.S.MAA..
+..A.ASMSM.
+.M.S.M....
+..........
+S.S.S.S.S.
+.A.A.A.A..
+M.M.M.M.M.
+..........
+```
+
+In this example, an X-MAS appears 9 times.
+
+Flip the word search from the instructions back over to the word search side and try again. How many times does an X-MAS appear?
+:::
+
+
+```{python}
+from collections import Counter
+
+def part2(inp:str) -> int:
+
+    def within_grid(x:int, y:int) -> bool:
+        return (x >= 0) and (x < max_X) and (y >= 0) and (y < max_Y)
+
+    def check_corner_letters(x:int, y:int) -> tuple | None:
+
+        DIRECTIONS = [
+            (-1, 1), # NE
+            (1, 1), # SE
+            (1, -1), # SW
+            (-1, -1) # NW
+        ]
+
+        coords = tuple( (x + dir_x, y + dir_y) for (dir_x, dir_y) in DIRECTIONS)
+
+        # Check no corners are out of bounds
+        for x, y in coords:
+            if not within_grid(x,y):
+                return
+
+        ne, se, sw, nw = tuple(grid[x][y] for x,y in coords)
+
+        # Check we see 2S and 2M in the corners
+        if Counter((ne,se,sw,nw)) == Counter(("M","M","S","S")):
+            # Exclude edge case where only diagonals are alike
+            if not(ne == sw) or not (nw == se):
+                solutions.add(coords)
+
+    grid = inp.splitlines()
+    max_X = len(grid)
+    max_Y = len(grid[0])
+    solutions = set()
+
+    for x in range(max_X):
+        for y in range(max_Y):
+            if grid[x][y] == "A":
+                check_corner_letters(x,y)
+
+    return len(solutions)
+
+part2(eg)
+```
+
+
+```{python}
+part2(inp)
+```
