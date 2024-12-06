@@ -2,7 +2,7 @@
 title: "Day 5: Print Queue"
 ---
 
-![Prompt:](images/01.webp){width="500" fig-align="center"}
+![Prompt:elves waiting in a queue to print pages, cartoon style](images/05.webp){width="500" fig-align="center"}
 
 ## Part 1
 
