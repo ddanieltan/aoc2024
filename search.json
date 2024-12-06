@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Advent of Code 2024",
     "section": "",
-    "text": "Day 1: Historian Hysteria\n\n\n\n\n\n\n\n\n\n\n\nDay 2: Red-Nosed Reports\n\n\n\n\n\n\n\n\n\n\n\nDay 3: Mull It Over\n\n\n\n\n\n\n\n\n\n\n\nDay 4: Ceres Search\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Day 1: Historian Hysteria\n\n\n\n\n\n\n\n\n\n\n\nDay 2: Red-Nosed Reports\n\n\n\n\n\n\n\n\n\n\n\nDay 3: Mull It Over\n\n\n\n\n\n\n\n\n\n\n\nDay 4: Ceres Search\n\n\n\n\n\n\n\n\n\n\n\nDay 5: Print Queue\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "day02.html",
@@ -28,46 +28,11 @@
     "text": "Part 2\n\n\n\n\n\n\nPuzzle Info\n\n\n\n\n\nNow, the same rules apply as before, except if removing a single level from an unsafe report would make it safe, the report instead counts as safe.\nMore of the above example’s reports are now safe:\n\n7 6 4 2 1: Safe without removing any level.\n1 2 7 8 9: Unsafe regardless of which level is removed.\n9 7 6 2 1: Unsafe regardless of which level is removed.\n1 3 2 4 5: Safe by removing the second level, 3.\n8 6 4 4 1: Safe by removing the third level, 4.\n1 3 6 7 9: Safe without removing any level.\n\nThanks to the Problem Dampener, 4 reports are actually safe!\n\n\n\n\ndef part2(inp: str) -&gt; int:\n    rows = parse(inp)\n    cnt = 0\n    for row in rows:\n        # Check if original full row passes\n        if cond1(row) and cond2(row):\n            cnt += 1\n1            continue\n        # Check if shortened rows pass\n        for i in range(len(row)):\n            short_row = row.copy()\n            short_row.pop(i)\n            if cond1(short_row) and cond2(short_row):\n                cnt += 1\n                break\n\n    return cnt\n\n\npart2(eg)\n\n\n1\n\nGood refresher on the difference between continue and break\n\n\n\n\n4\n\n\n\npart2(inp)\n\n337"
   },
   {
-    "objectID": "day04.html",
-    "href": "day04.html",
-    "title": "Day 4: Ceres Search",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "Prompt: The letters “X”, “M”, “A”, “S” repeated multiple times in a grid in christmas colours"
-  },
-  {
-    "objectID": "day04.html#part-1",
-    "href": "day04.html#part-1",
-    "title": "Day 4: Ceres Search",
-    "section": "Part 1",
-    "text": "Part 1\n\n\n\n\n\n\nPuzzle Info\n\n\n\n\n\nAs the search for the Chief continues, a small Elf who lives on the station tugs on your shirt; she’d like to know if you could help her with her word search (your puzzle input). She only has to find one word: XMAS.\nThis word search allows words to be horizontal, vertical, diagonal, written backwards, or even overlapping other words. It’s a little unusual, though, as you don’t merely need to find one instance of XMAS - you need to find all of them. Here are a few ways XMAS might appear, where irrelevant characters have been replaced with .:\n..X...\n.SAMX.\n.A..A.\nXMAS.S\n.X....\nThe actual word search will be full of letters instead. For example:\nMMMSXXMASM\nMSAMXMSMSA\nAMXSXMAAMM\nMSAMASMSMX\nXMASAMXAMM\nXXAMMXXAMA\nSMSMSASXSS\nSAXAMASAAA\nMAMMMXMMMM\nMXMXAXMASX\nIn this word search, XMAS occurs a total of 18 times; here’s the same word search again, but where letters not involved in any XMAS have been replaced with .:\n....XXMAS.\n.SAMXMS...\n...S..A...\n..A.A.MS.X\nXMASAMX.MM\nX.....XA.A\nS.S.S.S.SS\n.A.A.A.A.A\n..M.M.M.MM\n.X.X.XMASX\nTake a look at the little Elf’s word search. How many times does XMAS appear?\n\n\n\n\neg = \"\"\"MMMSXXMASM\nMSAMXMSMSA\nAMXSXMAAMM\nMSAMASMSMX\nXMASAMXAMM\nXXAMMXXAMA\nSMSMSASXSS\nSAXAMASAAA\nMAMMMXMMMM\nMXMXAXMASX\n\"\"\"\n\ndef part1(inp:str) -&gt; int:\n\n    def within_grid(x:int, y:int) -&gt; bool:\n        return (x &gt;= 0) and (x &lt; max_X) and (y &gt;= 0) and (y &lt; max_Y)\n\n    def trace(x:int, y:int, dir_x:int, dir_y:int):\n        \"\"\"\n        Given a starting x,y node, trace down `dir` direction\n        - if out of bounds of wrong letter, end func\n        - if we found a complete XMAS then update solution set\n        \"\"\"\n        coords = tuple((x+i*dir_x, y+i*dir_y ) for i in range(4))\n        target = \"XMAS\"\n\n        for (x,y) , letter in zip(coords, target):\n            if not within_grid(x,y):\n                return\n            elif grid[x][y] != letter:\n                return\n\n        solutions.add(coords)\n\n\n    grid = inp.splitlines()\n    max_X = len(grid)\n    max_Y = len(grid[0])\n    solutions = set()\n    DIRECTIONS = [\n        (-1, 0), # North\n        (-1, 1), # NE\n        (0, 1), # East\n        (1, 1), # SE\n        (1, 0), # South\n        (1, -1), # SW\n        (0, -1), # West\n        (-1, -1) # NW\n    ]\n\n    for x in range(max_X):\n        for y in range(max_Y):\n            if grid[x][y] == \"X\":\n                for (dir_x, dir_y) in DIRECTIONS:\n                    trace(x, y, dir_x, dir_y)\n\n    return len(solutions)\n\npart1(eg)\n\n18\n\n\n\nwith open(\"inputs/04\", \"r\") as f:\n    inp = f.read()\npart1(inp)\n\n2458"
-  },
-  {
-    "objectID": "day04.html#part-2",
-    "href": "day04.html#part-2",
-    "title": "Day 4: Ceres Search",
-    "section": "Part 2",
-    "text": "Part 2\n\n\n\n\n\n\nPuzzle Info\n\n\n\n\n\nLooking for the instructions, you flip over the word search to find that this isn’t actually an XMAS puzzle; it’s an X-MAS puzzle in which you’re supposed to find two MAS in the shape of an X. One way to achieve that is like this:\nM.S\n.A.\nM.S\nIrrelevant characters have again been replaced with . in the above diagram. Within the X, each MAS can be written forwards or backwards.\nHere’s the same example from before, but this time all of the X-MASes have been kept instead:\n.M.S......\n..A..MSMS.\n.M.S.MAA..\n..A.ASMSM.\n.M.S.M....\n..........\nS.S.S.S.S.\n.A.A.A.A..\nM.M.M.M.M.\n..........\nIn this example, an X-MAS appears 9 times.\nFlip the word search from the instructions back over to the word search side and try again. How many times does an X-MAS appear?\n\n\n\n\nfrom collections import Counter\n\ndef part2(inp:str) -&gt; int:\n\n    def within_grid(x:int, y:int) -&gt; bool:\n        return (x &gt;= 0) and (x &lt; max_X) and (y &gt;= 0) and (y &lt; max_Y)\n\n    def check_corner_letters(x:int, y:int) -&gt; tuple | None:\n\n        DIRECTIONS = [\n            (-1, 1), # NE\n            (1, 1), # SE\n            (1, -1), # SW\n            (-1, -1) # NW\n        ]\n\n        coords = tuple( (x + dir_x, y + dir_y) for (dir_x, dir_y) in DIRECTIONS)\n\n        # Check no corners are out of bounds\n        for x, y in coords:\n            if not within_grid(x,y):\n                return\n\n        ne, se, sw, nw = tuple(grid[x][y] for x,y in coords)\n\n        # Check we see 2S and 2M in the corners\n        if Counter((ne,se,sw,nw)) == Counter((\"M\",\"M\",\"S\",\"S\")):\n            # Exclude edge case where only diagonals are alike\n            if not(ne == sw) or not (nw == se):\n                solutions.add(coords)\n\n    grid = inp.splitlines()\n    max_X = len(grid)\n    max_Y = len(grid[0])\n    solutions = set()\n\n    for x in range(max_X):\n        for y in range(max_Y):\n            if grid[x][y] == \"A\":\n                check_corner_letters(x,y)\n\n    return len(solutions)\n\npart2(eg)\n\n9\n\n\n\npart2(inp)\n\n1945"
-  },
-  {
-    "objectID": "tmpl.html",
-    "href": "tmpl.html",
-    "title": "Day 0",
-    "section": "",
-    "text": "Prompt:"
-  },
-  {
-    "objectID": "tmpl.html#part-1",
-    "href": "tmpl.html#part-1",
-    "title": "Day 0",
-    "section": "Part 1",
-    "text": "Part 1\n\n\n\n\n\n\nPuzzle Info"
-  },
-  {
-    "objectID": "tmpl.html#part-2",
-    "href": "tmpl.html#part-2",
-    "title": "Day 0",
-    "section": "Part 2",
-    "text": "Part 2\n\n\n\n\n\n\nPuzzle Info"
+    "text": "About this site"
   },
   {
     "objectID": "day03.html",
@@ -91,11 +56,67 @@
     "text": "Part 2\n\n\n\n\n\n\nPuzzle Info\n\n\n\n\n\nThere are two new instructions you’ll need to handle:\nThe do() instruction enables future mul instructions. The don’t() instruction disables future mul instructions. Only the most recent do() or don’t() instruction applies. At the beginning of the program, mul instructions are enabled.\nFor example:\nxmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))\nThis corrupted memory is similar to the example from before, but this time the mul(5,5) and mul(11,8) instructions are disabled because there is a don’t() instruction before them. The other mul instructions function normally, including the one at the end that gets re-enabled by a do() instruction.\nThis time, the sum of the results is 48 (24 + 85).\nHandle the new instructions; what do you get if you add up all of the results of just the enabled multiplications?\n\n\n\n\neg2 = \"xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))\"\n\ndef part2(inp:str) -&gt; int:\n\n    # Extract mul(x,y) or don't() or do()\n    pattern = r\"mul\\(\\d+,\\d+\\)|don\\'t\\(\\)|do\\(\\)\"\n    instructions = re.findall(pattern, inp)\n\n    # Find valid calcs\n    calcs = []\n    valid = True\n\n    for i in instructions:\n1        match (i, valid):\n2            case (_, True) if \"mul\" in i:\n                calcs.append(i)\n            case (\"don't()\", True):\n                valid = False\n            case (\"do()\", False):\n                valid = True\n3            case _:\n                #print(f\"Unexpected case : {i, valid} \")\n                ...\n\n    pattern_nums = r\"\\d+\"\n    nums = [re.findall(pattern_nums, c) for c in calcs ]\n    products = [int(n[0]) * int(n[1]) for n in nums]\n\n    return sum(products)\n\npart2(eg2)\n\n\n1\n\nGood opportunity to use case matching. Recall like Scala, _ represents a catchall\n\n2\n\nExample of how to chain an if check after a case match\n\n3\n\nSince we’re using case matching, build the habit of catching all unexpected cases (even if there’s no action required for these cases)\n\n\n\n\n48\n\n\n\npart2(inp)\n\n76729637"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "tmpl.html",
+    "href": "tmpl.html",
+    "title": "Day 0",
     "section": "",
-    "text": "About this site"
+    "text": "Prompt:"
+  },
+  {
+    "objectID": "tmpl.html#part-1",
+    "href": "tmpl.html#part-1",
+    "title": "Day 0",
+    "section": "Part 1",
+    "text": "Part 1\n\n\n\n\n\n\nPuzzle Info"
+  },
+  {
+    "objectID": "tmpl.html#part-2",
+    "href": "tmpl.html#part-2",
+    "title": "Day 0",
+    "section": "Part 2",
+    "text": "Part 2\n\n\n\n\n\n\nPuzzle Info"
+  },
+  {
+    "objectID": "day04.html",
+    "href": "day04.html",
+    "title": "Day 4: Ceres Search",
+    "section": "",
+    "text": "Prompt: The letters “X”, “M”, “A”, “S” repeated multiple times in a grid in christmas colours"
+  },
+  {
+    "objectID": "day04.html#part-1",
+    "href": "day04.html#part-1",
+    "title": "Day 4: Ceres Search",
+    "section": "Part 1",
+    "text": "Part 1\n\n\n\n\n\n\nPuzzle Info\n\n\n\n\n\nAs the search for the Chief continues, a small Elf who lives on the station tugs on your shirt; she’d like to know if you could help her with her word search (your puzzle input). She only has to find one word: XMAS.\nThis word search allows words to be horizontal, vertical, diagonal, written backwards, or even overlapping other words. It’s a little unusual, though, as you don’t merely need to find one instance of XMAS - you need to find all of them. Here are a few ways XMAS might appear, where irrelevant characters have been replaced with .:\n..X...\n.SAMX.\n.A..A.\nXMAS.S\n.X....\nThe actual word search will be full of letters instead. For example:\nMMMSXXMASM\nMSAMXMSMSA\nAMXSXMAAMM\nMSAMASMSMX\nXMASAMXAMM\nXXAMMXXAMA\nSMSMSASXSS\nSAXAMASAAA\nMAMMMXMMMM\nMXMXAXMASX\nIn this word search, XMAS occurs a total of 18 times; here’s the same word search again, but where letters not involved in any XMAS have been replaced with .:\n....XXMAS.\n.SAMXMS...\n...S..A...\n..A.A.MS.X\nXMASAMX.MM\nX.....XA.A\nS.S.S.S.SS\n.A.A.A.A.A\n..M.M.M.MM\n.X.X.XMASX\nTake a look at the little Elf’s word search. How many times does XMAS appear?\n\n\n\n\neg = \"\"\"MMMSXXMASM\nMSAMXMSMSA\nAMXSXMAAMM\nMSAMASMSMX\nXMASAMXAMM\nXXAMMXXAMA\nSMSMSASXSS\nSAXAMASAAA\nMAMMMXMMMM\nMXMXAXMASX\n\"\"\"\n\ndef part1(inp:str) -&gt; int:\n\n    def within_grid(x:int, y:int) -&gt; bool:\n        return (x &gt;= 0) and (x &lt; max_X) and (y &gt;= 0) and (y &lt; max_Y)\n\n    def trace(x:int, y:int, dir_x:int, dir_y:int):\n        \"\"\"\n        Given a starting x,y node, trace down `dir` direction\n        - if out of bounds of wrong letter, end func\n        - if we found a complete XMAS then update solution set\n        \"\"\"\n        coords = tuple((x+i*dir_x, y+i*dir_y ) for i in range(4))\n        target = \"XMAS\"\n\n        for (x,y) , letter in zip(coords, target):\n            if not within_grid(x,y):\n                return\n            elif grid[x][y] != letter:\n                return\n\n        solutions.add(coords)\n\n\n    grid = inp.splitlines()\n    max_X = len(grid)\n    max_Y = len(grid[0])\n    solutions = set()\n    DIRECTIONS = [\n        (-1, 0), # North\n        (-1, 1), # NE\n        (0, 1), # East\n        (1, 1), # SE\n        (1, 0), # South\n        (1, -1), # SW\n        (0, -1), # West\n        (-1, -1) # NW\n    ]\n\n    for x in range(max_X):\n        for y in range(max_Y):\n            if grid[x][y] == \"X\":\n                for (dir_x, dir_y) in DIRECTIONS:\n                    trace(x, y, dir_x, dir_y)\n\n    return len(solutions)\n\npart1(eg)\n\n18\n\n\n\nwith open(\"inputs/04\", \"r\") as f:\n    inp = f.read()\npart1(inp)\n\n2458"
+  },
+  {
+    "objectID": "day04.html#part-2",
+    "href": "day04.html#part-2",
+    "title": "Day 4: Ceres Search",
+    "section": "Part 2",
+    "text": "Part 2\n\n\n\n\n\n\nPuzzle Info\n\n\n\n\n\nLooking for the instructions, you flip over the word search to find that this isn’t actually an XMAS puzzle; it’s an X-MAS puzzle in which you’re supposed to find two MAS in the shape of an X. One way to achieve that is like this:\nM.S\n.A.\nM.S\nIrrelevant characters have again been replaced with . in the above diagram. Within the X, each MAS can be written forwards or backwards.\nHere’s the same example from before, but this time all of the X-MASes have been kept instead:\n.M.S......\n..A..MSMS.\n.M.S.MAA..\n..A.ASMSM.\n.M.S.M....\n..........\nS.S.S.S.S.\n.A.A.A.A..\nM.M.M.M.M.\n..........\nIn this example, an X-MAS appears 9 times.\nFlip the word search from the instructions back over to the word search side and try again. How many times does an X-MAS appear?\n\n\n\n\nfrom collections import Counter\n\ndef part2(inp:str) -&gt; int:\n\n    def within_grid(x:int, y:int) -&gt; bool:\n        return (x &gt;= 0) and (x &lt; max_X) and (y &gt;= 0) and (y &lt; max_Y)\n\n    def check_corner_letters(x:int, y:int):\n\n        DIRECTIONS = [\n            (-1, 1), # NE\n            (1, 1), # SE\n            (1, -1), # SW\n            (-1, -1) # NW\n        ]\n\n        coords = tuple( (x + dir_x, y + dir_y) for (dir_x, dir_y) in DIRECTIONS)\n\n        # Check no corners are out of bounds\n        for x, y in coords:\n            if not within_grid(x,y):\n                return\n\n        ne, se, sw, nw = tuple(grid[x][y] for x,y in coords)\n\n        # Check we see 2S and 2M in the corners\n        if Counter((ne,se,sw,nw)) == Counter((\"M\",\"M\",\"S\",\"S\")):\n            # Exclude edge case where only diagonals are alike\n1            if not(ne == sw) or not (nw == se):\n                solutions.add(coords)\n\n    grid = inp.splitlines()\n    max_X = len(grid)\n    max_Y = len(grid[0])\n    solutions = set()\n\n    for x in range(max_X):\n        for y in range(max_Y):\n            if grid[x][y] == \"A\":\n                check_corner_letters(x,y)\n\n    return len(solutions)\n\npart2(eg)\n\n\n1\n\nAlternatively, this could have been written as ne != sw but I feel the weird not(ne == sw) feels more intuitive. Ie. I want to exclude coords whose diagonal corners match.\n\n\n\n\n9\n\n\n\npart2(inp)\n\n1945"
+  },
+  {
+    "objectID": "day05.html",
+    "href": "day05.html",
+    "title": "Day 5: Print Queue",
+    "section": "",
+    "text": "Prompt:"
+  },
+  {
+    "objectID": "day05.html#part-1",
+    "href": "day05.html#part-1",
+    "title": "Day 5: Print Queue",
+    "section": "Part 1",
+    "text": "Part 1\n\n\n\n\n\n\nPuzzle Info\n\n\n\n\n\nThe Elf has for you both the page ordering rules and the pages to produce in each update (your puzzle input), but can’t figure out whether each update has the pages in the right order.\nFor example:\n47|53\n97|13\n97|61\n97|47\n75|29\n61|13\n75|53\n29|13\n97|29\n53|29\n61|53\n97|53\n61|29\n47|13\n75|47\n97|75\n47|61\n75|61\n47|29\n75|13\n53|13\n\n75,47,61,53,29\n97,61,53,29,13\n75,29,13\n75,97,47,61,53\n61,13,29\n97,13,75,29,47\nThe first section specifies the page ordering rules, one per line. The first rule, 47|53, means that if an update includes both page number 47 and page number 53, then page number 47 must be printed at some point before page number 53. (47 doesn’t necessarily need to be immediately before 53; other pages are allowed to be between them.)\nThe second section specifies the page numbers of each update. Because most safety manuals are different, the pages needed in the updates are different too. The first update, 75,47,61,53,29, means that the update consists of page numbers 75, 47, 61, 53, and 29.\nTo get the printers going as soon as possible, start by identifying which updates are already in the right order.\nIn the above example, the first update (75,47,61,53,29) is in the right order:\n\n75 is correctly first because there are rules that put each other page after it: 75|47, 75|61, 75|53, and 75|29.\n47 is correctly second because 75 must be before it (75|47) and every other page must be after it according to 47|61, 47|53, and 47|29.\n61 is correctly in the middle because 75 and 47 are before it (75|61 and 47|61) and 53 and 29 are after it (61|53 and 61|29).\n53 is correctly fourth because it is before page number 29 (53|29).\n29 is the only page left and so is correctly last.\n\nBecause the first update does not include some page numbers, the ordering rules involving those missing page numbers are ignored.\nThe second and third updates are also in the correct order according to the rules. Like the first update, they also do not include every page number, and so only some of the ordering rules apply - within each update, the ordering rules that involve missing page numbers are not used.\nThe fourth update, 75,97,47,61,53, is not in the correct order: it would print 75 before 97, which violates the rule 97|75.\nThe fifth update, 61,13,29, is also not in the correct order, since it breaks the rule 29|13.\nThe last update, 97,13,75,29,47, is not in the correct order due to breaking several rules.\nFor some reason, the Elves also need to know the middle page number of each update being printed. Because you are currently only printing the correctly-ordered updates, you will need to find the middle page number of each correctly-ordered update. In the above example, the correctly-ordered updates are:\n75,47,61,53,29\n97,61,53,29,13\n75,29,13\nThese have middle page numbers of 61, 53, and 29 respectively. Adding these page numbers together gives 143.\n\n\n\n\neg = \"\"\"47|53\n97|13\n97|61\n97|47\n75|29\n61|13\n75|53\n29|13\n97|29\n53|29\n61|53\n97|53\n61|29\n47|13\n75|47\n97|75\n47|61\n75|61\n47|29\n75|13\n53|13\n\n75,47,61,53,29\n97,61,53,29,13\n75,29,13\n75,97,47,61,53\n61,13,29\n97,13,75,29,47\n\"\"\"\n\nfrom collections import defaultdict\n\ndef parse(inp:str) -&gt; tuple[dict, dict, list]:\n    top, bot = inp.split(\"\\n\\n\")\n\n    # Bad rules contain all the numbers (values) that cannot come on the left of (key)\n    bad_rules = defaultdict(list)\n    # Good rules contain all the numbers (values) that must come on the left of (key) - used in part2\n    good_rules = defaultdict(list)\n    for t in top.splitlines():\n        a,b = t.split(\"|\")\n        bad_rules[int(b)].append(int(a))\n        good_rules[int(a)].append(int(b))\n\n    lines = []\n    for b in bot.splitlines():\n        line = b.split(\",\")\n        line = [int(l) for l in line]\n        lines.append(line)\n\n    return bad_rules, good_rules, lines\n\ndef part1(inp:str) -&gt; int:\n    rules, _, lines = parse(inp)\n\n    correct = []\n    for line in lines:\n        is_valid = True\n        for i, num in enumerate(line):\n            to_the_right = line[i+1:]\n1            must_be_left = rules[num]\n            if any([x in to_the_right for x in must_be_left]):\n                is_valid = False\n                break\n\n        if is_valid:\n            correct.append(line)\n\n    # Assume all correct lists are an odd numbered length\n    medians = [line[len(line)//2] for line in correct]\n\n    return sum(medians)\n\npart1(eg)\n\n\n1\n\nUse [] to access values from a defaultdict, not .get()\n\n\n\n\n143\n\n\n\nwith open(\"inputs/05\", \"r\") as f:\n    inp = f.read()\n\npart1(inp)\n\n4185"
+  },
+  {
+    "objectID": "day05.html#part-2",
+    "href": "day05.html#part-2",
+    "title": "Day 5: Print Queue",
+    "section": "Part 2",
+    "text": "Part 2\n\n\n\n\n\n\nPuzzle Info\n\n\n\n\n\nFor each of the incorrectly-ordered updates, use the page ordering rules to put the page numbers in the right order. For the above example, here are the three incorrectly-ordered updates and their correct orderings:\n\n75,97,47,61,53 becomes 97,75,47,61,53.\n61,13,29 becomes 61,29,13.\n97,13,75,29,47 becomes 97,75,47,29,13.\n\nAfter taking only the incorrectly-ordered updates and ordering them correctly, their middle page numbers are 47, 29, and 47. Adding these together produces 123.\nFind the updates which are not in the correct order. What do you get if you add up the middle page numbers after correctly ordering just those updates?\n\n\n\n\ndef part2(inp:str) -&gt; int:\n    bad_rules, good_rules, lines = parse(inp)\n\n    wrong = []\n    for line in lines:\n        is_valid = True\n        for i, num in enumerate(line):\n            to_the_right = line[i+1:]\n            must_be_left = bad_rules[num] # &lt;1&gt; Can't use .get\n            if any([x in to_the_right for x in must_be_left]):\n                is_valid = False\n                break\n\n        if not is_valid:\n            wrong.append(line)\n\n\n    fixed = []\n    for line in wrong:\n        reorder = []\n        for i, num in enumerate(line):\n            score = 0\n            all_but_num = line[:i] + line[i+1:]\n            for n in all_but_num:\n                if n in good_rules[num]:\n                    score += 1\n            reorder.append((score, num))\n\n        reorder.sort(reverse=True)\n        fixed.append([num for _,num in reorder])\n\n\n    # Assume all correct lists are an odd numbered length\n    medians = [line[len(line)//2] for line in fixed]\n\n    return sum(medians)\npart2(eg)\n\n123\n\n\n\npart2(inp)\n\n4480"
   },
   {
     "objectID": "day01.html",
