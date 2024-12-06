@@ -110,14 +110,17 @@ eg = """47|53
 
 from collections import defaultdict
 
-def parse(inp:str) -> tuple[dict, list]:
+def parse(inp:str) -> tuple[dict, dict, list]:
     top, bot = inp.split("\n\n")
 
-    # Rules contain all the numbers (values) that cannot come on the left of (key)
-    rules = defaultdict(list)
+    # Bad rules contain all the numbers (values) that cannot come on the left of (key)
+    bad_rules = defaultdict(list)
+    # Good rules contain all the numbers (values) that must come on the left of (key) - used in part2
+    good_rules = defaultdict(list)
     for t in top.splitlines():
         a,b = t.split("|")
-        rules[int(b)].append(int(a))
+        bad_rules[int(b)].append(int(a))
+        good_rules[int(a)].append(int(b))
 
     lines = []
     for b in bot.splitlines():
@@ -125,17 +128,17 @@ def parse(inp:str) -> tuple[dict, list]:
         line = [int(l) for l in line]
         lines.append(line)
 
-    return rules, lines
+    return bad_rules, good_rules, lines
 
 def part1(inp:str) -> int:
-    rules, lines = parse(inp)
+    rules, _, lines = parse(inp)
 
     correct = []
     for line in lines:
         is_valid = True
         for i, num in enumerate(line):
             to_the_right = line[i+1:]
-            must_be_left = rules[num] # <1> Can't use .get
+            must_be_left = rules[num] # <1>
             if any([x in to_the_right for x in must_be_left]):
                 is_valid = False
                 break
@@ -150,6 +153,7 @@ def part1(inp:str) -> int:
 
 part1(eg)
 ```
+1. Use `[]` to access values from a defaultdict, not `.get()`
 
 ```{python}
 with open("inputs/05", "r") as f:
@@ -173,27 +177,15 @@ Find the updates which are not in the correct order. What do you get if you add 
 
 ```{python}
 
-def parse_good_rules(inp:str) -> dict:
-    top, bot = inp.split("\n\n")
-
-    # Rules contain all the numbers (values) that cannot come on the left of (key)
-    good_rules = defaultdict(list)
-    for t in top.splitlines():
-        a,b = t.split("|")
-        good_rules[int(a)].append(int(b))
-
-    return good_rules
-
-
 def part2(inp:str) -> int:
-    rules, lines = parse(inp)
+    bad_rules, good_rules, lines = parse(inp)
 
     wrong = []
     for line in lines:
         is_valid = True
         for i, num in enumerate(line):
             to_the_right = line[i+1:]
-            must_be_left = rules[num] # <1> Can't use .get
+            must_be_left = bad_rules[num] # <1> Can't use .get
             if any([x in to_the_right for x in must_be_left]):
                 is_valid = False
                 break
@@ -201,7 +193,6 @@ def part2(inp:str) -> int:
         if not is_valid:
             wrong.append(line)
 
-    good_rules = parse_good_rules(inp)
 
     fixed = []
     for line in wrong:
