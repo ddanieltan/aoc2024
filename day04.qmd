@@ -179,8 +179,7 @@ def part2(inp:str) -> int:
             if not within_grid(x,y):
                 return
 
-        ne,
-        se, sw, nw = tuple(grid[x][y] for x,y in coords)
+        ne, se, sw, nw = tuple(grid[x][y] for x,y in coords)
 
         # Check we see 2S and 2M in the corners
         if Counter((ne,se,sw,nw)) == Counter(("M","M","S","S")):
