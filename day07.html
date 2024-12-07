@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Day 4: Ceres Search – Advent of Code 2024</title>
+<title>Day 7: Bridge Repair – Advent of Code 2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -154,7 +154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Day 4: Ceres Search</h1>
+<h1 class="title">Day 7: Bridge Repair</h1>
 </div>
 
 
@@ -173,8 +173,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/04.webp" class="img-fluid figure-img" width="500"></p>
-<figcaption>Prompt: The letters “X”, “M”, “A”, “S” repeated multiple times in a grid in christmas colours</figcaption>
+<p><img src="images/07.webp" class="img-fluid figure-img" width="500"></p>
+<figcaption>Prompt:elves trying to fix a bridge, with a lot of numbers floating, cartoon style</figcaption>
 </figure>
 </div>
 <section id="part-1" class="level2">
@@ -191,109 +191,96 @@ Puzzle Info
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>As the search for the Chief continues, a small Elf who lives on the station tugs on your shirt; she’d like to know if you could help her with her word search (your puzzle input). She only has to find one word: XMAS.</p>
-<p>This word search allows words to be horizontal, vertical, diagonal, written backwards, or even overlapping other words. It’s a little unusual, though, as you don’t merely need to find one instance of XMAS - you need to find all of them. Here are a few ways XMAS might appear, where irrelevant characters have been replaced with .:</p>
-<pre><code>..X...
-.SAMX.
-.A..A.
-XMAS.S
-.X....</code></pre>
-<p>The actual word search will be full of letters instead. For example:</p>
-<pre><code>MMMSXXMASM
-MSAMXMSMSA
-AMXSXMAAMM
-MSAMASMSMX
-XMASAMXAMM
-XXAMMXXAMA
-SMSMSASXSS
-SAXAMASAAA
-MAMMMXMMMM
-MXMXAXMASX</code></pre>
-<p>In this word search, XMAS occurs a total of 18 times; here’s the same word search again, but where letters not involved in any XMAS have been replaced with .:</p>
-<pre><code>....XXMAS.
-.SAMXMS...
-...S..A...
-..A.A.MS.X
-XMASAMX.MM
-X.....XA.A
-S.S.S.S.SS
-.A.A.A.A.A
-..M.M.M.MM
-.X.X.XMASX</code></pre>
-<p>Take a look at the little Elf’s word search. How many times does XMAS appear?</p>
+<pre><code>190: 10 19
+3267: 81 40 27
+83: 17 5
+156: 15 6
+7290: 6 8 6 15
+161011: 16 10 13
+192: 17 8 14
+21037: 9 7 18 13
+292: 11 6 16 20</code></pre>
+<p>Each line represents a single equation. The test value appears before the colon on each line; it is your job to determine whether the remaining numbers can be combined with operators to produce the test value.</p>
+<p>Operators are always evaluated left-to-right, not according to precedence rules. Furthermore, numbers in the equations cannot be rearranged. Glancing into the jungle, you can see elephants holding two different types of operators: add (+) and multiply (*).</p>
+<p>Only three of the above equations can be made true by inserting operators:</p>
+<ul>
+<li>190: 10 19 has only one position that accepts an operator: between 10 and 19. Choosing + would give 29, but choosing * would give the test value (10 * 19 = 190).</li>
+<li>3267: 81 40 27 has two positions for operators. Of the four possible configurations of the operators, two cause the right side to match the test value: 81 + 40 * 27 and 81 * 40 + 27 both equal 3267 (when evaluated left-to-right)!</li>
+<li>292: 11 6 16 20 can be solved in exactly one way: 11 + 6 * 16 + 20. The engineers just need the total calibration result, which is the sum of the test values from just the equations that could possibly be true. In the above example, the sum of the test values for the three equations listed above is 3749.</li>
+</ul>
+<p>Determine which equations could possibly be true. What is their total calibration result?</p>
 </div>
 </div>
 </div>
-<div id="23d60837" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>eg <span class="op">=</span> <span class="st">"""MMMSXXMASM</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="st">MSAMXMSMSA</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">AMXSXMAAMM</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">MSAMASMSMX</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">XMASAMXAMM</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">XXAMMXXAMA</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">SMSMSASXSS</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="st">SAXAMASAAA</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="st">MAMMMXMMMM</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="st">MXMXAXMASX</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part1(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> within_grid(x:<span class="bu">int</span>, y:<span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (x <span class="op">&gt;=</span> <span class="dv">0</span>) <span class="kw">and</span> (x <span class="op">&lt;</span> max_X) <span class="kw">and</span> (y <span class="op">&gt;=</span> <span class="dv">0</span>) <span class="kw">and</span> (y <span class="op">&lt;</span> max_Y)</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> trace(x:<span class="bu">int</span>, y:<span class="bu">int</span>, dir_x:<span class="bu">int</span>, dir_y:<span class="bu">int</span>):</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">        Given a starting x,y node, trace down `dir` direction</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">        - if out of bounds of wrong letter, end func</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">        - if we found a complete XMAS then update solution set</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        coords <span class="op">=</span> <span class="bu">tuple</span>((x<span class="op">+</span>i<span class="op">*</span>dir_x, y<span class="op">+</span>i<span class="op">*</span>dir_y ) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>))</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>        target <span class="op">=</span> <span class="st">"XMAS"</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (x,y) , letter <span class="kw">in</span> <span class="bu">zip</span>(coords, target):</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span> within_grid(x,y):</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> grid[x][y] <span class="op">!=</span> letter:</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>        solutions.add(coords)</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>    grid <span class="op">=</span> inp.splitlines()</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    max_X <span class="op">=</span> <span class="bu">len</span>(grid)</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    max_Y <span class="op">=</span> <span class="bu">len</span>(grid[<span class="dv">0</span>])</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    solutions <span class="op">=</span> <span class="bu">set</span>()</span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    DIRECTIONS <span class="op">=</span> [</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>        (<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>), <span class="co"># North</span></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>        (<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="co"># NE</span></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">0</span>, <span class="dv">1</span>), <span class="co"># East</span></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">1</span>, <span class="dv">1</span>), <span class="co"># SE</span></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">1</span>, <span class="dv">0</span>), <span class="co"># South</span></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>), <span class="co"># SW</span></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>), <span class="co"># West</span></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>        (<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>) <span class="co"># NW</span></span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(max_X):</span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(max_Y):</span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> grid[x][y] <span class="op">==</span> <span class="st">"X"</span>:</span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> (dir_x, dir_y) <span class="kw">in</span> DIRECTIONS:</span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>                    trace(x, y, dir_x, dir_y)</span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">len</span>(solutions)</span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>part1(eg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c37bcdbd" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a>eg <span class="op">=</span> <span class="st">"""190: 10 19</span></span>
+<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a><span class="st">3267: 81 40 27</span></span>
+<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a><span class="st">83: 17 5</span></span>
+<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a><span class="st">156: 15 6</span></span>
+<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a><span class="st">7290: 6 8 6 15</span></span>
+<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a><span class="st">161011: 16 10 13</span></span>
+<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7" aria-hidden="true" tabindex="-1"></a><span class="st">192: 17 8 14</span></span>
+<span id="annotated-cell-1-8"><a href="#annotated-cell-1-8" aria-hidden="true" tabindex="-1"></a><span class="st">21037: 9 7 18 13</span></span>
+<span id="annotated-cell-1-9"><a href="#annotated-cell-1-9" aria-hidden="true" tabindex="-1"></a><span class="st">292: 11 6 16 20</span></span>
+<span id="annotated-cell-1-10"><a href="#annotated-cell-1-10" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="annotated-cell-1-11"><a href="#annotated-cell-1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-12"><a href="#annotated-cell-1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> product</span>
+<span id="annotated-cell-1-13"><a href="#annotated-cell-1-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> operator</span>
+<span id="annotated-cell-1-14"><a href="#annotated-cell-1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-15"><a href="#annotated-cell-1-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[(<span class="bu">int</span>, <span class="bu">list</span>[<span class="bu">int</span>])]:</span>
+<span id="annotated-cell-1-16"><a href="#annotated-cell-1-16" aria-hidden="true" tabindex="-1"></a>    ret <span class="op">=</span> []</span>
+<span id="annotated-cell-1-17"><a href="#annotated-cell-1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> inp.splitlines():</span>
+<span id="annotated-cell-1-18"><a href="#annotated-cell-1-18" aria-hidden="true" tabindex="-1"></a>        front, back <span class="op">=</span> line.split(<span class="st">": "</span>)</span>
+<span id="annotated-cell-1-19"><a href="#annotated-cell-1-19" aria-hidden="true" tabindex="-1"></a>        target <span class="op">=</span> <span class="bu">int</span>(front)</span>
+<span id="annotated-cell-1-20"><a href="#annotated-cell-1-20" aria-hidden="true" tabindex="-1"></a>        nums <span class="op">=</span> [<span class="bu">int</span>(n) <span class="cf">for</span> n <span class="kw">in</span> back.split()]</span>
+<span id="annotated-cell-1-21"><a href="#annotated-cell-1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-22"><a href="#annotated-cell-1-22" aria-hidden="true" tabindex="-1"></a>        ret.append((target, nums))</span>
+<span id="annotated-cell-1-23"><a href="#annotated-cell-1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ret</span>
+<span id="annotated-cell-1-24"><a href="#annotated-cell-1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-25"><a href="#annotated-cell-1-25" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part1(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="annotated-cell-1-26"><a href="#annotated-cell-1-26" aria-hidden="true" tabindex="-1"></a>    lines <span class="op">=</span> parse(inp)</span>
+<span id="annotated-cell-1-27"><a href="#annotated-cell-1-27" aria-hidden="true" tabindex="-1"></a>    solutions <span class="op">=</span> []</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-28" class="code-annotation-target"><a href="#annotated-cell-1-28" aria-hidden="true" tabindex="-1"></a>    operators <span class="op">=</span> (operator.mul, operator.add)</span>
+<span id="annotated-cell-1-29"><a href="#annotated-cell-1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-30"><a href="#annotated-cell-1-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> target, nums <span class="kw">in</span> lines:</span>
+<span id="annotated-cell-1-31"><a href="#annotated-cell-1-31" aria-hidden="true" tabindex="-1"></a>        slots <span class="op">=</span> <span class="bu">len</span>(nums) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="annotated-cell-1-32"><a href="#annotated-cell-1-32" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-33" class="code-annotation-target"><a href="#annotated-cell-1-33" aria-hidden="true" tabindex="-1"></a>        ops_variations <span class="op">=</span> product(operators, repeat<span class="op">=</span>slots)</span>
+<span id="annotated-cell-1-34"><a href="#annotated-cell-1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-35"><a href="#annotated-cell-1-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> ops <span class="kw">in</span> ops_variations:</span>
+<span id="annotated-cell-1-36"><a href="#annotated-cell-1-36" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> nums[<span class="dv">0</span>]</span>
+<span id="annotated-cell-1-37"><a href="#annotated-cell-1-37" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> i, op <span class="kw">in</span> <span class="bu">enumerate</span>(ops):</span>
+<span id="annotated-cell-1-38"><a href="#annotated-cell-1-38" aria-hidden="true" tabindex="-1"></a>                result <span class="op">=</span> op(result, nums[i<span class="op">+</span><span class="dv">1</span>])</span>
+<span id="annotated-cell-1-39"><a href="#annotated-cell-1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-40"><a href="#annotated-cell-1-40" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> result <span class="op">==</span> target:</span>
+<span id="annotated-cell-1-41"><a href="#annotated-cell-1-41" aria-hidden="true" tabindex="-1"></a>                solutions.append(target)</span>
+<span id="annotated-cell-1-42"><a href="#annotated-cell-1-42" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="annotated-cell-1-43"><a href="#annotated-cell-1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-44"><a href="#annotated-cell-1-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(solutions)</span>
+<span id="annotated-cell-1-45"><a href="#annotated-cell-1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-46"><a href="#annotated-cell-1-46" aria-hidden="true" tabindex="-1"></a>part1(eg)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="28,38" data-code-annotation="1">Learnt about the <a href="https://docs.python.org/3/library/operator.html"><code>operator</code> module</a>, which is very useful because it allows one to use functions/objects to perform basic operations which makes it easier to script. I was previously using <code>eval(...)</code> which feels a lot less safe.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="33" data-code-annotation="2">Reminder that <code>itertools.product</code> produces variations where inputs can be repeated by the function. <code>itertools.permutations</code> produces variations where inputs cannot be repeated.</span>
+</dd>
+</dl>
+</div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>18</code></pre>
+<pre><code>3749</code></pre>
 </div>
 </div>
-<div id="ed7645b9" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"inputs/04"</span>, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    inp <span class="op">=</span> f.read()</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>part1(inp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ede7489e" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"inputs/07"</span>,<span class="st">"r"</span>) <span class="im">as</span> f:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    inp <span class="op">=</span> f.read()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>part1(inp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>2458</code></pre>
+<pre><code>6083020304036</code></pre>
 </div>
 </div>
 </section>
@@ -311,88 +298,52 @@ Puzzle Info
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Looking for the instructions, you flip over the word search to find that this isn’t actually an XMAS puzzle; it’s an X-MAS puzzle in which you’re supposed to find two MAS in the shape of an X. One way to achieve that is like this:</p>
-<pre><code>M.S
-.A.
-M.S</code></pre>
-<p>Irrelevant characters have again been replaced with . in the above diagram. Within the X, each MAS can be written forwards or backwards.</p>
-<p>Here’s the same example from before, but this time all of the X-MASes have been kept instead:</p>
-<pre><code>.M.S......
-..A..MSMS.
-.M.S.MAA..
-..A.ASMSM.
-.M.S.M....
-..........
-S.S.S.S.S.
-.A.A.A.A..
-M.M.M.M.M.
-..........</code></pre>
-<p>In this example, an X-MAS appears 9 times.</p>
-<p>Flip the word search from the instructions back over to the word search side and try again. How many times does an X-MAS appear?</p>
+<p>The concatenation operator (||) combines the digits from its left and right inputs into a single number. For example, 12 || 345 would become 12345. All operators are still evaluated left-to-right.</p>
+<p>Now, apart from the three equations that could be made true using only addition and multiplication, the above example has three more equations that can be made true by inserting operators:</p>
+<ul>
+<li>156: 15 6 can be made true through a single concatenation: 15 || 6 = 156.</li>
+<li>7290: 6 8 6 15 can be made true using 6 * 8 || 6 * 15.</li>
+<li>192: 17 8 14 can be made true using 17 || 8 + 14.</li>
+</ul>
+<p>Adding up all six test values (the three that could be made before using only + and * plus the new three that can now be made by also using ||) produces the new total calibration result of 11387.</p>
+<p>Using your new knowledge of elephant hiding spots, determine which equations could possibly be true. What is their total calibration result?</p>
 </div>
 </div>
 </div>
-<div id="7d7bfcbb" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
-<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part2(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="annotated-cell-3-4"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> within_grid(x:<span class="bu">int</span>, y:<span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
-<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (x <span class="op">&gt;=</span> <span class="dv">0</span>) <span class="kw">and</span> (x <span class="op">&lt;</span> max_X) <span class="kw">and</span> (y <span class="op">&gt;=</span> <span class="dv">0</span>) <span class="kw">and</span> (y <span class="op">&lt;</span> max_Y)</span>
-<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-8"><a href="#annotated-cell-3-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> check_corner_letters(x:<span class="bu">int</span>, y:<span class="bu">int</span>):</span>
-<span id="annotated-cell-3-9"><a href="#annotated-cell-3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-10"><a href="#annotated-cell-3-10" aria-hidden="true" tabindex="-1"></a>        DIRECTIONS <span class="op">=</span> [</span>
-<span id="annotated-cell-3-11"><a href="#annotated-cell-3-11" aria-hidden="true" tabindex="-1"></a>            (<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="co"># NE</span></span>
-<span id="annotated-cell-3-12"><a href="#annotated-cell-3-12" aria-hidden="true" tabindex="-1"></a>            (<span class="dv">1</span>, <span class="dv">1</span>), <span class="co"># SE</span></span>
-<span id="annotated-cell-3-13"><a href="#annotated-cell-3-13" aria-hidden="true" tabindex="-1"></a>            (<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>), <span class="co"># SW</span></span>
-<span id="annotated-cell-3-14"><a href="#annotated-cell-3-14" aria-hidden="true" tabindex="-1"></a>            (<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>) <span class="co"># NW</span></span>
-<span id="annotated-cell-3-15"><a href="#annotated-cell-3-15" aria-hidden="true" tabindex="-1"></a>        ]</span>
-<span id="annotated-cell-3-16"><a href="#annotated-cell-3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-17"><a href="#annotated-cell-3-17" aria-hidden="true" tabindex="-1"></a>        coords <span class="op">=</span> <span class="bu">tuple</span>( (x <span class="op">+</span> dir_x, y <span class="op">+</span> dir_y) <span class="cf">for</span> (dir_x, dir_y) <span class="kw">in</span> DIRECTIONS)</span>
-<span id="annotated-cell-3-18"><a href="#annotated-cell-3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-19"><a href="#annotated-cell-3-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Check no corners are out of bounds</span></span>
-<span id="annotated-cell-3-20"><a href="#annotated-cell-3-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> x, y <span class="kw">in</span> coords:</span>
-<span id="annotated-cell-3-21"><a href="#annotated-cell-3-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span> within_grid(x,y):</span>
-<span id="annotated-cell-3-22"><a href="#annotated-cell-3-22" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span></span>
-<span id="annotated-cell-3-23"><a href="#annotated-cell-3-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-24"><a href="#annotated-cell-3-24" aria-hidden="true" tabindex="-1"></a>        ne, se, sw, nw <span class="op">=</span> <span class="bu">tuple</span>(grid[x][y] <span class="cf">for</span> x,y <span class="kw">in</span> coords)</span>
-<span id="annotated-cell-3-25"><a href="#annotated-cell-3-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-26"><a href="#annotated-cell-3-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Check we see 2S and 2M in the corners</span></span>
-<span id="annotated-cell-3-27"><a href="#annotated-cell-3-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> Counter((ne,se,sw,nw)) <span class="op">==</span> Counter((<span class="st">"M"</span>,<span class="st">"M"</span>,<span class="st">"S"</span>,<span class="st">"S"</span>)):</span>
-<span id="annotated-cell-3-28"><a href="#annotated-cell-3-28" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Exclude edge case where only diagonals are alike</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-29" class="code-annotation-target"><a href="#annotated-cell-3-29" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span>(ne <span class="op">==</span> sw) <span class="kw">or</span> <span class="kw">not</span> (nw <span class="op">==</span> se):</span>
-<span id="annotated-cell-3-30"><a href="#annotated-cell-3-30" aria-hidden="true" tabindex="-1"></a>                solutions.add(coords)</span>
-<span id="annotated-cell-3-31"><a href="#annotated-cell-3-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-32"><a href="#annotated-cell-3-32" aria-hidden="true" tabindex="-1"></a>    grid <span class="op">=</span> inp.splitlines()</span>
-<span id="annotated-cell-3-33"><a href="#annotated-cell-3-33" aria-hidden="true" tabindex="-1"></a>    max_X <span class="op">=</span> <span class="bu">len</span>(grid)</span>
-<span id="annotated-cell-3-34"><a href="#annotated-cell-3-34" aria-hidden="true" tabindex="-1"></a>    max_Y <span class="op">=</span> <span class="bu">len</span>(grid[<span class="dv">0</span>])</span>
-<span id="annotated-cell-3-35"><a href="#annotated-cell-3-35" aria-hidden="true" tabindex="-1"></a>    solutions <span class="op">=</span> <span class="bu">set</span>()</span>
-<span id="annotated-cell-3-36"><a href="#annotated-cell-3-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-37"><a href="#annotated-cell-3-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(max_X):</span>
-<span id="annotated-cell-3-38"><a href="#annotated-cell-3-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(max_Y):</span>
-<span id="annotated-cell-3-39"><a href="#annotated-cell-3-39" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> grid[x][y] <span class="op">==</span> <span class="st">"A"</span>:</span>
-<span id="annotated-cell-3-40"><a href="#annotated-cell-3-40" aria-hidden="true" tabindex="-1"></a>                check_corner_letters(x,y)</span>
-<span id="annotated-cell-3-41"><a href="#annotated-cell-3-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-42"><a href="#annotated-cell-3-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">len</span>(solutions)</span>
-<span id="annotated-cell-3-43"><a href="#annotated-cell-3-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-44"><a href="#annotated-cell-3-44" aria-hidden="true" tabindex="-1"></a>part2(eg)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-annotation">
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="29" data-code-annotation="1">Alternatively, this could have been written as <code>ne != sw</code> but I feel the weird <code>not(ne == sw)</code> feels more intuitive. Ie. I want to exclude coords whose diagonal corners match.</span>
-</dd>
-</dl>
-</div>
+<div id="f87dc783" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> concat(a:<span class="bu">int</span>, b:<span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">int</span>(<span class="bu">str</span>(a)<span class="op">+</span> <span class="bu">str</span>(b))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part2(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    lines <span class="op">=</span> parse(inp)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    solutions <span class="op">=</span> []</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    operators <span class="op">=</span> (operator.mul, operator.add, concat)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> target, nums <span class="kw">in</span> lines:</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        slots <span class="op">=</span> <span class="bu">len</span>(nums) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        ops_variations <span class="op">=</span> product(operators, repeat<span class="op">=</span>slots)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> ops <span class="kw">in</span> ops_variations:</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> nums[<span class="dv">0</span>]</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> i, op <span class="kw">in</span> <span class="bu">enumerate</span>(ops):</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>                result <span class="op">=</span> op(result, nums[i<span class="op">+</span><span class="dv">1</span>])</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> result <span class="op">==</span> target:</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                solutions.append(target)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(solutions)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>part2(eg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>9</code></pre>
+<pre><code>11387</code></pre>
 </div>
 </div>
-<div id="e49b70d2" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>part2(inp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="51ed7e4f" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>part2(inp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>1945</code></pre>
+<pre><code>59002246504791</code></pre>
 </div>
 </div>
 
