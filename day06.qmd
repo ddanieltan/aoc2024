@@ -1,0 +1,358 @@
+---
+title: "Day 6: Guard Gallivant"
+---
+
+![Prompt:christmas guard walking in a squarish path which is traced, top down perspective, cartoon style ](images/06.webp){width="500" fig-align="center"}
+
+## Part 1
+
+::: {.callout-note title="Puzzle Info" collapse="true"}
+You start by making a map (your puzzle input) of the situation. For example:
+
+....#.....
+.........#
+..........
+..#.......
+.......#..
+..........
+.#..^.....
+........#.
+#.........
+......#...
+
+The map shows the current position of the guard with ^ (to indicate the guard is currently facing up from the perspective of the map). Any obstructions - crates, desks, alchemical reactors, etc. - are shown as #.
+
+Lab guards in 1518 follow a very strict patrol protocol which involves repeatedly following these steps:
+
+If there is something directly in front of you, turn right 90 degrees.
+Otherwise, take a step forward.
+Following the above protocol, the guard moves up several times until she reaches an obstacle (in this case, a pile of failed suit prototypes):
+
+....#.....
+....^....#
+..........
+..#.......
+.......#..
+..........
+.#........
+........#.
+#.........
+......#...
+
+Because there is now an obstacle in front of the guard, she turns right before continuing straight in her new facing direction:
+
+....#.....
+........>#
+..........
+..#.......
+.......#..
+..........
+.#........
+........#.
+#.........
+......#...
+
+Reaching another obstacle (a spool of several very long polymers), she turns right again and continues downward:
+
+....#.....
+.........#
+..........
+..#.......
+.......#..
+..........
+.#......v.
+........#.
+#.........
+......#...
+
+This process continues for a while, but the guard eventually leaves the mapped area (after walking past a tank of universal solvent):
+
+....#.....
+.........#
+..........
+..#.......
+.......#..
+..........
+.#........
+........#.
+#.........
+......#v..
+
+By predicting the guard's route, you can determine which specific positions in the lab will be in the patrol path. Including the guard's starting position, the positions visited by the guard before leaving the area are marked with an X:
+
+....#.....
+....XXXXX#
+....X...X.
+..#.X...X.
+..XXXXX#X.
+..X.X.X.X.
+.#XXXXXXX.
+.XXXXXXX#.
+#XXXXXXX..
+......#X..
+
+In this example, the guard will visit 41 distinct positions on your map.
+
+Predict the path of the guard. How many distinct positions will the guard visit before leaving the mapped area?
+:::
+
+```{python}
+eg = """....#.....
+.........#
+..........
+..#.......
+.......#..
+..........
+.#..^.....
+........#.
+#.........
+......#...
+"""
+
+DIRECTIONS = {
+    (-1,0) : (0,1), # N -> E
+    (0,1) : (1,0), # E -> S
+    (1,0) : (0,-1), # S -> W
+    (0,-1) : (-1,0) # W -> N
+}
+
+def parse(inp:str) -> (list[str], tuple[int,int]):
+    """
+    Parse out grid and starting location
+    """
+    grid = inp.splitlines()
+
+    # Find starting location
+    for x in range(len(grid)):
+        for y in range(len(grid[0])):
+            if grid[x][y]=="^":
+                return grid, (x,y)
+
+def check_oob(x:int, y:int, grid:list[str]) -> bool:
+    return (x<0) or (x>=len(grid)) or (y<0) or (y>=len(grid[0]))
+
+
+def trace_path(inp:str) -> list:
+    """
+    Returns visited path and corners
+    """
+    grid, start = parse(inp)
+
+    path = list()
+    heading = (-1,0) # Start heading N
+    x,y = start
+
+    while True:
+        # Add current node
+        path.append((x,y,heading))
+
+        # Look ahead to next node
+        dx, dy = heading
+        xa, ya = x + dx, y + dy
+        if check_oob(xa,ya,grid):
+            return path
+
+        # Change heading if obstacle
+        if grid[xa][ya] == "#":
+            heading = DIRECTIONS.get(heading)
+
+        # Actually update position
+        dx, dy = heading
+        x += dx
+        y += dy
+
+def part1(inp:str) -> int:
+    path = trace_path(inp)
+    visited = set([(x,y) for (x,y,heading) in path])
+    return len(visited)
+
+
+part1(eg)
+
+```
+
+```{python}
+with open("inputs/06","r") as f:
+    inp = f.read()
+part1(inp)
+```
+
+## Part 2
+
+::: {.callout-note title="Puzzle Info" collapse="true"}
+In the above example, there are only 6 different positions where a new obstruction would cause the guard to get stuck in a loop. The diagrams of these six situations use O to mark the new obstruction, | to show a position where the guard moves up/down, - to show a position where the guard moves left/right, and + to show a position where the guard moves both up/down and left/right.
+
+Option one, put a printing press next to the guard's starting position:
+
+....#.....
+....+---+#
+....|...|.
+..#.|...|.
+....|..#|.
+....|...|.
+.#.O^---+.
+........#.
+#.........
+......#...
+
+Option two, put a stack of failed suit prototypes in the bottom right quadrant of the mapped area:
+
+....#.....
+....+---+#
+....|...|.
+..#.|...|.
+..+-+-+#|.
+..|.|.|.|.
+.#+-^-+-+.
+......O.#.
+#.........
+......#...
+
+Option three, put a crate of chimney-squeeze prototype fabric next to the standing desk in the bottom right quadrant:
+
+....#.....
+....+---+#
+....|...|.
+..#.|...|.
+..+-+-+#|.
+..|.|.|.|.
+.#+-^-+-+.
+.+----+O#.
+#+----+...
+......#...
+
+Option four, put an alchemical retroencabulator near the bottom left corner:
+
+....#.....
+....+---+#
+....|...|.
+..#.|...|.
+..+-+-+#|.
+..|.|.|.|.
+.#+-^-+-+.
+..|...|.#.
+#O+---+...
+......#...
+
+Option five, put the alchemical retroencabulator a bit to the right instead:
+
+....#.....
+....+---+#
+....|...|.
+..#.|...|.
+..+-+-+#|.
+..|.|.|.|.
+.#+-^-+-+.
+....|.|.#.
+#..O+-+...
+......#...
+
+Option six, put a tank of sovereign glue right next to the tank of universal solvent:
+
+....#.....
+....+---+#
+....|...|.
+..#.|...|.
+..+-+-+#|.
+..|.|.|.|.
+.#+-^-+-+.
+.+----++#.
+#+----++..
+......#O..
+
+It doesn't really matter what you choose to use as an obstacle so long as you and The Historians can put it into position without the guard noticing. The important thing is having enough options that you can find one that minimizes time paradoxes, and in this example, there are 6 different positions you could choose.
+
+You need to get the guard stuck in a loop by adding a single new obstruction. How many different positions could you choose for this obstruction?
+:::
+
+```{python}
+
+# def check_loop(grid, start, path, obstacle) -> bool:
+
+#     heading = (-1,0) # Start heading N
+#     x,y = start
+
+#     while True:
+#         print("checking", x,y, heading)
+#         # Look ahead to next node
+#         dx, dy = heading
+#         xa, ya = x + dx, y + dy
+#         if check_oob(xa,ya,grid):
+#             print("oob")
+#             return False
+
+#         # Change heading if obstacle
+#         if (grid[xa][ya] == "#"):
+#             print("change dir")
+#             heading = DIRECTIONS.get(heading)
+
+#         # Check if obstacle directs back to existing path
+#         if (xa, ya) == obstacle:
+#             heading = DIRECTIONS.get(heading)
+#             dx, dy = heading
+#             x += dx
+#             y += dy
+#             if (x, y, heading) in path:
+#                 return True
+
+
+#         # Actually update position
+#         dx, dy = heading
+#         x += dx
+#         y += dy
+
+
+
+# def part2(inp:str) -> int:
+#     grid, start = parse(inp)
+#     path = trace_path(inp)
+#     visited = set([(x,y) for (x,y,heading) in path[1:]]) # remove start
+
+#     # Candidate obstacles except start
+#     # obstacles = path[1:]
+
+#     loops = 0
+
+#     for obstacle in visited:
+#         while True:
+#             x,y = start
+#             heading = (-1, 0)
+
+#             # Look ahead to next node
+#             dx, dy = heading
+#             xa, ya = x + dx, y + dy
+#             if check_oob(xa,ya,grid):
+#                 break
+
+#             # Change heading if obstacle
+#             if (grid[xa][ya] == "#") or ((xa,ya) == obstacle) :
+#                 heading = DIRECTIONS.get(heading)
+#                 continue
+
+#             # Actually update position
+#             dx, dy = heading
+#             x += dx
+#             y += dy
+
+#             # Check if loop
+#             if (x,y, heading) in path[1:]:
+#                 loops += 1
+#                 break
+
+#     return loops
+
+# part2(eg)
+```
+
+```{python}
+```
+....#.....
+....XXXXX#
+....X...X.
+..#.X...X.
+..XXXXX#X.
+..X.X.X.X.
+.#XXXXXXX.
+.XXXXXXX#.
+#XXXXXXX..
+......#X..
