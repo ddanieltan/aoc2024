@@ -1,0 +1,235 @@
+---
+title: "Day 8: Resonant Collinearity"
+---
+
+![Prompt:christmas elves in a field of satellite antennas, cartoon style](images/08.webp){width="500" fig-align="center"}
+
+## Part 1
+
+::: {.callout-note title="Puzzle Info" collapse="true"}
+Scanning across the city, you find that there are actually many such antennas. Each antenna is tuned to a specific frequency indicated by a single lowercase letter, uppercase letter, or digit. You create a map (your puzzle input) of these antennas. For example:
+
+............
+........0...
+.....0......
+.......0....
+....0.......
+......A.....
+............
+............
+........A...
+.........A..
+............
+............
+
+The signal only applies its nefarious effect at specific antinodes based on the resonant frequencies of the antennas. In particular, an antinode occurs at any point that is perfectly in line with two antennas of the same frequency - but only when one of the antennas is twice as far away as the other. This means that for any pair of antennas with the same frequency, there are two antinodes, one on either side of them.
+
+So, for these two antennas with frequency a, they create the two antinodes marked with #:
+
+..........
+...#......
+..........
+....a.....
+..........
+.....a....
+..........
+......#...
+..........
+..........
+
+Adding a third antenna with the same frequency creates several more antinodes. It would ideally add four antinodes, but two are off the right side of the map, so instead it adds only two:
+
+..........
+...#......
+#.........
+....a.....
+........a.
+.....a....
+..#.......
+......#...
+..........
+..........
+
+Antennas with different frequencies don't create antinodes; A and a count as different frequencies. However, antinodes can occur at locations that contain antennas. In this diagram, the lone antenna with frequency capital A creates no antinodes but has a lowercase-a-frequency antinode at its location:
+
+..........
+...#......
+#.........
+....a.....
+........a.
+.....a....
+..#.......
+......A...
+..........
+..........
+
+The first example has antennas with two different frequencies, so the antinodes they create look like this, plus an antinode overlapping the topmost A-frequency antenna:
+
+......#....#
+...#....0...
+....#0....#.
+..#....0....
+....0....#..
+.#....A.....
+...#........
+#......#....
+........A...
+.........A..
+..........#.
+..........#.
+
+Because the topmost A-frequency antenna overlaps with a 0-frequency antinode, there are 14 total unique locations that contain an antinode within the bounds of the map.
+
+Calculate the impact of the signal. How many unique locations within the bounds of the map contain an antinode?
+:::
+
+```{python}
+eg = """............
+........0...
+.....0......
+.......0....
+....0.......
+......A.....
+............
+............
+........A...
+.........A..
+............
+............
+"""
+
+from collections import defaultdict
+from itertools import combinations
+
+def parse(inp:str) -> (list[str], defaultdict):
+    """
+    Parses input into a grid (list[str])
+    Extracts all the coordinates of each antenna group as a defaultdict(list)
+    """
+
+    grid = inp.splitlines()
+
+    antennas = defaultdict(list)
+    for x in range(len(grid)):
+        for y in range(len(grid[0])):
+            if grid[x][y] != ".":
+                antennas[grid[x][y]].append((x,y))
+
+    return grid, antennas
+
+
+def part1(inp:str) -> int:
+    grid, antennas = parse(inp)
+    solutions = set()
+    max_x = len(grid)
+    max_y = len(grid[0])
+
+    in_bounds = lambda x, y: ((x >= 0) and (x < max_x) and (y >= 0) and (y < max_y)) # <1>
+
+    for a, coords in antennas.items():
+        for ((x1,y1),(x2,y2)) in combinations(coords, r=2):
+            dx = x2 - x1
+            dy = y2 - y1
+
+            # Candidate 1
+            x3, y3 = (x2 + dx, y2 + dy)
+            if in_bounds(x3,y3):
+                solutions.add((x3,y3))
+
+
+            # Candidate 2
+            x4, y4 = (x1 - dx, y1 - dy)
+            if in_bounds(x4,y4):
+                solutions.add((x4,y4))
+
+    return len(solutions)
+
+
+part1(eg)
+
+```
+1. Tried using anonymous lambda function instead of a separate function here. I find it more readable compared to a nested function.
+
+```{python}
+with open("inputs/08", "r") as f:
+    inp = f.read()
+part1(inp)
+```
+## Part 2
+
+::: {.callout-note title="Puzzle Info" collapse="true"}
+After updating your model, it turns out that an antinode occurs at any grid position exactly in line with at least two antennas of the same frequency, regardless of distance. This means that some of the new antinodes will occur at the position of each antenna (unless that antenna is the only one of its frequency).
+
+So, these three T-frequency antennas now create many antinodes:
+
+T....#....
+...T......
+.T....#...
+.........#
+..#.......
+..........
+...#......
+..........
+....#.....
+..........
+
+In fact, the three T-frequency antennas are all exactly in line with two antennas, so they are all also antinodes! This brings the total number of antinodes in the above example to 9.
+
+The original example now has 34 antinodes, including the antinodes that appear on every antenna:
+
+##....#....#
+.#.#....0...
+..#.#0....#.
+..##...0....
+....0....#..
+.#...#A....#
+...#..#.....
+#....#.#....
+..#.....A...
+....#....A..
+.#........#.
+...#......##
+
+Calculate the impact of the signal using this updated model. How many unique locations within the bounds of the map contain an antinode?
+:::
+
+```{python}
+def part2(inp:str) -> int:
+    grid, antennas = parse(inp)
+    solutions = set()
+    max_x = len(grid)
+    max_y = len(grid[0])
+
+    in_bounds = lambda x, y: ((x >= 0) and (x < max_x) and (y >= 0) and (y < max_y))
+
+    for a, coords in antennas.items():
+        for ((x1,y1),(x2,y2)) in combinations(coords, r=2):
+            dx = x2 - x1
+            dy = y2 - y1
+
+            # Candidate 1
+            x3, y3 = x2 , y2
+            while in_bounds(x3,y3):
+                solutions.add((x3,y3))
+                x3, y3 = (x3 + dx, y3 + dy)
+
+            # Candidate 2
+            x4, y4 = x1 , y1
+            while in_bounds(x4,y4):
+                solutions.add((x4,y4))
+                x4, y4 = (x4 - dx, y4 - dy)
+
+
+    # Every antenna coord is a solution
+    for _, coords in antennas.items():
+        for c in coords:
+            solutions.add(c)
+
+    return len(solutions)
+
+part2(eg)
+```
+
+```{python}
+part2(inp)
+```
