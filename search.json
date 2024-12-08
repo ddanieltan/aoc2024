@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Advent of Code 2024",
     "section": "",
-    "text": "Day 1: Historian Hysteria\n\n\n\n\n\n\n\n\n\n\n\nDay 2: Red-Nosed Reports\n\n\n\n\n\n\n\n\n\n\n\nDay 3: Mull It Over\n\n\n\n\n\n\n\n\n\n\n\nDay 4: Ceres Search\n\n\n\n\n\n\n\n\n\n\n\nDay 5: Print Queue\n\n\n\n\n\n\n\n\n\n\n\nDay 6: Guard Gallivant\n\n\n\n\n\n\n\n\n\n\n\nDay 7: Bridge Repair\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Day 1: Historian Hysteria\n\n\n\n\n\n\n\n\n\n\n\nDay 2: Red-Nosed Reports\n\n\n\n\n\n\n\n\n\n\n\nDay 3: Mull It Over\n\n\n\n\n\n\n\n\n\n\n\nDay 4: Ceres Search\n\n\n\n\n\n\n\n\n\n\n\nDay 5: Print Queue\n\n\n\n\n\n\n\n\n\n\n\nDay 6: Guard Gallivant\n\n\n\n\n\n\n\n\n\n\n\nDay 7: Bridge Repair\n\n\n\n\n\n\n\n\n\n\n\nDay 8: Resonant Collinearity\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "day01.html",
@@ -96,6 +96,27 @@
     "title": "Day 0",
     "section": "Part 2",
     "text": "Part 2\n\n\n\n\n\n\nPuzzle Info"
+  },
+  {
+    "objectID": "day08.html",
+    "href": "day08.html",
+    "title": "Day 8: Resonant Collinearity",
+    "section": "",
+    "text": "Prompt:christmas elves in a field of satellite antennas, cartoon style"
+  },
+  {
+    "objectID": "day08.html#part-1",
+    "href": "day08.html#part-1",
+    "title": "Day 8: Resonant Collinearity",
+    "section": "Part 1",
+    "text": "Part 1\n\n\n\n\n\n\nPuzzle Info\n\n\n\n\n\nScanning across the city, you find that there are actually many such antennas. Each antenna is tuned to a specific frequency indicated by a single lowercase letter, uppercase letter, or digit. You create a map (your puzzle input) of these antennas. For example:\n………… ……..0… …..0…… …….0…. ….0……. ……A….. ………… ………… ……..A… ………A.. ………… …………\nThe signal only applies its nefarious effect at specific antinodes based on the resonant frequencies of the antennas. In particular, an antinode occurs at any point that is perfectly in line with two antennas of the same frequency - but only when one of the antennas is twice as far away as the other. This means that for any pair of antennas with the same frequency, there are two antinodes, one on either side of them.\nSo, for these two antennas with frequency a, they create the two antinodes marked with #:\n………. …#…… ………. ….a….. ………. …..a…. ………. ……#… ………. ……….\nAdding a third antenna with the same frequency creates several more antinodes. It would ideally add four antinodes, but two are off the right side of the map, so instead it adds only two:\n………. …#…… #……… ….a….. ……..a. …..a…. ..#……. ……#… ………. ……….\nAntennas with different frequencies don’t create antinodes; A and a count as different frequencies. However, antinodes can occur at locations that contain antennas. In this diagram, the lone antenna with frequency capital A creates no antinodes but has a lowercase-a-frequency antinode at its location:\n………. …#…… #……… ….a….. ……..a. …..a…. ..#……. ……A… ………. ……….\nThe first example has antennas with two different frequencies, so the antinodes they create look like this, plus an antinode overlapping the topmost A-frequency antenna:\n……#….# …#….0… ….#0….#. ..#….0…. ….0….#.. .#….A….. …#…….. #……#…. ……..A… ………A.. ……….#. ……….#.\nBecause the topmost A-frequency antenna overlaps with a 0-frequency antinode, there are 14 total unique locations that contain an antinode within the bounds of the map.\nCalculate the impact of the signal. How many unique locations within the bounds of the map contain an antinode?\n\n\n\n\neg = \"\"\"............\n........0...\n.....0......\n.......0....\n....0.......\n......A.....\n............\n............\n........A...\n.........A..\n............\n............\n\"\"\"\n\nfrom collections import defaultdict\nfrom itertools import combinations\n\ndef parse(inp:str) -&gt; (list[str], defaultdict):\n    \"\"\"\n    Parses input into a grid (list[str])\n    Extracts all the coordinates of each antenna group as a defaultdict(list)\n    \"\"\"\n\n    grid = inp.splitlines()\n\n    antennas = defaultdict(list)\n    for x in range(len(grid)):\n        for y in range(len(grid[0])):\n            if grid[x][y] != \".\":\n                antennas[grid[x][y]].append((x,y))\n\n    return grid, antennas\n\n\ndef part1(inp:str) -&gt; int:\n    grid, antennas = parse(inp)\n    solutions = set()\n    max_x = len(grid)\n    max_y = len(grid[0])\n\n1    in_bounds = lambda x, y: ((x &gt;= 0) and (x &lt; max_x) and (y &gt;= 0) and (y &lt; max_y))\n\n    for a, coords in antennas.items():\n        for ((x1,y1),(x2,y2)) in combinations(coords, r=2):\n            dx = x2 - x1\n            dy = y2 - y1\n\n            # Candidate 1\n            x3, y3 = (x2 + dx, y2 + dy)\n            if in_bounds(x3,y3):\n                solutions.add((x3,y3))\n\n\n            # Candidate 2\n            x4, y4 = (x1 - dx, y1 - dy)\n            if in_bounds(x4,y4):\n                solutions.add((x4,y4))\n\n    return len(solutions)\n\n\npart1(eg)\n\n\n1\n\nTried using anonymous lambda function instead of a separate function here. I find it more readable compared to a nested function.\n\n\n\n\n14\n\n\n\nwith open(\"inputs/08\", \"r\") as f:\n    inp = f.read()\npart1(inp)\n\n303"
+  },
+  {
+    "objectID": "day08.html#part-2",
+    "href": "day08.html#part-2",
+    "title": "Day 8: Resonant Collinearity",
+    "section": "Part 2",
+    "text": "Part 2\n\n\n\n\n\n\nPuzzle Info\n\n\n\n\n\nAfter updating your model, it turns out that an antinode occurs at any grid position exactly in line with at least two antennas of the same frequency, regardless of distance. This means that some of the new antinodes will occur at the position of each antenna (unless that antenna is the only one of its frequency).\nSo, these three T-frequency antennas now create many antinodes:\nT….#…. …T…… .T….#… ………# ..#……. ………. …#…… ………. ….#….. ……….\nIn fact, the three T-frequency antennas are all exactly in line with two antennas, so they are all also antinodes! This brings the total number of antinodes in the above example to 9.\nThe original example now has 34 antinodes, including the antinodes that appear on every antenna:\n##….#….# .#.#….0… ..#.#0….#. ..##…0…. ….0….#.. .#…#A….# …#..#….. #….#.#…. ..#…..A… ….#….A.. .#……..#. …#……##\nCalculate the impact of the signal using this updated model. How many unique locations within the bounds of the map contain an antinode?\n\n\n\n\ndef part2(inp:str) -&gt; int:\n    grid, antennas = parse(inp)\n    solutions = set()\n    max_x = len(grid)\n    max_y = len(grid[0])\n\n    in_bounds = lambda x, y: ((x &gt;= 0) and (x &lt; max_x) and (y &gt;= 0) and (y &lt; max_y))\n\n    for a, coords in antennas.items():\n        for ((x1,y1),(x2,y2)) in combinations(coords, r=2):\n            dx = x2 - x1\n            dy = y2 - y1\n\n            # Candidate 1\n            x3, y3 = x2 , y2\n            while in_bounds(x3,y3):\n                solutions.add((x3,y3))\n                x3, y3 = (x3 + dx, y3 + dy)\n\n            # Candidate 2\n            x4, y4 = x1 , y1\n            while in_bounds(x4,y4):\n                solutions.add((x4,y4))\n                x4, y4 = (x4 - dx, y4 - dy)\n\n\n    # Every antenna coord is a solution\n    for _, coords in antennas.items():\n        for c in coords:\n            solutions.add(c)\n\n    return len(solutions)\n\npart2(eg)\n\n34\n\n\n\npart2(inp)\n\n1045"
   },
   {
     "objectID": "day04.html",
