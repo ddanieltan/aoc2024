@@ -73,6 +73,9 @@ def part1(inp:str) -> int:
             for i, op in enumerate(ops):
                 result = op(result, nums[i+1]) # <1>
 
+                if result > target: # <3>
+                    break
+
             if result == target:
                 solutions.append(target)
                 break
@@ -84,6 +87,7 @@ part1(eg)
 ```
 1. Learnt about the [`operator` module](https://docs.python.org/3/library/operator.html), which is very useful because it allows one to use functions/objects to perform basic operations which makes it easier to script. I was previously using `eval(...)` which feels a lot less safe.
 2. Reminder that `itertools.product` produces variations where inputs can be repeated by the function. `itertools.permutations` produces variations where inputs cannot be repeated.
+3. This is a "branch and bound" optimisation (credits). Specific to this question, because all operations (mul and add) are increasing the result, the moment we see the result > target, we know this branch cannot be a solution, and can end the search early.
 
 ```{python}
 with open("inputs/07","r") as f:
@@ -124,6 +128,8 @@ def part2(inp:str) -> int:
             result = nums[0]
             for i, op in enumerate(ops):
                 result = op(result, nums[i+1])
+                if result > target:
+                    break
 
             if result == target:
                 solutions.append(target)
