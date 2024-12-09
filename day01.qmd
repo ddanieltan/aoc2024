@@ -2,7 +2,7 @@
 title: "Day 1: Historian Hysteria"
 ---
 
-![Prompt: christmas red and green, photo of confused historian holding 2 lists of numeric numbers](images/01.webp){width="500" fig-align="center"}
+![Prompt: christmas historian holding up two lists that are filled with numbers on every line, cartoon style](images/01.webp){width="500" fig-align="center"}
 
 ## Part 1
 
