@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Day 3: Mull It Over – Advent of Code 2024</title>
+<title>Day 9: Disk Fragmenter – Advent of Code 2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -154,7 +154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Day 3: Mull It Over</h1>
+<h1 class="title">Day 9: Disk Fragmenter</h1>
 </div>
 
 
@@ -173,8 +173,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/03.webp" class="img-fluid figure-img" width="500"></p>
-<figcaption>Prompt: Computer with screen filled with random numbers, letter and digits. Highlight on the letters “mul”. Cartoon style in christmas colours</figcaption>
+<p><img src="images/09.webp" class="img-fluid figure-img" width="500"></p>
+<figcaption>Prompt:christmas elves running around a giant cpu chip, cartoon style</figcaption>
 </figure>
 </div>
 <section id="part-1" class="level2">
@@ -191,46 +191,94 @@ Puzzle Info
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The computer appears to be trying to run a program, but its memory (your puzzle input) is corrupted. All of the instructions have been jumbled up!</p>
-<p>It seems like the goal of the program is just to multiply some numbers. It does that with instructions like mul(X,Y), where X and Y are each 1-3 digit numbers. For instance, mul(44,46) multiplies 44 by 46 to get a result of 2024. Similarly, mul(123,4) would multiply 123 by 4.</p>
-<p>However, because the program’s memory has been corrupted, there are also many invalid characters that should be ignored, even if they look like part of a mul instruction. Sequences like mul(4*, mul(6,9!, ?(12,34), or mul ( 2 , 4 ) do nothing.</p>
-<p>For example, consider the following section of corrupted memory:</p>
-<p><code>xmul(2,4)%&amp;mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))</code></p>
-<p>Only the four highlighted sections are real mul instructions. Adding up the result of each instruction produces 161 (2<em>4 + 5</em>5 + 11<em>8 + 8</em>5).</p>
-<p>Scan the corrupted memory for uncorrupted mul instructions. What do you get if you add up all of the results of the multiplications?</p>
+<p>He shows you the disk map (your puzzle input) he’s already generated. For example:</p>
+<pre><code>2333133121414131402</code></pre>
+<p>The disk map uses a dense format to represent the layout of files and free space on the disk. The digits alternate between indicating the length of a file and the length of free space.</p>
+<p>So, a disk map like 12345 would represent a one-block file, two blocks of free space, a three-block file, four blocks of free space, and then a five-block file. A disk map like 90909 would represent three nine-block files in a row (with no free space between them).</p>
+<p>Each file on disk also has an ID number based on the order of the files as they appear before they are rearranged, starting with ID 0. So, the disk map 12345 has three files: a one-block file with ID 0, a three-block file with ID 1, and a five-block file with ID 2. Using one character for each block where digits are the file ID and . is free space, the disk map 12345 represents these individual blocks:</p>
+<pre><code>0..111....22222</code></pre>
+<p>The first example above, 2333133121414131402, represents these individual blocks:</p>
+<pre><code>00...111...2...333.44.5555.6666.777.888899</code></pre>
+<p>The amphipod would like to move file blocks one at a time from the end of the disk to the leftmost free space block (until there are no gaps remaining between file blocks). For the disk map 12345, the process looks like this:</p>
+<pre><code>0..111....22222
+02.111....2222.
+022111....222..
+0221112...22...
+02211122..2....
+022111222......</code></pre>
+<p>The first example requires a few more steps:</p>
+<pre><code>00...111...2...333.44.5555.6666.777.888899
+009..111...2...333.44.5555.6666.777.88889.
+0099.111...2...333.44.5555.6666.777.8888..
+00998111...2...333.44.5555.6666.777.888...
+009981118..2...333.44.5555.6666.777.88....
+0099811188.2...333.44.5555.6666.777.8.....
+009981118882...333.44.5555.6666.777.......
+0099811188827..333.44.5555.6666.77........
+00998111888277.333.44.5555.6666.7.........
+009981118882777333.44.5555.6666...........
+009981118882777333644.5555.666............
+00998111888277733364465555.66.............
+0099811188827773336446555566..............</code></pre>
+<p>The final step of this file-compacting process is to update the filesystem checksum. To calculate the checksum, add up the result of multiplying each of these blocks’ position with the file ID number it contains. The leftmost block is in position 0. If a block contains free space, skip it instead.</p>
+<p>Continuing the first example, the first few blocks’ position multiplied by its file ID number are 0 * 0 = 0, 1 * 0 = 0, 2 * 9 = 18, 3 * 9 = 27, 4 * 8 = 32, and so on. In this example, the checksum is the sum of these, 1928.</p>
+<p>Compact the amphipod’s hard drive using the process he requested. What is the resulting filesystem checksum? (Be careful copy/pasting the input for this puzzle; it is a single, very long line.)</p>
 </div>
 </div>
 </div>
-<div id="ea1d69cc" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>eg <span class="op">=</span> <span class="st">"xmul(2,4)%&amp;mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part1(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract mul(x,y) instances</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    pattern <span class="op">=</span> <span class="vs">r"mul\(\d+,\d+\)"</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    instructions <span class="op">=</span> re.findall(pattern, inp)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract numbers in each instruction and multiply</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    pattern_nums <span class="op">=</span> <span class="vs">r"\d+"</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    nums <span class="op">=</span> [re.findall(pattern_nums, i) <span class="cf">for</span> i <span class="kw">in</span> instructions ]</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    products <span class="op">=</span> [<span class="bu">int</span>(n[<span class="dv">0</span>]) <span class="op">*</span> <span class="bu">int</span>(n[<span class="dv">1</span>]) <span class="cf">for</span> n <span class="kw">in</span> nums]</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(products)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>part1(eg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e402f2a9" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a>eg <span class="op">=</span> <span class="st">"2333133121414131402"</span></span>
+<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-3" class="code-annotation-target"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">str</span>]:</span>
+<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a>    line <span class="op">=</span> []</span>
+<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i,n <span class="kw">in</span> <span class="bu">enumerate</span>(inp):</span>
+<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(n)):</span>
+<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="annotated-cell-1-8"><a href="#annotated-cell-1-8" aria-hidden="true" tabindex="-1"></a>                line.append(i<span class="op">//</span><span class="dv">2</span>)</span>
+<span id="annotated-cell-1-9"><a href="#annotated-cell-1-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="annotated-cell-1-10"><a href="#annotated-cell-1-10" aria-hidden="true" tabindex="-1"></a>                line.append(<span class="st">'.'</span>)</span>
+<span id="annotated-cell-1-11"><a href="#annotated-cell-1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> line</span>
+<span id="annotated-cell-1-12"><a href="#annotated-cell-1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-13"><a href="#annotated-cell-1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-14"><a href="#annotated-cell-1-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part1(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="annotated-cell-1-15"><a href="#annotated-cell-1-15" aria-hidden="true" tabindex="-1"></a>    line <span class="op">=</span> parse(inp)</span>
+<span id="annotated-cell-1-16"><a href="#annotated-cell-1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-17"><a href="#annotated-cell-1-17" aria-hidden="true" tabindex="-1"></a>    n_dots <span class="op">=</span> line.count(<span class="st">"."</span>)</span>
+<span id="annotated-cell-1-18"><a href="#annotated-cell-1-18" aria-hidden="true" tabindex="-1"></a>    n_nums <span class="op">=</span> <span class="bu">len</span>(line) <span class="op">-</span> n_dots</span>
+<span id="annotated-cell-1-19"><a href="#annotated-cell-1-19" aria-hidden="true" tabindex="-1"></a>    only_nums <span class="op">=</span> [l <span class="cf">for</span> l <span class="kw">in</span> line <span class="cf">if</span> l <span class="op">!=</span> <span class="st">"."</span>]</span>
+<span id="annotated-cell-1-20"><a href="#annotated-cell-1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-21"><a href="#annotated-cell-1-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compact the data</span></span>
+<span id="annotated-cell-1-22"><a href="#annotated-cell-1-22" aria-hidden="true" tabindex="-1"></a>    compact <span class="op">=</span> []</span>
+<span id="annotated-cell-1-23"><a href="#annotated-cell-1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_nums):</span>
+<span id="annotated-cell-1-24"><a href="#annotated-cell-1-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> line[i] <span class="op">==</span> <span class="st">"."</span>:</span>
+<span id="annotated-cell-1-25"><a href="#annotated-cell-1-25" aria-hidden="true" tabindex="-1"></a>            compact.append(only_nums.pop())</span>
+<span id="annotated-cell-1-26"><a href="#annotated-cell-1-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="annotated-cell-1-27"><a href="#annotated-cell-1-27" aria-hidden="true" tabindex="-1"></a>            compact.append(line[i])</span>
+<span id="annotated-cell-1-28"><a href="#annotated-cell-1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-29"><a href="#annotated-cell-1-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute checksum</span></span>
+<span id="annotated-cell-1-30"><a href="#annotated-cell-1-30" aria-hidden="true" tabindex="-1"></a>    solution <span class="op">=</span> [i <span class="op">*</span> <span class="bu">int</span>(c) <span class="cf">for</span> i, c <span class="kw">in</span> <span class="bu">enumerate</span>(compact)]</span>
+<span id="annotated-cell-1-31"><a href="#annotated-cell-1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-32"><a href="#annotated-cell-1-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(solution)</span>
+<span id="annotated-cell-1-33"><a href="#annotated-cell-1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-34"><a href="#annotated-cell-1-34" aria-hidden="true" tabindex="-1"></a>part1(eg)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="1">I should embrace the fact that a list can take in different types. In this case, my parsed list can hold both <code>int</code> and <code>string</code> for “.”. Initially, because I tried to parse everything as string, I wasted a lot of time chasing an error in my solution when it was an issue with the parsing.</span>
+</dd>
+</dl>
+</div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>161</code></pre>
+<pre><code>1928</code></pre>
 </div>
 </div>
-<div id="577dfa1f" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"inputs/03"</span>, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    inp <span class="op">=</span> f.read()</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>part1(inp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ad93c02f" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"inputs/09"</span>, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    inp <span class="op">=</span> f.read()</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>part1(inp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>178794710</code></pre>
+<pre><code>6288599492129</code></pre>
 </div>
 </div>
 </section>
@@ -248,72 +296,91 @@ Puzzle Info
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>There are two new instructions you’ll need to handle:</p>
-<p>The do() instruction enables future mul instructions. The don’t() instruction disables future mul instructions. Only the most recent do() or don’t() instruction applies. At the beginning of the program, mul instructions are enabled.</p>
-<p>For example:</p>
-<p><code>xmul(2,4)&amp;mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))</code></p>
-<p>This corrupted memory is similar to the example from before, but this time the mul(5,5) and mul(11,8) instructions are disabled because there is a don’t() instruction before them. The other mul instructions function normally, including the one at the end that gets re-enabled by a do() instruction.</p>
-<p>This time, the sum of the results is 48 (2<em>4 + 8</em>5).</p>
-<p>Handle the new instructions; what do you get if you add up all of the results of just the enabled multiplications?</p>
+<p>This time, attempt to move whole files to the leftmost span of free space blocks that could fit the file. Attempt to move each file exactly once in order of decreasing file ID number starting with the file with the highest file ID number. If there is no span of free space to the left of a file that is large enough to fit the file, the file does not move.</p>
+<p>The first example from above now proceeds differently:</p>
+<pre><code>00...111...2...333.44.5555.6666.777.888899
+0099.111...2...333.44.5555.6666.777.8888..
+0099.1117772...333.44.5555.6666.....8888..
+0099.111777244.333....5555.6666.....8888..
+00992111777.44.333....5555.6666.....8888..</code></pre>
+<p>The process of updating the filesystem checksum is the same; now, this example’s checksum would be 2858.</p>
+<p>Start over, now compacting the amphipod’s hard drive using this new method instead. What is the resulting filesystem checksum?</p>
 </div>
 </div>
 </div>
-<div id="98fe0c20" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a>eg2 <span class="op">=</span> <span class="st">"xmul(2,4)&amp;mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"</span></span>
-<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part2(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="annotated-cell-3-4"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract mul(x,y) or don't() or do()</span></span>
-<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a>    pattern <span class="op">=</span> <span class="vs">r"mul\(\d+,\d+\)|don\'t\(\)|do\(\)"</span></span>
-<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7" aria-hidden="true" tabindex="-1"></a>    instructions <span class="op">=</span> re.findall(pattern, inp)</span>
-<span id="annotated-cell-3-8"><a href="#annotated-cell-3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-9"><a href="#annotated-cell-3-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find valid calcs</span></span>
-<span id="annotated-cell-3-10"><a href="#annotated-cell-3-10" aria-hidden="true" tabindex="-1"></a>    calcs <span class="op">=</span> []</span>
-<span id="annotated-cell-3-11"><a href="#annotated-cell-3-11" aria-hidden="true" tabindex="-1"></a>    valid <span class="op">=</span> <span class="va">True</span></span>
-<span id="annotated-cell-3-12"><a href="#annotated-cell-3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-13"><a href="#annotated-cell-3-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> instructions:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-14" class="code-annotation-target"><a href="#annotated-cell-3-14" aria-hidden="true" tabindex="-1"></a>        match (i, valid):</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-15" class="code-annotation-target"><a href="#annotated-cell-3-15" aria-hidden="true" tabindex="-1"></a>            case (_, <span class="va">True</span>) <span class="cf">if</span> <span class="st">"mul"</span> <span class="kw">in</span> i:</span>
-<span id="annotated-cell-3-16"><a href="#annotated-cell-3-16" aria-hidden="true" tabindex="-1"></a>                calcs.append(i)</span>
-<span id="annotated-cell-3-17"><a href="#annotated-cell-3-17" aria-hidden="true" tabindex="-1"></a>            case (<span class="st">"don't()"</span>, <span class="va">True</span>):</span>
-<span id="annotated-cell-3-18"><a href="#annotated-cell-3-18" aria-hidden="true" tabindex="-1"></a>                valid <span class="op">=</span> <span class="va">False</span></span>
-<span id="annotated-cell-3-19"><a href="#annotated-cell-3-19" aria-hidden="true" tabindex="-1"></a>            case (<span class="st">"do()"</span>, <span class="va">False</span>):</span>
-<span id="annotated-cell-3-20"><a href="#annotated-cell-3-20" aria-hidden="true" tabindex="-1"></a>                valid <span class="op">=</span> <span class="va">True</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-3-21" class="code-annotation-target"><a href="#annotated-cell-3-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">case</span> _:</span>
-<span id="annotated-cell-3-22"><a href="#annotated-cell-3-22" aria-hidden="true" tabindex="-1"></a>                <span class="co">#print(f"Unexpected case : {i, valid} ")</span></span>
-<span id="annotated-cell-3-23"><a href="#annotated-cell-3-23" aria-hidden="true" tabindex="-1"></a>                ...</span>
-<span id="annotated-cell-3-24"><a href="#annotated-cell-3-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-25"><a href="#annotated-cell-3-25" aria-hidden="true" tabindex="-1"></a>    pattern_nums <span class="op">=</span> <span class="vs">r"\d+"</span></span>
-<span id="annotated-cell-3-26"><a href="#annotated-cell-3-26" aria-hidden="true" tabindex="-1"></a>    nums <span class="op">=</span> [re.findall(pattern_nums, c) <span class="cf">for</span> c <span class="kw">in</span> calcs ]</span>
-<span id="annotated-cell-3-27"><a href="#annotated-cell-3-27" aria-hidden="true" tabindex="-1"></a>    products <span class="op">=</span> [<span class="bu">int</span>(n[<span class="dv">0</span>]) <span class="op">*</span> <span class="bu">int</span>(n[<span class="dv">1</span>]) <span class="cf">for</span> n <span class="kw">in</span> nums]</span>
-<span id="annotated-cell-3-28"><a href="#annotated-cell-3-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-29"><a href="#annotated-cell-3-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(products)</span>
+<div id="cfe90211" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse2(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> (<span class="bu">dict</span>, <span class="bu">list</span>):</span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a><span class="co">    For part 2, we need to store</span></span>
+<span id="annotated-cell-3-4"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a><span class="co">    - dict with (file_id, (pos, file_size))</span></span>
+<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5" aria-hidden="true" tabindex="-1"></a><span class="co">    - list of (pos, free_size)</span></span>
+<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> {}</span>
+<span id="annotated-cell-3-8"><a href="#annotated-cell-3-8" aria-hidden="true" tabindex="-1"></a>    frees <span class="op">=</span> []</span>
+<span id="annotated-cell-3-9"><a href="#annotated-cell-3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-10"><a href="#annotated-cell-3-10" aria-hidden="true" tabindex="-1"></a>    file_id <span class="op">=</span> <span class="dv">0</span></span>
+<span id="annotated-cell-3-11"><a href="#annotated-cell-3-11" aria-hidden="true" tabindex="-1"></a>    pos <span class="op">=</span> <span class="dv">0</span></span>
+<span id="annotated-cell-3-12"><a href="#annotated-cell-3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, ch <span class="kw">in</span> <span class="bu">enumerate</span>(inp):</span>
+<span id="annotated-cell-3-13"><a href="#annotated-cell-3-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="annotated-cell-3-14"><a href="#annotated-cell-3-14" aria-hidden="true" tabindex="-1"></a>            files[file_id] <span class="op">=</span> (pos, <span class="bu">int</span>(ch))</span>
+<span id="annotated-cell-3-15"><a href="#annotated-cell-3-15" aria-hidden="true" tabindex="-1"></a>            file_id <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="annotated-cell-3-16"><a href="#annotated-cell-3-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="annotated-cell-3-17"><a href="#annotated-cell-3-17" aria-hidden="true" tabindex="-1"></a>            frees.append((pos, <span class="bu">int</span>(ch)))</span>
+<span id="annotated-cell-3-18"><a href="#annotated-cell-3-18" aria-hidden="true" tabindex="-1"></a>        pos <span class="op">+=</span> <span class="bu">int</span>(ch)</span>
+<span id="annotated-cell-3-19"><a href="#annotated-cell-3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-20"><a href="#annotated-cell-3-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> files, frees</span>
+<span id="annotated-cell-3-21"><a href="#annotated-cell-3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-22"><a href="#annotated-cell-3-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part2(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="annotated-cell-3-23"><a href="#annotated-cell-3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-24"><a href="#annotated-cell-3-24" aria-hidden="true" tabindex="-1"></a>    files, frees <span class="op">=</span> parse2(inp)</span>
+<span id="annotated-cell-3-25"><a href="#annotated-cell-3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-26"><a href="#annotated-cell-3-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Go through files in reverse order</span></span>
+<span id="annotated-cell-3-27"><a href="#annotated-cell-3-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (file_id, (file_pos, file_size)) <span class="kw">in</span> <span class="bu">reversed</span>(files.items()):</span>
+<span id="annotated-cell-3-28"><a href="#annotated-cell-3-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Compare against frees in normal order</span></span>
+<span id="annotated-cell-3-29"><a href="#annotated-cell-3-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i, (free_pos, free_size) <span class="kw">in</span> <span class="bu">enumerate</span>(frees):</span>
 <span id="annotated-cell-3-30"><a href="#annotated-cell-3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-31"><a href="#annotated-cell-3-31" aria-hidden="true" tabindex="-1"></a>part2(eg2)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-3-31"><a href="#annotated-cell-3-31" aria-hidden="true" tabindex="-1"></a>            <span class="co"># if our points cross, there's no free space available for this file</span></span>
+<span id="annotated-cell-3-32"><a href="#annotated-cell-3-32" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> free_pos <span class="op">&gt;=</span> file_pos:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-33" class="code-annotation-target"><a href="#annotated-cell-3-33" aria-hidden="true" tabindex="-1"></a>                frees <span class="op">=</span> frees[:i]</span>
+<span id="annotated-cell-3-34"><a href="#annotated-cell-3-34" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="annotated-cell-3-35"><a href="#annotated-cell-3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-36"><a href="#annotated-cell-3-36" aria-hidden="true" tabindex="-1"></a>            <span class="co"># if size match, file is swapped in and free removed</span></span>
+<span id="annotated-cell-3-37"><a href="#annotated-cell-3-37" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> file_size <span class="op">==</span> free_size:</span>
+<span id="annotated-cell-3-38"><a href="#annotated-cell-3-38" aria-hidden="true" tabindex="-1"></a>                files[file_id] <span class="op">=</span> (free_pos, file_size)</span>
+<span id="annotated-cell-3-39"><a href="#annotated-cell-3-39" aria-hidden="true" tabindex="-1"></a>                frees.pop(i)</span>
+<span id="annotated-cell-3-40"><a href="#annotated-cell-3-40" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="annotated-cell-3-41"><a href="#annotated-cell-3-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-42"><a href="#annotated-cell-3-42" aria-hidden="true" tabindex="-1"></a>            <span class="co"># if file_size is smaller than free_size, we need to update both sizes</span></span>
+<span id="annotated-cell-3-43"><a href="#annotated-cell-3-43" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> file_size <span class="op">&lt;</span> free_size:</span>
+<span id="annotated-cell-3-44"><a href="#annotated-cell-3-44" aria-hidden="true" tabindex="-1"></a>                files[file_id] <span class="op">=</span> (free_pos, file_size)</span>
+<span id="annotated-cell-3-45"><a href="#annotated-cell-3-45" aria-hidden="true" tabindex="-1"></a>                frees[i] <span class="op">=</span> (free_pos <span class="op">+</span> file_size, free_size <span class="op">-</span> file_size)</span>
+<span id="annotated-cell-3-46"><a href="#annotated-cell-3-46" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="annotated-cell-3-47"><a href="#annotated-cell-3-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-48"><a href="#annotated-cell-3-48" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Checksum</span></span>
+<span id="annotated-cell-3-49"><a href="#annotated-cell-3-49" aria-hidden="true" tabindex="-1"></a>    solution <span class="op">=</span> []</span>
+<span id="annotated-cell-3-50"><a href="#annotated-cell-3-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> file_id, (file_pos, file_size) <span class="kw">in</span> files.items():</span>
+<span id="annotated-cell-3-51"><a href="#annotated-cell-3-51" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(file_pos, file_pos <span class="op">+</span> file_size):</span>
+<span id="annotated-cell-3-52"><a href="#annotated-cell-3-52" aria-hidden="true" tabindex="-1"></a>            solution.append(file_id <span class="op">*</span> i)</span>
+<span id="annotated-cell-3-53"><a href="#annotated-cell-3-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-54"><a href="#annotated-cell-3-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(solution)</span>
+<span id="annotated-cell-3-55"><a href="#annotated-cell-3-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-56"><a href="#annotated-cell-3-56" aria-hidden="true" tabindex="-1"></a>part2(eg)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="14" data-code-annotation="1">Good opportunity to use case matching. Recall like Scala, <code>_</code> represents a catchall</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="15" data-code-annotation="2">Example of how to chain an <code>if</code> check after a case match</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="21" data-code-annotation="3">Since we’re using case matching, build the habit of catching all unexpected cases (even if there’s no action required for these cases)</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="33" data-code-annotation="1">Nice optimisation I learnt from other solutions. If pointers cross, then we know that every free space to the right of <code>free_pos</code> is out of contention because our current <code>file_pos</code> is to the left of all these free spaces.</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>48</code></pre>
+<pre><code>2858</code></pre>
 </div>
 </div>
-<div id="535eeafa" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>part2(inp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e44113c8" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>part2(inp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>76729637</code></pre>
+<pre><code>6321896265143</code></pre>
 </div>
 </div>
 

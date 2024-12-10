@@ -10,7 +10,7 @@
 <atom:link href="https://ddanieltan.github.io/aoc2024/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.39</generator>
-<lastBuildDate>Mon, 09 Dec 2024 02:50:12 GMT</lastBuildDate>
+<lastBuildDate>Tue, 10 Dec 2024 03:57:06 GMT</lastBuildDate>
 <item>
   <title>Day 1: Historian Hysteria</title>
   <link>https://ddanieltan.github.io/aoc2024/day01.html</link>
@@ -63,7 +63,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="0766b271" class="cell" data-execution_count="1">
+<div id="60386795" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -194,7 +194,7 @@ font-style: inherit;">zip</span>(A,B)])</span>
 <pre><code>11</code></pre>
 </div>
 </div>
-<div id="e8992584" class="cell" data-execution_count="2">
+<div id="dec54bc2" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -245,7 +245,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="0ca19bdb" class="cell" data-execution_count="3">
+<div id="b9ec35ca" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> collections <span class="im" style="color: #00769E;
@@ -290,7 +290,7 @@ font-style: inherit;">sum</span>(calc)</span>
 <pre><code>31</code></pre>
 </div>
 </div>
-<div id="3016833c" class="cell" data-execution_count="4">
+<div id="86f4acc8" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>23609874</code></pre>
@@ -302,7 +302,7 @@ font-style: inherit;">sum</span>(calc)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day01.html</guid>
-  <pubDate>Mon, 09 Dec 2024 02:50:12 GMT</pubDate>
+  <pubDate>Tue, 10 Dec 2024 03:57:06 GMT</pubDate>
 </item>
 <item>
   <title>Day 2: Red-Nosed Reports</title>
@@ -359,7 +359,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="f91752e0" class="cell" data-execution_count="1">
+<div id="24e065a6" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -591,7 +591,7 @@ font-style: inherit;">return</span> cnt</span>
 <pre><code>2</code></pre>
 </div>
 </div>
-<div id="0e5d0187" class="cell" data-execution_count="2">
+<div id="6f6f5b5a" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -641,7 +641,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="71cf2113" class="cell" data-execution_count="3">
+<div id="69d7041f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -740,7 +740,7 @@ font-style: inherit;">return</span> cnt</span>
 <pre><code>4</code></pre>
 </div>
 </div>
-<div id="ca537266" class="cell" data-execution_count="4">
+<div id="e97d95a5" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>337</code></pre>
@@ -752,7 +752,7 @@ font-style: inherit;">return</span> cnt</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day02.html</guid>
-  <pubDate>Mon, 09 Dec 2024 02:50:12 GMT</pubDate>
+  <pubDate>Tue, 10 Dec 2024 03:57:06 GMT</pubDate>
 </item>
 <item>
   <title>Day 3: Mull It Over</title>
@@ -792,7 +792,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="46638da4" class="cell" data-execution_count="1">
+<div id="ea1d69cc" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> re</span>
@@ -875,7 +875,7 @@ font-style: inherit;">sum</span>(products)</span>
 <pre><code>161</code></pre>
 </div>
 </div>
-<div id="6b695de2" class="cell" data-execution_count="2">
+<div id="577dfa1f" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -922,7 +922,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="e2347b99" class="cell" data-execution_count="3">
+<div id="98fe0c20" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1">eg2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -1075,7 +1075,7 @@ font-style: inherit;">sum</span>(products)</span>
 <pre><code>48</code></pre>
 </div>
 </div>
-<div id="b1eea7d3" class="cell" data-execution_count="4">
+<div id="535eeafa" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>76729637</code></pre>
@@ -1087,7 +1087,7 @@ font-style: inherit;">sum</span>(products)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day03.html</guid>
-  <pubDate>Mon, 09 Dec 2024 02:50:12 GMT</pubDate>
+  <pubDate>Tue, 10 Dec 2024 03:57:06 GMT</pubDate>
 </item>
 <item>
   <title>Day 4: Ceres Search</title>
@@ -1150,7 +1150,7 @@ S.S.S.S.SS
 </div>
 </div>
 </div>
-<div id="0c065f00" class="cell" data-execution_count="1">
+<div id="3a3508e6" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -1466,7 +1466,7 @@ font-style: inherit;">len</span>(solutions)</span>
 <pre><code>18</code></pre>
 </div>
 </div>
-<div id="3625b8f8" class="cell" data-execution_count="2">
+<div id="2f373816" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1523,7 +1523,7 @@ M.M.M.M.M.
 </div>
 </div>
 </div>
-<div id="a10207f2" class="cell" data-execution_count="3">
+<div id="239891dd" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> collections <span class="im" style="color: #00769E;
@@ -1787,7 +1787,7 @@ font-style: inherit;">len</span>(solutions)</span>
 <pre><code>9</code></pre>
 </div>
 </div>
-<div id="328eb903" class="cell" data-execution_count="4">
+<div id="864d244f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>1945</code></pre>
@@ -1799,7 +1799,7 @@ font-style: inherit;">len</span>(solutions)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day04.html</guid>
-  <pubDate>Mon, 09 Dec 2024 02:50:12 GMT</pubDate>
+  <pubDate>Tue, 10 Dec 2024 03:57:06 GMT</pubDate>
 </item>
 <item>
   <title>Day 5: Print Queue</title>
@@ -1883,7 +1883,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="74ae302c" class="cell" data-execution_count="1">
+<div id="abbb329d" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -2194,7 +2194,7 @@ font-style: inherit;">sum</span>(medians)</span>
 <pre><code>143</code></pre>
 </div>
 </div>
-<div id="9d01dc72" class="cell" data-execution_count="2">
+<div id="39aff16c" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2242,7 +2242,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="a3380e68" class="cell" data-execution_count="3">
+<div id="6f4b3beb" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2429,7 +2429,7 @@ font-style: inherit;">sum</span>(medians)</span>
 <pre><code>123</code></pre>
 </div>
 </div>
-<div id="c324f841" class="cell" data-execution_count="4">
+<div id="36069e26" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>4480</code></pre>
@@ -2441,7 +2441,7 @@ font-style: inherit;">sum</span>(medians)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day05.html</guid>
-  <pubDate>Mon, 09 Dec 2024 02:50:12 GMT</pubDate>
+  <pubDate>Tue, 10 Dec 2024 03:57:06 GMT</pubDate>
 </item>
 <item>
   <title>Day 6: Guard Gallivant</title>
@@ -2490,7 +2490,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="2e1e3509" class="cell" data-execution_count="1">
+<div id="adb6e254" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -2845,7 +2845,7 @@ font-style: inherit;">len</span>(visited)</span>
 <pre><code>41</code></pre>
 </div>
 </div>
-<div id="655fded4" class="cell" data-execution_count="2">
+<div id="35e20778" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2899,7 +2899,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="3b16f02b" class="cell" data-execution_count="3">
+<div id="d453c0c9" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># def check_loop(grid, start, path, obstacle) -&gt; bool:</span></span>
@@ -3097,7 +3097,7 @@ font-style: inherit;"># part2(eg)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day06.html</guid>
-  <pubDate>Mon, 09 Dec 2024 02:50:12 GMT</pubDate>
+  <pubDate>Tue, 10 Dec 2024 03:57:06 GMT</pubDate>
 </item>
 <item>
   <title>Day 7: Bridge Repair</title>
@@ -3148,7 +3148,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="2244f753" class="cell" data-execution_count="1">
+<div id="c4cd5841" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -3368,7 +3368,7 @@ font-style: inherit;">sum</span>(solutions)</span>
 <pre><code>3749</code></pre>
 </div>
 </div>
-<div id="142efdb4" class="cell" data-execution_count="2">
+<div id="49ed19d7" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3416,7 +3416,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="912dfce3" class="cell" data-execution_count="3">
+<div id="012e1a1e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3548,7 +3548,7 @@ font-style: inherit;">sum</span>(solutions)</span>
 <pre><code>11387</code></pre>
 </div>
 </div>
-<div id="c41183c2" class="cell" data-execution_count="4">
+<div id="2e54e785" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>59002246504791</code></pre>
@@ -3560,7 +3560,7 @@ font-style: inherit;">sum</span>(solutions)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day07.html</guid>
-  <pubDate>Mon, 09 Dec 2024 02:50:12 GMT</pubDate>
+  <pubDate>Tue, 10 Dec 2024 03:57:06 GMT</pubDate>
 </item>
 <item>
   <title>Day 8: Resonant Collinearity</title>
@@ -3591,22 +3591,71 @@ Puzzle Info
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Scanning across the city, you find that there are actually many such antennas. Each antenna is tuned to a specific frequency indicated by a single lowercase letter, uppercase letter, or digit. You create a map (your puzzle input) of these antennas. For example:</p>
-<p>………… ……..0… …..0…… …….0…. ….0……. ……A….. ………… ………… ……..A… ………A.. ………… …………</p>
+<pre><code>............
+........0...
+.....0......
+.......0....
+....0.......
+......A.....
+............
+............
+........A...
+.........A..
+............
+............</code></pre>
 <p>The signal only applies its nefarious effect at specific antinodes based on the resonant frequencies of the antennas. In particular, an antinode occurs at any point that is perfectly in line with two antennas of the same frequency - but only when one of the antennas is twice as far away as the other. This means that for any pair of antennas with the same frequency, there are two antinodes, one on either side of them.</p>
 <p>So, for these two antennas with frequency a, they create the two antinodes marked with #:</p>
-<p>………. …#…… ………. ….a….. ………. …..a…. ………. ……#… ………. ……….</p>
+<pre><code>..........
+...#......
+..........
+....a.....
+..........
+.....a....
+..........
+......#...
+..........
+..........</code></pre>
 <p>Adding a third antenna with the same frequency creates several more antinodes. It would ideally add four antinodes, but two are off the right side of the map, so instead it adds only two:</p>
-<p>………. …#…… #……… ….a….. ……..a. …..a…. ..#……. ……#… ………. ……….</p>
+<pre><code>..........
+...#......
+#.........
+....a.....
+........a.
+.....a....
+..#.......
+......#...
+..........
+..........</code></pre>
 <p>Antennas with different frequencies don’t create antinodes; A and a count as different frequencies. However, antinodes can occur at locations that contain antennas. In this diagram, the lone antenna with frequency capital A creates no antinodes but has a lowercase-a-frequency antinode at its location:</p>
-<p>………. …#…… #……… ….a….. ……..a. …..a…. ..#……. ……A… ………. ……….</p>
+<pre><code>..........
+...#......
+#.........
+....a.....
+........a.
+.....a....
+..#.......
+......A...
+..........
+..........</code></pre>
 <p>The first example has antennas with two different frequencies, so the antinodes they create look like this, plus an antinode overlapping the topmost A-frequency antenna:</p>
-<p>……#….# …#….0… ….#0….#. ..#….0…. ….0….#.. .#….A….. …#…….. #……#…. ……..A… ………A.. ……….#. ……….#.</p>
+<pre><code>......#....#
+...#....0...
+....#0....#.
+..#....0....
+....0....#..
+.#....A.....
+...#........
+#......#....
+........A...
+.........A..
+..........#.
+..........#.</code></pre>
 <p>Because the topmost A-frequency antenna overlaps with a 0-frequency antinode, there are 14 total unique locations that contain an antinode within the bounds of the map.</p>
 <p>Calculate the impact of the signal. How many unique locations within the bounds of the map contain an antinode?</p>
 </div>
 </div>
 </div>
-<div id="11a0b50f" class="cell" data-execution_count="1">
+<div id="58f53fff" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -3876,8 +3925,8 @@ font-style: inherit;">len</span>(solutions)</span>
 <pre><code>14</code></pre>
 </div>
 </div>
-<div id="185bd4ff" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="cf" style="color: #003B4F;
+<div id="7165924c" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">with</span> <span class="bu" style="color: null;
@@ -3889,10 +3938,10 @@ background-color: null;
 font-style: inherit;">"r"</span>) <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">as</span> f:</span>
-<span id="cb2-2">    inp <span class="op" style="color: #5E5E5E;
+<span id="cb7-2">    inp <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> f.read()</span>
-<span id="cb2-3">part1(inp)</span></code></pre></div>
+<span id="cb7-3">part1(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>303</code></pre>
 </div>
@@ -3914,16 +3963,36 @@ Puzzle Info
 <div class="callout-body-container callout-body">
 <p>After updating your model, it turns out that an antinode occurs at any grid position exactly in line with at least two antennas of the same frequency, regardless of distance. This means that some of the new antinodes will occur at the position of each antenna (unless that antenna is the only one of its frequency).</p>
 <p>So, these three T-frequency antennas now create many antinodes:</p>
-<p>T….#…. …T…… .T….#… ………# ..#……. ………. …#…… ………. ….#….. ……….</p>
+<pre><code>T....#....
+...T......
+.T....#...
+.........#
+..#.......
+..........
+...#......
+..........
+....#.....
+..........</code></pre>
 <p>In fact, the three T-frequency antennas are all exactly in line with two antennas, so they are all also antinodes! This brings the total number of antinodes in the above example to 9.</p>
 <p>The original example now has 34 antinodes, including the antinodes that appear on every antenna:</p>
-<p>##….#….# .#.#….0… ..#.#0….#. ..##…0…. ….0….#.. .#…#A….# …#..#….. #….#.#…. ..#…..A… ….#….A.. .#……..#. …#……##</p>
+<pre><code>##....#....#
+.#.#....0...
+..#.#0....#.
+..##...0....
+....0....#..
+.#...#A....#
+...#..#.....
+#....#.#....
+..#.....A...
+....#....A..
+.#........#.
+...#......##</code></pre>
 <p>Calculate the impact of the signal using this updated model. How many unique locations within the bounds of the map contain an antinode?</p>
 </div>
 </div>
 </div>
-<div id="9d8dc2b2" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="kw" style="color: #003B4F;
+<div id="1a89af6d" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> part2(inp:<span class="bu" style="color: null;
@@ -3933,28 +4002,28 @@ background-color: null;
 font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">int</span>:</span>
-<span id="cb4-2">    grid, antennas <span class="op" style="color: #5E5E5E;
+<span id="cb11-2">    grid, antennas <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> parse(inp)</span>
-<span id="cb4-3">    solutions <span class="op" style="color: #5E5E5E;
+<span id="cb11-3">    solutions <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">set</span>()</span>
-<span id="cb4-4">    max_x <span class="op" style="color: #5E5E5E;
+<span id="cb11-4">    max_x <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">len</span>(grid)</span>
-<span id="cb4-5">    max_y <span class="op" style="color: #5E5E5E;
+<span id="cb11-5">    max_y <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">len</span>(grid[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>])</span>
-<span id="cb4-6"></span>
-<span id="cb4-7">    in_bounds <span class="op" style="color: #5E5E5E;
+<span id="cb11-6"></span>
+<span id="cb11-7">    in_bounds <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
 background-color: null;
@@ -3981,15 +4050,15 @@ font-weight: bold;
 font-style: inherit;">and</span> (y <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;</span> max_y))</span>
-<span id="cb4-8"></span>
-<span id="cb4-9">    <span class="cf" style="color: #003B4F;
+<span id="cb11-8"></span>
+<span id="cb11-9">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">for</span> a, coords <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">in</span> antennas.items():</span>
-<span id="cb4-10">        <span class="cf" style="color: #003B4F;
+<span id="cb11-10">        <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">for</span> ((x1,y1),(x2,y2)) <span class="kw" style="color: #003B4F;
@@ -4000,89 +4069,89 @@ background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>):</span>
-<span id="cb4-11">            dx <span class="op" style="color: #5E5E5E;
+<span id="cb11-11">            dx <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> x2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span> x1</span>
-<span id="cb4-12">            dy <span class="op" style="color: #5E5E5E;
+<span id="cb11-12">            dy <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> y2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span> y1</span>
-<span id="cb4-13"></span>
-<span id="cb4-14">            <span class="co" style="color: #5E5E5E;
+<span id="cb11-13"></span>
+<span id="cb11-14">            <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Candidate 1</span></span>
-<span id="cb4-15">            x3, y3 <span class="op" style="color: #5E5E5E;
+<span id="cb11-15">            x3, y3 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> x2 , y2</span>
-<span id="cb4-16">            <span class="cf" style="color: #003B4F;
+<span id="cb11-16">            <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">while</span> in_bounds(x3,y3):</span>
-<span id="cb4-17">                solutions.add((x3,y3))</span>
-<span id="cb4-18">                x3, y3 <span class="op" style="color: #5E5E5E;
+<span id="cb11-17">                solutions.add((x3,y3))</span>
+<span id="cb11-18">                x3, y3 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> (x3 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> dx, y3 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> dy)</span>
-<span id="cb4-19"></span>
-<span id="cb4-20">            <span class="co" style="color: #5E5E5E;
+<span id="cb11-19"></span>
+<span id="cb11-20">            <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Candidate 2</span></span>
-<span id="cb4-21">            x4, y4 <span class="op" style="color: #5E5E5E;
+<span id="cb11-21">            x4, y4 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> x1 , y1</span>
-<span id="cb4-22">            <span class="cf" style="color: #003B4F;
+<span id="cb11-22">            <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">while</span> in_bounds(x4,y4):</span>
-<span id="cb4-23">                solutions.add((x4,y4))</span>
-<span id="cb4-24">                x4, y4 <span class="op" style="color: #5E5E5E;
+<span id="cb11-23">                solutions.add((x4,y4))</span>
+<span id="cb11-24">                x4, y4 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> (x4 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span> dx, y4 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span> dy)</span>
-<span id="cb4-25"></span>
-<span id="cb4-26"></span>
-<span id="cb4-27">    <span class="co" style="color: #5E5E5E;
+<span id="cb11-25"></span>
+<span id="cb11-26"></span>
+<span id="cb11-27">    <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Every antenna coord is a solution</span></span>
-<span id="cb4-28">    <span class="cf" style="color: #003B4F;
+<span id="cb11-28">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">for</span> _, coords <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">in</span> antennas.items():</span>
-<span id="cb4-29">        <span class="cf" style="color: #003B4F;
+<span id="cb11-29">        <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">for</span> c <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">in</span> coords:</span>
-<span id="cb4-30">            solutions.add(c)</span>
-<span id="cb4-31"></span>
-<span id="cb4-32">    <span class="cf" style="color: #003B4F;
+<span id="cb11-30">            solutions.add(c)</span>
+<span id="cb11-31"></span>
+<span id="cb11-32">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">len</span>(solutions)</span>
-<span id="cb4-33"></span>
-<span id="cb4-34">part2(eg)</span></code></pre></div>
+<span id="cb11-33"></span>
+<span id="cb11-34">part2(eg)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>34</code></pre>
 </div>
 </div>
-<div id="7b627b90" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">part2(inp)</span></code></pre></div>
+<div id="51dccc16" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>1045</code></pre>
 </div>
@@ -4093,7 +4162,557 @@ font-style: inherit;">len</span>(solutions)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day08.html</guid>
-  <pubDate>Mon, 09 Dec 2024 02:50:12 GMT</pubDate>
+  <pubDate>Tue, 10 Dec 2024 03:57:06 GMT</pubDate>
+</item>
+<item>
+  <title>Day 9: Disk Fragmenter</title>
+  <link>https://ddanieltan.github.io/aoc2024/day09.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://ddanieltan.github.io/aoc2024/images/09.webp" class="img-fluid figure-img" width="500"></p>
+<figcaption>Prompt:christmas elves running around a giant cpu chip, cartoon style</figcaption>
+</figure>
+</div>
+<section id="part-1" class="level2">
+<h2 class="anchored" data-anchor-id="part-1">Part 1</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Puzzle Info">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Puzzle Info
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>He shows you the disk map (your puzzle input) he’s already generated. For example:</p>
+<pre><code>2333133121414131402</code></pre>
+<p>The disk map uses a dense format to represent the layout of files and free space on the disk. The digits alternate between indicating the length of a file and the length of free space.</p>
+<p>So, a disk map like 12345 would represent a one-block file, two blocks of free space, a three-block file, four blocks of free space, and then a five-block file. A disk map like 90909 would represent three nine-block files in a row (with no free space between them).</p>
+<p>Each file on disk also has an ID number based on the order of the files as they appear before they are rearranged, starting with ID 0. So, the disk map 12345 has three files: a one-block file with ID 0, a three-block file with ID 1, and a five-block file with ID 2. Using one character for each block where digits are the file ID and . is free space, the disk map 12345 represents these individual blocks:</p>
+<pre><code>0..111....22222</code></pre>
+<p>The first example above, 2333133121414131402, represents these individual blocks:</p>
+<pre><code>00...111...2...333.44.5555.6666.777.888899</code></pre>
+<p>The amphipod would like to move file blocks one at a time from the end of the disk to the leftmost free space block (until there are no gaps remaining between file blocks). For the disk map 12345, the process looks like this:</p>
+<pre><code>0..111....22222
+02.111....2222.
+022111....222..
+0221112...22...
+02211122..2....
+022111222......</code></pre>
+<p>The first example requires a few more steps:</p>
+<pre><code>00...111...2...333.44.5555.6666.777.888899
+009..111...2...333.44.5555.6666.777.88889.
+0099.111...2...333.44.5555.6666.777.8888..
+00998111...2...333.44.5555.6666.777.888...
+009981118..2...333.44.5555.6666.777.88....
+0099811188.2...333.44.5555.6666.777.8.....
+009981118882...333.44.5555.6666.777.......
+0099811188827..333.44.5555.6666.77........
+00998111888277.333.44.5555.6666.7.........
+009981118882777333.44.5555.6666...........
+009981118882777333644.5555.666............
+00998111888277733364465555.66.............
+0099811188827773336446555566..............</code></pre>
+<p>The final step of this file-compacting process is to update the filesystem checksum. To calculate the checksum, add up the result of multiplying each of these blocks’ position with the file ID number it contains. The leftmost block is in position 0. If a block contains free space, skip it instead.</p>
+<p>Continuing the first example, the first few blocks’ position multiplied by its file ID number are 0 * 0 = 0, 1 * 0 = 0, 2 * 9 = 18, 3 * 9 = 27, 4 * 8 = 32, and so on. In this example, the checksum is the sum of these, 1928.</p>
+<p>Compact the amphipod’s hard drive using the process he requested. What is the resulting filesystem checksum? (Be careful copy/pasting the input for this puzzle; it is a single, very long line.)</p>
+</div>
+</div>
+</div>
+<div id="e402f2a9" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"2333133121414131402"</span></span>
+<span id="annotated-cell-1-2"></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-3" class="code-annotation-target"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> parse(inp:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>[<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>]:</span>
+<span id="annotated-cell-1-4">    line <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="annotated-cell-1-5">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i,n <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">enumerate</span>(inp):</span>
+<span id="annotated-cell-1-6">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> _ <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>(n)):</span>
+<span id="annotated-cell-1-7">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>:</span>
+<span id="annotated-cell-1-8">                line.append(i<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
+<span id="annotated-cell-1-9">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span>:</span>
+<span id="annotated-cell-1-10">                line.append(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'.'</span>)</span>
+<span id="annotated-cell-1-11">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> line</span>
+<span id="annotated-cell-1-12"></span>
+<span id="annotated-cell-1-13"></span>
+<span id="annotated-cell-1-14"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> part1(inp:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>:</span>
+<span id="annotated-cell-1-15">    line <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> parse(inp)</span>
+<span id="annotated-cell-1-16"></span>
+<span id="annotated-cell-1-17">    n_dots <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> line.count(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"."</span>)</span>
+<span id="annotated-cell-1-18">    n_nums <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(line) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> n_dots</span>
+<span id="annotated-cell-1-19">    only_nums <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [l <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> l <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> line <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> l <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"."</span>]</span>
+<span id="annotated-cell-1-20"></span>
+<span id="annotated-cell-1-21">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Compact the data</span></span>
+<span id="annotated-cell-1-22">    compact <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="annotated-cell-1-23">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(n_nums):</span>
+<span id="annotated-cell-1-24">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> line[i] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"."</span>:</span>
+<span id="annotated-cell-1-25">            compact.append(only_nums.pop())</span>
+<span id="annotated-cell-1-26">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span>:</span>
+<span id="annotated-cell-1-27">            compact.append(line[i])</span>
+<span id="annotated-cell-1-28"></span>
+<span id="annotated-cell-1-29">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Compute checksum</span></span>
+<span id="annotated-cell-1-30">    solution <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>(c) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i, c <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">enumerate</span>(compact)]</span>
+<span id="annotated-cell-1-31"></span>
+<span id="annotated-cell-1-32">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>(solution)</span>
+<span id="annotated-cell-1-33"></span>
+<span id="annotated-cell-1-34">part1(eg)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="1">I should embrace the fact that a list can take in different types. In this case, my parsed list can hold both <code>int</code> and <code>string</code> for “.”. Initially, because I tried to parse everything as string, I wasted a lot of time chasing an error in my solution when it was an issue with the parsing.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>1928</code></pre>
+</div>
+</div>
+<div id="ad93c02f" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"inputs/09"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"r"</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> f:</span>
+<span id="cb7-2">    inp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> f.read()</span>
+<span id="cb7-3">part1(inp)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>6288599492129</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2" class="level2">
+<h2 class="anchored" data-anchor-id="part-2">Part 2</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Puzzle Info">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Puzzle Info
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This time, attempt to move whole files to the leftmost span of free space blocks that could fit the file. Attempt to move each file exactly once in order of decreasing file ID number starting with the file with the highest file ID number. If there is no span of free space to the left of a file that is large enough to fit the file, the file does not move.</p>
+<p>The first example from above now proceeds differently:</p>
+<pre><code>00...111...2...333.44.5555.6666.777.888899
+0099.111...2...333.44.5555.6666.777.8888..
+0099.1117772...333.44.5555.6666.....8888..
+0099.111777244.333....5555.6666.....8888..
+00992111777.44.333....5555.6666.....8888..</code></pre>
+<p>The process of updating the filesystem checksum is the same; now, this example’s checksum would be 2858.</p>
+<p>Start over, now compacting the amphipod’s hard drive using this new method instead. What is the resulting filesystem checksum?</p>
+</div>
+</div>
+</div>
+<div id="cfe90211" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> parse2(inp:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> (<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>):</span>
+<span id="annotated-cell-3-2">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="annotated-cell-3-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">    For part 2, we need to store</span></span>
+<span id="annotated-cell-3-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">    - dict with (file_id, (pos, file_size))</span></span>
+<span id="annotated-cell-3-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">    - list of (pos, free_size)</span></span>
+<span id="annotated-cell-3-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">    """</span></span>
+<span id="annotated-cell-3-7">    files <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {}</span>
+<span id="annotated-cell-3-8">    frees <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="annotated-cell-3-9"></span>
+<span id="annotated-cell-3-10">    file_id <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="annotated-cell-3-11">    pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="annotated-cell-3-12">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i, ch <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">enumerate</span>(inp):</span>
+<span id="annotated-cell-3-13">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>:</span>
+<span id="annotated-cell-3-14">            files[file_id] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (pos, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>(ch))</span>
+<span id="annotated-cell-3-15">            file_id <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="annotated-cell-3-16">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span>:</span>
+<span id="annotated-cell-3-17">            frees.append((pos, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>(ch)))</span>
+<span id="annotated-cell-3-18">        pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>(ch)</span>
+<span id="annotated-cell-3-19"></span>
+<span id="annotated-cell-3-20">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> files, frees</span>
+<span id="annotated-cell-3-21"></span>
+<span id="annotated-cell-3-22"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> part2(inp:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>:</span>
+<span id="annotated-cell-3-23"></span>
+<span id="annotated-cell-3-24">    files, frees <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> parse2(inp)</span>
+<span id="annotated-cell-3-25"></span>
+<span id="annotated-cell-3-26">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Go through files in reverse order</span></span>
+<span id="annotated-cell-3-27">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> (file_id, (file_pos, file_size)) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">reversed</span>(files.items()):</span>
+<span id="annotated-cell-3-28">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Compare against frees in normal order</span></span>
+<span id="annotated-cell-3-29">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i, (free_pos, free_size) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">enumerate</span>(frees):</span>
+<span id="annotated-cell-3-30"></span>
+<span id="annotated-cell-3-31">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># if our points cross, there's no free space available for this file</span></span>
+<span id="annotated-cell-3-32">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> free_pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> file_pos:</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-33" class="code-annotation-target">                frees <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> frees[:i]</span>
+<span id="annotated-cell-3-34">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">break</span></span>
+<span id="annotated-cell-3-35"></span>
+<span id="annotated-cell-3-36">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># if size match, file is swapped in and free removed</span></span>
+<span id="annotated-cell-3-37">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> file_size <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> free_size:</span>
+<span id="annotated-cell-3-38">                files[file_id] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (free_pos, file_size)</span>
+<span id="annotated-cell-3-39">                frees.pop(i)</span>
+<span id="annotated-cell-3-40">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">break</span></span>
+<span id="annotated-cell-3-41"></span>
+<span id="annotated-cell-3-42">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># if file_size is smaller than free_size, we need to update both sizes</span></span>
+<span id="annotated-cell-3-43">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> file_size <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> free_size:</span>
+<span id="annotated-cell-3-44">                files[file_id] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (free_pos, file_size)</span>
+<span id="annotated-cell-3-45">                frees[i] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (free_pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> file_size, free_size <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> file_size)</span>
+<span id="annotated-cell-3-46">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">break</span></span>
+<span id="annotated-cell-3-47"></span>
+<span id="annotated-cell-3-48">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Checksum</span></span>
+<span id="annotated-cell-3-49">    solution <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="annotated-cell-3-50">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> file_id, (file_pos, file_size) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> files.items():</span>
+<span id="annotated-cell-3-51">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(file_pos, file_pos <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> file_size):</span>
+<span id="annotated-cell-3-52">            solution.append(file_id <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> i)</span>
+<span id="annotated-cell-3-53"></span>
+<span id="annotated-cell-3-54">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>(solution)</span>
+<span id="annotated-cell-3-55"></span>
+<span id="annotated-cell-3-56">part2(eg)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="33" data-code-annotation="1">Nice optimisation I learnt from other solutions. If pointers cross, then we know that every free space to the right of <code>free_pos</code> is out of contention because our current <code>file_pos</code> is to the left of all these free spaces.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>2858</code></pre>
+</div>
+</div>
+<div id="e44113c8" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">part2(inp)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>6321896265143</code></pre>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://ddanieltan.github.io/aoc2024/day09.html</guid>
+  <pubDate>Tue, 10 Dec 2024 03:57:06 GMT</pubDate>
 </item>
 </channel>
 </rss>
