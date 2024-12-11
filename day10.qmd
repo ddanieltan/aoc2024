@@ -1,0 +1,267 @@
+---
+title: "Day 10: Hoof It"
+---
+
+![Prompt:reindeer wearing hard hat holding map of many trails, cartoon style](images/10.webp){width="500" fig-align="center"}
+
+## Part 1
+
+::: {.callout-note title="Puzzle Info" collapse="true"}
+The topographic map indicates the height at each position using a scale from 0 (lowest) to 9 (highest). For example:
+```
+0123
+1234
+8765
+9876
+```
+Based on un-scorched scraps of the book, you determine that a good hiking trail is as long as possible and has an even, gradual, uphill slope. For all practical purposes, this means that a hiking trail is any path that starts at height 0, ends at height 9, and always increases by a height of exactly 1 at each step. Hiking trails never include diagonal steps - only up, down, left, or right (from the perspective of the map).
+
+You look up from the map and notice that the reindeer has helpfully begun to construct a small pile of pencils, markers, rulers, compasses, stickers, and other equipment you might need to update the map with hiking trails.
+
+A trailhead is any position that starts one or more hiking trails - here, these positions will always have height 0. Assembling more fragments of pages, you establish that a trailhead's score is the number of 9-height positions reachable from that trailhead via a hiking trail. In the above example, the single trailhead in the top left corner has a score of 1 because it can reach a single 9 (the one in the bottom left).
+
+This trailhead has a score of 2:
+```
+...0...
+...1...
+...2...
+6543456
+7.....7
+8.....8
+9.....9
+```
+(The positions marked . are impassable tiles to simplify these examples; they do not appear on your actual topographic map.)
+
+This trailhead has a score of 4 because every 9 is reachable via a hiking trail except the one immediately to the left of the trailhead:
+```
+..90..9
+...1.98
+...2..7
+6543456
+765.987
+876....
+987....
+```
+This topographic map contains two trailheads; the trailhead at the top has a score of 1, while the trailhead at the bottom has a score of 2:
+```
+10..9..
+2...8..
+3...7..
+4567654
+...8..3
+...9..2
+.....01
+```
+Here's a larger example:
+```
+89010123
+78121874
+87430965
+96549874
+45678903
+32019012
+01329801
+10456732
+```
+This larger example has 9 trailheads. Considering the trailheads in reading order, they have scores of 5, 6, 5, 3, 1, 3, 5, 3, and 5. Adding these scores together, the sum of the scores of all trailheads is 36.
+
+The reindeer gleefully carries over a protractor and adds it to the pile. What is the sum of the scores of all trailheads on your topographic map?
+:::
+
+```{python}
+eg = """89010123
+78121874
+87430965
+96549874
+45678903
+32019012
+01329801
+10456732
+"""
+
+from collections import defaultdict
+
+def parse(inp:str) -> (list[str], dict, list, list):
+    DIRECTIONS = [
+        (-1, 0), #N
+        (0, 1), #E
+        (1, 0), #S
+        (0, -1), #W
+    ]
+
+    # Parse grid
+    grid = []
+    for line in inp.splitlines():
+        row = [int(ch) if ch != "." else ch for ch in line]
+        grid.append(row)
+
+    # Get coords for zeroes and nines
+    zeroes = []
+    nines = []
+
+    # Check if point inbounds
+    in_bounds = lambda x,y: (x >=0) and (x<len(grid)) and (y>=0) and (y<len(grid[0]))
+
+    # Create adjacency map
+    adj = defaultdict(list)
+    for x in range(len(grid)):
+        for y in range(len(grid[0])):
+            if grid[x][y] == 0:
+                zeroes.append((x,y))
+            if grid[x][y] == 9:
+                nines.append((x,y))
+            if grid[x][y] == ".":
+                continue
+
+            curr = grid[x][y]
+            for (dx, dy) in DIRECTIONS:
+                nx = x + dx
+                ny = y + dy
+                if in_bounds(nx,ny):
+                    if grid[nx][ny] == grid[x][y] + 1:
+                        adj[x, y].append((nx, ny)) # <1>
+
+
+    return grid, adj, zeroes, nines
+
+
+def part1(inp:str) -> int:
+    grid, adj, zeroes, nines = parse(inp)
+
+    score = 0
+    for start in zeroes:
+        for end in nines:
+            queue = set()
+            queue.update(adj[start]) # <2>
+            while queue:
+                node = queue.pop()
+                if node == end:
+                    score += 1
+                    break
+                queue.update(adj[node])
+
+    return score
+
+part1(eg)
+```
+1. Reminder that we can set a tuple as key in a dictionary with this syntax `adj[x,y]`
+2. We can add elements in a list to a set directly using `set.update()`
+
+```{python}
+with open("inputs/10","r") as f:
+    inp = f.read()
+part1(inp)
+```
+
+## Part 2
+
+::: {.callout-note title="Puzzle Info" collapse="true"}
+The paper describes a second way to measure a trailhead called its rating. A trailhead's rating is the number of distinct hiking trails which begin at that trailhead. For example:
+```
+.....0.
+..4321.
+..5..2.
+..6543.
+..7..4.
+..8765.
+..9....
+```
+The above map has a single trailhead; its rating is 3 because there are exactly three distinct hiking trails which begin at that position:
+```
+.....0.   .....0.   .....0.
+..4321.   .....1.   .....1.
+..5....   .....2.   .....2.
+..6....   ..6543.   .....3.
+..7....   ..7....   .....4.
+..8....   ..8....   ..8765.
+..9....   ..9....   ..9....
+```
+Here is a map containing a single trailhead with rating 13:
+```
+..90..9
+...1.98
+...2..7
+6543456
+765.987
+876....
+987....
+```
+This map contains a single trailhead with rating 227 (because there are 121 distinct hiking trails that lead to the 9 on the right edge and 106 that lead to the 9 on the bottom edge):
+```
+012345
+123456
+234567
+345678
+4.6789
+56789.
+```
+Here's the larger example from before:
+```
+89010123
+78121874
+87430965
+96549874
+45678903
+32019012
+01329801
+10456732
+```
+Considering its trailheads in reading order, they have ratings of 20, 24, 10, 4, 1, 4, 5, 8, and 5. The sum of all trailhead ratings in this larger example topographic map is 81.
+
+You're not sure how, but the reindeer seems to have crafted some tiny flags out of toothpicks and bits of paper and is using them to mark trailheads on your topographic map. What is the sum of the ratings of all trailheads?
+:::
+
+```{python}
+eg = """.....0.
+..4321.
+..5..2.
+..6543.
+..7..4.
+..8765.
+..9....
+"""
+from collections import deque
+
+def part2(inp:str) -> int:
+    grid, adj, zeroes, nines = parse(inp)
+
+    def find_unique_paths(start, end):
+        # Use BFS to find unique paths
+        paths = set()
+        queue = deque([(start, {start})]) # <1>
+
+        while queue:
+            current, path = queue.popleft()
+
+            # Found a path to the end
+            if current == end:
+                paths.add(tuple(sorted(path)))
+                continue
+
+            # Explore adjacent nodes
+            for next_node in adj[current]:
+                # Prevent cycles and ensure path consistency
+                if next_node not in path:
+                    new_path = path.copy()
+                    new_path.add(next_node)
+                    queue.append((next_node, new_path))
+
+        return len(paths)
+
+    # Calculate total unique paths
+    unique_path_lengths = [
+        find_unique_paths(start,end)
+        for start in zeroes
+        for end in nines
+    ]
+
+    return sum(unique_path_lengths)
+
+
+part2(eg)
+```
+1. Using `deque` here inplace of `set` to avoid some "set unhashable" errors and gain access to `popleft()` method.
+
+```{python}
+part2(inp)
+```
