@@ -10,7 +10,7 @@
 <atom:link href="https://ddanieltan.github.io/aoc2024/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.39</generator>
-<lastBuildDate>Thu, 12 Dec 2024 16:12:36 GMT</lastBuildDate>
+<lastBuildDate>Thu, 12 Dec 2024 23:29:35 GMT</lastBuildDate>
 <item>
   <title>Day 1: Historian Hysteria</title>
   <link>https://ddanieltan.github.io/aoc2024/day01.html</link>
@@ -63,7 +63,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="02d84c6b" class="cell" data-execution_count="1">
+<div id="badb27cf" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -194,7 +194,7 @@ font-style: inherit;">zip</span>(A,B)])</span>
 <pre><code>11</code></pre>
 </div>
 </div>
-<div id="1fbd2ace" class="cell" data-execution_count="2">
+<div id="d1b9d0d8" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -245,7 +245,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="8c0bbc31" class="cell" data-execution_count="3">
+<div id="e190931b" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> collections <span class="im" style="color: #00769E;
@@ -290,7 +290,7 @@ font-style: inherit;">sum</span>(calc)</span>
 <pre><code>31</code></pre>
 </div>
 </div>
-<div id="c9a706ef" class="cell" data-execution_count="4">
+<div id="ab90d98f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>23609874</code></pre>
@@ -302,7 +302,7 @@ font-style: inherit;">sum</span>(calc)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day01.html</guid>
-  <pubDate>Thu, 12 Dec 2024 16:12:36 GMT</pubDate>
+  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
 </item>
 <item>
   <title>Day 2: Red-Nosed Reports</title>
@@ -359,7 +359,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="95f1e85b" class="cell" data-execution_count="1">
+<div id="e754819c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -591,7 +591,7 @@ font-style: inherit;">return</span> cnt</span>
 <pre><code>2</code></pre>
 </div>
 </div>
-<div id="48365d2d" class="cell" data-execution_count="2">
+<div id="5dd0556d" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -641,7 +641,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="b6af1253" class="cell" data-execution_count="3">
+<div id="cea2e05a" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -740,7 +740,7 @@ font-style: inherit;">return</span> cnt</span>
 <pre><code>4</code></pre>
 </div>
 </div>
-<div id="ca611753" class="cell" data-execution_count="4">
+<div id="dc49a5e8" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>337</code></pre>
@@ -752,7 +752,7 @@ font-style: inherit;">return</span> cnt</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day02.html</guid>
-  <pubDate>Thu, 12 Dec 2024 16:12:36 GMT</pubDate>
+  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
 </item>
 <item>
   <title>Day 3: Mull It Over</title>
@@ -792,7 +792,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="7761bb70" class="cell" data-execution_count="1">
+<div id="311b49d4" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> re</span>
@@ -875,7 +875,7 @@ font-style: inherit;">sum</span>(products)</span>
 <pre><code>161</code></pre>
 </div>
 </div>
-<div id="667c56d8" class="cell" data-execution_count="2">
+<div id="53bd9685" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -922,7 +922,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="68b728de" class="cell" data-execution_count="3">
+<div id="53721926" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1">eg2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -1075,7 +1075,7 @@ font-style: inherit;">sum</span>(products)</span>
 <pre><code>48</code></pre>
 </div>
 </div>
-<div id="5059f059" class="cell" data-execution_count="4">
+<div id="b84f119a" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>76729637</code></pre>
@@ -1087,7 +1087,7 @@ font-style: inherit;">sum</span>(products)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day03.html</guid>
-  <pubDate>Thu, 12 Dec 2024 16:12:36 GMT</pubDate>
+  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
 </item>
 <item>
   <title>Day 4: Ceres Search</title>
@@ -1150,7 +1150,7 @@ S.S.S.S.SS
 </div>
 </div>
 </div>
-<div id="ff887dea" class="cell" data-execution_count="1">
+<div id="80d90f26" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -1466,7 +1466,7 @@ font-style: inherit;">len</span>(solutions)</span>
 <pre><code>18</code></pre>
 </div>
 </div>
-<div id="57341ed2" class="cell" data-execution_count="2">
+<div id="2fda218f" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1523,7 +1523,7 @@ M.M.M.M.M.
 </div>
 </div>
 </div>
-<div id="504c78f2" class="cell" data-execution_count="3">
+<div id="1fda9609" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> collections <span class="im" style="color: #00769E;
@@ -1787,7 +1787,7 @@ font-style: inherit;">len</span>(solutions)</span>
 <pre><code>9</code></pre>
 </div>
 </div>
-<div id="2ce057bf" class="cell" data-execution_count="4">
+<div id="63e0cfb6" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>1945</code></pre>
@@ -1799,7 +1799,7 @@ font-style: inherit;">len</span>(solutions)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day04.html</guid>
-  <pubDate>Thu, 12 Dec 2024 16:12:36 GMT</pubDate>
+  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
 </item>
 <item>
   <title>Day 5: Print Queue</title>
@@ -1883,7 +1883,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="f4531931" class="cell" data-execution_count="1">
+<div id="f824abc7" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -2194,7 +2194,7 @@ font-style: inherit;">sum</span>(medians)</span>
 <pre><code>143</code></pre>
 </div>
 </div>
-<div id="00f0b955" class="cell" data-execution_count="2">
+<div id="1b2dce64" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2242,7 +2242,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="07c4e611" class="cell" data-execution_count="3">
+<div id="52de211b" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2429,7 +2429,7 @@ font-style: inherit;">sum</span>(medians)</span>
 <pre><code>123</code></pre>
 </div>
 </div>
-<div id="33a64261" class="cell" data-execution_count="4">
+<div id="2a72ca0a" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>4480</code></pre>
@@ -2441,7 +2441,7 @@ font-style: inherit;">sum</span>(medians)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day05.html</guid>
-  <pubDate>Thu, 12 Dec 2024 16:12:36 GMT</pubDate>
+  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
 </item>
 <item>
   <title>Day 6: Guard Gallivant</title>
@@ -2490,7 +2490,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="0c0b46f2" class="cell" data-execution_count="1">
+<div id="da026068" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -2845,7 +2845,7 @@ font-style: inherit;">len</span>(visited)</span>
 <pre><code>41</code></pre>
 </div>
 </div>
-<div id="fa409042" class="cell" data-execution_count="2">
+<div id="2148af7b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2899,7 +2899,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="7caefc7b" class="cell" data-execution_count="3">
+<div id="d1d981b2" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># def check_loop(grid, start, path, obstacle) -&gt; bool:</span></span>
@@ -3097,7 +3097,7 @@ font-style: inherit;"># part2(eg)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day06.html</guid>
-  <pubDate>Thu, 12 Dec 2024 16:12:36 GMT</pubDate>
+  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
 </item>
 <item>
   <title>Day 7: Bridge Repair</title>
@@ -3148,7 +3148,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="e766f47c" class="cell" data-execution_count="1">
+<div id="0aa953a0" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -3368,7 +3368,7 @@ font-style: inherit;">sum</span>(solutions)</span>
 <pre><code>3749</code></pre>
 </div>
 </div>
-<div id="f91e172a" class="cell" data-execution_count="2">
+<div id="e84c7f29" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3416,7 +3416,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="26373239" class="cell" data-execution_count="3">
+<div id="3ab027b4" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3548,7 +3548,7 @@ font-style: inherit;">sum</span>(solutions)</span>
 <pre><code>11387</code></pre>
 </div>
 </div>
-<div id="aae64312" class="cell" data-execution_count="4">
+<div id="60d8ad3c" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>59002246504791</code></pre>
@@ -3560,7 +3560,7 @@ font-style: inherit;">sum</span>(solutions)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day07.html</guid>
-  <pubDate>Thu, 12 Dec 2024 16:12:36 GMT</pubDate>
+  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
 </item>
 <item>
   <title>Day 8: Resonant Collinearity</title>
@@ -3655,7 +3655,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="f3beb722" class="cell" data-execution_count="1">
+<div id="f3cf37b9" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -3925,7 +3925,7 @@ font-style: inherit;">len</span>(solutions)</span>
 <pre><code>14</code></pre>
 </div>
 </div>
-<div id="7189bceb" class="cell" data-execution_count="2">
+<div id="48415b08" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3991,7 +3991,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="991845b4" class="cell" data-execution_count="3">
+<div id="9109ccc0" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4150,7 +4150,7 @@ font-style: inherit;">len</span>(solutions)</span>
 <pre><code>34</code></pre>
 </div>
 </div>
-<div id="784e01bd" class="cell" data-execution_count="4">
+<div id="69df1c4c" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>1045</code></pre>
@@ -4162,7 +4162,7 @@ font-style: inherit;">len</span>(solutions)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day08.html</guid>
-  <pubDate>Thu, 12 Dec 2024 16:12:36 GMT</pubDate>
+  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
 </item>
 <item>
   <title>Day 9: Disk Fragmenter</title>
@@ -4227,7 +4227,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="1ad3a9c3" class="cell" data-execution_count="1">
+<div id="8863ae16" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -4411,7 +4411,7 @@ font-style: inherit;">sum</span>(solution)</span>
 <pre><code>1928</code></pre>
 </div>
 </div>
-<div id="7e701983" class="cell" data-execution_count="2">
+<div id="2462cd86" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4459,7 +4459,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="413f9aa5" class="cell" data-execution_count="3">
+<div id="994735c3" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4700,7 +4700,7 @@ font-style: inherit;">sum</span>(solution)</span>
 <pre><code>2858</code></pre>
 </div>
 </div>
-<div id="c73a6c11" class="cell" data-execution_count="4">
+<div id="168153f0" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>6321896265143</code></pre>
@@ -4712,7 +4712,7 @@ font-style: inherit;">sum</span>(solution)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day09.html</guid>
-  <pubDate>Thu, 12 Dec 2024 16:12:36 GMT</pubDate>
+  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
 </item>
 <item>
   <title>Day 10: Hoof It</title>
@@ -4789,7 +4789,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="7de852d5" class="cell" data-execution_count="1">
+<div id="d532d33e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -5155,7 +5155,7 @@ font-style: inherit;">return</span> score</span>
 <pre><code>36</code></pre>
 </div>
 </div>
-<div id="0a3fb4ba" class="cell" data-execution_count="2">
+<div id="0c8ede9f" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -5236,7 +5236,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="25ab30d1" class="cell" data-execution_count="3">
+<div id="3c4458ee" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -5406,7 +5406,7 @@ font-style: inherit;">sum</span>(unique_path_lengths)</span>
 <pre><code>3</code></pre>
 </div>
 </div>
-<div id="65fe58a4" class="cell" data-execution_count="4">
+<div id="276d7bdb" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>1302</code></pre>
@@ -5418,7 +5418,7 @@ font-style: inherit;">sum</span>(unique_path_lengths)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day10.html</guid>
-  <pubDate>Thu, 12 Dec 2024 16:12:36 GMT</pubDate>
+  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
 </item>
 <item>
   <title>Day 11: Plutonian Pebbles</title>
@@ -5490,7 +5490,7 @@ In this example, after blinking six times, you would have 22 stones. After blink
 </div>
 </div>
 </div>
-<div id="3b061dcd" class="cell" data-execution_count="1">
+<div id="a8c83466" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -5670,7 +5670,7 @@ font-style: inherit;">len</span>(nums)</span>
 <pre><code>55312</code></pre>
 </div>
 </div>
-<div id="2cba5923" class="cell" data-execution_count="2">
+<div id="c79cb830" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -5707,7 +5707,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="aa3052e4" class="cell" data-execution_count="3">
+<div id="7a0528e3" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> collections <span class="im" style="color: #00769E;
@@ -5914,7 +5914,7 @@ font-style: inherit;">sum</span>(nums.values())</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day11.html</guid>
-  <pubDate>Thu, 12 Dec 2024 16:12:36 GMT</pubDate>
+  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
 </item>
 <item>
   <title>Day 12: Garden Groups</title>
@@ -5983,7 +5983,7 @@ MMMISSJEEE</code></pre>
 </div>
 </div>
 </div>
-<div id="5fd9ed12" class="cell" data-execution_count="1">
+<div id="863536b2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -6139,7 +6139,7 @@ background-color: null;
 font-style: inherit;">"""</span></span>
 <span id="cb3-24"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">        Given a starting x,y search neighbous</span></span>
+font-style: inherit;">        Given a starting x,y search neighbours</span></span>
 <span id="cb3-25"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">        until we have all coords for this region</span></span>
@@ -6354,7 +6354,7 @@ font-style: inherit;">in</span> prices])</span>
 <pre><code>1930</code></pre>
 </div>
 </div>
-<div id="ec12cdea" class="cell" data-execution_count="2">
+<div id="489451a7" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -6394,7 +6394,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="affe4210" class="cell" data-execution_count="3">
+<div id="234ebd9a" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -6483,7 +6483,7 @@ background-color: null;
 font-style: inherit;">"""</span></span>
 <span id="annotated-cell-3-9"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">        Given a starting x,y search neighbous</span></span>
+font-style: inherit;">        Given a starting x,y search neighbours</span></span>
 <span id="annotated-cell-3-10"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">        until we have all coords for this region</span></span>
@@ -6839,7 +6839,7 @@ font-style: inherit;">in</span> prices])</span>
 <pre><code>1206</code></pre>
 </div>
 </div>
-<div id="bf352e32" class="cell" data-execution_count="4">
+<div id="76460a34" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>921636</code></pre>
@@ -6851,7 +6851,7 @@ font-style: inherit;">in</span> prices])</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day12.html</guid>
-  <pubDate>Thu, 12 Dec 2024 16:12:36 GMT</pubDate>
+  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
 </item>
 </channel>
 </rss>
