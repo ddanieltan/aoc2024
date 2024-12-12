@@ -1,0 +1,203 @@
+---
+title: "Day 12: Garden Groups"
+---
+
+![Prompt: christmas elves in a grid where every cell is a different letter and different colour, cartoon style](images/12.webp){width="500" fig-align="center"}
+
+## Part 1
+
+::: {.callout-note title="Puzzle Info" collapse="true"}
+Each garden plot grows only a single type of plant and is indicated by a single letter on your map. When multiple garden plots are growing the same type of plant and are touching (horizontally or vertically), they form a region. For example:
+```
+AAAA
+BBCD
+BBCC
+EEEC
+```
+This 4x4 arrangement includes garden plots growing five different types of plants (labeled A, B, C, D, and E), each grouped into their own region.
+
+In order to accurately calculate the cost of the fence around a single region, you need to know that region's area and perimeter.
+
+The area of a region is simply the number of garden plots the region contains. The above map's type A, B, and C plants are each in a region of area 4. The type E plants are in a region of area 3; the type D plants are in a region of area 1.
+
+Each garden plot is a square and so has four sides. The perimeter of a region is the number of sides of garden plots in the region that do not touch another garden plot in the same region. The type A and C plants are each in a region with perimeter 10. The type B and E plants are each in a region with perimeter 8. The lone D plot forms its own region with perimeter 4.
+
+Here's a larger example:
+```
+RRRRIICCFF
+RRRRIICCCF
+VVRRRCCFFF
+VVRCCCJFFF
+VVVVCJJCFE
+VVIVCCJJEE
+VVIIICJJEE
+MIIIIIJJEE
+MIIISIJEEE
+MMMISSJEEE
+```
+It contains:
+
+- A region of R plants with price 12 * 18 = 216.
+- A region of I plants with price 4 * 8 = 32.
+- A region of C plants with price 14 * 28 = 392.
+- A region of F plants with price 10 * 18 = 180.
+- A region of V plants with price 13 * 20 = 260.
+- A region of J plants with price 11 * 20 = 220.
+- A region of C plants with price 1 * 4 = 4.
+- A region of E plants with price 13 * 18 = 234.
+- A region of I plants with price 14 * 22 = 308.
+- A region of M plants with price 5 * 12 = 60.
+- A region of S plants with price 3 * 8 = 24.
+
+So, it has a total price of 1930.
+
+What is the total price of fencing all regions on your map?
+:::
+
+```{python}
+eg = """RRRRIICCFF
+RRRRIICCCF
+VVRRRCCFFF
+VVRCCCJFFF
+VVVVCJJCFE
+VVIVCCJJEE
+VVIIICJJEE
+MIIIIIJJEE
+MIIISIJEEE
+MMMISSJEEE
+"""
+
+def parse(inp:str) -> list[list[str]]:
+    return [[ch for ch in line] for line in inp.splitlines()]
+
+def part1(inp:str) -> int:
+    grid = parse(inp)
+    in_bounds = lambda x, y: (x>=0) and (x<len(grid)) and (y>=0) and (y<len(grid[0]))
+    directions = [(-1,0),(0,1),(1,0),(0,-1)]
+    processed = set()
+
+    def dfs(x, y) -> set:
+        """
+        Given a starting x,y search neighbous
+        until we have all coords for this region
+        """
+        queue = set()
+        coords = set()
+        letter = grid[x][y]
+        queue.add((x,y))
+        while queue:
+            x, y = queue.pop()
+            coords.add((x,y))
+            processed.add((x,y))
+            for (dx, dy) in directions:
+                nx, ny = x+dx, y+dy
+                if in_bounds(nx,ny) and ((nx,ny) not in processed) and grid[nx][ny] == letter:
+                    queue.add((nx, ny))
+        return coords
+
+    def perimeter(coords:set[tuple[int,int]]) -> int:
+        """
+        Calculate the perimeter of a region
+        """
+        perimeter = 0
+        for (x,y) in coords:
+            for (dx, dy) in directions:
+                nx, ny = x+dx, y+dy
+                if ((nx, ny) not in coords) or (not in_bounds(nx,ny)):
+                    perimeter += 1
+        return perimeter
+
+    prices = []
+    for x in range(len(grid)):
+        for y in range(len(grid[0])):
+            if (x,y) not in processed:
+                coords = dfs(x,y)
+                area = len(coords)
+                p = perimeter(coords)
+                prices.append((area, p))
+
+    return sum([area * peri for (area, peri) in prices])
+
+part1(eg)
+```
+
+```{python}
+with open("inputs/12", "r") as f:
+    inp = f.read()
+part1(inp)
+```
+## Part 2
+
+::: {.callout-note title="Puzzle Info" collapse="true"}
+:::
+
+```{python}
+def part2(inp:str) -> int:
+    grid = parse(inp)
+    in_bounds = lambda x, y: (x>=0) and (x<len(grid)) and (y>=0) and (y<len(grid[0]))
+    directions = [(-1,0),(0,1),(1,0),(0,-1)]
+    processed = set()
+
+    def dfs(x, y) -> set:
+        """
+        Given a starting x,y search neighbous
+        until we have all coords for this region
+        """
+        queue = set()
+        coords = set()
+        letter = grid[x][y]
+        queue.add((x,y))
+        while queue:
+            x, y = queue.pop()
+            coords.add((x,y))
+            processed.add((x,y))
+            for (dx, dy) in directions:
+                nx, ny = x+dx, y+dy
+                if in_bounds(nx,ny) and ((nx,ny) not in processed) and grid[nx][ny] == letter:
+                    queue.add((nx, ny))
+        return coords
+
+    # Count of corners = Count of sides # <1>
+    def count_corners(coords:set[tuple[int,int]]) -> int:
+        corners = 0
+        neighbours = [
+            ((0,-1),(-1,-1),(-1,0)), # w, nw, n
+            ((-1,0),(-1,1),(0,1)), # n, ne, e
+            ((0,1),(1,1),(1,0)), # e, se, s
+            ((1,0),(1,-1),(0,-1)) # s, sw, w
+        ]
+
+        for (x,y) in coords:
+            for ((ax,ay),(bx,by),(cx,cy)) in neighbours:
+                a = (x + ax, y + ay)
+                b = (x + bx, y + by)
+                c = (x + cx, y + cy)
+
+                # 2 scenarios that indicate current node is a corner # <2>
+                cond1 = ((a not in coords) and (c not in coords)) # outer corner
+                cond2 = ((b not in coords) and (a in coords) and (c in coords)) # inner corner
+
+                if cond1 or cond2:
+                    corners += 1
+
+        return corners
+
+    prices = []
+    for x in range(len(grid)):
+        for y in range(len(grid[0])):
+            if (x,y) not in processed:
+                coords = dfs(x,y)
+                area = len(coords)
+                sides = count_corners(coords)
+                prices.append((area, sides))
+
+    return sum([area * sides for (area, sides) in prices])
+
+part2(eg)
+```
+1. That the count of corners = count of sides is the crucial observation that makes part 2 approachable.
+2. Needed to get a pen and paper out to draw this relationship.
+
+```{python}
+part2(inp)
+```
