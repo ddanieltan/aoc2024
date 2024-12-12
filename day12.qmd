@@ -78,7 +78,7 @@ def part1(inp:str) -> int:
 
     def dfs(x, y) -> set:
         """
-        Given a starting x,y search neighbous
+        Given a starting x,y search neighbours
         until we have all coords for this region
         """
         queue = set()
@@ -140,7 +140,7 @@ def part2(inp:str) -> int:
 
     def dfs(x, y) -> set:
         """
-        Given a starting x,y search neighbous
+        Given a starting x,y search neighbours
         until we have all coords for this region
         """
         queue = set()
