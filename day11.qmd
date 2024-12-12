@@ -99,8 +99,6 @@ How many stones would you have after blinking a total of 75 times?
 ```{python}
 from collections import Counter # <1>
 
-eg = "125 17"
-
 def parse2(inp:str) -> Counter:
     return Counter([int(s) for s in inp.split()])
 
@@ -138,4 +136,4 @@ def part2(inp:str) -> int:
 
 part2(inp)
 ```
-1. Crux of this part 2 is to change the way we store our representation of the numbers to a frequency table. In this scenario, using `Counter` is both easy and apt.
+1. Crux of solving part 2 is to change the way we store our representation of the numbers to a frequency table. In this scenario, using `Counter` is both easy and apt.
