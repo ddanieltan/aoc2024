@@ -10,7 +10,7 @@
 <atom:link href="https://ddanieltan.github.io/aoc2024/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.39</generator>
-<lastBuildDate>Thu, 12 Dec 2024 23:29:35 GMT</lastBuildDate>
+<lastBuildDate>Mon, 16 Dec 2024 08:56:33 GMT</lastBuildDate>
 <item>
   <title>Day 1: Historian Hysteria</title>
   <link>https://ddanieltan.github.io/aoc2024/day01.html</link>
@@ -63,7 +63,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="badb27cf" class="cell" data-execution_count="1">
+<div id="a7a19d2a" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -194,7 +194,7 @@ font-style: inherit;">zip</span>(A,B)])</span>
 <pre><code>11</code></pre>
 </div>
 </div>
-<div id="d1b9d0d8" class="cell" data-execution_count="2">
+<div id="7193ef69" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -245,7 +245,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="e190931b" class="cell" data-execution_count="3">
+<div id="e4f443f1" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> collections <span class="im" style="color: #00769E;
@@ -290,7 +290,7 @@ font-style: inherit;">sum</span>(calc)</span>
 <pre><code>31</code></pre>
 </div>
 </div>
-<div id="ab90d98f" class="cell" data-execution_count="4">
+<div id="acd845a6" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>23609874</code></pre>
@@ -302,7 +302,7 @@ font-style: inherit;">sum</span>(calc)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day01.html</guid>
-  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
+  <pubDate>Mon, 16 Dec 2024 08:56:33 GMT</pubDate>
 </item>
 <item>
   <title>Day 2: Red-Nosed Reports</title>
@@ -359,7 +359,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="e754819c" class="cell" data-execution_count="1">
+<div id="598c2752" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -591,7 +591,7 @@ font-style: inherit;">return</span> cnt</span>
 <pre><code>2</code></pre>
 </div>
 </div>
-<div id="5dd0556d" class="cell" data-execution_count="2">
+<div id="0e2d8374" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -641,7 +641,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="cea2e05a" class="cell" data-execution_count="3">
+<div id="989559a6" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -740,7 +740,7 @@ font-style: inherit;">return</span> cnt</span>
 <pre><code>4</code></pre>
 </div>
 </div>
-<div id="dc49a5e8" class="cell" data-execution_count="4">
+<div id="e0159046" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>337</code></pre>
@@ -752,7 +752,7 @@ font-style: inherit;">return</span> cnt</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day02.html</guid>
-  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
+  <pubDate>Mon, 16 Dec 2024 08:56:33 GMT</pubDate>
 </item>
 <item>
   <title>Day 3: Mull It Over</title>
@@ -792,7 +792,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="311b49d4" class="cell" data-execution_count="1">
+<div id="6ac62bcf" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> re</span>
@@ -875,7 +875,7 @@ font-style: inherit;">sum</span>(products)</span>
 <pre><code>161</code></pre>
 </div>
 </div>
-<div id="53bd9685" class="cell" data-execution_count="2">
+<div id="06c14aa3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -922,7 +922,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="53721926" class="cell" data-execution_count="3">
+<div id="cd3d870f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1">eg2 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -1075,7 +1075,7 @@ font-style: inherit;">sum</span>(products)</span>
 <pre><code>48</code></pre>
 </div>
 </div>
-<div id="b84f119a" class="cell" data-execution_count="4">
+<div id="70f75859" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>76729637</code></pre>
@@ -1087,7 +1087,7 @@ font-style: inherit;">sum</span>(products)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day03.html</guid>
-  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
+  <pubDate>Mon, 16 Dec 2024 08:56:33 GMT</pubDate>
 </item>
 <item>
   <title>Day 4: Ceres Search</title>
@@ -1150,7 +1150,7 @@ S.S.S.S.SS
 </div>
 </div>
 </div>
-<div id="80d90f26" class="cell" data-execution_count="1">
+<div id="6e74e107" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -1466,7 +1466,7 @@ font-style: inherit;">len</span>(solutions)</span>
 <pre><code>18</code></pre>
 </div>
 </div>
-<div id="2fda218f" class="cell" data-execution_count="2">
+<div id="6a29e471" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1523,7 +1523,7 @@ M.M.M.M.M.
 </div>
 </div>
 </div>
-<div id="1fda9609" class="cell" data-execution_count="3">
+<div id="e8bdae12" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> collections <span class="im" style="color: #00769E;
@@ -1787,7 +1787,7 @@ font-style: inherit;">len</span>(solutions)</span>
 <pre><code>9</code></pre>
 </div>
 </div>
-<div id="63e0cfb6" class="cell" data-execution_count="4">
+<div id="f95dc41f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>1945</code></pre>
@@ -1799,7 +1799,7 @@ font-style: inherit;">len</span>(solutions)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day04.html</guid>
-  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
+  <pubDate>Mon, 16 Dec 2024 08:56:33 GMT</pubDate>
 </item>
 <item>
   <title>Day 5: Print Queue</title>
@@ -1883,7 +1883,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="f824abc7" class="cell" data-execution_count="1">
+<div id="ee3b8198" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -2194,7 +2194,7 @@ font-style: inherit;">sum</span>(medians)</span>
 <pre><code>143</code></pre>
 </div>
 </div>
-<div id="1b2dce64" class="cell" data-execution_count="2">
+<div id="4485c609" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2242,7 +2242,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="52de211b" class="cell" data-execution_count="3">
+<div id="e5663e4b" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2429,7 +2429,7 @@ font-style: inherit;">sum</span>(medians)</span>
 <pre><code>123</code></pre>
 </div>
 </div>
-<div id="2a72ca0a" class="cell" data-execution_count="4">
+<div id="c0566e3c" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>4480</code></pre>
@@ -2441,7 +2441,7 @@ font-style: inherit;">sum</span>(medians)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day05.html</guid>
-  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
+  <pubDate>Mon, 16 Dec 2024 08:56:33 GMT</pubDate>
 </item>
 <item>
   <title>Day 6: Guard Gallivant</title>
@@ -2490,7 +2490,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="da026068" class="cell" data-execution_count="1">
+<div id="2beddad9" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -2845,7 +2845,7 @@ font-style: inherit;">len</span>(visited)</span>
 <pre><code>41</code></pre>
 </div>
 </div>
-<div id="2148af7b" class="cell" data-execution_count="2">
+<div id="e526ea62" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2899,7 +2899,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="d1d981b2" class="cell" data-execution_count="3">
+<div id="16f09cea" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># def check_loop(grid, start, path, obstacle) -&gt; bool:</span></span>
@@ -3097,7 +3097,7 @@ font-style: inherit;"># part2(eg)</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day06.html</guid>
-  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
+  <pubDate>Mon, 16 Dec 2024 08:56:33 GMT</pubDate>
 </item>
 <item>
   <title>Day 7: Bridge Repair</title>
@@ -3148,7 +3148,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="0aa953a0" class="cell" data-execution_count="1">
+<div id="8c5714ec" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -3368,7 +3368,7 @@ font-style: inherit;">sum</span>(solutions)</span>
 <pre><code>3749</code></pre>
 </div>
 </div>
-<div id="e84c7f29" class="cell" data-execution_count="2">
+<div id="c94711c1" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3416,7 +3416,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="3ab027b4" class="cell" data-execution_count="3">
+<div id="eb474b62" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3548,7 +3548,7 @@ font-style: inherit;">sum</span>(solutions)</span>
 <pre><code>11387</code></pre>
 </div>
 </div>
-<div id="60d8ad3c" class="cell" data-execution_count="4">
+<div id="511ef26f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>59002246504791</code></pre>
@@ -3560,7 +3560,7 @@ font-style: inherit;">sum</span>(solutions)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day07.html</guid>
-  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
+  <pubDate>Mon, 16 Dec 2024 08:56:33 GMT</pubDate>
 </item>
 <item>
   <title>Day 8: Resonant Collinearity</title>
@@ -3655,7 +3655,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="f3cf37b9" class="cell" data-execution_count="1">
+<div id="e33d19be" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -3925,7 +3925,7 @@ font-style: inherit;">len</span>(solutions)</span>
 <pre><code>14</code></pre>
 </div>
 </div>
-<div id="48415b08" class="cell" data-execution_count="2">
+<div id="cad922d5" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3991,7 +3991,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="9109ccc0" class="cell" data-execution_count="3">
+<div id="8dcb2c4b" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4150,7 +4150,7 @@ font-style: inherit;">len</span>(solutions)</span>
 <pre><code>34</code></pre>
 </div>
 </div>
-<div id="69df1c4c" class="cell" data-execution_count="4">
+<div id="952953ee" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>1045</code></pre>
@@ -4162,7 +4162,7 @@ font-style: inherit;">len</span>(solutions)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day08.html</guid>
-  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
+  <pubDate>Mon, 16 Dec 2024 08:56:33 GMT</pubDate>
 </item>
 <item>
   <title>Day 9: Disk Fragmenter</title>
@@ -4227,7 +4227,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="8863ae16" class="cell" data-execution_count="1">
+<div id="a36c30be" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -4411,7 +4411,7 @@ font-style: inherit;">sum</span>(solution)</span>
 <pre><code>1928</code></pre>
 </div>
 </div>
-<div id="2462cd86" class="cell" data-execution_count="2">
+<div id="26054aa0" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4459,7 +4459,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="994735c3" class="cell" data-execution_count="3">
+<div id="5d98d793" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4700,7 +4700,7 @@ font-style: inherit;">sum</span>(solution)</span>
 <pre><code>2858</code></pre>
 </div>
 </div>
-<div id="168153f0" class="cell" data-execution_count="4">
+<div id="4776feb5" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>6321896265143</code></pre>
@@ -4712,7 +4712,7 @@ font-style: inherit;">sum</span>(solution)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day09.html</guid>
-  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
+  <pubDate>Mon, 16 Dec 2024 08:56:33 GMT</pubDate>
 </item>
 <item>
   <title>Day 10: Hoof It</title>
@@ -4789,7 +4789,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="d532d33e" class="cell" data-execution_count="1">
+<div id="73dc8ff1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -5155,7 +5155,7 @@ font-style: inherit;">return</span> score</span>
 <pre><code>36</code></pre>
 </div>
 </div>
-<div id="0c8ede9f" class="cell" data-execution_count="2">
+<div id="dbb5398f" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -5236,7 +5236,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="3c4458ee" class="cell" data-execution_count="3">
+<div id="600674bb" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -5406,7 +5406,7 @@ font-style: inherit;">sum</span>(unique_path_lengths)</span>
 <pre><code>3</code></pre>
 </div>
 </div>
-<div id="276d7bdb" class="cell" data-execution_count="4">
+<div id="af82b2a1" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>1302</code></pre>
@@ -5418,7 +5418,7 @@ font-style: inherit;">sum</span>(unique_path_lengths)</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day10.html</guid>
-  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
+  <pubDate>Mon, 16 Dec 2024 08:56:33 GMT</pubDate>
 </item>
 <item>
   <title>Day 11: Plutonian Pebbles</title>
@@ -5490,7 +5490,7 @@ In this example, after blinking six times, you would have 22 stones. After blink
 </div>
 </div>
 </div>
-<div id="a8c83466" class="cell" data-execution_count="1">
+<div id="db0d1856" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -5670,7 +5670,7 @@ font-style: inherit;">len</span>(nums)</span>
 <pre><code>55312</code></pre>
 </div>
 </div>
-<div id="c79cb830" class="cell" data-execution_count="2">
+<div id="751a18c6" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -5707,7 +5707,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="7a0528e3" class="cell" data-execution_count="3">
+<div id="1176e571" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> collections <span class="im" style="color: #00769E;
@@ -5914,7 +5914,7 @@ font-style: inherit;">sum</span>(nums.values())</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day11.html</guid>
-  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
+  <pubDate>Mon, 16 Dec 2024 08:56:33 GMT</pubDate>
 </item>
 <item>
   <title>Day 12: Garden Groups</title>
@@ -5983,7 +5983,7 @@ MMMISSJEEE</code></pre>
 </div>
 </div>
 </div>
-<div id="863536b2" class="cell" data-execution_count="1">
+<div id="e17e5dae" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">eg <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -6354,7 +6354,7 @@ font-style: inherit;">in</span> prices])</span>
 <pre><code>1930</code></pre>
 </div>
 </div>
-<div id="489451a7" class="cell" data-execution_count="2">
+<div id="53eeac8c" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -6394,7 +6394,7 @@ Puzzle Info
 </div>
 </div>
 </div>
-<div id="234ebd9a" class="cell" data-execution_count="3">
+<div id="71acd036" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -6839,7 +6839,7 @@ font-style: inherit;">in</span> prices])</span>
 <pre><code>1206</code></pre>
 </div>
 </div>
-<div id="76460a34" class="cell" data-execution_count="4">
+<div id="b9e9566a" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">part2(inp)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>921636</code></pre>
@@ -6851,7 +6851,527 @@ font-style: inherit;">in</span> prices])</span>
 
  ]]></description>
   <guid>https://ddanieltan.github.io/aoc2024/day12.html</guid>
-  <pubDate>Thu, 12 Dec 2024 23:29:35 GMT</pubDate>
+  <pubDate>Mon, 16 Dec 2024 08:56:33 GMT</pubDate>
+</item>
+<item>
+  <title>Day 13: Claw Contraption</title>
+  <link>https://ddanieltan.github.io/aoc2024/day13.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://ddanieltan.github.io/aoc2024/images/13.webp" class="img-fluid figure-img" width="500"></p>
+<figcaption>Prompt:christmas elves in a gachapon claw machine, surrounded by soft toys, big mechanical pincer above, cartoon style</figcaption>
+</figure>
+</div>
+<section id="part-1" class="level2">
+<h2 class="anchored" data-anchor-id="part-1">Part 1</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Puzzle Info">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Puzzle Info
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>it costs 3 tokens to push the A button and 1 token to push the B button.</p>
+<p>Each machine contains one prize; to win the prize, the claw must be positioned exactly above the prize on both the X and Y axes.</p>
+<p>You wonder: what is the smallest number of tokens you would have to spend to win as many prizes as possible? You assemble a list of every machine’s button behavior and prize location (your puzzle input). For example:</p>
+<pre><code>Button A: X+94, Y+34
+Button B: X+22, Y+67
+Prize: X=8400, Y=5400
+
+Button A: X+26, Y+66
+Button B: X+67, Y+21
+Prize: X=12748, Y=12176
+
+Button A: X+17, Y+86
+Button B: X+84, Y+37
+Prize: X=7870, Y=6450
+
+Button A: X+69, Y+23
+Button B: X+27, Y+71
+Prize: X=18641, Y=10279</code></pre>
+<p>This list describes the button configuration and prize location of four different claw machines.</p>
+<p>For now, consider just the first claw machine in the list:</p>
+<p>Pushing the machine’s A button would move the claw 94 units along the X axis and 34 units along the Y axis. Pushing the B button would move the claw 22 units along the X axis and 67 units along the Y axis. The prize is located at X=8400, Y=5400; this means that from the claw’s initial position, it would need to move exactly 8400 units along the X axis and exactly 5400 units along the Y axis to be perfectly aligned with the prize in this machine. The cheapest way to win the prize is by pushing the A button 80 times and the B button 40 times. This would line up the claw along the X axis (because 80<em>94 + 40</em>22 = 8400) and along the Y axis (because 80<em>34 + 40</em>67 = 5400). Doing this would cost 80<em>3 tokens for the A presses and 40</em>1 for the B presses, a total of 280 tokens.</p>
+<p>For the second and fourth claw machines, there is no combination of A and B presses that will ever win a prize.</p>
+<p>For the third claw machine, the cheapest way to win the prize is by pushing the A button 38 times and the B button 86 times. Doing this would cost a total of 200 tokens.</p>
+<p>So, the most prizes you could possibly win is two; the minimum tokens you would have to spend to win all (two) prizes is 480.</p>
+<p>You estimate that each button would need to be pressed no more than 100 times to win a prize. How else would someone be expected to play?</p>
+<p>Figure out how to win as many prizes as possible. What is the fewest tokens you would have to spend to win all possible prizes?</p>
+</div>
+</div>
+</div>
+<div id="1e4841ce" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">eg <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"""Button A: X+94, Y+34</span></span>
+<span id="cb2-2"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Button B: X+22, Y+67</span></span>
+<span id="cb2-3"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Prize: X=8400, Y=5400</span></span>
+<span id="cb2-4"></span>
+<span id="cb2-5"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Button A: X+26, Y+66</span></span>
+<span id="cb2-6"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Button B: X+67, Y+21</span></span>
+<span id="cb2-7"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Prize: X=12748, Y=12176</span></span>
+<span id="cb2-8"></span>
+<span id="cb2-9"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Button A: X+17, Y+86</span></span>
+<span id="cb2-10"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Button B: X+84, Y+37</span></span>
+<span id="cb2-11"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Prize: X=7870, Y=6450</span></span>
+<span id="cb2-12"></span>
+<span id="cb2-13"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Button A: X+69, Y+23</span></span>
+<span id="cb2-14"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Button B: X+27, Y+71</span></span>
+<span id="cb2-15"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Prize: X=18641, Y=10279</span></span>
+<span id="cb2-16"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb2-17"></span>
+<span id="cb2-18"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> re</span>
+<span id="cb2-19"></span>
+<span id="cb2-20"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> parse(inp:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>[<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>[<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>, (<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>)]]:</span>
+<span id="cb2-21">    ret <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb2-22">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> info <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> inp.split(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>):</span>
+<span id="cb2-23">        pattern <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">r"Button A: X\+(\d+), Y\+(\d+)\nButton B: X\+(\d+), Y\+(\d+)\nPrize: X=(\d+), Y=(\d+)"</span></span>
+<span id="cb2-24">        match <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> re.match(pattern, info)</span>
+<span id="cb2-25">        ret.append({</span>
+<span id="cb2-26">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"A"</span> : (<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>(match[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]), <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>(match[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>])),</span>
+<span id="cb2-27">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"B"</span> : (<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>(match[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>]), <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>(match[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>])),</span>
+<span id="cb2-28">            <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Prize"</span> : (<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>(match[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>]), <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>(match[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>])),</span>
+<span id="cb2-29">        })</span>
+<span id="cb2-30"></span>
+<span id="cb2-31">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> ret</span>
+<span id="cb2-32"></span>
+<span id="cb2-33"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> brute_force(info:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>[<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>, (<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>,<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>)]) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>:</span>
+<span id="cb2-34">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> a <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">101</span>):</span>
+<span id="cb2-35">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> b <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">101</span>):</span>
+<span id="cb2-36">            ax, ay <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> info[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'A'</span>]</span>
+<span id="cb2-37">            bx, by <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> info[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'B'</span>]</span>
+<span id="cb2-38">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> ((ax<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>a <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> bx<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>b), (ay<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>a <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> by<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>b)) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> info[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Prize'</span>]:</span>
+<span id="cb2-39">                cost <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>a <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> b</span>
+<span id="cb2-40">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> cost</span>
+<span id="cb2-41">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb2-42"></span>
+<span id="cb2-43"></span>
+<span id="cb2-44"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> part1(inp:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>:</span>
+<span id="cb2-45">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Since problem gave upper bound of 100 button pushes</span></span>
+<span id="cb2-46">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># we can brute force the solution</span></span>
+<span id="cb2-47">    costs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [brute_force(info) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> info <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> parse(inp)]</span>
+<span id="cb2-48">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>(costs)</span>
+<span id="cb2-49"></span>
+<span id="cb2-50">part1(eg)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>480</code></pre>
+</div>
+</div>
+<div id="b94bd244" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"inputs/13"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"r"</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> f:</span>
+<span id="cb4-2">    inp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> f.read()</span>
+<span id="cb4-3">part1(inp)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>39290</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2" class="level2">
+<h2 class="anchored" data-anchor-id="part-2">Part 2</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Puzzle Info">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Puzzle Info
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>As you go to win the first prize, you discover that the claw is nowhere near where you expected it would be. Due to a unit conversion error in your measurements, the position of every prize is actually 10000000000000 higher on both the X and Y axis!</p>
+<p>Add 10000000000000 to the X and Y position of every prize. After making this change, the example above would now look like this:</p>
+<pre><code>Button A: X+94, Y+34
+Button B: X+22, Y+67
+Prize: X=10000000008400, Y=10000000005400
+
+Button A: X+26, Y+66
+Button B: X+67, Y+21
+Prize: X=10000000012748, Y=10000000012176
+
+Button A: X+17, Y+86
+Button B: X+84, Y+37
+Prize: X=10000000007870, Y=10000000006450
+
+Button A: X+69, Y+23
+Button B: X+27, Y+71
+Prize: X=10000000018641, Y=10000000010279</code></pre>
+<p>Now, it is only possible to win a prize on the second and fourth claw machines. Unfortunately, it will take many more than 100 presses to do so.</p>
+<p>Using the corrected prize coordinates, figure out how to win as many prizes as possible. What is the fewest tokens you would have to spend to win all possible prizes?</p>
+</div>
+</div>
+</div>
+<p>I opted to solve the linear equations on pen and paper for part 2. Later I came back to transcribe my working using Quarto’s latex equation support. I initially had some issues with creating a newline in the using the default MathJax renderer but that was easily fixed by specifying a different rendering engine (Katex). See <a href="https://github.com/quarto-dev/quarto-cli/discussions/4916">issue</a>.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Aax_1%20+%20bx_2%20=%20x_%7Bprize%7D%0A%5C%5C%0Aay_1%20+%20by_2%20=%20y_%7Bprize%7D%0A"> <img src="https://latex.codecogs.com/png.latex?%0A%5Ctag%7B1%7D%20ax_1y_2%20+%20bx_2y_2%20=%20x_%7Bprize%7Dy_2%0A"> <img src="https://latex.codecogs.com/png.latex?%0A%5Ctag%7B2%7D%20ax_2y_1%20+%20bx_2y_2%20=%20x_2y_%7Bprize%7D%0A"> <img src="https://latex.codecogs.com/png.latex?%0A%5Ctag%7B1-2%7D%20ax_1y_2%20-%20ax_2y_1%20=%20x_%7Bprize%7Dy_2%20-%20x_2y_%7Bprize%7D%0A%5C%5C%0Aa(x_1y_2%20-%20ax_2y_1)%20=%20x_%7Bprize%7Dy_2%20-%20x_2y_%7Bprize%7D%0A%5C%5C%0Aa%20=%20%5Cfrac%7Bx_%7Bprize%7Dy_2%20-%20x_2y_%7Bprize%7D%7D%7Bx_1y_2%20-%20ax_2y_1%7D%0A"> <img src="https://latex.codecogs.com/png.latex?%0Ab%20=%20%5Cfrac%7Bx_%7Bprize%7D%20-%20ax_1%7D%7Bx_2%7D%0A"></p>
+<div id="85a9e727" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="annotated-cell-3" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> part2(inp:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>:</span>
+<span id="annotated-cell-3-2">    costs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="annotated-cell-3-3">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> info <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> parse(inp):</span>
+<span id="annotated-cell-3-4">        x1 , y1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> info[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'A'</span>]</span>
+<span id="annotated-cell-3-5">        x2 , y2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> info[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'B'</span>]</span>
+<span id="annotated-cell-3-6">        x_p , y_p <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> info[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Prize'</span>]</span>
+<span id="annotated-cell-3-7">        x_p <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10000000000000</span></span>
+<span id="annotated-cell-3-8">        y_p <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10000000000000</span></span>
+<span id="annotated-cell-3-9"></span>
+<span id="annotated-cell-3-10">        a <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (x_p <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> y2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> x2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> y_p) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> (x1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> y2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> x2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> y1)</span>
+<span id="annotated-cell-3-11">        b <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (x_p <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> a <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> x1) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> x2</span>
+<span id="annotated-cell-3-12"></span>
+<span id="annotated-cell-3-13">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Check if solution is whole number</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-14" class="code-annotation-target">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (a <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">and</span> (b <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>):</span>
+<span id="annotated-cell-3-15">            costs.append(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>a <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> b)</span>
+<span id="annotated-cell-3-16"></span>
+<span id="annotated-cell-3-17">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>(costs))</span>
+<span id="annotated-cell-3-18"></span>
+<span id="annotated-cell-3-19">part2(eg)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="14" data-code-annotation="1"><code>num % 1</code> is a useful shorthand to check it num is whole number</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>875318608908</code></pre>
+</div>
+</div>
+<div id="6d5ab22e" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">part2(inp)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>73458657399094</code></pre>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://ddanieltan.github.io/aoc2024/day13.html</guid>
+  <pubDate>Mon, 16 Dec 2024 08:56:33 GMT</pubDate>
 </item>
 </channel>
 </rss>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Day 9: Disk Fragmenter – Advent of Code 2024</title>
+<title>Day 13: Claw Contraption – Advent of Code 2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -102,6 +102,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="custom.css">
 </head>
@@ -154,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Day 9: Disk Fragmenter</h1>
+<h1 class="title">Day 13: Claw Contraption</h1>
 </div>
 
 
@@ -173,8 +216,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/09.webp" class="img-fluid figure-img" width="500"></p>
-<figcaption>Prompt:christmas elves running around a giant cpu chip, cartoon style</figcaption>
+<p><img src="images/13.webp" class="img-fluid figure-img" width="500"></p>
+<figcaption>Prompt:christmas elves in a gachapon claw machine, surrounded by soft toys, big mechanical pincer above, cartoon style</figcaption>
 </figure>
 </div>
 <section id="part-1" class="level2">
@@ -191,94 +234,96 @@ Puzzle Info
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>He shows you the disk map (your puzzle input) he’s already generated. For example:</p>
-<pre><code>2333133121414131402</code></pre>
-<p>The disk map uses a dense format to represent the layout of files and free space on the disk. The digits alternate between indicating the length of a file and the length of free space.</p>
-<p>So, a disk map like 12345 would represent a one-block file, two blocks of free space, a three-block file, four blocks of free space, and then a five-block file. A disk map like 90909 would represent three nine-block files in a row (with no free space between them).</p>
-<p>Each file on disk also has an ID number based on the order of the files as they appear before they are rearranged, starting with ID 0. So, the disk map 12345 has three files: a one-block file with ID 0, a three-block file with ID 1, and a five-block file with ID 2. Using one character for each block where digits are the file ID and . is free space, the disk map 12345 represents these individual blocks:</p>
-<pre><code>0..111....22222</code></pre>
-<p>The first example above, 2333133121414131402, represents these individual blocks:</p>
-<pre><code>00...111...2...333.44.5555.6666.777.888899</code></pre>
-<p>The amphipod would like to move file blocks one at a time from the end of the disk to the leftmost free space block (until there are no gaps remaining between file blocks). For the disk map 12345, the process looks like this:</p>
-<pre><code>0..111....22222
-02.111....2222.
-022111....222..
-0221112...22...
-02211122..2....
-022111222......</code></pre>
-<p>The first example requires a few more steps:</p>
-<pre><code>00...111...2...333.44.5555.6666.777.888899
-009..111...2...333.44.5555.6666.777.88889.
-0099.111...2...333.44.5555.6666.777.8888..
-00998111...2...333.44.5555.6666.777.888...
-009981118..2...333.44.5555.6666.777.88....
-0099811188.2...333.44.5555.6666.777.8.....
-009981118882...333.44.5555.6666.777.......
-0099811188827..333.44.5555.6666.77........
-00998111888277.333.44.5555.6666.7.........
-009981118882777333.44.5555.6666...........
-009981118882777333644.5555.666............
-00998111888277733364465555.66.............
-0099811188827773336446555566..............</code></pre>
-<p>The final step of this file-compacting process is to update the filesystem checksum. To calculate the checksum, add up the result of multiplying each of these blocks’ position with the file ID number it contains. The leftmost block is in position 0. If a block contains free space, skip it instead.</p>
-<p>Continuing the first example, the first few blocks’ position multiplied by its file ID number are 0 * 0 = 0, 1 * 0 = 0, 2 * 9 = 18, 3 * 9 = 27, 4 * 8 = 32, and so on. In this example, the checksum is the sum of these, 1928.</p>
-<p>Compact the amphipod’s hard drive using the process he requested. What is the resulting filesystem checksum? (Be careful copy/pasting the input for this puzzle; it is a single, very long line.)</p>
+<p>it costs 3 tokens to push the A button and 1 token to push the B button.</p>
+<p>Each machine contains one prize; to win the prize, the claw must be positioned exactly above the prize on both the X and Y axes.</p>
+<p>You wonder: what is the smallest number of tokens you would have to spend to win as many prizes as possible? You assemble a list of every machine’s button behavior and prize location (your puzzle input). For example:</p>
+<pre><code>Button A: X+94, Y+34
+Button B: X+22, Y+67
+Prize: X=8400, Y=5400
+
+Button A: X+26, Y+66
+Button B: X+67, Y+21
+Prize: X=12748, Y=12176
+
+Button A: X+17, Y+86
+Button B: X+84, Y+37
+Prize: X=7870, Y=6450
+
+Button A: X+69, Y+23
+Button B: X+27, Y+71
+Prize: X=18641, Y=10279</code></pre>
+<p>This list describes the button configuration and prize location of four different claw machines.</p>
+<p>For now, consider just the first claw machine in the list:</p>
+<p>Pushing the machine’s A button would move the claw 94 units along the X axis and 34 units along the Y axis. Pushing the B button would move the claw 22 units along the X axis and 67 units along the Y axis. The prize is located at X=8400, Y=5400; this means that from the claw’s initial position, it would need to move exactly 8400 units along the X axis and exactly 5400 units along the Y axis to be perfectly aligned with the prize in this machine. The cheapest way to win the prize is by pushing the A button 80 times and the B button 40 times. This would line up the claw along the X axis (because 80<em>94 + 40</em>22 = 8400) and along the Y axis (because 80<em>34 + 40</em>67 = 5400). Doing this would cost 80<em>3 tokens for the A presses and 40</em>1 for the B presses, a total of 280 tokens.</p>
+<p>For the second and fourth claw machines, there is no combination of A and B presses that will ever win a prize.</p>
+<p>For the third claw machine, the cheapest way to win the prize is by pushing the A button 38 times and the B button 86 times. Doing this would cost a total of 200 tokens.</p>
+<p>So, the most prizes you could possibly win is two; the minimum tokens you would have to spend to win all (two) prizes is 480.</p>
+<p>You estimate that each button would need to be pressed no more than 100 times to win a prize. How else would someone be expected to play?</p>
+<p>Figure out how to win as many prizes as possible. What is the fewest tokens you would have to spend to win all possible prizes?</p>
 </div>
 </div>
 </div>
-<div id="a36c30be" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a>eg <span class="op">=</span> <span class="st">"2333133121414131402"</span></span>
-<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-3" class="code-annotation-target"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">str</span>]:</span>
-<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a>    line <span class="op">=</span> []</span>
-<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i,n <span class="kw">in</span> <span class="bu">enumerate</span>(inp):</span>
-<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(n)):</span>
-<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="annotated-cell-1-8"><a href="#annotated-cell-1-8" aria-hidden="true" tabindex="-1"></a>                line.append(i<span class="op">//</span><span class="dv">2</span>)</span>
-<span id="annotated-cell-1-9"><a href="#annotated-cell-1-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="annotated-cell-1-10"><a href="#annotated-cell-1-10" aria-hidden="true" tabindex="-1"></a>                line.append(<span class="st">'.'</span>)</span>
-<span id="annotated-cell-1-11"><a href="#annotated-cell-1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> line</span>
-<span id="annotated-cell-1-12"><a href="#annotated-cell-1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-1-13"><a href="#annotated-cell-1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-1-14"><a href="#annotated-cell-1-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part1(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="annotated-cell-1-15"><a href="#annotated-cell-1-15" aria-hidden="true" tabindex="-1"></a>    line <span class="op">=</span> parse(inp)</span>
-<span id="annotated-cell-1-16"><a href="#annotated-cell-1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-1-17"><a href="#annotated-cell-1-17" aria-hidden="true" tabindex="-1"></a>    n_dots <span class="op">=</span> line.count(<span class="st">"."</span>)</span>
-<span id="annotated-cell-1-18"><a href="#annotated-cell-1-18" aria-hidden="true" tabindex="-1"></a>    n_nums <span class="op">=</span> <span class="bu">len</span>(line) <span class="op">-</span> n_dots</span>
-<span id="annotated-cell-1-19"><a href="#annotated-cell-1-19" aria-hidden="true" tabindex="-1"></a>    only_nums <span class="op">=</span> [l <span class="cf">for</span> l <span class="kw">in</span> line <span class="cf">if</span> l <span class="op">!=</span> <span class="st">"."</span>]</span>
-<span id="annotated-cell-1-20"><a href="#annotated-cell-1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-1-21"><a href="#annotated-cell-1-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compact the data</span></span>
-<span id="annotated-cell-1-22"><a href="#annotated-cell-1-22" aria-hidden="true" tabindex="-1"></a>    compact <span class="op">=</span> []</span>
-<span id="annotated-cell-1-23"><a href="#annotated-cell-1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_nums):</span>
-<span id="annotated-cell-1-24"><a href="#annotated-cell-1-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> line[i] <span class="op">==</span> <span class="st">"."</span>:</span>
-<span id="annotated-cell-1-25"><a href="#annotated-cell-1-25" aria-hidden="true" tabindex="-1"></a>            compact.append(only_nums.pop())</span>
-<span id="annotated-cell-1-26"><a href="#annotated-cell-1-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="annotated-cell-1-27"><a href="#annotated-cell-1-27" aria-hidden="true" tabindex="-1"></a>            compact.append(line[i])</span>
-<span id="annotated-cell-1-28"><a href="#annotated-cell-1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-1-29"><a href="#annotated-cell-1-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute checksum</span></span>
-<span id="annotated-cell-1-30"><a href="#annotated-cell-1-30" aria-hidden="true" tabindex="-1"></a>    solution <span class="op">=</span> [i <span class="op">*</span> <span class="bu">int</span>(c) <span class="cf">for</span> i, c <span class="kw">in</span> <span class="bu">enumerate</span>(compact)]</span>
-<span id="annotated-cell-1-31"><a href="#annotated-cell-1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-1-32"><a href="#annotated-cell-1-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(solution)</span>
-<span id="annotated-cell-1-33"><a href="#annotated-cell-1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-1-34"><a href="#annotated-cell-1-34" aria-hidden="true" tabindex="-1"></a>part1(eg)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-annotation">
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="1">I should embrace the fact that a list can take in different types. In this case, my parsed list can hold both <code>int</code> and <code>string</code> for “.”. Initially, because I tried to parse everything as string, I wasted a lot of time chasing an error in my solution when it was an issue with the parsing.</span>
-</dd>
-</dl>
-</div>
+<div id="1e4841ce" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>eg <span class="op">=</span> <span class="st">"""Button A: X+94, Y+34</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="st">Button B: X+22, Y+67</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="st">Prize: X=8400, Y=5400</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">Button A: X+26, Y+66</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="st">Button B: X+67, Y+21</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="st">Prize: X=12748, Y=12176</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="st">Button A: X+17, Y+86</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="st">Button B: X+84, Y+37</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="st">Prize: X=7870, Y=6450</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="st">Button A: X+69, Y+23</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="st">Button B: X+27, Y+71</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="st">Prize: X=18641, Y=10279</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">dict</span>[<span class="bu">str</span>, (<span class="bu">int</span>, <span class="bu">int</span>)]]:</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    ret <span class="op">=</span> []</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> info <span class="kw">in</span> inp.split(<span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>):</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        pattern <span class="op">=</span> <span class="vs">r"Button A: X\+(\d+), Y\+(\d+)\nButton B: X\+(\d+), Y\+(\d+)\nPrize: X=(\d+), Y=(\d+)"</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        match <span class="op">=</span> re.match(pattern, info)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        ret.append({</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>            <span class="st">"A"</span> : (<span class="bu">int</span>(match[<span class="dv">1</span>]), <span class="bu">int</span>(match[<span class="dv">2</span>])),</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>            <span class="st">"B"</span> : (<span class="bu">int</span>(match[<span class="dv">3</span>]), <span class="bu">int</span>(match[<span class="dv">4</span>])),</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Prize"</span> : (<span class="bu">int</span>(match[<span class="dv">5</span>]), <span class="bu">int</span>(match[<span class="dv">6</span>])),</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ret</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> brute_force(info:<span class="bu">dict</span>[<span class="bu">str</span>, (<span class="bu">int</span>,<span class="bu">int</span>)]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> a <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">101</span>):</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> b <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">101</span>):</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>            ax, ay <span class="op">=</span> info[<span class="st">'A'</span>]</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>            bx, by <span class="op">=</span> info[<span class="st">'B'</span>]</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> ((ax<span class="op">*</span>a <span class="op">+</span> bx<span class="op">*</span>b), (ay<span class="op">*</span>a <span class="op">+</span> by<span class="op">*</span>b)) <span class="op">==</span> info[<span class="st">'Prize'</span>]:</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>                cost <span class="op">=</span> <span class="dv">3</span><span class="op">*</span>a <span class="op">+</span> b</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> cost</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part1(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Since problem gave upper bound of 100 button pushes</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    <span class="co"># we can brute force the solution</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    costs <span class="op">=</span> [brute_force(info) <span class="cf">for</span> info <span class="kw">in</span> parse(inp)]</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(costs)</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>part1(eg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>1928</code></pre>
+<pre><code>480</code></pre>
 </div>
 </div>
-<div id="26054aa0" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"inputs/09"</span>, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    inp <span class="op">=</span> f.read()</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>part1(inp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b94bd244" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"inputs/13"</span>, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    inp <span class="op">=</span> f.read()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>part1(inp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>6288599492129</code></pre>
+<pre><code>39290</code></pre>
 </div>
 </div>
 </section>
@@ -296,91 +341,82 @@ Puzzle Info
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>This time, attempt to move whole files to the leftmost span of free space blocks that could fit the file. Attempt to move each file exactly once in order of decreasing file ID number starting with the file with the highest file ID number. If there is no span of free space to the left of a file that is large enough to fit the file, the file does not move.</p>
-<p>The first example from above now proceeds differently:</p>
-<pre><code>00...111...2...333.44.5555.6666.777.888899
-0099.111...2...333.44.5555.6666.777.8888..
-0099.1117772...333.44.5555.6666.....8888..
-0099.111777244.333....5555.6666.....8888..
-00992111777.44.333....5555.6666.....8888..</code></pre>
-<p>The process of updating the filesystem checksum is the same; now, this example’s checksum would be 2858.</p>
-<p>Start over, now compacting the amphipod’s hard drive using this new method instead. What is the resulting filesystem checksum?</p>
+<p>As you go to win the first prize, you discover that the claw is nowhere near where you expected it would be. Due to a unit conversion error in your measurements, the position of every prize is actually 10000000000000 higher on both the X and Y axis!</p>
+<p>Add 10000000000000 to the X and Y position of every prize. After making this change, the example above would now look like this:</p>
+<pre><code>Button A: X+94, Y+34
+Button B: X+22, Y+67
+Prize: X=10000000008400, Y=10000000005400
+
+Button A: X+26, Y+66
+Button B: X+67, Y+21
+Prize: X=10000000012748, Y=10000000012176
+
+Button A: X+17, Y+86
+Button B: X+84, Y+37
+Prize: X=10000000007870, Y=10000000006450
+
+Button A: X+69, Y+23
+Button B: X+27, Y+71
+Prize: X=10000000018641, Y=10000000010279</code></pre>
+<p>Now, it is only possible to win a prize on the second and fourth claw machines. Unfortunately, it will take many more than 100 presses to do so.</p>
+<p>Using the corrected prize coordinates, figure out how to win as many prizes as possible. What is the fewest tokens you would have to spend to win all possible prizes?</p>
 </div>
 </div>
 </div>
-<div id="5d98d793" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse2(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> (<span class="bu">dict</span>, <span class="bu">list</span>):</span>
-<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a><span class="co">    For part 2, we need to store</span></span>
-<span id="annotated-cell-3-4"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a><span class="co">    - dict with (file_id, (pos, file_size))</span></span>
-<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5" aria-hidden="true" tabindex="-1"></a><span class="co">    - list of (pos, free_size)</span></span>
-<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> {}</span>
-<span id="annotated-cell-3-8"><a href="#annotated-cell-3-8" aria-hidden="true" tabindex="-1"></a>    frees <span class="op">=</span> []</span>
+<p>I opted to solve the linear equations on pen and paper for part 2. Later I came back to transcribe my working using Quarto’s latex equation support. I initially had some issues with creating a newline in the using the default MathJax renderer but that was easily fixed by specifying a different rendering engine (Katex). See <a href="https://github.com/quarto-dev/quarto-cli/discussions/4916">issue</a>.</p>
+<p><span class="math display">
+ax_1 + bx_2 = x_{prize}
+\\
+ay_1 + by_2 = y_{prize}
+</span> <span class="math display">
+\tag{1} ax_1y_2 + bx_2y_2 = x_{prize}y_2
+</span> <span class="math display">
+\tag{2} ax_2y_1 + bx_2y_2 = x_2y_{prize}
+</span> <span class="math display">
+\tag{1-2} ax_1y_2 - ax_2y_1 = x_{prize}y_2 - x_2y_{prize}
+\\
+a(x_1y_2 - ax_2y_1) = x_{prize}y_2 - x_2y_{prize}
+\\
+a = \frac{x_{prize}y_2 - x_2y_{prize}}{x_1y_2 - ax_2y_1}
+</span> <span class="math display">
+b = \frac{x_{prize} - ax_1}{x_2}
+</span></p>
+<div id="85a9e727" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part2(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>    costs <span class="op">=</span> []</span>
+<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> info <span class="kw">in</span> parse(inp):</span>
+<span id="annotated-cell-3-4"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a>        x1 , y1 <span class="op">=</span> info[<span class="st">'A'</span>]</span>
+<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5" aria-hidden="true" tabindex="-1"></a>        x2 , y2 <span class="op">=</span> info[<span class="st">'B'</span>]</span>
+<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a>        x_p , y_p <span class="op">=</span> info[<span class="st">'Prize'</span>]</span>
+<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7" aria-hidden="true" tabindex="-1"></a>        x_p <span class="op">+=</span> <span class="dv">10000000000000</span></span>
+<span id="annotated-cell-3-8"><a href="#annotated-cell-3-8" aria-hidden="true" tabindex="-1"></a>        y_p <span class="op">+=</span> <span class="dv">10000000000000</span></span>
 <span id="annotated-cell-3-9"><a href="#annotated-cell-3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-10"><a href="#annotated-cell-3-10" aria-hidden="true" tabindex="-1"></a>    file_id <span class="op">=</span> <span class="dv">0</span></span>
-<span id="annotated-cell-3-11"><a href="#annotated-cell-3-11" aria-hidden="true" tabindex="-1"></a>    pos <span class="op">=</span> <span class="dv">0</span></span>
-<span id="annotated-cell-3-12"><a href="#annotated-cell-3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, ch <span class="kw">in</span> <span class="bu">enumerate</span>(inp):</span>
-<span id="annotated-cell-3-13"><a href="#annotated-cell-3-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="annotated-cell-3-14"><a href="#annotated-cell-3-14" aria-hidden="true" tabindex="-1"></a>            files[file_id] <span class="op">=</span> (pos, <span class="bu">int</span>(ch))</span>
-<span id="annotated-cell-3-15"><a href="#annotated-cell-3-15" aria-hidden="true" tabindex="-1"></a>            file_id <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="annotated-cell-3-16"><a href="#annotated-cell-3-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="annotated-cell-3-17"><a href="#annotated-cell-3-17" aria-hidden="true" tabindex="-1"></a>            frees.append((pos, <span class="bu">int</span>(ch)))</span>
-<span id="annotated-cell-3-18"><a href="#annotated-cell-3-18" aria-hidden="true" tabindex="-1"></a>        pos <span class="op">+=</span> <span class="bu">int</span>(ch)</span>
-<span id="annotated-cell-3-19"><a href="#annotated-cell-3-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-20"><a href="#annotated-cell-3-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> files, frees</span>
-<span id="annotated-cell-3-21"><a href="#annotated-cell-3-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-22"><a href="#annotated-cell-3-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part2(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="annotated-cell-3-23"><a href="#annotated-cell-3-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-24"><a href="#annotated-cell-3-24" aria-hidden="true" tabindex="-1"></a>    files, frees <span class="op">=</span> parse2(inp)</span>
-<span id="annotated-cell-3-25"><a href="#annotated-cell-3-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-26"><a href="#annotated-cell-3-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Go through files in reverse order</span></span>
-<span id="annotated-cell-3-27"><a href="#annotated-cell-3-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (file_id, (file_pos, file_size)) <span class="kw">in</span> <span class="bu">reversed</span>(files.items()):</span>
-<span id="annotated-cell-3-28"><a href="#annotated-cell-3-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Compare against frees in normal order</span></span>
-<span id="annotated-cell-3-29"><a href="#annotated-cell-3-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i, (free_pos, free_size) <span class="kw">in</span> <span class="bu">enumerate</span>(frees):</span>
-<span id="annotated-cell-3-30"><a href="#annotated-cell-3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-31"><a href="#annotated-cell-3-31" aria-hidden="true" tabindex="-1"></a>            <span class="co"># if our points cross, there's no free space available for this file</span></span>
-<span id="annotated-cell-3-32"><a href="#annotated-cell-3-32" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> free_pos <span class="op">&gt;=</span> file_pos:</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-33" class="code-annotation-target"><a href="#annotated-cell-3-33" aria-hidden="true" tabindex="-1"></a>                frees <span class="op">=</span> frees[:i]</span>
-<span id="annotated-cell-3-34"><a href="#annotated-cell-3-34" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
-<span id="annotated-cell-3-35"><a href="#annotated-cell-3-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-36"><a href="#annotated-cell-3-36" aria-hidden="true" tabindex="-1"></a>            <span class="co"># if size match, file is swapped in and free removed</span></span>
-<span id="annotated-cell-3-37"><a href="#annotated-cell-3-37" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> file_size <span class="op">==</span> free_size:</span>
-<span id="annotated-cell-3-38"><a href="#annotated-cell-3-38" aria-hidden="true" tabindex="-1"></a>                files[file_id] <span class="op">=</span> (free_pos, file_size)</span>
-<span id="annotated-cell-3-39"><a href="#annotated-cell-3-39" aria-hidden="true" tabindex="-1"></a>                frees.pop(i)</span>
-<span id="annotated-cell-3-40"><a href="#annotated-cell-3-40" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
-<span id="annotated-cell-3-41"><a href="#annotated-cell-3-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-42"><a href="#annotated-cell-3-42" aria-hidden="true" tabindex="-1"></a>            <span class="co"># if file_size is smaller than free_size, we need to update both sizes</span></span>
-<span id="annotated-cell-3-43"><a href="#annotated-cell-3-43" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> file_size <span class="op">&lt;</span> free_size:</span>
-<span id="annotated-cell-3-44"><a href="#annotated-cell-3-44" aria-hidden="true" tabindex="-1"></a>                files[file_id] <span class="op">=</span> (free_pos, file_size)</span>
-<span id="annotated-cell-3-45"><a href="#annotated-cell-3-45" aria-hidden="true" tabindex="-1"></a>                frees[i] <span class="op">=</span> (free_pos <span class="op">+</span> file_size, free_size <span class="op">-</span> file_size)</span>
-<span id="annotated-cell-3-46"><a href="#annotated-cell-3-46" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
-<span id="annotated-cell-3-47"><a href="#annotated-cell-3-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-48"><a href="#annotated-cell-3-48" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Checksum</span></span>
-<span id="annotated-cell-3-49"><a href="#annotated-cell-3-49" aria-hidden="true" tabindex="-1"></a>    solution <span class="op">=</span> []</span>
-<span id="annotated-cell-3-50"><a href="#annotated-cell-3-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> file_id, (file_pos, file_size) <span class="kw">in</span> files.items():</span>
-<span id="annotated-cell-3-51"><a href="#annotated-cell-3-51" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(file_pos, file_pos <span class="op">+</span> file_size):</span>
-<span id="annotated-cell-3-52"><a href="#annotated-cell-3-52" aria-hidden="true" tabindex="-1"></a>            solution.append(file_id <span class="op">*</span> i)</span>
-<span id="annotated-cell-3-53"><a href="#annotated-cell-3-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-54"><a href="#annotated-cell-3-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(solution)</span>
-<span id="annotated-cell-3-55"><a href="#annotated-cell-3-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-3-56"><a href="#annotated-cell-3-56" aria-hidden="true" tabindex="-1"></a>part2(eg)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-3-10"><a href="#annotated-cell-3-10" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> (x_p <span class="op">*</span> y2 <span class="op">-</span> x2 <span class="op">*</span> y_p) <span class="op">/</span> (x1 <span class="op">*</span> y2 <span class="op">-</span> x2 <span class="op">*</span> y1)</span>
+<span id="annotated-cell-3-11"><a href="#annotated-cell-3-11" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> (x_p <span class="op">-</span> a <span class="op">*</span> x1) <span class="op">/</span> x2</span>
+<span id="annotated-cell-3-12"><a href="#annotated-cell-3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-13"><a href="#annotated-cell-3-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Check if solution is whole number</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-14" class="code-annotation-target"><a href="#annotated-cell-3-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (a <span class="op">%</span> <span class="dv">1</span> <span class="op">==</span> <span class="dv">0</span>) <span class="kw">and</span> (b <span class="op">%</span> <span class="dv">1</span> <span class="op">==</span> <span class="dv">0</span>):</span>
+<span id="annotated-cell-3-15"><a href="#annotated-cell-3-15" aria-hidden="true" tabindex="-1"></a>            costs.append(<span class="dv">3</span><span class="op">*</span>a <span class="op">+</span> b)</span>
+<span id="annotated-cell-3-16"><a href="#annotated-cell-3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-17"><a href="#annotated-cell-3-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">int</span>(<span class="bu">sum</span>(costs))</span>
+<span id="annotated-cell-3-18"><a href="#annotated-cell-3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-19"><a href="#annotated-cell-3-19" aria-hidden="true" tabindex="-1"></a>part2(eg)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="33" data-code-annotation="1">Nice optimisation I learnt from other solutions. If pointers cross, then we know that every free space to the right of <code>free_pos</code> is out of contention because our current <code>file_pos</code> is to the left of all these free spaces.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="14" data-code-annotation="1"><code>num % 1</code> is a useful shorthand to check it num is whole number</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>2858</code></pre>
+<pre><code>875318608908</code></pre>
 </div>
 </div>
-<div id="4776feb5" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>part2(inp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6d5ab22e" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>part2(inp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>6321896265143</code></pre>
+<pre><code>73458657399094</code></pre>
 </div>
 </div>
 
