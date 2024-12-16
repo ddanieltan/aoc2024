@@ -1,0 +1,192 @@
+---
+title: "Day 13: Claw Contraption"
+format:
+  html:
+    html-math-method: katex
+---
+
+![Prompt:christmas elves in a gachapon claw machine, surrounded by soft toys,  big mechanical pincer above, cartoon style](images/13.webp){width="500" fig-align="center"}
+
+## Part 1
+
+::: {.callout-note title="Puzzle Info" collapse="true"}
+it costs 3 tokens to push the A button and 1 token to push the B button.
+
+Each machine contains one prize; to win the prize, the claw must be positioned exactly above the prize on both the X and Y axes.
+
+You wonder: what is the smallest number of tokens you would have to spend to win as many prizes as possible? You assemble a list of every machine's button behavior and prize location (your puzzle input). For example:
+
+```
+Button A: X+94, Y+34
+Button B: X+22, Y+67
+Prize: X=8400, Y=5400
+
+Button A: X+26, Y+66
+Button B: X+67, Y+21
+Prize: X=12748, Y=12176
+
+Button A: X+17, Y+86
+Button B: X+84, Y+37
+Prize: X=7870, Y=6450
+
+Button A: X+69, Y+23
+Button B: X+27, Y+71
+Prize: X=18641, Y=10279
+```
+
+This list describes the button configuration and prize location of four different claw machines.
+
+For now, consider just the first claw machine in the list:
+
+Pushing the machine's A button would move the claw 94 units along the X axis and 34 units along the Y axis. Pushing the B button would move the claw 22 units along the X axis and 67 units along the Y axis. The prize is located at X=8400, Y=5400; this means that from the claw's initial position, it would need to move exactly 8400 units along the X axis and exactly 5400 units along the Y axis to be perfectly aligned with the prize in this machine. The cheapest way to win the prize is by pushing the A button 80 times and the B button 40 times. This would line up the claw along the X axis (because 80*94 + 40*22 = 8400) and along the Y axis (because 80*34 + 40*67 = 5400). Doing this would cost 80*3 tokens for the A presses and 40*1 for the B presses, a total of 280 tokens.
+
+For the second and fourth claw machines, there is no combination of A and B presses that will ever win a prize.
+
+For the third claw machine, the cheapest way to win the prize is by pushing the A button 38 times and the B button 86 times. Doing this would cost a total of 200 tokens.
+
+So, the most prizes you could possibly win is two; the minimum tokens you would have to spend to win all (two) prizes is 480.
+
+You estimate that each button would need to be pressed no more than 100 times to win a prize. How else would someone be expected to play?
+
+Figure out how to win as many prizes as possible. What is the fewest tokens you would have to spend to win all possible prizes?
+:::
+
+```{python}
+eg = """Button A: X+94, Y+34
+Button B: X+22, Y+67
+Prize: X=8400, Y=5400
+
+Button A: X+26, Y+66
+Button B: X+67, Y+21
+Prize: X=12748, Y=12176
+
+Button A: X+17, Y+86
+Button B: X+84, Y+37
+Prize: X=7870, Y=6450
+
+Button A: X+69, Y+23
+Button B: X+27, Y+71
+Prize: X=18641, Y=10279
+"""
+
+import re
+
+def parse(inp:str) -> list[dict[str, (int, int)]]:
+    ret = []
+    for info in inp.split("\n\n"):
+        pattern = r"Button A: X\+(\d+), Y\+(\d+)\nButton B: X\+(\d+), Y\+(\d+)\nPrize: X=(\d+), Y=(\d+)"
+        match = re.match(pattern, info)
+        ret.append({
+            "A" : (int(match[1]), int(match[2])),
+            "B" : (int(match[3]), int(match[4])),
+            "Prize" : (int(match[5]), int(match[6])),
+        })
+
+    return ret
+
+def brute_force(info:dict[str, (int,int)]) -> int:
+    for a in range(101):
+        for b in range(101):
+            ax, ay = info['A']
+            bx, by = info['B']
+            if ((ax*a + bx*b), (ay*a + by*b)) == info['Prize']:
+                cost = 3*a + b
+                return cost
+    return 0
+
+
+def part1(inp:str) -> int:
+    # Since problem gave upper bound of 100 button pushes
+    # we can brute force the solution
+    costs = [brute_force(info) for info in parse(inp)]
+    return sum(costs)
+
+part1(eg)
+```
+
+```{python}
+with open("inputs/13", "r") as f:
+    inp = f.read()
+part1(inp)
+```
+
+## Part 2
+
+::: {.callout-note title="Puzzle Info" collapse="true"}
+As you go to win the first prize, you discover that the claw is nowhere near where you expected it would be. Due to a unit conversion error in your measurements, the position of every prize is actually 10000000000000 higher on both the X and Y axis!
+
+Add 10000000000000 to the X and Y position of every prize. After making this change, the example above would now look like this:
+
+```
+Button A: X+94, Y+34
+Button B: X+22, Y+67
+Prize: X=10000000008400, Y=10000000005400
+
+Button A: X+26, Y+66
+Button B: X+67, Y+21
+Prize: X=10000000012748, Y=10000000012176
+
+Button A: X+17, Y+86
+Button B: X+84, Y+37
+Prize: X=10000000007870, Y=10000000006450
+
+Button A: X+69, Y+23
+Button B: X+27, Y+71
+Prize: X=10000000018641, Y=10000000010279
+```
+
+Now, it is only possible to win a prize on the second and fourth claw machines. Unfortunately, it will take many more than 100 presses to do so.
+
+Using the corrected prize coordinates, figure out how to win as many prizes as possible. What is the fewest tokens you would have to spend to win all possible prizes?
+:::
+
+I opted to solve the linear equations on pen and paper for part 2. Later I came back to transcribe my working using Quarto's latex equation support. I initially had some issues with creating a newline in the using the default MathJax renderer but that was easily fixed by specifying a different rendering engine (Katex). See [issue](https://github.com/quarto-dev/quarto-cli/discussions/4916).
+
+$$
+ax_1 + bx_2 = x_{prize}
+\\
+ay_1 + by_2 = y_{prize}
+$$
+$$
+\tag{1} ax_1y_2 + bx_2y_2 = x_{prize}y_2
+$$
+$$
+\tag{2} ax_2y_1 + bx_2y_2 = x_2y_{prize}
+$$
+$$
+\tag{1-2} ax_1y_2 - ax_2y_1 = x_{prize}y_2 - x_2y_{prize}
+\\
+a(x_1y_2 - ax_2y_1) = x_{prize}y_2 - x_2y_{prize}
+\\
+a = \frac{x_{prize}y_2 - x_2y_{prize}}{x_1y_2 - ax_2y_1}
+$$
+$$
+b = \frac{x_{prize} - ax_1}{x_2}
+$$
+```{python}
+def part2(inp:str) -> int:
+    costs = []
+    for info in parse(inp):
+        x1 , y1 = info['A']
+        x2 , y2 = info['B']
+        x_p , y_p = info['Prize']
+        x_p += 10000000000000
+        y_p += 10000000000000
+
+        a = (x_p * y2 - x2 * y_p) / (x1 * y2 - x2 * y1)
+        b = (x_p - a * x1) / x2
+
+        # Check if solution is whole number
+        if (a % 1 == 0) and (b % 1 == 0): # <1>
+            costs.append(3*a + b)
+
+    return int(sum(costs))
+
+part2(eg)
+```
+
+1.  `num % 1` is a useful shorthand to check it num is whole number
+
+```{python}
+part2(inp)
+```
