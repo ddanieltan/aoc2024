@@ -1,0 +1,231 @@
+---
+title: "Day 14: Restroom Redoubt"
+---
+
+![Prompt: christmas robots arranged on a x-y grid in the shape of a christmas tree, cartoon style](images/14.webp){width="500" fig-align="center"}
+
+## Part 1
+
+::: {.callout-note title="Puzzle Info" collapse="true"}
+You make a list (your puzzle input) of all of the robots' current positions (p) and velocities (v), one robot per line. For example:
+
+p=0,4 v=3,-3
+p=6,3 v=-1,-3
+p=10,3 v=-1,2
+p=2,0 v=2,-1
+p=0,0 v=1,3
+p=3,0 v=-2,-2
+p=7,6 v=-1,-3
+p=3,0 v=-1,-2
+p=9,3 v=2,3
+p=7,3 v=-1,2
+p=2,4 v=2,-3
+p=9,5 v=-3,-3
+Each robot's position is given as p=x,y where x represents the number of tiles the robot is from the left wall and y represents the number of tiles from the top wall (when viewed from above). So, a position of p=0,0 means the robot is all the way in the top-left corner.
+
+Each robot's velocity is given as v=x,y where x and y are given in tiles per second. Positive x means the robot is moving to the right, and positive y means the robot is moving down. So, a velocity of v=1,-2 means that each second, the robot moves 1 tile to the right and 2 tiles up.
+
+The robots outside the actual bathroom are in a space which is 101 tiles wide and 103 tiles tall (when viewed from above). However, in this example, the robots are in a space which is only 11 tiles wide and 7 tiles tall.
+
+The robots are good at navigating over/under each other (due to a combination of springs, extendable legs, and quadcopters), so they can share the same tile and don't interact with each other. Visually, the number of robots on each tile in this example looks like this:
+```
+1.12.......
+...........
+...........
+......11.11
+1.1........
+.........1.
+.......1...
+```
+These robots have a unique feature for maximum bathroom security: they can teleport. When a robot would run into an edge of the space they're in, they instead teleport to the other side, effectively wrapping around the edges. Here is what robot p=2,4 v=2,-3 does for the first few seconds:
+```
+Initial state:
+...........
+...........
+...........
+...........
+..1........
+...........
+...........
+
+After 1 second:
+...........
+....1......
+...........
+...........
+...........
+...........
+...........
+
+After 2 seconds:
+...........
+...........
+...........
+...........
+...........
+......1....
+...........
+
+After 3 seconds:
+...........
+...........
+........1..
+...........
+...........
+...........
+...........
+
+After 4 seconds:
+...........
+...........
+...........
+...........
+...........
+...........
+..........1
+
+After 5 seconds:
+...........
+...........
+...........
+.1.........
+...........
+...........
+...........
+```
+The Historian can't wait much longer, so you don't have to simulate the robots for very long. Where will the robots be after 100 seconds?
+
+In the above example, the number of robots on each tile after 100 seconds has elapsed looks like this:
+```
+......2..1.
+...........
+1..........
+.11........
+.....1.....
+...12......
+.1....1....
+```
+To determine the safest area, count the number of robots in each quadrant after 100 seconds. Robots that are exactly in the middle (horizontally or vertically) don't count as being in any quadrant, so the only relevant robots are:
+```
+..... 2..1.
+..... .....
+1.... .....
+
+..... .....
+...12 .....
+.1... 1....
+```
+In this example, the quadrants contain 1, 3, 4, and 1 robot. Multiplying these together gives a total safety factor of 12.
+
+Predict the motion of the robots in your list within a space which is 101 tiles wide and 103 tiles tall. What will the safety factor be after exactly 100 seconds have elapsed?
+:::
+
+```{python}
+eg = """p=0,4 v=3,-3
+p=6,3 v=-1,-3
+p=10,3 v=-1,2
+p=2,0 v=2,-1
+p=0,0 v=1,3
+p=3,0 v=-2,-2
+p=7,6 v=-1,-3
+p=3,0 v=-1,-2
+p=9,3 v=2,3
+p=7,3 v=-1,2
+p=2,4 v=2,-3
+p=9,5 v=-3,-3
+"""
+
+import re
+from math import prod
+
+def parse(inp:str) -> list[(int, int, int, int)]:
+    parsed = []
+    for line in inp.splitlines():
+        pattern = r"p=(-?\d+),(-?\d+) v=(-?\d+),(-?\d+)" # <1>
+        match = re.match(pattern, line)
+        x, y, vx, vy = int(match[1]),  int(match[2]), int(match[3]), int(match[4])
+        parsed.append((x,y,vx,vy))
+    return parsed
+
+def part1(inp:str, wide:int, tall:int):
+    q1 = 0
+    q2 = 0
+    q3 = 0
+    q4 = 0
+    for (x, y, vx, vy) in parse(inp):
+        nx = (x + 100 * vx) % wide
+        ny = (y + 100 * vy) % tall
+
+        match (nx, ny):
+            case (nx,ny) if (0 <= nx < wide//2) and (0 <= ny < tall//2): # <2>
+                q1 += 1
+            case (nx, ny) if ((wide//2)+1 <= nx <= wide-1) and (0 <= ny < tall//2):
+                q2 += 1
+            case (nx, ny) if (0 <= nx < wide//2) and ((tall//2)+1 <= ny <= tall-1):
+                q3 += 1
+            case (nx, ny) if ((wide//2)+1 <= nx <= wide-1) and ((tall//2)+1 <= ny <= tall-1):
+                q4 += 1
+            case _:
+                # middle lines
+                continue
+
+    return prod([q1,q2,q3,q4]) # <3>
+
+part1(eg, 11, 7)
+
+```
+1. "-?\d+" is a useful regex that captures either positive or negative digits
+2. Reminder that `case() if predicate` is the syntax structure used for adding a conditional in `match`
+3. Product function lives under `math.prod`
+
+```{python}
+with open("inputs/14", "r") as f:
+    inp = f.read()
+part1(inp, 101, 103)
+```
+
+## Part 2
+
+::: {.callout-note title="Puzzle Info" collapse="true"}
+During the bathroom break, someone notices that these robots seem awfully similar to ones built and used at the North Pole. If they're the same type of robots, they should have a hard-coded Easter egg: very rarely, most of the robots should arrange themselves into a picture of a Christmas tree.
+
+What is the fewest number of seconds that must elapse for the robots to display the Easter egg?
+:::
+
+```{python}
+from scipy.stats import kstest
+import polars as pl
+
+def part2(inp:str, wide:int, tall:int):
+    candidates = []
+    for t in range(10000):
+        xs = []
+        ys = []
+        for (x, y, vx, vy) in parse(inp):
+            nx = (x + t * vx) % wide
+            ny = (y + t * vy) % tall
+            xs.append(nx)
+            ys.append(ny)
+
+        ks_x = kstest(rvs=xs, cdf="uniform", args = (0,wide)) # <1>
+        ks_y = kstest(rvs=ys, cdf="uniform", args = (0,tall))
+
+        if ks_x.pvalue <= 0.01 and ks_y.pvalue <= 0.01:
+            print(t)
+            df = pl.DataFrame({"x":xs, "y":ys})
+            candidates.append((t,df))
+    return candidates
+
+candidates = part2(inp, 101, 103)
+```
+1. Credit to [this solution](https://github.com/ESiler/AOC2024/blob/main/day14.ipynb) for the idea that a Christmas Tree would be a very non-random arrangement of points, so applying a [KS Goodness of Fit](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kstest.html) test is a good way to extract out potential candidates!
+
+After narrowing down to a few candidates, I manually plotted them out to find the Christmas Tree.
+```{python}
+for t, df in candidates:
+    (df.plot.point(x="x",y="y")
+    .properties(title=f"Time: {t}")
+    .display() # <1>
+    )
+```
+1. `alt.display()` displays a chart and is useful when iterating through multiple Altair charts
