@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Day 14: Restroom Redoubt – Advent of Code 2024</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./images/favico.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-59fdbf2653e1aaac23acf64cc15a0d7d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-93e36076386536a9f007aa60ec7ecd33.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="custom.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Advent of Code 2024</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ddanieltan/aoc2024"> <i class="bi bi-github" role="img" aria-label="github">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#part-1" id="toc-part-1" class="nav-link active" data-scroll-target="#part-1">Part 1</a></li>
+  <li><a href="#part-2" id="toc-part-2" class="nav-link" data-scroll-target="#part-2">Part 2</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Day 14: Restroom Redoubt</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/14.webp" class="img-fluid figure-img" width="500"></p>
+<figcaption>Prompt: christmas robots arranged on a x-y grid in the shape of a christmas tree, cartoon style</figcaption>
+</figure>
+</div>
+<section id="part-1" class="level2">
+<h2 class="anchored" data-anchor-id="part-1">Part 1</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Puzzle Info">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Puzzle Info
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You make a list (your puzzle input) of all of the robots’ current positions (p) and velocities (v), one robot per line. For example:</p>
+<p>p=0,4 v=3,-3 p=6,3 v=-1,-3 p=10,3 v=-1,2 p=2,0 v=2,-1 p=0,0 v=1,3 p=3,0 v=-2,-2 p=7,6 v=-1,-3 p=3,0 v=-1,-2 p=9,3 v=2,3 p=7,3 v=-1,2 p=2,4 v=2,-3 p=9,5 v=-3,-3 Each robot’s position is given as p=x,y where x represents the number of tiles the robot is from the left wall and y represents the number of tiles from the top wall (when viewed from above). So, a position of p=0,0 means the robot is all the way in the top-left corner.</p>
+<p>Each robot’s velocity is given as v=x,y where x and y are given in tiles per second. Positive x means the robot is moving to the right, and positive y means the robot is moving down. So, a velocity of v=1,-2 means that each second, the robot moves 1 tile to the right and 2 tiles up.</p>
+<p>The robots outside the actual bathroom are in a space which is 101 tiles wide and 103 tiles tall (when viewed from above). However, in this example, the robots are in a space which is only 11 tiles wide and 7 tiles tall.</p>
+<p>The robots are good at navigating over/under each other (due to a combination of springs, extendable legs, and quadcopters), so they can share the same tile and don’t interact with each other. Visually, the number of robots on each tile in this example looks like this:</p>
+<pre><code>1.12.......
+...........
+...........
+......11.11
+1.1........
+.........1.
+.......1...</code></pre>
+<p>These robots have a unique feature for maximum bathroom security: they can teleport. When a robot would run into an edge of the space they’re in, they instead teleport to the other side, effectively wrapping around the edges. Here is what robot p=2,4 v=2,-3 does for the first few seconds:</p>
+<pre><code>Initial state:
+...........
+...........
+...........
+...........
+..1........
+...........
+...........
+
+After 1 second:
+...........
+....1......
+...........
+...........
+...........
+...........
+...........
+
+After 2 seconds:
+...........
+...........
+...........
+...........
+...........
+......1....
+...........
+
+After 3 seconds:
+...........
+...........
+........1..
+...........
+...........
+...........
+...........
+
+After 4 seconds:
+...........
+...........
+...........
+...........
+...........
+...........
+..........1
+
+After 5 seconds:
+...........
+...........
+...........
+.1.........
+...........
+...........
+...........</code></pre>
+<p>The Historian can’t wait much longer, so you don’t have to simulate the robots for very long. Where will the robots be after 100 seconds?</p>
+<p>In the above example, the number of robots on each tile after 100 seconds has elapsed looks like this:</p>
+<pre><code>......2..1.
+...........
+1..........
+.11........
+.....1.....
+...12......
+.1....1....</code></pre>
+<p>To determine the safest area, count the number of robots in each quadrant after 100 seconds. Robots that are exactly in the middle (horizontally or vertically) don’t count as being in any quadrant, so the only relevant robots are:</p>
+<pre><code>..... 2..1.
+..... .....
+1.... .....
+
+..... .....
+...12 .....
+.1... 1....</code></pre>
+<p>In this example, the quadrants contain 1, 3, 4, and 1 robot. Multiplying these together gives a total safety factor of 12.</p>
+<p>Predict the motion of the robots in your list within a space which is 101 tiles wide and 103 tiles tall. What will the safety factor be after exactly 100 seconds have elapsed?</p>
+</div>
+</div>
+</div>
+<div id="0cbfb572" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a>eg <span class="op">=</span> <span class="st">"""p=0,4 v=3,-3</span></span>
+<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a><span class="st">p=6,3 v=-1,-3</span></span>
+<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a><span class="st">p=10,3 v=-1,2</span></span>
+<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a><span class="st">p=2,0 v=2,-1</span></span>
+<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a><span class="st">p=0,0 v=1,3</span></span>
+<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a><span class="st">p=3,0 v=-2,-2</span></span>
+<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7" aria-hidden="true" tabindex="-1"></a><span class="st">p=7,6 v=-1,-3</span></span>
+<span id="annotated-cell-1-8"><a href="#annotated-cell-1-8" aria-hidden="true" tabindex="-1"></a><span class="st">p=3,0 v=-1,-2</span></span>
+<span id="annotated-cell-1-9"><a href="#annotated-cell-1-9" aria-hidden="true" tabindex="-1"></a><span class="st">p=9,3 v=2,3</span></span>
+<span id="annotated-cell-1-10"><a href="#annotated-cell-1-10" aria-hidden="true" tabindex="-1"></a><span class="st">p=7,3 v=-1,2</span></span>
+<span id="annotated-cell-1-11"><a href="#annotated-cell-1-11" aria-hidden="true" tabindex="-1"></a><span class="st">p=2,4 v=2,-3</span></span>
+<span id="annotated-cell-1-12"><a href="#annotated-cell-1-12" aria-hidden="true" tabindex="-1"></a><span class="st">p=9,5 v=-3,-3</span></span>
+<span id="annotated-cell-1-13"><a href="#annotated-cell-1-13" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="annotated-cell-1-14"><a href="#annotated-cell-1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-15"><a href="#annotated-cell-1-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="annotated-cell-1-16"><a href="#annotated-cell-1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> prod</span>
+<span id="annotated-cell-1-17"><a href="#annotated-cell-1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-18"><a href="#annotated-cell-1-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[(<span class="bu">int</span>, <span class="bu">int</span>, <span class="bu">int</span>, <span class="bu">int</span>)]:</span>
+<span id="annotated-cell-1-19"><a href="#annotated-cell-1-19" aria-hidden="true" tabindex="-1"></a>    parsed <span class="op">=</span> []</span>
+<span id="annotated-cell-1-20"><a href="#annotated-cell-1-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> inp.splitlines():</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-21" class="code-annotation-target"><a href="#annotated-cell-1-21" aria-hidden="true" tabindex="-1"></a>        pattern <span class="op">=</span> <span class="vs">r"p=(-?\d+),(-?\d+) v=(-?\d+),(-?\d+)"</span></span>
+<span id="annotated-cell-1-22"><a href="#annotated-cell-1-22" aria-hidden="true" tabindex="-1"></a>        match <span class="op">=</span> re.match(pattern, line)</span>
+<span id="annotated-cell-1-23"><a href="#annotated-cell-1-23" aria-hidden="true" tabindex="-1"></a>        x, y, vx, vy <span class="op">=</span> <span class="bu">int</span>(match[<span class="dv">1</span>]),  <span class="bu">int</span>(match[<span class="dv">2</span>]), <span class="bu">int</span>(match[<span class="dv">3</span>]), <span class="bu">int</span>(match[<span class="dv">4</span>])</span>
+<span id="annotated-cell-1-24"><a href="#annotated-cell-1-24" aria-hidden="true" tabindex="-1"></a>        parsed.append((x,y,vx,vy))</span>
+<span id="annotated-cell-1-25"><a href="#annotated-cell-1-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> parsed</span>
+<span id="annotated-cell-1-26"><a href="#annotated-cell-1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-27"><a href="#annotated-cell-1-27" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part1(inp:<span class="bu">str</span>, wide:<span class="bu">int</span>, tall:<span class="bu">int</span>):</span>
+<span id="annotated-cell-1-28"><a href="#annotated-cell-1-28" aria-hidden="true" tabindex="-1"></a>    q1 <span class="op">=</span> <span class="dv">0</span></span>
+<span id="annotated-cell-1-29"><a href="#annotated-cell-1-29" aria-hidden="true" tabindex="-1"></a>    q2 <span class="op">=</span> <span class="dv">0</span></span>
+<span id="annotated-cell-1-30"><a href="#annotated-cell-1-30" aria-hidden="true" tabindex="-1"></a>    q3 <span class="op">=</span> <span class="dv">0</span></span>
+<span id="annotated-cell-1-31"><a href="#annotated-cell-1-31" aria-hidden="true" tabindex="-1"></a>    q4 <span class="op">=</span> <span class="dv">0</span></span>
+<span id="annotated-cell-1-32"><a href="#annotated-cell-1-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (x, y, vx, vy) <span class="kw">in</span> parse(inp):</span>
+<span id="annotated-cell-1-33"><a href="#annotated-cell-1-33" aria-hidden="true" tabindex="-1"></a>        nx <span class="op">=</span> (x <span class="op">+</span> <span class="dv">100</span> <span class="op">*</span> vx) <span class="op">%</span> wide</span>
+<span id="annotated-cell-1-34"><a href="#annotated-cell-1-34" aria-hidden="true" tabindex="-1"></a>        ny <span class="op">=</span> (y <span class="op">+</span> <span class="dv">100</span> <span class="op">*</span> vy) <span class="op">%</span> tall</span>
+<span id="annotated-cell-1-35"><a href="#annotated-cell-1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-36"><a href="#annotated-cell-1-36" aria-hidden="true" tabindex="-1"></a>        match (nx, ny):</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-37" class="code-annotation-target"><a href="#annotated-cell-1-37" aria-hidden="true" tabindex="-1"></a>            case (nx,ny) <span class="cf">if</span> (<span class="dv">0</span> <span class="op">&lt;=</span> nx <span class="op">&lt;</span> wide<span class="op">//</span><span class="dv">2</span>) <span class="kw">and</span> (<span class="dv">0</span> <span class="op">&lt;=</span> ny <span class="op">&lt;</span> tall<span class="op">//</span><span class="dv">2</span>):</span>
+<span id="annotated-cell-1-38"><a href="#annotated-cell-1-38" aria-hidden="true" tabindex="-1"></a>                q1 <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="annotated-cell-1-39"><a href="#annotated-cell-1-39" aria-hidden="true" tabindex="-1"></a>            case (nx, ny) <span class="cf">if</span> ((wide<span class="op">//</span><span class="dv">2</span>)<span class="op">+</span><span class="dv">1</span> <span class="op">&lt;=</span> nx <span class="op">&lt;=</span> wide<span class="op">-</span><span class="dv">1</span>) <span class="kw">and</span> (<span class="dv">0</span> <span class="op">&lt;=</span> ny <span class="op">&lt;</span> tall<span class="op">//</span><span class="dv">2</span>):</span>
+<span id="annotated-cell-1-40"><a href="#annotated-cell-1-40" aria-hidden="true" tabindex="-1"></a>                q2 <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="annotated-cell-1-41"><a href="#annotated-cell-1-41" aria-hidden="true" tabindex="-1"></a>            case (nx, ny) <span class="cf">if</span> (<span class="dv">0</span> <span class="op">&lt;=</span> nx <span class="op">&lt;</span> wide<span class="op">//</span><span class="dv">2</span>) <span class="kw">and</span> ((tall<span class="op">//</span><span class="dv">2</span>)<span class="op">+</span><span class="dv">1</span> <span class="op">&lt;=</span> ny <span class="op">&lt;=</span> tall<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="annotated-cell-1-42"><a href="#annotated-cell-1-42" aria-hidden="true" tabindex="-1"></a>                q3 <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="annotated-cell-1-43"><a href="#annotated-cell-1-43" aria-hidden="true" tabindex="-1"></a>            case (nx, ny) <span class="cf">if</span> ((wide<span class="op">//</span><span class="dv">2</span>)<span class="op">+</span><span class="dv">1</span> <span class="op">&lt;=</span> nx <span class="op">&lt;=</span> wide<span class="op">-</span><span class="dv">1</span>) <span class="kw">and</span> ((tall<span class="op">//</span><span class="dv">2</span>)<span class="op">+</span><span class="dv">1</span> <span class="op">&lt;=</span> ny <span class="op">&lt;=</span> tall<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="annotated-cell-1-44"><a href="#annotated-cell-1-44" aria-hidden="true" tabindex="-1"></a>                q4 <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="annotated-cell-1-45"><a href="#annotated-cell-1-45" aria-hidden="true" tabindex="-1"></a>            <span class="cf">case</span> _:</span>
+<span id="annotated-cell-1-46"><a href="#annotated-cell-1-46" aria-hidden="true" tabindex="-1"></a>                <span class="co"># middle lines</span></span>
+<span id="annotated-cell-1-47"><a href="#annotated-cell-1-47" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
+<span id="annotated-cell-1-48"><a href="#annotated-cell-1-48" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-49" class="code-annotation-target"><a href="#annotated-cell-1-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> prod([q1,q2,q3,q4])</span>
+<span id="annotated-cell-1-50"><a href="#annotated-cell-1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-51"><a href="#annotated-cell-1-51" aria-hidden="true" tabindex="-1"></a>part1(eg, <span class="dv">11</span>, <span class="dv">7</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="21" data-code-annotation="1">“-?” is a useful regex that captures either positive or negative digits</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="37" data-code-annotation="2">Reminder that <code>case() if predicate</code> is the syntax structure used for adding a conditional in <code>match</code></span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="49" data-code-annotation="3">Product function lives under <code>math.prod</code></span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>12</code></pre>
+</div>
+</div>
+<div id="d7f04142" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"inputs/14"</span>, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    inp <span class="op">=</span> f.read()</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>part1(inp, <span class="dv">101</span>, <span class="dv">103</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>222062148</code></pre>
+</div>
+</div>
+</section>
+<section id="part-2" class="level2">
+<h2 class="anchored" data-anchor-id="part-2">Part 2</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Puzzle Info">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Puzzle Info
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>During the bathroom break, someone notices that these robots seem awfully similar to ones built and used at the North Pole. If they’re the same type of robots, they should have a hard-coded Easter egg: very rarely, most of the robots should arrange themselves into a picture of a Christmas tree.</p>
+<p>What is the fewest number of seconds that must elapse for the robots to display the Easter egg?</p>
+</div>
+</div>
+</div>
+<div id="aea54a82" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> kstest</span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-4"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part2(inp:<span class="bu">str</span>, wide:<span class="bu">int</span>, tall:<span class="bu">int</span>):</span>
+<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5" aria-hidden="true" tabindex="-1"></a>    candidates <span class="op">=</span> []</span>
+<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>):</span>
+<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7" aria-hidden="true" tabindex="-1"></a>        xs <span class="op">=</span> []</span>
+<span id="annotated-cell-3-8"><a href="#annotated-cell-3-8" aria-hidden="true" tabindex="-1"></a>        ys <span class="op">=</span> []</span>
+<span id="annotated-cell-3-9"><a href="#annotated-cell-3-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (x, y, vx, vy) <span class="kw">in</span> parse(inp):</span>
+<span id="annotated-cell-3-10"><a href="#annotated-cell-3-10" aria-hidden="true" tabindex="-1"></a>            nx <span class="op">=</span> (x <span class="op">+</span> t <span class="op">*</span> vx) <span class="op">%</span> wide</span>
+<span id="annotated-cell-3-11"><a href="#annotated-cell-3-11" aria-hidden="true" tabindex="-1"></a>            ny <span class="op">=</span> (y <span class="op">+</span> t <span class="op">*</span> vy) <span class="op">%</span> tall</span>
+<span id="annotated-cell-3-12"><a href="#annotated-cell-3-12" aria-hidden="true" tabindex="-1"></a>            xs.append(nx)</span>
+<span id="annotated-cell-3-13"><a href="#annotated-cell-3-13" aria-hidden="true" tabindex="-1"></a>            ys.append(ny)</span>
+<span id="annotated-cell-3-14"><a href="#annotated-cell-3-14" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-15" class="code-annotation-target"><a href="#annotated-cell-3-15" aria-hidden="true" tabindex="-1"></a>        ks_x <span class="op">=</span> kstest(rvs<span class="op">=</span>xs, cdf<span class="op">=</span><span class="st">"uniform"</span>, args <span class="op">=</span> (<span class="dv">0</span>,wide))</span>
+<span id="annotated-cell-3-16"><a href="#annotated-cell-3-16" aria-hidden="true" tabindex="-1"></a>        ks_y <span class="op">=</span> kstest(rvs<span class="op">=</span>ys, cdf<span class="op">=</span><span class="st">"uniform"</span>, args <span class="op">=</span> (<span class="dv">0</span>,tall))</span>
+<span id="annotated-cell-3-17"><a href="#annotated-cell-3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-18"><a href="#annotated-cell-3-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> ks_x.pvalue <span class="op">&lt;=</span> <span class="fl">0.01</span> <span class="kw">and</span> ks_y.pvalue <span class="op">&lt;=</span> <span class="fl">0.01</span>:</span>
+<span id="annotated-cell-3-19"><a href="#annotated-cell-3-19" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(t)</span>
+<span id="annotated-cell-3-20"><a href="#annotated-cell-3-20" aria-hidden="true" tabindex="-1"></a>            df <span class="op">=</span> pl.DataFrame({<span class="st">"x"</span>:xs, <span class="st">"y"</span>:ys})</span>
+<span id="annotated-cell-3-21"><a href="#annotated-cell-3-21" aria-hidden="true" tabindex="-1"></a>            candidates.append((t,df))</span>
+<span id="annotated-cell-3-22"><a href="#annotated-cell-3-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> candidates</span>
+<span id="annotated-cell-3-23"><a href="#annotated-cell-3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-24"><a href="#annotated-cell-3-24" aria-hidden="true" tabindex="-1"></a>candidates <span class="op">=</span> part2(inp, <span class="dv">101</span>, <span class="dv">103</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="15" data-code-annotation="1">Credit to <a href="https://github.com/ESiler/AOC2024/blob/main/day14.ipynb">this solution</a> for the idea that a Christmas Tree would be a very non-random arrangement of points, so applying a <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kstest.html">KS Goodness of Fit</a> test is a good way to extract out potential candidates!</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2470
+5298
+7520
+7722
+7924</code></pre>
+</div>
+</div>
+<p>After narrowing down to a few candidates, I manually plotted them out to find the Christmas Tree.</p>
+<div id="9ac73ab2" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t, df <span class="kw">in</span> candidates:</span>
+<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2" aria-hidden="true" tabindex="-1"></a>    (df.plot.point(x<span class="op">=</span><span class="st">"x"</span>,y<span class="op">=</span><span class="st">"y"</span>)</span>
+<span id="annotated-cell-4-3"><a href="#annotated-cell-4-3" aria-hidden="true" tabindex="-1"></a>    .properties(title<span class="op">=</span><span class="ss">f"Time: </span><span class="sc">{</span>t<span class="sc">}</span><span class="ss">"</span>)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-4" class="code-annotation-target"><a href="#annotated-cell-4-4" aria-hidden="true" tabindex="-1"></a>    .display()</span>
+<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5" aria-hidden="true" tabindex="-1"></a>    )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="4" data-code-annotation="1"><code>alt.display()</code> displays a chart and is useful when iterating through multiple Altair charts</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+  #altair-viz-699f3ffdd71d42e99ebf3e3d3da64714.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-699f3ffdd71d42e99ebf3e3d3da64714.vega-embed details,
+  #altair-viz-699f3ffdd71d42e99ebf3e3d3da64714.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-699f3ffdd71d42e99ebf3e3d3da64714"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-699f3ffdd71d42e99ebf3e3d3da64714") {
+      outputDiv = document.getElementById("altair-viz-699f3ffdd71d42e99ebf3e3d3da64714");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-63509fd5e0542f2f5420ecb06ab31dd5"}, "mark": {"type": "point", "tooltip": true}, "encoding": {"x": {"field": "x", "type": "quantitative"}, "y": {"field": "y", "type": "quantitative"}}, "params": [{"name": "param_1", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales"}], "title": "Time: 2470", "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-63509fd5e0542f2f5420ecb06ab31dd5": [{"x": 93, "y": 72}, {"x": 30, "y": 6}, {"x": 29, "y": 27}, {"x": 31, "y": 74}, {"x": 43, "y": 16}, {"x": 81, "y": 8}, {"x": 71, "y": 69}, {"x": 25, "y": 79}, {"x": 76, "y": 74}, {"x": 34, "y": 33}, {"x": 18, "y": 4}, {"x": 36, "y": 51}, {"x": 56, "y": 62}, {"x": 34, "y": 6}, {"x": 29, "y": 32}, {"x": 18, "y": 59}, {"x": 2, "y": 40}, {"x": 91, "y": 40}, {"x": 26, "y": 20}, {"x": 6, "y": 43}, {"x": 46, "y": 26}, {"x": 48, "y": 95}, {"x": 34, "y": 27}, {"x": 85, "y": 50}, {"x": 32, "y": 42}, {"x": 31, "y": 65}, {"x": 30, "y": 12}, {"x": 35, "y": 102}, {"x": 33, "y": 101}, {"x": 18, "y": 89}, {"x": 8, "y": 70}, {"x": 28, "y": 46}, {"x": 21, "y": 14}, {"x": 34, "y": 0}, {"x": 97, "y": 91}, {"x": 98, "y": 20}, {"x": 3, "y": 18}, {"x": 39, "y": 64}, {"x": 78, "y": 75}, {"x": 36, "y": 81}, {"x": 47, "y": 21}, {"x": 33, "y": 55}, {"x": 32, "y": 30}, {"x": 29, "y": 34}, {"x": 31, "y": 17}, {"x": 18, "y": 42}, {"x": 18, "y": 8}, {"x": 18, "y": 17}, {"x": 45, "y": 14}, {"x": 38, "y": 43}, {"x": 77, "y": 48}, {"x": 34, "y": 91}, {"x": 29, "y": 52}, {"x": 48, "y": 29}, {"x": 63, "y": 35}, {"x": 27, "y": 46}, {"x": 72, "y": 26}, {"x": 31, "y": 29}, {"x": 36, "y": 100}, {"x": 33, "y": 16}, {"x": 24, "y": 52}, {"x": 31, "y": 39}, {"x": 18, "y": 11}, {"x": 40, "y": 32}, {"x": 40, "y": 95}, {"x": 36, "y": 52}, {"x": 82, "y": 31}, {"x": 19, "y": 89}, {"x": 21, "y": 58}, {"x": 60, "y": 42}, {"x": 36, "y": 34}, {"x": 34, "y": 31}, {"x": 26, "y": 10}, {"x": 40, "y": 13}, {"x": 25, "y": 1}, {"x": 63, "y": 18}, {"x": 36, "y": 1}, {"x": 31, "y": 62}, {"x": 48, "y": 14}, {"x": 37, "y": 16}, {"x": 31, "y": 30}, {"x": 41, "y": 47}, {"x": 28, "y": 95}, {"x": 34, "y": 22}, {"x": 35, "y": 29}, {"x": 30, "y": 80}, {"x": 59, "y": 67}, {"x": 28, "y": 96}, {"x": 35, "y": 77}, {"x": 29, "y": 71}, {"x": 29, "y": 9}, {"x": 60, "y": 5}, {"x": 86, "y": 8}, {"x": 29, "y": 25}, {"x": 23, "y": 83}, {"x": 33, "y": 64}, {"x": 17, "y": 2}, {"x": 33, "y": 79}, {"x": 92, "y": 79}, {"x": 30, "y": 18}, {"x": 48, "y": 66}, {"x": 55, "y": 0}, {"x": 32, "y": 55}, {"x": 32, "y": 102}, {"x": 60, "y": 4}, {"x": 32, "y": 62}, {"x": 46, "y": 11}, {"x": 1, "y": 99}, {"x": 75, "y": 35}, {"x": 12, "y": 18}, {"x": 67, "y": 94}, {"x": 28, "y": 54}, {"x": 30, "y": 52}, {"x": 30, "y": 83}, {"x": 18, "y": 9}, {"x": 55, "y": 66}, {"x": 36, "y": 49}, {"x": 97, "y": 90}, {"x": 43, "y": 38}, {"x": 18, "y": 42}, {"x": 33, "y": 23}, {"x": 71, "y": 72}, {"x": 78, "y": 49}, {"x": 34, "y": 20}, {"x": 32, "y": 88}, {"x": 41, "y": 97}, {"x": 17, "y": 44}, {"x": 81, "y": 96}, {"x": 26, "y": 20}, {"x": 4, "y": 47}, {"x": 29, "y": 17}, {"x": 29, "y": 58}, {"x": 48, "y": 90}, {"x": 29, "y": 27}, {"x": 48, "y": 58}, {"x": 10, "y": 22}, {"x": 45, "y": 75}, {"x": 34, "y": 19}, {"x": 31, "y": 78}, {"x": 37, "y": 58}, {"x": 27, "y": 21}, {"x": 48, "y": 30}, {"x": 27, "y": 99}, {"x": 81, "y": 98}, {"x": 32, "y": 3}, {"x": 18, "y": 80}, {"x": 79, "y": 9}, {"x": 41, "y": 97}, {"x": 66, "y": 77}, {"x": 32, "y": 29}, {"x": 32, "y": 97}, {"x": 61, "y": 15}, {"x": 3, "y": 12}, {"x": 31, "y": 73}, {"x": 29, "y": 61}, {"x": 46, "y": 10}, {"x": 30, "y": 50}, {"x": 18, "y": 24}, {"x": 50, "y": 46}, {"x": 38, "y": 19}, {"x": 75, "y": 62}, {"x": 40, "y": 37}, {"x": 33, "y": 94}, {"x": 87, "y": 77}, {"x": 39, "y": 15}, {"x": 48, "y": 68}, {"x": 39, "y": 14}, {"x": 34, "y": 43}, {"x": 51, "y": 66}, {"x": 88, "y": 9}, {"x": 77, "y": 84}, {"x": 34, "y": 10}, {"x": 34, "y": 33}, {"x": 35, "y": 72}, {"x": 18, "y": 24}, {"x": 39, "y": 86}, {"x": 48, "y": 45}, {"x": 38, "y": 31}, {"x": 6, "y": 94}, {"x": 28, "y": 68}, {"x": 33, "y": 74}, {"x": 26, "y": 41}, {"x": 28, "y": 41}, {"x": 5, "y": 6}, {"x": 26, "y": 58}, {"x": 34, "y": 33}, {"x": 32, "y": 4}, {"x": 32, "y": 6}, {"x": 18, "y": 32}, {"x": 48, "y": 55}, {"x": 18, "y": 29}, {"x": 31, "y": 34}, {"x": 59, "y": 38}, {"x": 35, "y": 40}, {"x": 31, "y": 88}, {"x": 38, "y": 49}, {"x": 36, "y": 52}, {"x": 37, "y": 93}, {"x": 30, "y": 51}, {"x": 38, "y": 86}, {"x": 23, "y": 36}, {"x": 38, "y": 20}, {"x": 30, "y": 18}, {"x": 32, "y": 30}, {"x": 42, "y": 19}, {"x": 18, "y": 39}, {"x": 0, "y": 71}, {"x": 98, "y": 90}, {"x": 56, "y": 52}, {"x": 41, "y": 52}, {"x": 96, "y": 24}, {"x": 48, "y": 66}, {"x": 33, "y": 61}, {"x": 30, "y": 76}, {"x": 36, "y": 53}, {"x": 83, "y": 71}, {"x": 30, "y": 33}, {"x": 97, "y": 37}, {"x": 54, "y": 55}, {"x": 37, "y": 1}, {"x": 33, "y": 10}, {"x": 16, "y": 39}, {"x": 18, "y": 102}, {"x": 33, "y": 17}, {"x": 30, "y": 42}, {"x": 17, "y": 9}, {"x": 30, "y": 31}, {"x": 37, "y": 41}, {"x": 32, "y": 100}, {"x": 35, "y": 94}, {"x": 31, "y": 1}, {"x": 48, "y": 69}, {"x": 32, "y": 5}, {"x": 12, "y": 55}, {"x": 34, "y": 26}, {"x": 28, "y": 10}, {"x": 85, "y": 48}, {"x": 31, "y": 0}, {"x": 18, "y": 73}, {"x": 44, "y": 6}, {"x": 27, "y": 22}, {"x": 99, "y": 89}, {"x": 32, "y": 76}, {"x": 38, "y": 50}, {"x": 28, "y": 66}, {"x": 31, "y": 22}, {"x": 35, "y": 43}, {"x": 33, "y": 82}, {"x": 40, "y": 21}, {"x": 41, "y": 63}, {"x": 40, "y": 31}, {"x": 25, "y": 80}, {"x": 47, "y": 35}, {"x": 97, "y": 91}, {"x": 16, "y": 23}, {"x": 1, "y": 82}, {"x": 43, "y": 11}, {"x": 54, "y": 53}, {"x": 33, "y": 74}, {"x": 48, "y": 71}, {"x": 36, "y": 78}, {"x": 39, "y": 18}, {"x": 48, "y": 66}, {"x": 38, "y": 99}, {"x": 30, "y": 97}, {"x": 44, "y": 21}, {"x": 28, "y": 102}, {"x": 40, "y": 19}, {"x": 26, "y": 94}, {"x": 41, "y": 15}, {"x": 74, "y": 60}, {"x": 53, "y": 35}, {"x": 27, "y": 23}, {"x": 31, "y": 46}, {"x": 6, "y": 56}, {"x": 33, "y": 49}, {"x": 30, "y": 30}, {"x": 51, "y": 41}, {"x": 31, "y": 42}, {"x": 48, "y": 94}, {"x": 7, "y": 54}, {"x": 24, "y": 41}, {"x": 34, "y": 87}, {"x": 32, "y": 13}, {"x": 69, "y": 21}, {"x": 42, "y": 6}, {"x": 7, "y": 44}, {"x": 48, "y": 52}, {"x": 35, "y": 60}, {"x": 48, "y": 43}, {"x": 30, "y": 14}, {"x": 29, "y": 22}, {"x": 39, "y": 10}, {"x": 33, "y": 47}, {"x": 27, "y": 100}, {"x": 72, "y": 21}, {"x": 29, "y": 34}, {"x": 47, "y": 5}, {"x": 32, "y": 1}, {"x": 24, "y": 83}, {"x": 36, "y": 72}, {"x": 7, "y": 64}, {"x": 36, "y": 8}, {"x": 40, "y": 57}, {"x": 73, "y": 11}, {"x": 38, "y": 65}, {"x": 30, "y": 96}, {"x": 100, "y": 18}, {"x": 29, "y": 34}, {"x": 8, "y": 36}, {"x": 82, "y": 45}, {"x": 48, "y": 98}, {"x": 38, "y": 30}, {"x": 35, "y": 18}, {"x": 36, "y": 9}, {"x": 27, "y": 73}, {"x": 98, "y": 35}, {"x": 28, "y": 8}, {"x": 31, "y": 11}, {"x": 47, "y": 13}, {"x": 91, "y": 11}, {"x": 35, "y": 64}, {"x": 33, "y": 94}, {"x": 34, "y": 28}, {"x": 48, "y": 83}, {"x": 92, "y": 21}, {"x": 26, "y": 47}, {"x": 33, "y": 40}, {"x": 35, "y": 72}, {"x": 18, "y": 45}, {"x": 34, "y": 88}, {"x": 35, "y": 2}, {"x": 48, "y": 7}, {"x": 38, "y": 85}, {"x": 38, "y": 97}, {"x": 36, "y": 12}, {"x": 18, "y": 100}, {"x": 25, "y": 5}, {"x": 30, "y": 46}, {"x": 61, "y": 56}, {"x": 18, "y": 87}, {"x": 74, "y": 12}, {"x": 87, "y": 11}, {"x": 2, "y": 67}, {"x": 29, "y": 98}, {"x": 42, "y": 89}, {"x": 37, "y": 61}, {"x": 37, "y": 3}, {"x": 22, "y": 90}, {"x": 97, "y": 80}, {"x": 39, "y": 48}, {"x": 28, "y": 17}, {"x": 49, "y": 62}, {"x": 28, "y": 49}, {"x": 48, "y": 34}, {"x": 37, "y": 56}, {"x": 84, "y": 44}, {"x": 98, "y": 85}, {"x": 33, "y": 84}, {"x": 43, "y": 20}, {"x": 37, "y": 84}, {"x": 81, "y": 95}, {"x": 33, "y": 3}, {"x": 51, "y": 38}, {"x": 37, "y": 19}, {"x": 27, "y": 26}, {"x": 35, "y": 42}, {"x": 37, "y": 15}, {"x": 25, "y": 63}, {"x": 37, "y": 40}, {"x": 73, "y": 53}, {"x": 35, "y": 4}, {"x": 35, "y": 98}, {"x": 18, "y": 46}, {"x": 72, "y": 73}, {"x": 38, "y": 102}, {"x": 48, "y": 4}, {"x": 85, "y": 10}, {"x": 32, "y": 40}, {"x": 33, "y": 23}, {"x": 37, "y": 70}, {"x": 36, "y": 0}, {"x": 44, "y": 98}, {"x": 31, "y": 71}, {"x": 39, "y": 44}, {"x": 35, "y": 77}, {"x": 48, "y": 94}, {"x": 18, "y": 6}, {"x": 29, "y": 35}, {"x": 32, "y": 34}, {"x": 32, "y": 62}, {"x": 35, "y": 102}, {"x": 28, "y": 60}, {"x": 48, "y": 11}, {"x": 56, "y": 42}, {"x": 94, "y": 89}, {"x": 32, "y": 6}, {"x": 58, "y": 25}, {"x": 31, "y": 71}, {"x": 27, "y": 82}, {"x": 18, "y": 101}, {"x": 25, "y": 62}, {"x": 68, "y": 56}, {"x": 39, "y": 31}, {"x": 34, "y": 12}, {"x": 42, "y": 85}, {"x": 31, "y": 31}, {"x": 18, "y": 32}, {"x": 18, "y": 79}, {"x": 29, "y": 44}, {"x": 39, "y": 60}, {"x": 18, "y": 33}, {"x": 32, "y": 36}, {"x": 34, "y": 92}, {"x": 22, "y": 58}, {"x": 28, "y": 94}, {"x": 24, "y": 43}, {"x": 33, "y": 69}, {"x": 48, "y": 34}, {"x": 33, "y": 57}, {"x": 48, "y": 101}, {"x": 95, "y": 22}, {"x": 37, "y": 38}, {"x": 33, "y": 73}, {"x": 18, "y": 79}, {"x": 48, "y": 3}, {"x": 18, "y": 1}, {"x": 17, "y": 75}, {"x": 89, "y": 40}, {"x": 39, "y": 65}, {"x": 36, "y": 15}, {"x": 48, "y": 1}, {"x": 18, "y": 83}, {"x": 34, "y": 101}, {"x": 34, "y": 24}, {"x": 35, "y": 78}, {"x": 18, "y": 69}, {"x": 35, "y": 65}, {"x": 18, "y": 14}, {"x": 17, "y": 55}, {"x": 38, "y": 24}, {"x": 92, "y": 90}, {"x": 26, "y": 6}, {"x": 22, "y": 100}, {"x": 30, "y": 41}, {"x": 37, "y": 55}, {"x": 34, "y": 39}, {"x": 23, "y": 36}, {"x": 19, "y": 21}, {"x": 29, "y": 52}, {"x": 40, "y": 18}, {"x": 32, "y": 7}, {"x": 20, "y": 23}, {"x": 6, "y": 34}, {"x": 33, "y": 68}, {"x": 73, "y": 58}, {"x": 22, "y": 24}, {"x": 91, "y": 39}, {"x": 18, "y": 62}, {"x": 12, "y": 65}, {"x": 37, "y": 8}, {"x": 36, "y": 97}, {"x": 2, "y": 3}, {"x": 39, "y": 39}, {"x": 30, "y": 2}, {"x": 48, "y": 70}, {"x": 90, "y": 72}, {"x": 48, "y": 17}, {"x": 78, "y": 86}, {"x": 32, "y": 22}, {"x": 48, "y": 54}, {"x": 61, "y": 57}, {"x": 25, "y": 66}, {"x": 88, "y": 58}, {"x": 27, "y": 86}, {"x": 56, "y": 46}, {"x": 44, "y": 67}, {"x": 27, "y": 73}, {"x": 22, "y": 29}, {"x": 82, "y": 46}, {"x": 18, "y": 10}, {"x": 39, "y": 24}, {"x": 33, "y": 101}, {"x": 18, "y": 73}, {"x": 33, "y": 12}, {"x": 27, "y": 77}, {"x": 37, "y": 30}, {"x": 48, "y": 69}, {"x": 34, "y": 75}, {"x": 34, "y": 43}, {"x": 48, "y": 67}, {"x": 31, "y": 27}, {"x": 20, "y": 72}, {"x": 18, "y": 73}, {"x": 48, "y": 31}, {"x": 34, "y": 22}, {"x": 35, "y": 68}, {"x": 11, "y": 81}, {"x": 38, "y": 54}, {"x": 36, "y": 15}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+  #altair-viz-c5c64607027c42609777359fa2342663.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-c5c64607027c42609777359fa2342663.vega-embed details,
+  #altair-viz-c5c64607027c42609777359fa2342663.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-c5c64607027c42609777359fa2342663"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-c5c64607027c42609777359fa2342663") {
+      outputDiv = document.getElementById("altair-viz-c5c64607027c42609777359fa2342663");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-8d08a45e2489ce104ab4c3656d05edab"}, "mark": {"type": "point", "tooltip": true}, "encoding": {"x": {"field": "x", "type": "quantitative"}, "y": {"field": "y", "type": "quantitative"}}, "params": [{"name": "param_2", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales"}], "title": "Time: 5298", "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-8d08a45e2489ce104ab4c3656d05edab": [{"x": 93, "y": 21}, {"x": 30, "y": 7}, {"x": 29, "y": 79}, {"x": 31, "y": 92}, {"x": 43, "y": 80}, {"x": 81, "y": 81}, {"x": 71, "y": 56}, {"x": 25, "y": 47}, {"x": 76, "y": 92}, {"x": 34, "y": 53}, {"x": 18, "y": 73}, {"x": 36, "y": 1}, {"x": 56, "y": 1}, {"x": 34, "y": 40}, {"x": 29, "y": 55}, {"x": 18, "y": 62}, {"x": 2, "y": 101}, {"x": 91, "y": 43}, {"x": 26, "y": 10}, {"x": 6, "y": 50}, {"x": 46, "y": 57}, {"x": 48, "y": 64}, {"x": 34, "y": 47}, {"x": 85, "y": 22}, {"x": 32, "y": 77}, {"x": 31, "y": 0}, {"x": 30, "y": 37}, {"x": 35, "y": 68}, {"x": 33, "y": 11}, {"x": 18, "y": 43}, {"x": 8, "y": 0}, {"x": 28, "y": 4}, {"x": 21, "y": 75}, {"x": 34, "y": 54}, {"x": 97, "y": 74}, {"x": 98, "y": 14}, {"x": 3, "y": 98}, {"x": 39, "y": 14}, {"x": 78, "y": 9}, {"x": 36, "y": 67}, {"x": 47, "y": 96}, {"x": 33, "y": 8}, {"x": 32, "y": 50}, {"x": 29, "y": 95}, {"x": 31, "y": 63}, {"x": 18, "y": 86}, {"x": 18, "y": 15}, {"x": 18, "y": 22}, {"x": 45, "y": 75}, {"x": 38, "y": 25}, {"x": 77, "y": 83}, {"x": 34, "y": 51}, {"x": 29, "y": 67}, {"x": 48, "y": 78}, {"x": 63, "y": 59}, {"x": 27, "y": 72}, {"x": 72, "y": 74}, {"x": 31, "y": 50}, {"x": 36, "y": 36}, {"x": 33, "y": 41}, {"x": 24, "y": 31}, {"x": 31, "y": 6}, {"x": 18, "y": 27}, {"x": 40, "y": 15}, {"x": 40, "y": 20}, {"x": 36, "y": 40}, {"x": 82, "y": 51}, {"x": 19, "y": 5}, {"x": 21, "y": 34}, {"x": 60, "y": 33}, {"x": 36, "y": 42}, {"x": 34, "y": 33}, {"x": 26, "y": 17}, {"x": 40, "y": 41}, {"x": 25, "y": 46}, {"x": 63, "y": 96}, {"x": 36, "y": 29}, {"x": 31, "y": 77}, {"x": 48, "y": 27}, {"x": 37, "y": 6}, {"x": 31, "y": 50}, {"x": 41, "y": 20}, {"x": 28, "y": 63}, {"x": 34, "y": 24}, {"x": 35, "y": 37}, {"x": 30, "y": 54}, {"x": 59, "y": 74}, {"x": 28, "y": 97}, {"x": 35, "y": 1}, {"x": 29, "y": 81}, {"x": 29, "y": 28}, {"x": 60, "y": 18}, {"x": 86, "y": 12}, {"x": 29, "y": 30}, {"x": 23, "y": 57}, {"x": 33, "y": 35}, {"x": 17, "y": 101}, {"x": 33, "y": 12}, {"x": 92, "y": 38}, {"x": 30, "y": 64}, {"x": 48, "y": 34}, {"x": 55, "y": 75}, {"x": 32, "y": 99}, {"x": 32, "y": 68}, {"x": 60, "y": 6}, {"x": 32, "y": 80}, {"x": 46, "y": 16}, {"x": 1, "y": 92}, {"x": 75, "y": 23}, {"x": 12, "y": 94}, {"x": 67, "y": 36}, {"x": 28, "y": 42}, {"x": 30, "y": 96}, {"x": 30, "y": 16}, {"x": 18, "y": 96}, {"x": 55, "y": 31}, {"x": 36, "y": 25}, {"x": 97, "y": 67}, {"x": 43, "y": 87}, {"x": 18, "y": 50}, {"x": 33, "y": 57}, {"x": 71, "y": 33}, {"x": 78, "y": 76}, {"x": 34, "y": 6}, {"x": 32, "y": 36}, {"x": 41, "y": 48}, {"x": 17, "y": 50}, {"x": 81, "y": 92}, {"x": 26, "y": 57}, {"x": 4, "y": 49}, {"x": 29, "y": 86}, {"x": 29, "y": 102}, {"x": 48, "y": 47}, {"x": 29, "y": 82}, {"x": 48, "y": 46}, {"x": 10, "y": 8}, {"x": 45, "y": 25}, {"x": 34, "y": 56}, {"x": 31, "y": 96}, {"x": 37, "y": 102}, {"x": 27, "y": 20}, {"x": 48, "y": 62}, {"x": 27, "y": 56}, {"x": 81, "y": 82}, {"x": 32, "y": 69}, {"x": 18, "y": 75}, {"x": 79, "y": 42}, {"x": 41, "y": 80}, {"x": 66, "y": 42}, {"x": 32, "y": 13}, {"x": 32, "y": 57}, {"x": 61, "y": 10}, {"x": 3, "y": 49}, {"x": 31, "y": 56}, {"x": 29, "y": 67}, {"x": 46, "y": 68}, {"x": 30, "y": 62}, {"x": 18, "y": 88}, {"x": 50, "y": 16}, {"x": 38, "y": 91}, {"x": 75, "y": 1}, {"x": 40, "y": 48}, {"x": 33, "y": 33}, {"x": 87, "y": 74}, {"x": 39, "y": 81}, {"x": 48, "y": 30}, {"x": 39, "y": 98}, {"x": 34, "y": 66}, {"x": 51, "y": 71}, {"x": 88, "y": 41}, {"x": 77, "y": 54}, {"x": 34, "y": 26}, {"x": 34, "y": 97}, {"x": 35, "y": 31}, {"x": 18, "y": 85}, {"x": 39, "y": 73}, {"x": 48, "y": 36}, {"x": 38, "y": 39}, {"x": 6, "y": 18}, {"x": 28, "y": 83}, {"x": 33, "y": 48}, {"x": 26, "y": 8}, {"x": 28, "y": 5}, {"x": 5, "y": 16}, {"x": 26, "y": 82}, {"x": 34, "y": 44}, {"x": 32, "y": 41}, {"x": 32, "y": 96}, {"x": 18, "y": 11}, {"x": 48, "y": 37}, {"x": 18, "y": 19}, {"x": 31, "y": 22}, {"x": 59, "y": 4}, {"x": 35, "y": 10}, {"x": 31, "y": 33}, {"x": 38, "y": 25}, {"x": 36, "y": 93}, {"x": 37, "y": 74}, {"x": 30, "y": 80}, {"x": 38, "y": 92}, {"x": 23, "y": 82}, {"x": 38, "y": 66}, {"x": 30, "y": 17}, {"x": 32, "y": 41}, {"x": 42, "y": 91}, {"x": 18, "y": 15}, {"x": 0, "y": 74}, {"x": 98, "y": 67}, {"x": 56, "y": 78}, {"x": 41, "y": 67}, {"x": 96, "y": 82}, {"x": 48, "y": 46}, {"x": 33, "y": 17}, {"x": 30, "y": 0}, {"x": 36, "y": 0}, {"x": 83, "y": 88}, {"x": 30, "y": 59}, {"x": 97, "y": 80}, {"x": 54, "y": 56}, {"x": 37, "y": 46}, {"x": 33, "y": 6}, {"x": 16, "y": 28}, {"x": 18, "y": 33}, {"x": 33, "y": 1}, {"x": 30, "y": 12}, {"x": 17, "y": 42}, {"x": 30, "y": 89}, {"x": 37, "y": 26}, {"x": 32, "y": 45}, {"x": 35, "y": 51}, {"x": 31, "y": 17}, {"x": 48, "y": 34}, {"x": 32, "y": 15}, {"x": 12, "y": 83}, {"x": 34, "y": 57}, {"x": 28, "y": 29}, {"x": 85, "y": 50}, {"x": 31, "y": 69}, {"x": 18, "y": 35}, {"x": 44, "y": 7}, {"x": 27, "y": 9}, {"x": 99, "y": 47}, {"x": 32, "y": 50}, {"x": 38, "y": 82}, {"x": 28, "y": 31}, {"x": 31, "y": 9}, {"x": 35, "y": 28}, {"x": 33, "y": 62}, {"x": 40, "y": 96}, {"x": 41, "y": 7}, {"x": 40, "y": 39}, {"x": 25, "y": 58}, {"x": 47, "y": 15}, {"x": 97, "y": 97}, {"x": 16, "y": 12}, {"x": 1, "y": 71}, {"x": 43, "y": 83}, {"x": 54, "y": 25}, {"x": 33, "y": 39}, {"x": 48, "y": 18}, {"x": 36, "y": 61}, {"x": 39, "y": 58}, {"x": 48, "y": 63}, {"x": 38, "y": 102}, {"x": 30, "y": 9}, {"x": 44, "y": 37}, {"x": 28, "y": 6}, {"x": 40, "y": 53}, {"x": 26, "y": 33}, {"x": 41, "y": 96}, {"x": 74, "y": 78}, {"x": 53, "y": 7}, {"x": 27, "y": 16}, {"x": 31, "y": 72}, {"x": 6, "y": 30}, {"x": 33, "y": 93}, {"x": 30, "y": 50}, {"x": 51, "y": 69}, {"x": 31, "y": 18}, {"x": 48, "y": 7}, {"x": 7, "y": 82}, {"x": 24, "y": 5}, {"x": 34, "y": 38}, {"x": 32, "y": 38}, {"x": 69, "y": 84}, {"x": 42, "y": 19}, {"x": 7, "y": 50}, {"x": 48, "y": 58}, {"x": 35, "y": 51}, {"x": 48, "y": 35}, {"x": 30, "y": 43}, {"x": 29, "y": 68}, {"x": 39, "y": 65}, {"x": 33, "y": 97}, {"x": 27, "y": 71}, {"x": 72, "y": 79}, {"x": 29, "y": 56}, {"x": 47, "y": 1}, {"x": 32, "y": 79}, {"x": 24, "y": 45}, {"x": 36, "y": 37}, {"x": 7, "y": 28}, {"x": 36, "y": 89}, {"x": 40, "y": 51}, {"x": 73, "y": 93}, {"x": 38, "y": 48}, {"x": 30, "y": 3}, {"x": 100, "y": 12}, {"x": 29, "y": 54}, {"x": 8, "y": 8}, {"x": 82, "y": 56}, {"x": 48, "y": 90}, {"x": 38, "y": 85}, {"x": 35, "y": 14}, {"x": 36, "y": 78}, {"x": 27, "y": 68}, {"x": 98, "y": 42}, {"x": 28, "y": 27}, {"x": 31, "y": 57}, {"x": 47, "y": 54}, {"x": 91, "y": 14}, {"x": 35, "y": 49}, {"x": 33, "y": 57}, {"x": 34, "y": 89}, {"x": 48, "y": 90}, {"x": 92, "y": 78}, {"x": 26, "y": 79}, {"x": 33, "y": 37}, {"x": 35, "y": 52}, {"x": 18, "y": 60}, {"x": 34, "y": 18}, {"x": 35, "y": 12}, {"x": 48, "y": 6}, {"x": 38, "y": 65}, {"x": 38, "y": 51}, {"x": 36, "y": 40}, {"x": 18, "y": 1}, {"x": 25, "y": 1}, {"x": 30, "y": 69}, {"x": 61, "y": 10}, {"x": 18, "y": 55}, {"x": 74, "y": 41}, {"x": 87, "y": 57}, {"x": 2, "y": 26}, {"x": 29, "y": 55}, {"x": 42, "y": 5}, {"x": 37, "y": 14}, {"x": 37, "y": 22}, {"x": 22, "y": 59}, {"x": 97, "y": 22}, {"x": 39, "y": 36}, {"x": 28, "y": 4}, {"x": 49, "y": 67}, {"x": 28, "y": 8}, {"x": 48, "y": 27}, {"x": 37, "y": 100}, {"x": 84, "y": 96}, {"x": 98, "y": 67}, {"x": 33, "y": 70}, {"x": 43, "y": 79}, {"x": 37, "y": 23}, {"x": 81, "y": 14}, {"x": 33, "y": 13}, {"x": 51, "y": 84}, {"x": 37, "y": 3}, {"x": 27, "y": 25}, {"x": 35, "y": 65}, {"x": 37, "y": 99}, {"x": 25, "y": 66}, {"x": 37, "y": 69}, {"x": 73, "y": 2}, {"x": 35, "y": 38}, {"x": 35, "y": 49}, {"x": 18, "y": 31}, {"x": 72, "y": 18}, {"x": 38, "y": 9}, {"x": 48, "y": 44}, {"x": 85, "y": 31}, {"x": 32, "y": 1}, {"x": 33, "y": 19}, {"x": 37, "y": 26}, {"x": 36, "y": 7}, {"x": 44, "y": 91}, {"x": 31, "y": 98}, {"x": 39, "y": 11}, {"x": 35, "y": 16}, {"x": 48, "y": 27}, {"x": 18, "y": 69}, {"x": 29, "y": 43}, {"x": 32, "y": 92}, {"x": 32, "y": 68}, {"x": 35, "y": 6}, {"x": 28, "y": 10}, {"x": 48, "y": 48}, {"x": 56, "y": 64}, {"x": 94, "y": 37}, {"x": 32, "y": 55}, {"x": 58, "y": 50}, {"x": 31, "y": 45}, {"x": 27, "y": 3}, {"x": 18, "y": 32}, {"x": 25, "y": 59}, {"x": 68, "y": 97}, {"x": 39, "y": 92}, {"x": 34, "y": 70}, {"x": 42, "y": 12}, {"x": 31, "y": 33}, {"x": 18, "y": 17}, {"x": 18, "y": 44}, {"x": 29, "y": 29}, {"x": 39, "y": 1}, {"x": 18, "y": 18}, {"x": 32, "y": 50}, {"x": 34, "y": 93}, {"x": 22, "y": 34}, {"x": 28, "y": 48}, {"x": 24, "y": 96}, {"x": 33, "y": 93}, {"x": 48, "y": 95}, {"x": 33, "y": 42}, {"x": 48, "y": 58}, {"x": 95, "y": 98}, {"x": 37, "y": 14}, {"x": 33, "y": 3}, {"x": 18, "y": 15}, {"x": 48, "y": 72}, {"x": 18, "y": 58}, {"x": 17, "y": 4}, {"x": 89, "y": 55}, {"x": 39, "y": 18}, {"x": 36, "y": 2}, {"x": 48, "y": 11}, {"x": 18, "y": 66}, {"x": 34, "y": 70}, {"x": 34, "y": 14}, {"x": 35, "y": 58}, {"x": 18, "y": 75}, {"x": 35, "y": 48}, {"x": 18, "y": 51}, {"x": 17, "y": 83}, {"x": 38, "y": 64}, {"x": 92, "y": 33}, {"x": 26, "y": 72}, {"x": 22, "y": 73}, {"x": 30, "y": 64}, {"x": 37, "y": 99}, {"x": 34, "y": 97}, {"x": 23, "y": 27}, {"x": 19, "y": 96}, {"x": 29, "y": 31}, {"x": 40, "y": 49}, {"x": 32, "y": 17}, {"x": 20, "y": 46}, {"x": 6, "y": 23}, {"x": 33, "y": 49}, {"x": 73, "y": 93}, {"x": 22, "y": 6}, {"x": 91, "y": 66}, {"x": 18, "y": 97}, {"x": 12, "y": 95}, {"x": 37, "y": 24}, {"x": 36, "y": 60}, {"x": 2, "y": 75}, {"x": 39, "y": 53}, {"x": 30, "y": 27}, {"x": 48, "y": 38}, {"x": 90, "y": 91}, {"x": 48, "y": 13}, {"x": 78, "y": 31}, {"x": 32, "y": 12}, {"x": 48, "y": 39}, {"x": 61, "y": 41}, {"x": 25, "y": 16}, {"x": 88, "y": 41}, {"x": 27, "y": 16}, {"x": 56, "y": 59}, {"x": 44, "y": 53}, {"x": 27, "y": 20}, {"x": 22, "y": 10}, {"x": 82, "y": 17}, {"x": 18, "y": 37}, {"x": 39, "y": 40}, {"x": 33, "y": 2}, {"x": 18, "y": 38}, {"x": 33, "y": 22}, {"x": 27, "y": 51}, {"x": 37, "y": 12}, {"x": 48, "y": 43}, {"x": 34, "y": 49}, {"x": 34, "y": 84}, {"x": 48, "y": 61}, {"x": 31, "y": 29}, {"x": 20, "y": 69}, {"x": 18, "y": 94}, {"x": 48, "y": 45}, {"x": 34, "y": 15}, {"x": 35, "y": 92}, {"x": 11, "y": 22}, {"x": 38, "y": 51}, {"x": 36, "y": 26}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+  #altair-viz-751e363da19a436e9e70554e9741ef84.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-751e363da19a436e9e70554e9741ef84.vega-embed details,
+  #altair-viz-751e363da19a436e9e70554e9741ef84.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-751e363da19a436e9e70554e9741ef84"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-751e363da19a436e9e70554e9741ef84") {
+      outputDiv = document.getElementById("altair-viz-751e363da19a436e9e70554e9741ef84");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-dd62eb70393a8f28729156536a4d2980"}, "mark": {"type": "point", "tooltip": true}, "encoding": {"x": {"field": "x", "type": "quantitative"}, "y": {"field": "y", "type": "quantitative"}}, "params": [{"name": "param_3", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales"}], "title": "Time: 7520", "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-dd62eb70393a8f28729156536a4d2980": [{"x": 93, "y": 3}, {"x": 30, "y": 74}, {"x": 29, "y": 61}, {"x": 31, "y": 62}, {"x": 43, "y": 42}, {"x": 81, "y": 28}, {"x": 71, "y": 9}, {"x": 25, "y": 66}, {"x": 76, "y": 62}, {"x": 34, "y": 54}, {"x": 18, "y": 61}, {"x": 36, "y": 50}, {"x": 56, "y": 34}, {"x": 34, "y": 52}, {"x": 29, "y": 51}, {"x": 18, "y": 57}, {"x": 2, "y": 68}, {"x": 91, "y": 38}, {"x": 26, "y": 61}, {"x": 6, "y": 4}, {"x": 46, "y": 74}, {"x": 48, "y": 47}, {"x": 34, "y": 48}, {"x": 85, "y": 0}, {"x": 32, "y": 53}, {"x": 31, "y": 74}, {"x": 30, "y": 64}, {"x": 35, "y": 56}, {"x": 33, "y": 58}, {"x": 18, "y": 51}, {"x": 8, "y": 48}, {"x": 28, "y": 74}, {"x": 21, "y": 42}, {"x": 34, "y": 67}, {"x": 97, "y": 68}, {"x": 98, "y": 24}, {"x": 3, "y": 102}, {"x": 39, "y": 63}, {"x": 78, "y": 16}, {"x": 36, "y": 56}, {"x": 47, "y": 74}, {"x": 33, "y": 52}, {"x": 32, "y": 51}, {"x": 29, "y": 62}, {"x": 31, "y": 55}, {"x": 18, "y": 47}, {"x": 18, "y": 72}, {"x": 18, "y": 48}, {"x": 45, "y": 42}, {"x": 38, "y": 55}, {"x": 77, "y": 59}, {"x": 34, "y": 49}, {"x": 29, "y": 42}, {"x": 48, "y": 65}, {"x": 63, "y": 19}, {"x": 27, "y": 63}, {"x": 72, "y": 97}, {"x": 31, "y": 15}, {"x": 36, "y": 74}, {"x": 33, "y": 68}, {"x": 24, "y": 66}, {"x": 31, "y": 61}, {"x": 18, "y": 69}, {"x": 40, "y": 9}, {"x": 40, "y": 42}, {"x": 36, "y": 60}, {"x": 82, "y": 52}, {"x": 19, "y": 42}, {"x": 21, "y": 74}, {"x": 60, "y": 48}, {"x": 36, "y": 63}, {"x": 34, "y": 64}, {"x": 26, "y": 74}, {"x": 40, "y": 63}, {"x": 25, "y": 74}, {"x": 63, "y": 69}, {"x": 36, "y": 51}, {"x": 31, "y": 52}, {"x": 48, "y": 74}, {"x": 37, "y": 57}, {"x": 31, "y": 51}, {"x": 41, "y": 65}, {"x": 28, "y": 82}, {"x": 34, "y": 55}, {"x": 35, "y": 58}, {"x": 30, "y": 63}, {"x": 59, "y": 28}, {"x": 28, "y": 61}, {"x": 35, "y": 59}, {"x": 29, "y": 30}, {"x": 29, "y": 65}, {"x": 60, "y": 65}, {"x": 86, "y": 74}, {"x": 29, "y": 56}, {"x": 23, "y": 66}, {"x": 33, "y": 49}, {"x": 17, "y": 39}, {"x": 33, "y": 55}, {"x": 92, "y": 72}, {"x": 30, "y": 56}, {"x": 48, "y": 53}, {"x": 55, "y": 53}, {"x": 32, "y": 60}, {"x": 32, "y": 56}, {"x": 60, "y": 37}, {"x": 32, "y": 50}, {"x": 46, "y": 42}, {"x": 1, "y": 35}, {"x": 75, "y": 43}, {"x": 12, "y": 36}, {"x": 67, "y": 64}, {"x": 28, "y": 62}, {"x": 30, "y": 57}, {"x": 30, "y": 59}, {"x": 18, "y": 54}, {"x": 55, "y": 55}, {"x": 36, "y": 65}, {"x": 97, "y": 71}, {"x": 43, "y": 74}, {"x": 18, "y": 71}, {"x": 33, "y": 69}, {"x": 71, "y": 98}, {"x": 78, "y": 31}, {"x": 34, "y": 98}, {"x": 32, "y": 54}, {"x": 41, "y": 61}, {"x": 17, "y": 40}, {"x": 81, "y": 30}, {"x": 26, "y": 64}, {"x": 4, "y": 80}, {"x": 29, "y": 74}, {"x": 29, "y": 63}, {"x": 48, "y": 50}, {"x": 29, "y": 59}, {"x": 48, "y": 66}, {"x": 10, "y": 100}, {"x": 45, "y": 74}, {"x": 34, "y": 63}, {"x": 31, "y": 66}, {"x": 37, "y": 63}, {"x": 27, "y": 56}, {"x": 48, "y": 43}, {"x": 27, "y": 59}, {"x": 81, "y": 40}, {"x": 32, "y": 62}, {"x": 18, "y": 49}, {"x": 79, "y": 90}, {"x": 41, "y": 74}, {"x": 66, "y": 66}, {"x": 32, "y": 74}, {"x": 32, "y": 55}, {"x": 61, "y": 87}, {"x": 3, "y": 56}, {"x": 31, "y": 50}, {"x": 29, "y": 57}, {"x": 46, "y": 40}, {"x": 30, "y": 42}, {"x": 18, "y": 50}, {"x": 50, "y": 66}, {"x": 38, "y": 74}, {"x": 75, "y": 34}, {"x": 40, "y": 64}, {"x": 33, "y": 66}, {"x": 87, "y": 79}, {"x": 39, "y": 74}, {"x": 48, "y": 59}, {"x": 39, "y": 61}, {"x": 34, "y": 62}, {"x": 51, "y": 97}, {"x": 88, "y": 22}, {"x": 77, "y": 1}, {"x": 34, "y": 68}, {"x": 34, "y": 59}, {"x": 35, "y": 65}, {"x": 18, "y": 52}, {"x": 39, "y": 26}, {"x": 48, "y": 51}, {"x": 38, "y": 60}, {"x": 6, "y": 76}, {"x": 28, "y": 58}, {"x": 33, "y": 57}, {"x": 26, "y": 63}, {"x": 28, "y": 65}, {"x": 5, "y": 68}, {"x": 26, "y": 42}, {"x": 34, "y": 60}, {"x": 32, "y": 48}, {"x": 32, "y": 49}, {"x": 18, "y": 46}, {"x": 48, "y": 67}, {"x": 18, "y": 70}, {"x": 31, "y": 42}, {"x": 59, "y": 95}, {"x": 35, "y": 60}, {"x": 31, "y": 56}, {"x": 38, "y": 65}, {"x": 36, "y": 59}, {"x": 37, "y": 37}, {"x": 30, "y": 66}, {"x": 38, "y": 82}, {"x": 23, "y": 74}, {"x": 38, "y": 58}, {"x": 30, "y": 53}, {"x": 32, "y": 57}, {"x": 42, "y": 74}, {"x": 18, "y": 55}, {"x": 0, "y": 69}, {"x": 98, "y": 71}, {"x": 56, "y": 69}, {"x": 41, "y": 42}, {"x": 96, "y": 54}, {"x": 48, "y": 45}, {"x": 33, "y": 56}, {"x": 30, "y": 58}, {"x": 36, "y": 54}, {"x": 83, "y": 94}, {"x": 30, "y": 50}, {"x": 97, "y": 77}, {"x": 54, "y": 20}, {"x": 37, "y": 74}, {"x": 33, "y": 47}, {"x": 16, "y": 12}, {"x": 18, "y": 45}, {"x": 33, "y": 62}, {"x": 30, "y": 62}, {"x": 17, "y": 90}, {"x": 30, "y": 61}, {"x": 37, "y": 51}, {"x": 32, "y": 68}, {"x": 35, "y": 54}, {"x": 31, "y": 59}, {"x": 48, "y": 58}, {"x": 32, "y": 67}, {"x": 12, "y": 2}, {"x": 34, "y": 74}, {"x": 28, "y": 66}, {"x": 85, "y": 81}, {"x": 31, "y": 57}, {"x": 18, "y": 64}, {"x": 44, "y": 74}, {"x": 27, "y": 65}, {"x": 99, "y": 14}, {"x": 32, "y": 59}, {"x": 38, "y": 63}, {"x": 28, "y": 55}, {"x": 31, "y": 65}, {"x": 35, "y": 53}, {"x": 33, "y": 61}, {"x": 40, "y": 74}, {"x": 41, "y": 66}, {"x": 40, "y": 60}, {"x": 25, "y": 26}, {"x": 47, "y": 14}, {"x": 97, "y": 87}, {"x": 16, "y": 99}, {"x": 1, "y": 55}, {"x": 43, "y": 66}, {"x": 54, "y": 3}, {"x": 33, "y": 63}, {"x": 48, "y": 72}, {"x": 36, "y": 55}, {"x": 39, "y": 60}, {"x": 48, "y": 68}, {"x": 38, "y": 97}, {"x": 30, "y": 87}, {"x": 44, "y": 79}, {"x": 28, "y": 63}, {"x": 40, "y": 65}, {"x": 26, "y": 66}, {"x": 41, "y": 64}, {"x": 74, "y": 48}, {"x": 53, "y": 88}, {"x": 27, "y": 62}, {"x": 31, "y": 63}, {"x": 6, "y": 39}, {"x": 33, "y": 54}, {"x": 30, "y": 51}, {"x": 51, "y": 91}, {"x": 31, "y": 58}, {"x": 48, "y": 49}, {"x": 7, "y": 1}, {"x": 24, "y": 65}, {"x": 34, "y": 51}, {"x": 32, "y": 65}, {"x": 69, "y": 82}, {"x": 42, "y": 66}, {"x": 7, "y": 40}, {"x": 48, "y": 48}, {"x": 35, "y": 66}, {"x": 48, "y": 14}, {"x": 30, "y": 29}, {"x": 29, "y": 60}, {"x": 39, "y": 42}, {"x": 33, "y": 48}, {"x": 27, "y": 85}, {"x": 72, "y": 51}, {"x": 29, "y": 88}, {"x": 47, "y": 42}, {"x": 32, "y": 52}, {"x": 24, "y": 74}, {"x": 36, "y": 61}, {"x": 7, "y": 88}, {"x": 36, "y": 57}, {"x": 40, "y": 61}, {"x": 73, "y": 25}, {"x": 38, "y": 42}, {"x": 30, "y": 55}, {"x": 100, "y": 22}, {"x": 29, "y": 55}, {"x": 8, "y": 89}, {"x": 82, "y": 72}, {"x": 48, "y": 69}, {"x": 38, "y": 62}, {"x": 35, "y": 55}, {"x": 36, "y": 66}, {"x": 27, "y": 42}, {"x": 98, "y": 99}, {"x": 28, "y": 64}, {"x": 31, "y": 49}, {"x": 47, "y": 20}, {"x": 91, "y": 9}, {"x": 35, "y": 74}, {"x": 33, "y": 50}, {"x": 34, "y": 56}, {"x": 48, "y": 44}, {"x": 92, "y": 86}, {"x": 26, "y": 60}, {"x": 33, "y": 42}, {"x": 35, "y": 51}, {"x": 18, "y": 35}, {"x": 34, "y": 66}, {"x": 35, "y": 64}, {"x": 48, "y": 42}, {"x": 38, "y": 64}, {"x": 38, "y": 59}, {"x": 36, "y": 62}, {"x": 18, "y": 63}, {"x": 25, "y": 42}, {"x": 30, "y": 65}, {"x": 61, "y": 18}, {"x": 18, "y": 74}, {"x": 74, "y": 27}, {"x": 87, "y": 49}, {"x": 2, "y": 60}, {"x": 29, "y": 58}, {"x": 42, "y": 42}, {"x": 37, "y": 58}, {"x": 37, "y": 59}, {"x": 22, "y": 42}, {"x": 97, "y": 50}, {"x": 39, "y": 56}, {"x": 28, "y": 60}, {"x": 49, "y": 93}, {"x": 28, "y": 42}, {"x": 48, "y": 73}, {"x": 37, "y": 61}, {"x": 84, "y": 78}, {"x": 98, "y": 97}, {"x": 33, "y": 59}, {"x": 43, "y": 15}, {"x": 37, "y": 56}, {"x": 81, "y": 46}, {"x": 33, "y": 65}, {"x": 51, "y": 76}, {"x": 37, "y": 64}, {"x": 27, "y": 61}, {"x": 35, "y": 61}, {"x": 37, "y": 62}, {"x": 25, "y": 61}, {"x": 37, "y": 55}, {"x": 73, "y": 87}, {"x": 35, "y": 50}, {"x": 35, "y": 62}, {"x": 18, "y": 56}, {"x": 72, "y": 41}, {"x": 38, "y": 61}, {"x": 48, "y": 46}, {"x": 85, "y": 99}, {"x": 32, "y": 66}, {"x": 33, "y": 60}, {"x": 37, "y": 65}, {"x": 36, "y": 64}, {"x": 44, "y": 34}, {"x": 31, "y": 53}, {"x": 39, "y": 66}, {"x": 35, "y": 49}, {"x": 48, "y": 70}, {"x": 18, "y": 67}, {"x": 29, "y": 64}, {"x": 32, "y": 64}, {"x": 32, "y": 58}, {"x": 35, "y": 63}, {"x": 28, "y": 59}, {"x": 48, "y": 55}, {"x": 56, "y": 96}, {"x": 94, "y": 55}, {"x": 32, "y": 42}, {"x": 58, "y": 77}, {"x": 31, "y": 54}, {"x": 27, "y": 66}, {"x": 18, "y": 44}, {"x": 25, "y": 64}, {"x": 68, "y": 63}, {"x": 39, "y": 59}, {"x": 34, "y": 42}, {"x": 42, "y": 65}, {"x": 31, "y": 64}, {"x": 18, "y": 42}, {"x": 18, "y": 68}, {"x": 29, "y": 54}, {"x": 39, "y": 65}, {"x": 18, "y": 43}, {"x": 32, "y": 61}, {"x": 34, "y": 57}, {"x": 22, "y": 74}, {"x": 28, "y": 56}, {"x": 24, "y": 42}, {"x": 33, "y": 53}, {"x": 48, "y": 62}, {"x": 33, "y": 67}, {"x": 48, "y": 61}, {"x": 95, "y": 40}, {"x": 37, "y": 54}, {"x": 33, "y": 51}, {"x": 18, "y": 53}, {"x": 48, "y": 60}, {"x": 18, "y": 66}, {"x": 17, "y": 88}, {"x": 89, "y": 30}, {"x": 39, "y": 62}, {"x": 36, "y": 58}, {"x": 48, "y": 63}, {"x": 18, "y": 60}, {"x": 34, "y": 53}, {"x": 34, "y": 65}, {"x": 35, "y": 57}, {"x": 18, "y": 65}, {"x": 35, "y": 42}, {"x": 18, "y": 58}, {"x": 17, "y": 2}, {"x": 38, "y": 66}, {"x": 92, "y": 25}, {"x": 26, "y": 65}, {"x": 22, "y": 15}, {"x": 30, "y": 60}, {"x": 37, "y": 60}, {"x": 34, "y": 69}, {"x": 23, "y": 42}, {"x": 19, "y": 74}, {"x": 29, "y": 66}, {"x": 40, "y": 66}, {"x": 32, "y": 69}, {"x": 20, "y": 42}, {"x": 6, "y": 7}, {"x": 33, "y": 12}, {"x": 73, "y": 69}, {"x": 22, "y": 36}, {"x": 91, "y": 21}, {"x": 18, "y": 73}, {"x": 12, "y": 45}, {"x": 37, "y": 66}, {"x": 36, "y": 53}, {"x": 2, "y": 58}, {"x": 39, "y": 64}, {"x": 30, "y": 54}, {"x": 48, "y": 57}, {"x": 90, "y": 25}, {"x": 48, "y": 54}, {"x": 78, "y": 54}, {"x": 32, "y": 63}, {"x": 48, "y": 64}, {"x": 61, "y": 102}, {"x": 25, "y": 65}, {"x": 88, "y": 35}, {"x": 27, "y": 64}, {"x": 56, "y": 3}, {"x": 44, "y": 42}, {"x": 27, "y": 74}, {"x": 22, "y": 76}, {"x": 82, "y": 31}, {"x": 18, "y": 95}, {"x": 39, "y": 82}, {"x": 33, "y": 64}, {"x": 18, "y": 62}, {"x": 33, "y": 74}, {"x": 27, "y": 60}, {"x": 37, "y": 42}, {"x": 48, "y": 52}, {"x": 34, "y": 58}, {"x": 34, "y": 50}, {"x": 48, "y": 71}, {"x": 31, "y": 60}, {"x": 20, "y": 74}, {"x": 18, "y": 59}, {"x": 48, "y": 56}, {"x": 34, "y": 61}, {"x": 35, "y": 52}, {"x": 11, "y": 86}, {"x": 38, "y": 56}, {"x": 36, "y": 42}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+  #altair-viz-d0db99ca57a246f885559916f12b4dad.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-d0db99ca57a246f885559916f12b4dad.vega-embed details,
+  #altair-viz-d0db99ca57a246f885559916f12b4dad.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-d0db99ca57a246f885559916f12b4dad"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-d0db99ca57a246f885559916f12b4dad") {
+      outputDiv = document.getElementById("altair-viz-d0db99ca57a246f885559916f12b4dad");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-8210281435d2ee7fd276a02b5bdd617a"}, "mark": {"type": "point", "tooltip": true}, "encoding": {"x": {"field": "x", "type": "quantitative"}, "y": {"field": "y", "type": "quantitative"}}, "params": [{"name": "param_4", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales"}], "title": "Time: 7722", "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-8210281435d2ee7fd276a02b5bdd617a": [{"x": 93, "y": 95}, {"x": 30, "y": 52}, {"x": 29, "y": 50}, {"x": 31, "y": 78}, {"x": 43, "y": 76}, {"x": 81, "y": 70}, {"x": 71, "y": 89}, {"x": 25, "y": 49}, {"x": 76, "y": 78}, {"x": 34, "y": 26}, {"x": 18, "y": 88}, {"x": 36, "y": 17}, {"x": 56, "y": 37}, {"x": 34, "y": 25}, {"x": 29, "y": 60}, {"x": 18, "y": 94}, {"x": 2, "y": 65}, {"x": 91, "y": 75}, {"x": 26, "y": 75}, {"x": 6, "y": 56}, {"x": 46, "y": 10}, {"x": 48, "y": 8}, {"x": 34, "y": 20}, {"x": 85, "y": 101}, {"x": 32, "y": 4}, {"x": 31, "y": 62}, {"x": 30, "y": 29}, {"x": 35, "y": 83}, {"x": 33, "y": 81}, {"x": 18, "y": 33}, {"x": 8, "y": 43}, {"x": 28, "y": 71}, {"x": 21, "y": 39}, {"x": 34, "y": 12}, {"x": 97, "y": 30}, {"x": 98, "y": 53}, {"x": 3, "y": 93}, {"x": 39, "y": 30}, {"x": 78, "y": 26}, {"x": 36, "y": 55}, {"x": 47, "y": 72}, {"x": 33, "y": 56}, {"x": 32, "y": 23}, {"x": 29, "y": 59}, {"x": 31, "y": 73}, {"x": 18, "y": 6}, {"x": 18, "y": 21}, {"x": 18, "y": 41}, {"x": 45, "y": 39}, {"x": 38, "y": 39}, {"x": 77, "y": 10}, {"x": 34, "y": 2}, {"x": 29, "y": 21}, {"x": 48, "y": 17}, {"x": 63, "y": 6}, {"x": 27, "y": 6}, {"x": 72, "y": 71}, {"x": 31, "y": 68}, {"x": 36, "y": 40}, {"x": 33, "y": 33}, {"x": 24, "y": 13}, {"x": 31, "y": 66}, {"x": 18, "y": 26}, {"x": 40, "y": 74}, {"x": 40, "y": 44}, {"x": 36, "y": 15}, {"x": 82, "y": 24}, {"x": 19, "y": 36}, {"x": 21, "y": 87}, {"x": 60, "y": 40}, {"x": 36, "y": 93}, {"x": 34, "y": 20}, {"x": 26, "y": 23}, {"x": 40, "y": 65}, {"x": 25, "y": 11}, {"x": 63, "y": 1}, {"x": 36, "y": 53}, {"x": 31, "y": 31}, {"x": 48, "y": 97}, {"x": 37, "y": 71}, {"x": 31, "y": 23}, {"x": 41, "y": 41}, {"x": 28, "y": 65}, {"x": 34, "y": 11}, {"x": 35, "y": 88}, {"x": 30, "y": 17}, {"x": 59, "y": 80}, {"x": 28, "y": 39}, {"x": 35, "y": 83}, {"x": 29, "y": 16}, {"x": 29, "y": 59}, {"x": 60, "y": 88}, {"x": 86, "y": 89}, {"x": 29, "y": 49}, {"x": 23, "y": 20}, {"x": 33, "y": 69}, {"x": 17, "y": 24}, {"x": 33, "y": 87}, {"x": 92, "y": 47}, {"x": 30, "y": 74}, {"x": 48, "y": 36}, {"x": 55, "y": 51}, {"x": 32, "y": 19}, {"x": 32, "y": 83}, {"x": 60, "y": 96}, {"x": 32, "y": 66}, {"x": 46, "y": 35}, {"x": 1, "y": 86}, {"x": 75, "y": 101}, {"x": 12, "y": 12}, {"x": 67, "y": 1}, {"x": 28, "y": 17}, {"x": 30, "y": 16}, {"x": 30, "y": 91}, {"x": 18, "y": 97}, {"x": 55, "y": 1}, {"x": 36, "y": 78}, {"x": 97, "y": 62}, {"x": 43, "y": 26}, {"x": 18, "y": 101}, {"x": 33, "y": 42}, {"x": 71, "y": 29}, {"x": 78, "y": 55}, {"x": 34, "y": 97}, {"x": 32, "y": 65}, {"x": 41, "y": 6}, {"x": 17, "y": 11}, {"x": 81, "y": 15}, {"x": 26, "y": 74}, {"x": 4, "y": 36}, {"x": 29, "y": 101}, {"x": 29, "y": 22}, {"x": 48, "y": 69}, {"x": 29, "y": 85}, {"x": 48, "y": 21}, {"x": 10, "y": 99}, {"x": 45, "y": 41}, {"x": 34, "y": 73}, {"x": 31, "y": 82}, {"x": 37, "y": 22}, {"x": 27, "y": 78}, {"x": 48, "y": 60}, {"x": 27, "y": 78}, {"x": 81, "y": 83}, {"x": 32, "y": 52}, {"x": 18, "y": 56}, {"x": 79, "y": 85}, {"x": 41, "y": 36}, {"x": 66, "y": 12}, {"x": 32, "y": 14}, {"x": 32, "y": 8}, {"x": 61, "y": 94}, {"x": 3, "y": 66}, {"x": 31, "y": 12}, {"x": 29, "y": 28}, {"x": 46, "y": 0}, {"x": 30, "y": 87}, {"x": 18, "y": 84}, {"x": 50, "y": 5}, {"x": 38, "y": 35}, {"x": 75, "y": 37}, {"x": 40, "y": 28}, {"x": 33, "y": 69}, {"x": 87, "y": 42}, {"x": 39, "y": 64}, {"x": 48, "y": 71}, {"x": 39, "y": 67}, {"x": 34, "y": 71}, {"x": 51, "y": 90}, {"x": 88, "y": 39}, {"x": 77, "y": 43}, {"x": 34, "y": 25}, {"x": 34, "y": 93}, {"x": 35, "y": 40}, {"x": 18, "y": 49}, {"x": 39, "y": 3}, {"x": 48, "y": 43}, {"x": 38, "y": 90}, {"x": 6, "y": 100}, {"x": 28, "y": 37}, {"x": 33, "y": 11}, {"x": 26, "y": 68}, {"x": 28, "y": 33}, {"x": 5, "y": 54}, {"x": 26, "y": 29}, {"x": 34, "y": 24}, {"x": 32, "y": 58}, {"x": 32, "y": 26}, {"x": 18, "y": 96}, {"x": 48, "y": 51}, {"x": 18, "y": 84}, {"x": 31, "y": 100}, {"x": 59, "y": 19}, {"x": 35, "y": 102}, {"x": 31, "y": 30}, {"x": 38, "y": 78}, {"x": 36, "y": 84}, {"x": 37, "y": 43}, {"x": 30, "y": 46}, {"x": 38, "y": 53}, {"x": 23, "y": 92}, {"x": 38, "y": 76}, {"x": 30, "y": 75}, {"x": 32, "y": 21}, {"x": 42, "y": 35}, {"x": 18, "y": 68}, {"x": 0, "y": 3}, {"x": 98, "y": 62}, {"x": 56, "y": 12}, {"x": 41, "y": 21}, {"x": 96, "y": 14}, {"x": 48, "y": 73}, {"x": 33, "y": 97}, {"x": 30, "y": 82}, {"x": 36, "y": 87}, {"x": 83, "y": 29}, {"x": 30, "y": 96}, {"x": 97, "y": 58}, {"x": 54, "y": 101}, {"x": 37, "y": 11}, {"x": 33, "y": 32}, {"x": 16, "y": 48}, {"x": 18, "y": 18}, {"x": 33, "y": 2}, {"x": 30, "y": 1}, {"x": 17, "y": 85}, {"x": 30, "y": 21}, {"x": 37, "y": 72}, {"x": 32, "y": 42}, {"x": 35, "y": 73}, {"x": 31, "y": 16}, {"x": 48, "y": 4}, {"x": 32, "y": 53}, {"x": 12, "y": 4}, {"x": 34, "y": 10}, {"x": 28, "y": 60}, {"x": 85, "y": 37}, {"x": 31, "y": 84}, {"x": 18, "y": 76}, {"x": 44, "y": 52}, {"x": 27, "y": 42}, {"x": 99, "y": 11}, {"x": 32, "y": 13}, {"x": 38, "y": 80}, {"x": 28, "y": 1}, {"x": 31, "y": 42}, {"x": 35, "y": 74}, {"x": 33, "y": 89}, {"x": 40, "y": 72}, {"x": 41, "y": 62}, {"x": 40, "y": 90}, {"x": 25, "y": 98}, {"x": 47, "y": 42}, {"x": 97, "y": 58}, {"x": 16, "y": 32}, {"x": 1, "y": 91}, {"x": 43, "y": 27}, {"x": 54, "y": 1}, {"x": 33, "y": 9}, {"x": 48, "y": 2}, {"x": 36, "y": 17}, {"x": 39, "y": 4}, {"x": 48, "y": 31}, {"x": 38, "y": 31}, {"x": 30, "y": 66}, {"x": 44, "y": 36}, {"x": 28, "y": 12}, {"x": 40, "y": 38}, {"x": 26, "y": 69}, {"x": 41, "y": 33}, {"x": 74, "y": 64}, {"x": 53, "y": 86}, {"x": 27, "y": 10}, {"x": 31, "y": 6}, {"x": 6, "y": 96}, {"x": 33, "y": 13}, {"x": 30, "y": 23}, {"x": 51, "y": 93}, {"x": 31, "y": 71}, {"x": 48, "y": 6}, {"x": 7, "y": 3}, {"x": 24, "y": 33}, {"x": 34, "y": 99}, {"x": 32, "y": 30}, {"x": 69, "y": 35}, {"x": 42, "y": 89}, {"x": 7, "y": 11}, {"x": 48, "y": 19}, {"x": 35, "y": 58}, {"x": 48, "y": 87}, {"x": 30, "y": 9}, {"x": 29, "y": 78}, {"x": 39, "y": 68}, {"x": 33, "y": 81}, {"x": 27, "y": 2}, {"x": 72, "y": 11}, {"x": 29, "y": 16}, {"x": 47, "y": 27}, {"x": 32, "y": 87}, {"x": 24, "y": 86}, {"x": 36, "y": 7}, {"x": 7, "y": 56}, {"x": 36, "y": 26}, {"x": 40, "y": 90}, {"x": 73, "y": 75}, {"x": 38, "y": 4}, {"x": 30, "y": 41}, {"x": 100, "y": 51}, {"x": 29, "y": 27}, {"x": 8, "y": 87}, {"x": 82, "y": 36}, {"x": 48, "y": 39}, {"x": 38, "y": 88}, {"x": 35, "y": 40}, {"x": 36, "y": 93}, {"x": 27, "y": 49}, {"x": 98, "y": 48}, {"x": 28, "y": 58}, {"x": 31, "y": 67}, {"x": 47, "y": 45}, {"x": 91, "y": 46}, {"x": 35, "y": 95}, {"x": 33, "y": 40}, {"x": 34, "y": 53}, {"x": 48, "y": 96}, {"x": 92, "y": 68}, {"x": 26, "y": 77}, {"x": 33, "y": 5}, {"x": 35, "y": 79}, {"x": 18, "y": 14}, {"x": 34, "y": 61}, {"x": 35, "y": 50}, {"x": 48, "y": 64}, {"x": 38, "y": 92}, {"x": 38, "y": 41}, {"x": 36, "y": 64}, {"x": 18, "y": 78}, {"x": 25, "y": 27}, {"x": 30, "y": 74}, {"x": 61, "y": 0}, {"x": 18, "y": 57}, {"x": 74, "y": 7}, {"x": 87, "y": 67}, {"x": 2, "y": 35}, {"x": 29, "y": 77}, {"x": 42, "y": 36}, {"x": 37, "y": 62}, {"x": 37, "y": 53}, {"x": 22, "y": 3}, {"x": 97, "y": 90}, {"x": 39, "y": 11}, {"x": 28, "y": 37}, {"x": 49, "y": 86}, {"x": 28, "y": 17}, {"x": 48, "y": 21}, {"x": 37, "y": 20}, {"x": 84, "y": 67}, {"x": 98, "y": 81}, {"x": 33, "y": 58}, {"x": 43, "y": 56}, {"x": 37, "y": 59}, {"x": 81, "y": 77}, {"x": 33, "y": 51}, {"x": 51, "y": 94}, {"x": 37, "y": 4}, {"x": 27, "y": 83}, {"x": 35, "y": 70}, {"x": 37, "y": 68}, {"x": 25, "y": 98}, {"x": 37, "y": 35}, {"x": 73, "y": 76}, {"x": 35, "y": 23}, {"x": 35, "y": 7}, {"x": 18, "y": 77}, {"x": 72, "y": 15}, {"x": 38, "y": 47}, {"x": 48, "y": 93}, {"x": 85, "y": 49}, {"x": 32, "y": 100}, {"x": 33, "y": 45}, {"x": 37, "y": 3}, {"x": 36, "y": 13}, {"x": 44, "y": 85}, {"x": 31, "y": 77}, {"x": 39, "y": 71}, {"x": 35, "y": 52}, {"x": 48, "y": 102}, {"x": 18, "y": 20}, {"x": 29, "y": 94}, {"x": 32, "y": 24}, {"x": 32, "y": 29}, {"x": 35, "y": 12}, {"x": 28, "y": 26}, {"x": 48, "y": 65}, {"x": 56, "y": 24}, {"x": 94, "y": 66}, {"x": 32, "y": 97}, {"x": 58, "y": 42}, {"x": 31, "y": 8}, {"x": 27, "y": 53}, {"x": 18, "y": 17}, {"x": 25, "y": 27}, {"x": 68, "y": 88}, {"x": 39, "y": 56}, {"x": 34, "y": 2}, {"x": 42, "y": 23}, {"x": 31, "y": 20}, {"x": 18, "y": 63}, {"x": 18, "y": 14}, {"x": 29, "y": 75}, {"x": 39, "y": 24}, {"x": 18, "y": 64}, {"x": 32, "y": 62}, {"x": 34, "y": 35}, {"x": 22, "y": 87}, {"x": 28, "y": 38}, {"x": 24, "y": 9}, {"x": 33, "y": 40}, {"x": 48, "y": 59}, {"x": 33, "y": 88}, {"x": 48, "y": 80}, {"x": 95, "y": 16}, {"x": 37, "y": 67}, {"x": 33, "y": 46}, {"x": 18, "y": 19}, {"x": 48, "y": 87}, {"x": 18, "y": 48}, {"x": 17, "y": 2}, {"x": 89, "y": 9}, {"x": 39, "y": 66}, {"x": 36, "y": 35}, {"x": 48, "y": 49}, {"x": 18, "y": 22}, {"x": 34, "y": 14}, {"x": 34, "y": 79}, {"x": 35, "y": 85}, {"x": 18, "y": 36}, {"x": 35, "y": 4}, {"x": 18, "y": 68}, {"x": 17, "y": 4}, {"x": 38, "y": 10}, {"x": 92, "y": 43}, {"x": 26, "y": 55}, {"x": 22, "y": 94}, {"x": 30, "y": 69}, {"x": 37, "y": 19}, {"x": 34, "y": 29}, {"x": 23, "y": 34}, {"x": 19, "y": 72}, {"x": 29, "y": 13}, {"x": 40, "y": 2}, {"x": 32, "y": 55}, {"x": 20, "y": 51}, {"x": 6, "y": 43}, {"x": 33, "y": 18}, {"x": 73, "y": 20}, {"x": 22, "y": 20}, {"x": 91, "y": 45}, {"x": 18, "y": 24}, {"x": 12, "y": 3}, {"x": 37, "y": 23}, {"x": 36, "y": 43}, {"x": 2, "y": 19}, {"x": 39, "y": 65}, {"x": 30, "y": 19}, {"x": 48, "y": 40}, {"x": 90, "y": 19}, {"x": 48, "y": 39}, {"x": 78, "y": 28}, {"x": 32, "y": 77}, {"x": 48, "y": 85}, {"x": 61, "y": 42}, {"x": 25, "y": 32}, {"x": 88, "y": 100}, {"x": 27, "y": 59}, {"x": 56, "y": 26}, {"x": 44, "y": 41}, {"x": 27, "y": 4}, {"x": 22, "y": 82}, {"x": 82, "y": 51}, {"x": 18, "y": 16}, {"x": 39, "y": 39}, {"x": 33, "y": 79}, {"x": 18, "y": 8}, {"x": 33, "y": 60}, {"x": 27, "y": 14}, {"x": 37, "y": 26}, {"x": 48, "y": 6}, {"x": 34, "y": 12}, {"x": 34, "y": 75}, {"x": 48, "y": 100}, {"x": 31, "y": 16}, {"x": 20, "y": 37}, {"x": 18, "y": 9}, {"x": 48, "y": 57}, {"x": 34, "y": 9}, {"x": 35, "y": 39}, {"x": 11, "y": 45}, {"x": 38, "y": 19}, {"x": 36, "y": 6}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+  #altair-viz-31965beb0e004a7f897986b2b4f1a760.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-31965beb0e004a7f897986b2b4f1a760.vega-embed details,
+  #altair-viz-31965beb0e004a7f897986b2b4f1a760.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-31965beb0e004a7f897986b2b4f1a760"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-31965beb0e004a7f897986b2b4f1a760") {
+      outputDiv = document.getElementById("altair-viz-31965beb0e004a7f897986b2b4f1a760");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-cc52910149e38dbfaf7f3028948e7da1"}, "mark": {"type": "point", "tooltip": true}, "encoding": {"x": {"field": "x", "type": "quantitative"}, "y": {"field": "y", "type": "quantitative"}}, "params": [{"name": "param_5", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales"}], "title": "Time: 7924", "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-cc52910149e38dbfaf7f3028948e7da1": [{"x": 93, "y": 84}, {"x": 30, "y": 30}, {"x": 29, "y": 39}, {"x": 31, "y": 94}, {"x": 43, "y": 7}, {"x": 81, "y": 9}, {"x": 71, "y": 66}, {"x": 25, "y": 32}, {"x": 76, "y": 94}, {"x": 34, "y": 101}, {"x": 18, "y": 12}, {"x": 36, "y": 87}, {"x": 56, "y": 40}, {"x": 34, "y": 101}, {"x": 29, "y": 69}, {"x": 18, "y": 28}, {"x": 2, "y": 62}, {"x": 91, "y": 9}, {"x": 26, "y": 89}, {"x": 6, "y": 5}, {"x": 46, "y": 49}, {"x": 48, "y": 72}, {"x": 34, "y": 95}, {"x": 85, "y": 99}, {"x": 32, "y": 58}, {"x": 31, "y": 50}, {"x": 30, "y": 97}, {"x": 35, "y": 7}, {"x": 33, "y": 1}, {"x": 18, "y": 15}, {"x": 8, "y": 38}, {"x": 28, "y": 68}, {"x": 21, "y": 36}, {"x": 34, "y": 60}, {"x": 97, "y": 95}, {"x": 98, "y": 82}, {"x": 3, "y": 84}, {"x": 39, "y": 100}, {"x": 78, "y": 36}, {"x": 36, "y": 54}, {"x": 47, "y": 70}, {"x": 33, "y": 60}, {"x": 32, "y": 98}, {"x": 29, "y": 56}, {"x": 31, "y": 91}, {"x": 18, "y": 68}, {"x": 18, "y": 73}, {"x": 18, "y": 34}, {"x": 45, "y": 36}, {"x": 38, "y": 23}, {"x": 77, "y": 64}, {"x": 34, "y": 58}, {"x": 29, "y": 0}, {"x": 48, "y": 72}, {"x": 63, "y": 96}, {"x": 27, "y": 52}, {"x": 72, "y": 45}, {"x": 31, "y": 18}, {"x": 36, "y": 6}, {"x": 33, "y": 101}, {"x": 24, "y": 63}, {"x": 31, "y": 71}, {"x": 18, "y": 86}, {"x": 40, "y": 36}, {"x": 40, "y": 46}, {"x": 36, "y": 73}, {"x": 82, "y": 99}, {"x": 19, "y": 30}, {"x": 21, "y": 100}, {"x": 60, "y": 32}, {"x": 36, "y": 20}, {"x": 34, "y": 79}, {"x": 26, "y": 75}, {"x": 40, "y": 67}, {"x": 25, "y": 51}, {"x": 63, "y": 36}, {"x": 36, "y": 55}, {"x": 31, "y": 10}, {"x": 48, "y": 17}, {"x": 37, "y": 85}, {"x": 31, "y": 98}, {"x": 41, "y": 17}, {"x": 28, "y": 48}, {"x": 34, "y": 70}, {"x": 35, "y": 15}, {"x": 30, "y": 74}, {"x": 59, "y": 29}, {"x": 28, "y": 17}, {"x": 35, "y": 4}, {"x": 29, "y": 2}, {"x": 29, "y": 53}, {"x": 60, "y": 8}, {"x": 86, "y": 1}, {"x": 29, "y": 42}, {"x": 23, "y": 77}, {"x": 33, "y": 89}, {"x": 17, "y": 9}, {"x": 33, "y": 16}, {"x": 92, "y": 22}, {"x": 30, "y": 92}, {"x": 48, "y": 19}, {"x": 55, "y": 49}, {"x": 32, "y": 81}, {"x": 32, "y": 7}, {"x": 60, "y": 52}, {"x": 32, "y": 82}, {"x": 46, "y": 28}, {"x": 1, "y": 34}, {"x": 75, "y": 56}, {"x": 12, "y": 91}, {"x": 67, "y": 41}, {"x": 28, "y": 75}, {"x": 30, "y": 78}, {"x": 30, "y": 20}, {"x": 18, "y": 37}, {"x": 55, "y": 50}, {"x": 36, "y": 91}, {"x": 97, "y": 53}, {"x": 43, "y": 81}, {"x": 18, "y": 28}, {"x": 33, "y": 15}, {"x": 71, "y": 63}, {"x": 78, "y": 79}, {"x": 34, "y": 96}, {"x": 32, "y": 76}, {"x": 41, "y": 54}, {"x": 17, "y": 85}, {"x": 81, "y": 0}, {"x": 26, "y": 84}, {"x": 4, "y": 95}, {"x": 29, "y": 25}, {"x": 29, "y": 84}, {"x": 48, "y": 88}, {"x": 29, "y": 8}, {"x": 48, "y": 79}, {"x": 10, "y": 98}, {"x": 45, "y": 8}, {"x": 34, "y": 83}, {"x": 31, "y": 98}, {"x": 37, "y": 84}, {"x": 27, "y": 100}, {"x": 48, "y": 77}, {"x": 27, "y": 97}, {"x": 81, "y": 23}, {"x": 32, "y": 42}, {"x": 18, "y": 63}, {"x": 79, "y": 80}, {"x": 41, "y": 101}, {"x": 66, "y": 61}, {"x": 32, "y": 57}, {"x": 32, "y": 64}, {"x": 61, "y": 101}, {"x": 3, "y": 76}, {"x": 31, "y": 77}, {"x": 29, "y": 102}, {"x": 46, "y": 63}, {"x": 30, "y": 29}, {"x": 18, "y": 15}, {"x": 50, "y": 47}, {"x": 38, "y": 99}, {"x": 75, "y": 40}, {"x": 40, "y": 95}, {"x": 33, "y": 72}, {"x": 87, "y": 5}, {"x": 39, "y": 54}, {"x": 48, "y": 83}, {"x": 39, "y": 73}, {"x": 34, "y": 80}, {"x": 51, "y": 83}, {"x": 88, "y": 56}, {"x": 77, "y": 85}, {"x": 34, "y": 85}, {"x": 34, "y": 24}, {"x": 35, "y": 15}, {"x": 18, "y": 46}, {"x": 39, "y": 83}, {"x": 48, "y": 35}, {"x": 38, "y": 17}, {"x": 6, "y": 21}, {"x": 28, "y": 16}, {"x": 33, "y": 68}, {"x": 26, "y": 73}, {"x": 28, "y": 1}, {"x": 5, "y": 40}, {"x": 26, "y": 16}, {"x": 34, "y": 91}, {"x": 32, "y": 68}, {"x": 32, "y": 3}, {"x": 18, "y": 43}, {"x": 48, "y": 35}, {"x": 18, "y": 98}, {"x": 31, "y": 55}, {"x": 59, "y": 46}, {"x": 35, "y": 41}, {"x": 31, "y": 4}, {"x": 38, "y": 91}, {"x": 36, "y": 6}, {"x": 37, "y": 49}, {"x": 30, "y": 26}, {"x": 38, "y": 24}, {"x": 23, "y": 7}, {"x": 38, "y": 94}, {"x": 30, "y": 97}, {"x": 32, "y": 88}, {"x": 42, "y": 99}, {"x": 18, "y": 81}, {"x": 0, "y": 40}, {"x": 98, "y": 53}, {"x": 56, "y": 58}, {"x": 41, "y": 0}, {"x": 96, "y": 77}, {"x": 48, "y": 101}, {"x": 33, "y": 35}, {"x": 30, "y": 3}, {"x": 36, "y": 17}, {"x": 83, "y": 67}, {"x": 30, "y": 39}, {"x": 97, "y": 39}, {"x": 54, "y": 79}, {"x": 37, "y": 51}, {"x": 33, "y": 17}, {"x": 16, "y": 84}, {"x": 18, "y": 94}, {"x": 33, "y": 45}, {"x": 30, "y": 43}, {"x": 17, "y": 80}, {"x": 30, "y": 84}, {"x": 37, "y": 93}, {"x": 32, "y": 16}, {"x": 35, "y": 92}, {"x": 31, "y": 76}, {"x": 48, "y": 53}, {"x": 32, "y": 39}, {"x": 12, "y": 6}, {"x": 34, "y": 49}, {"x": 28, "y": 54}, {"x": 85, "y": 96}, {"x": 31, "y": 8}, {"x": 18, "y": 88}, {"x": 44, "y": 30}, {"x": 27, "y": 19}, {"x": 99, "y": 8}, {"x": 32, "y": 70}, {"x": 38, "y": 97}, {"x": 28, "y": 50}, {"x": 31, "y": 19}, {"x": 35, "y": 95}, {"x": 33, "y": 14}, {"x": 40, "y": 70}, {"x": 41, "y": 58}, {"x": 40, "y": 17}, {"x": 25, "y": 67}, {"x": 47, "y": 70}, {"x": 97, "y": 29}, {"x": 16, "y": 68}, {"x": 1, "y": 24}, {"x": 43, "y": 91}, {"x": 54, "y": 102}, {"x": 33, "y": 58}, {"x": 48, "y": 35}, {"x": 36, "y": 82}, {"x": 39, "y": 51}, {"x": 48, "y": 97}, {"x": 38, "y": 68}, {"x": 30, "y": 45}, {"x": 44, "y": 96}, {"x": 28, "y": 64}, {"x": 40, "y": 11}, {"x": 26, "y": 72}, {"x": 41, "y": 2}, {"x": 74, "y": 80}, {"x": 53, "y": 84}, {"x": 27, "y": 61}, {"x": 31, "y": 52}, {"x": 6, "y": 50}, {"x": 33, "y": 75}, {"x": 30, "y": 98}, {"x": 51, "y": 95}, {"x": 31, "y": 84}, {"x": 48, "y": 66}, {"x": 7, "y": 5}, {"x": 24, "y": 1}, {"x": 34, "y": 44}, {"x": 32, "y": 98}, {"x": 69, "y": 91}, {"x": 42, "y": 9}, {"x": 7, "y": 85}, {"x": 48, "y": 93}, {"x": 35, "y": 50}, {"x": 48, "y": 57}, {"x": 30, "y": 92}, {"x": 29, "y": 96}, {"x": 39, "y": 94}, {"x": 33, "y": 11}, {"x": 27, "y": 22}, {"x": 72, "y": 74}, {"x": 29, "y": 47}, {"x": 47, "y": 12}, {"x": 32, "y": 19}, {"x": 24, "y": 98}, {"x": 36, "y": 56}, {"x": 7, "y": 24}, {"x": 36, "y": 98}, {"x": 40, "y": 16}, {"x": 73, "y": 22}, {"x": 38, "y": 69}, {"x": 30, "y": 27}, {"x": 100, "y": 80}, {"x": 29, "y": 102}, {"x": 8, "y": 85}, {"x": 82, "y": 0}, {"x": 48, "y": 9}, {"x": 38, "y": 11}, {"x": 35, "y": 25}, {"x": 36, "y": 17}, {"x": 27, "y": 56}, {"x": 98, "y": 100}, {"x": 28, "y": 52}, {"x": 31, "y": 85}, {"x": 47, "y": 70}, {"x": 91, "y": 83}, {"x": 35, "y": 13}, {"x": 33, "y": 30}, {"x": 34, "y": 50}, {"x": 48, "y": 45}, {"x": 92, "y": 50}, {"x": 26, "y": 94}, {"x": 33, "y": 71}, {"x": 35, "y": 4}, {"x": 18, "y": 96}, {"x": 34, "y": 56}, {"x": 35, "y": 36}, {"x": 48, "y": 86}, {"x": 38, "y": 17}, {"x": 38, "y": 23}, {"x": 36, "y": 66}, {"x": 18, "y": 93}, {"x": 25, "y": 12}, {"x": 30, "y": 83}, {"x": 61, "y": 85}, {"x": 18, "y": 40}, {"x": 74, "y": 90}, {"x": 87, "y": 85}, {"x": 2, "y": 10}, {"x": 29, "y": 96}, {"x": 42, "y": 30}, {"x": 37, "y": 66}, {"x": 37, "y": 47}, {"x": 22, "y": 67}, {"x": 97, "y": 27}, {"x": 39, "y": 69}, {"x": 28, "y": 14}, {"x": 49, "y": 79}, {"x": 28, "y": 95}, {"x": 48, "y": 72}, {"x": 37, "y": 82}, {"x": 84, "y": 56}, {"x": 98, "y": 65}, {"x": 33, "y": 57}, {"x": 43, "y": 97}, {"x": 37, "y": 62}, {"x": 81, "y": 5}, {"x": 33, "y": 37}, {"x": 51, "y": 9}, {"x": 37, "y": 47}, {"x": 27, "y": 2}, {"x": 35, "y": 79}, {"x": 37, "y": 74}, {"x": 25, "y": 32}, {"x": 37, "y": 15}, {"x": 73, "y": 65}, {"x": 35, "y": 99}, {"x": 35, "y": 55}, {"x": 18, "y": 98}, {"x": 72, "y": 92}, {"x": 38, "y": 33}, {"x": 48, "y": 37}, {"x": 85, "y": 102}, {"x": 32, "y": 31}, {"x": 33, "y": 30}, {"x": 37, "y": 44}, {"x": 36, "y": 65}, {"x": 44, "y": 33}, {"x": 31, "y": 101}, {"x": 39, "y": 76}, {"x": 35, "y": 55}, {"x": 48, "y": 31}, {"x": 18, "y": 76}, {"x": 29, "y": 21}, {"x": 32, "y": 87}, {"x": 32, "y": 0}, {"x": 35, "y": 64}, {"x": 28, "y": 96}, {"x": 48, "y": 75}, {"x": 56, "y": 55}, {"x": 94, "y": 77}, {"x": 32, "y": 49}, {"x": 58, "y": 7}, {"x": 31, "y": 65}, {"x": 27, "y": 40}, {"x": 18, "y": 93}, {"x": 25, "y": 93}, {"x": 68, "y": 10}, {"x": 39, "y": 53}, {"x": 34, "y": 65}, {"x": 42, "y": 84}, {"x": 31, "y": 79}, {"x": 18, "y": 84}, {"x": 18, "y": 63}, {"x": 29, "y": 96}, {"x": 39, "y": 86}, {"x": 18, "y": 85}, {"x": 32, "y": 63}, {"x": 34, "y": 13}, {"x": 22, "y": 100}, {"x": 28, "y": 20}, {"x": 24, "y": 79}, {"x": 33, "y": 27}, {"x": 48, "y": 56}, {"x": 33, "y": 6}, {"x": 48, "y": 99}, {"x": 95, "y": 95}, {"x": 37, "y": 80}, {"x": 33, "y": 41}, {"x": 18, "y": 88}, {"x": 48, "y": 11}, {"x": 18, "y": 30}, {"x": 17, "y": 19}, {"x": 89, "y": 91}, {"x": 39, "y": 70}, {"x": 36, "y": 12}, {"x": 48, "y": 35}, {"x": 18, "y": 87}, {"x": 34, "y": 78}, {"x": 34, "y": 93}, {"x": 35, "y": 10}, {"x": 18, "y": 7}, {"x": 35, "y": 69}, {"x": 18, "y": 78}, {"x": 17, "y": 6}, {"x": 38, "y": 57}, {"x": 92, "y": 61}, {"x": 26, "y": 45}, {"x": 22, "y": 70}, {"x": 30, "y": 78}, {"x": 37, "y": 81}, {"x": 34, "y": 92}, {"x": 23, "y": 26}, {"x": 19, "y": 70}, {"x": 29, "y": 63}, {"x": 40, "y": 41}, {"x": 32, "y": 41}, {"x": 20, "y": 60}, {"x": 6, "y": 79}, {"x": 33, "y": 24}, {"x": 73, "y": 74}, {"x": 22, "y": 4}, {"x": 91, "y": 69}, {"x": 18, "y": 78}, {"x": 12, "y": 64}, {"x": 37, "y": 83}, {"x": 36, "y": 33}, {"x": 2, "y": 83}, {"x": 39, "y": 66}, {"x": 30, "y": 87}, {"x": 48, "y": 23}, {"x": 90, "y": 13}, {"x": 48, "y": 24}, {"x": 78, "y": 2}, {"x": 32, "y": 91}, {"x": 48, "y": 3}, {"x": 61, "y": 85}, {"x": 25, "y": 102}, {"x": 88, "y": 62}, {"x": 27, "y": 54}, {"x": 56, "y": 49}, {"x": 44, "y": 40}, {"x": 27, "y": 37}, {"x": 22, "y": 88}, {"x": 82, "y": 71}, {"x": 18, "y": 40}, {"x": 39, "y": 99}, {"x": 33, "y": 94}, {"x": 18, "y": 57}, {"x": 33, "y": 46}, {"x": 27, "y": 71}, {"x": 37, "y": 10}, {"x": 48, "y": 63}, {"x": 34, "y": 69}, {"x": 34, "y": 100}, {"x": 48, "y": 26}, {"x": 31, "y": 75}, {"x": 20, "y": 0}, {"x": 18, "y": 62}, {"x": 48, "y": 58}, {"x": 34, "y": 60}, {"x": 35, "y": 26}, {"x": 11, "y": 4}, {"x": 38, "y": 85}, {"x": 36, "y": 73}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/ddanieltan\.github\.io\/aoc2024\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>🎄 Merry Christmas! 🎄 | Made by <a href="https://www.ddanieltan.com/"><span class="citation" data-cites="ddanieltan">@ddanieltan</span></a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

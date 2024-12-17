@@ -230,7 +230,7 @@ MMMISSJEEE</code></pre>
 </div>
 </div>
 </div>
-<div id="e17e5dae" class="cell" data-execution_count="1">
+<div id="0183bd65" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>eg <span class="op">=</span> <span class="st">"""RRRRIICCFF</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="st">RRRRIICCCF</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">VVRRRCCFFF</span></span>
@@ -299,7 +299,7 @@ MMMISSJEEE</code></pre>
 <pre><code>1930</code></pre>
 </div>
 </div>
-<div id="53eeac8c" class="cell" data-execution_count="2">
+<div id="b1f52030" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"inputs/12"</span>, <span class="st">"r"</span>) <span class="im">as</span> f:</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    inp <span class="op">=</span> f.read()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>part1(inp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -322,11 +322,50 @@ Puzzle Info
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p>Under the bulk discount, instead of using the perimeter to calculate the price, you need to use the number of sides each region has. Each straight section of fence counts as a side, regardless of how long it is.</p>
+<p>Consider this example again:</p>
+<pre><code>AAAA
+BBCD
+BBCC
+EEEC</code></pre>
+<p>The region containing type A plants has 4 sides, as does each of the regions containing plants of type B, D, and E. However, the more complex region containing the plants of type C has 8 sides!</p>
+<p>Using the new method of calculating the per-region price by multiplying the region’s area by its number of sides, regions A through E have prices 16, 16, 32, 4, and 12, respectively, for a total price of 80.</p>
+<p>The second example above (full of type X and O plants) would have a total price of 436.</p>
+<p>Here’s a map that includes an E-shaped region full of type E plants:</p>
+<pre><code>EEEEE
+EXXXX
+EEEEE
+EXXXX
+EEEEE</code></pre>
+<p>The E-shaped region has an area of 17 and 12 sides for a price of 204. Including the two regions full of type X plants, this map has a total price of 236.</p>
+<p>This map has a total price of 368:</p>
+<pre><code>AAAAAA
+AAABBA
+AAABBA
+ABBAAA
+ABBAAA
+AAAAAA</code></pre>
+<p>It includes two regions full of type B plants (each with 4 sides) and a single region full of type A plants (with 4 sides on the outside and 8 more sides on the inside, a total of 12 sides). Be especially careful when counting the fence around regions like the one full of type A plants; in particular, each section of fence has an in-side and an out-side, so the fence does not connect across the middle of the region (where the two B regions touch diagonally). (The Elves would have used the Möbius Fencing Company instead, but their contract terms were too one-sided.)</p>
+<p>The larger example from before now has the following updated prices:</p>
+<ul>
+<li>A region of R plants with price 12 * 10 = 120.</li>
+<li>A region of I plants with price 4 * 4 = 16.</li>
+<li>A region of C plants with price 14 * 22 = 308.</li>
+<li>A region of F plants with price 10 * 12 = 120.</li>
+<li>A region of V plants with price 13 * 10 = 130.</li>
+<li>A region of J plants with price 11 * 12 = 132.</li>
+<li>A region of C plants with price 1 * 4 = 4.</li>
+<li>A region of E plants with price 13 * 8 = 104.</li>
+<li>A region of I plants with price 14 * 16 = 224.</li>
+<li>A region of M plants with price 5 * 6 = 30.</li>
+<li>A region of S plants with price 3 * 6 = 18.</li>
+</ul>
+<p>Adding these together produces its new total price of 1206.</p>
+<p>What is the new total price of fencing all regions on your map?</p>
 </div>
 </div>
 </div>
-<div id="71acd036" class="cell" data-execution_count="3">
+<div id="6bf90b04" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> part2(inp:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>    grid <span class="op">=</span> parse(inp)</span>
 <span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a>    in_bounds <span class="op">=</span> <span class="kw">lambda</span> x, y: (x<span class="op">&gt;=</span><span class="dv">0</span>) <span class="kw">and</span> (x<span class="op">&lt;</span><span class="bu">len</span>(grid)) <span class="kw">and</span> (y<span class="op">&gt;=</span><span class="dv">0</span>) <span class="kw">and</span> (y<span class="op">&lt;</span><span class="bu">len</span>(grid[<span class="dv">0</span>]))</span>
@@ -405,8 +444,8 @@ Puzzle Info
 <pre><code>1206</code></pre>
 </div>
 </div>
-<div id="b9e9566a" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>part2(inp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1c5d85b5" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>part2(inp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>921636</code></pre>
 </div>
