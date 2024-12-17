@@ -129,7 +129,7 @@ part1(inp)
 ## Part 2
 
 ::: {.callout-note title="Puzzle Info" collapse="true"}
-Under the bulk discount, instead of using the perimeter to calculate the price, youneed to use the number of sides each region has. Each straight section of fence counts as a side, regardless of how long it is.
+Under the bulk discount, instead of using the perimeter to calculate the price, you need to use the number of sides each region has. Each straight section of fence counts as a side, regardless of how long it is.
 
 Consider this example again:
 ```
