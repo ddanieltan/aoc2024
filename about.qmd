@@ -1,5 +1,3 @@
----
-title: "About"
----
+Hello, I'm [@ddanieltan](www.ddanieltan.com) and every year I enjoy attempting Advent of Code puzzles and this year is no exception.
 
-About this site
+This yearly challenge is a fun way for me to try out new tech and/or refresh my knowledge on existing fundamentals. In years past, I have used AoC to learn new programming languages and

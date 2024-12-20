@@ -1,0 +1,331 @@
+---
+title: "Day 0"
+---
+
+![Prompt:](images/01.webp){width="500" fig-align="center"}
+
+## Part 1
+
+::: {.callout-note title="Puzzle Info" collapse="true"}
+The Reindeer start on the Start Tile (marked S) facing East and need to reach the End Tile (marked E). They can move forward one tile at a time (increasing their score by 1 point), but never into a wall (#). They can also rotate clockwise or counterclockwise 90 degrees at a time (increasing their score by 1000 points).
+
+To figure out the best place to sit, you start by grabbing a map (your puzzle input) from a nearby kiosk. For example:
+```
+###############
+#.......#....E#
+#.#.###.#.###.#
+#.....#.#...#.#
+#.###.#####.#.#
+#.#.#.......#.#
+#.#.#####.###.#
+#...........#.#
+###.#.#####.#.#
+#...#.....#.#.#
+#.#.#.###.#.#.#
+#.....#...#.#.#
+#.###.#.#.#.#.#
+#S..#.....#...#
+###############
+```
+There are many paths through this maze, but taking any of the best paths would incur a score of only 7036. This can be achieved by taking a total of 36 steps forward and turning 90 degrees a total of 7 times:
+
+```
+###############
+#.......#....E#
+#.#.###.#.###^#
+#.....#.#...#^#
+#.###.#####.#^#
+#.#.#.......#^#
+#.#.#####.###^#
+#..>>>>>>>>v#^#
+###^#.#####v#^#
+#>>^#.....#v#^#
+#^#.#.###.#v#^#
+#^....#...#v#^#
+#^###.#.#.#v#^#
+#S..#.....#>>^#
+###############
+```
+Here's a second example:
+```
+#################
+#...#...#...#..E#
+#.#.#.#.#.#.#.#.#
+#.#.#.#...#...#.#
+#.#.#.#.###.#.#.#
+#...#.#.#.....#.#
+#.#.#.#.#.#####.#
+#.#...#.#.#.....#
+#.#.#####.#.###.#
+#.#.#.......#...#
+#.#.###.#####.###
+#.#.#...#.....#.#
+#.#.#.#####.###.#
+#.#.#.........#.#
+#.#.#.#########.#
+#S#.............#
+#################
+```
+In this maze, the best paths cost 11048 points; following one such path would look like this:
+```
+#################
+#...#...#...#..E#
+#.#.#.#.#.#.#.#^#
+#.#.#.#...#...#^#
+#.#.#.#.###.#.#^#
+#>>v#.#.#.....#^#
+#^#v#.#.#.#####^#
+#^#v..#.#.#>>>>^#
+#^#v#####.#^###.#
+#^#v#..>>>>^#...#
+#^#v###^#####.###
+#^#v#>>^#.....#.#
+#^#v#^#####.###.#
+#^#v#^........#.#
+#^#v#^#########.#
+#S#>>^..........#
+#################
+```
+Note that the path shown above includes one 90 degree turn as the very first move, rotating the Reindeer from facing East to facing North.
+
+Analyze your map carefully. What is the lowest score a Reindeer could possibly get?
+:::
+
+```{python}
+eg = """###############
+#.......#....E#
+#.#.###.#.###.#
+#.....#.#...#.#
+#.###.#####.#.#
+#.#.#.......#.#
+#.#.#####.###.#
+#...........#.#
+###.#.#####.#.#
+#...#.....#.#.#
+#.#.#.###.#.#.#
+#.....#...#.#.#
+#.###.#.#.#.#.#
+#S..#.....#...#
+###############
+"""
+
+import heapq
+from enum import Enum
+
+def parse(inp:str) -> list[list[str]]:
+    return [list(line) for line in inp.splitlines()]
+
+class Directions(Enum): # <1>
+    N = (-1,0)
+    E = (0,1)
+    S = (1,0)
+    W = (0,-1)
+
+    def clockwise(self):
+        dirs = list(Directions)
+        return dirs[(dirs.index(self)+1) % 4]
+
+    def anticlockwise(self):
+        dirs = list(Directions)
+        return dirs[(dirs.index(self)-1) % 4]
+
+    # Just adding dummy methods to satisfy heapq
+    def __gt__(self, x):
+        ...
+
+    def __lt__(self, x):
+        ...
+
+def part1(inp:str) -> int:
+    grid = parse(inp)
+    DIRECTIONS = [(-1,0),(0,1),(1,0),(0,-1)] #NESW
+
+    for x in range(len(grid)):
+        for y in range(len(grid[0])):
+            if grid[x][y] == "S":
+                start = (x,y)
+            if grid[x][y] == "E":
+                end = (x,y)
+
+    in_bounds = lambda x, y : ((0 <= x < len(grid)) and (0 <= y < len(grid[0])))
+
+    visited = set()
+    sx, sy = start
+
+    print(f"{(start, end) =}")
+
+    # Priority Queue
+    # (score, x, y, direction_index)
+    pq = [(0,sx,sy,2)]
+
+    while pq:
+        score, x, y, d = heapq.heappop(pq)
+
+        if (x,y) == end:
+            return score
+
+        if (x,y,d) not in visited:
+            # Try stepping forward
+            dx, dy = DIRECTIONS[d]
+            nx, ny = x+dx, y+dy
+            if in_bounds(nx, ny):
+                if grid[ny][ny] != "#":
+                    heapq.heappush(pq, (score+1, nx, ny, d))
+
+            # Try turning clockwise
+            nd = (d + 1) % 4
+            heapq.heappush(pq, (score+1000, x, y, nd))
+
+            # Try turning anticlockwise
+            nd = (d - 1) % 4
+            heapq.heappush(pq, (score+1000, x, y, nd))
+
+            visited.add((x,y,d))
+
+part1(eg)
+```
+
+```{python}
+visited = set()
+visited.add((1,1,Directions.N))
+```
+
+```{python}
+from typing import List, Tuple
+import heapq
+
+class MazeSolver:
+    def __init__(self, maze: List[str]):
+        self.maze = maze
+        self.height = len(maze)
+        self.width = len(maze[0])
+        self.start = self.find_position('S')
+        self.end = self.find_position('E')
+
+        # Directions: East (0), North (1), West (2), South (3)
+        self.directions = [
+            (0, 1),   # East
+            (-1, 0),  # North
+            (0, -1),  # West
+            (1, 0)    # South
+        ]
+
+    def find_position(self, char: str) -> Tuple[int, int]:
+        for y in range(self.height):
+            for x in range(self.width):
+                if self.maze[y][x] == char:
+                    return (y, x)
+        raise ValueError(f"Character {char} not found in maze")
+
+    def is_valid_move(self, y: int, x: int) -> bool:
+        return (0 <= y < self.height and
+                0 <= x < self.width and
+                self.maze[y][x] != '#')
+
+    def solve(self) -> int:
+        # Priority queue for A* search
+        # (score, y, x, direction)
+        pq = [(0, self.start[0], self.start[1], 0)]
+        print(f"{self.start =}")
+
+        # Visited states to prevent revisiting
+        # Key: (y, x, direction)
+        visited = set()
+
+        while pq:
+            score, y, x, direction = heapq.heappop(pq)
+
+            # Reached the end
+            if (y, x) == self.end:
+                return score
+
+            # Avoid revisiting same state
+            state_key = (y, x, direction)
+            if state_key in visited:
+                continue
+            visited.add(state_key)
+
+            # Try moving forward
+            dy, dx = self.directions[direction]
+            new_y, new_x = y + dy, x + dx
+            if self.is_valid_move(new_y, new_x):
+                heapq.heappush(pq, (
+                    score + 1,  # Forward move costs 1
+                    new_y,
+                    new_x,
+                    direction
+                ))
+
+            # Try rotating clockwise
+            clockwise_dir = (direction + 1) % 4
+            heapq.heappush(pq, (
+                score + 1000,  # Rotation costs 1000
+                y,
+                x,
+                clockwise_dir
+            ))
+
+            # Try rotating counterclockwise
+            ccw_dir = (direction - 1) % 4
+            heapq.heappush(pq, (
+                score + 1000,  # Rotation costs 1000
+                y,
+                x,
+                ccw_dir
+            ))
+
+        return -1  # No path found
+
+def solve_maze(maze_input: str) -> int:
+    # Convert input string to list of strings
+    maze = maze_input.strip().split('\n')
+    solver = MazeSolver(maze)
+    return solver.solve()
+
+# Example mazes for testing
+maze1 = '''
+###############
+#.......#....E#
+#.#.###.#.###.#
+#.....#.#...#.#
+#.###.#####.#.#
+#.#.#.......#.#
+#.#.#####.###.#
+#...........#.#
+###.#.#####.#.#
+#...#.....#.#.#
+#.#.#.###.#.#.#
+#.....#...#.#.#
+#.###.#.#.#.#.#
+#S..#.....#...#
+###############
+'''
+
+maze2 = '''
+#################
+#...#...#...#..E#
+#.#.#.#.#.#.#.#.#
+#.#.#.#...#...#.#
+#.#.#.#.###.#.#.#
+#...#.#.#.....#.#
+#.#.#.#.#.#####.#
+#.#...#.#.#.....#
+#.#.#####.#.###.#
+#.#.#.......#...#
+#.#.###.#####.###
+#.#.#...#.....#.#
+#.#.#.#####.###.#
+#.#.#.........#.#
+#.#.#.#########.#
+#S#.............#
+#################
+'''
+
+# Test the solver
+print("Maze 1 solution:", solve_maze(maze1))
+print("Maze 2 solution:", solve_maze(maze2))
+```
+## Part 2
+
+::: {.callout-note title="Puzzle Info" collapse="true"}
+:::

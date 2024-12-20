@@ -120,7 +120,8 @@ def parse(inp:str) -> (list[str], tuple[int,int]):
     """
     Parse out grid and starting location
     """
-    grid = inp.splitlines()
+    grid = [ch for ch in inp.splitlines()]
+
 
     # Find starting location
     for x in range(len(grid)):
@@ -132,24 +133,49 @@ def check_oob(x:int, y:int, grid:list[str]) -> bool:
     return (x<0) or (x>=len(grid)) or (y<0) or (y>=len(grid[0]))
 
 
-def trace_path(inp:str) -> list:
+def trace_path(inp: str, obstacle: tuple[int, int] = None):
     """
     Returns visited path and corners
+
+    Args:
+    inp: Input grid string
+    obstacle: Optional (x,y) coordinate to add as an additional obstacle
     """
     grid, start = parse(inp)
 
+    # # Create a mutable copy of the grid
+    # grid = [list(row) for row in grid]
+
+    # Add obstacle if specified
+    if obstacle:
+        x, y = obstacle
+        grid[x][y] = "#"
+
+    # Convert grid back to list of strings
+    grid = [''.join(row) for row in grid]
+
     path = list()
-    heading = (-1,0) # Start heading N
-    x,y = start
+    heading = (-1,0)  # Start heading N
+    x, y = start
+
+    visited_states = set()
 
     while True:
-        # Add current node
-        path.append((x,y,heading))
+        # Create full state tuple
+        current_state = (x, y, heading)
+        path.append(current_state)
+
+        # Check for loop using full state
+        if current_state in visited_states:
+            return path
+
+        visited_states.add(current_state)
 
         # Look ahead to next node
         dx, dy = heading
         xa, ya = x + dx, y + dy
-        if check_oob(xa,ya,grid):
+
+        if check_oob(xa, ya, grid):
             return path
 
         # Change heading if obstacle
@@ -160,7 +186,6 @@ def trace_path(inp:str) -> list:
         dx, dy = heading
         x += dx
         y += dy
-
 def part1(inp:str) -> int:
     path = trace_path(inp)
     visited = set([(x,y) for (x,y,heading) in path])
@@ -267,79 +292,43 @@ You need to get the guard stuck in a loop by adding a single new obstruction. Ho
 
 ```{python}
 
-# def check_loop(grid, start, path, obstacle) -> bool:
+def part2(inp:str) -> int:
+    grid, start = parse(inp)
+    path = trace_path(inp)
+    visited = set([(x,y) for (x,y,heading) in path[1:]]) # remove start
 
-#     heading = (-1,0) # Start heading N
-#     x,y = start
+    # Candidate obstacles except start
+    # obstacles = path[1:]
 
-#     while True:
-#         print("checking", x,y, heading)
-#         # Look ahead to next node
-#         dx, dy = heading
-#         xa, ya = x + dx, y + dy
-#         if check_oob(xa,ya,grid):
-#             print("oob")
-#             return False
+    loops = 0
 
-#         # Change heading if obstacle
-#         if (grid[xa][ya] == "#"):
-#             print("change dir")
-#             heading = DIRECTIONS.get(heading)
+    for obstacle in visited:
+        while True:
+            x,y = start
+            heading = (-1, 0)
 
-#         # Check if obstacle directs back to existing path
-#         if (xa, ya) == obstacle:
-#             heading = DIRECTIONS.get(heading)
-#             dx, dy = heading
-#             x += dx
-#             y += dy
-#             if (x, y, heading) in path:
-#                 return True
+            # Look ahead to next node
+            dx, dy = heading
+            xa, ya = x + dx, y + dy
+            if check_oob(xa,ya,grid):
+                break
 
+            # Change heading if obstacle
+            if (grid[xa][ya] == "#") or ((xa,ya) == obstacle) :
+                heading = DIRECTIONS.get(heading)
+                continue
 
-#         # Actually update position
-#         dx, dy = heading
-#         x += dx
-#         y += dy
+            # Actually update position
+            dx, dy = heading
+            x += dx
+            y += dy
 
+            # Check if loop
+            if (x,y, heading) in path[1:]:
+                loops += 1
+                break
 
-
-# def part2(inp:str) -> int:
-#     grid, start = parse(inp)
-#     path = trace_path(inp)
-#     visited = set([(x,y) for (x,y,heading) in path[1:]]) # remove start
-
-#     # Candidate obstacles except start
-#     # obstacles = path[1:]
-
-#     loops = 0
-
-#     for obstacle in visited:
-#         while True:
-#             x,y = start
-#             heading = (-1, 0)
-
-#             # Look ahead to next node
-#             dx, dy = heading
-#             xa, ya = x + dx, y + dy
-#             if check_oob(xa,ya,grid):
-#                 break
-
-#             # Change heading if obstacle
-#             if (grid[xa][ya] == "#") or ((xa,ya) == obstacle) :
-#                 heading = DIRECTIONS.get(heading)
-#                 continue
-
-#             # Actually update position
-#             dx, dy = heading
-#             x += dx
-#             y += dy
-
-#             # Check if loop
-#             if (x,y, heading) in path[1:]:
-#                 loops += 1
-#                 break
-
-#     return loops
+    return loops
 
 # part2(eg)
 ```
@@ -356,3 +345,207 @@ You need to get the guard stuck in a loop by adding a single new obstruction. Ho
 .XXXXXXX#.
 #XXXXXXX..
 ......#X..
+
+
+```{python}
+from typing import Tuple, List
+eg = """....#.....
+.........#
+..........
+..#.......
+.......#..
+..........
+.#..^.....
+........#.
+#.........
+......#...
+"""
+
+def trace_path(inp: str, obstacle: Tuple[int, int] = None) -> List[Tuple[int, int, Tuple[int, int]]]:
+    """
+    Returns visited path and corners
+
+    Args:
+    inp: Input grid string
+    obstacle: Optional (x,y) coordinate to add as an additional obstacle
+    """
+    grid, start = parse(inp)
+
+    # Create a mutable copy of the grid
+    grid = [list(row) for row in grid]
+
+    # Add obstacle if specified
+    if obstacle:
+        x, y = obstacle
+        grid[x][y] = "#"
+
+    # Convert grid back to list of strings
+    grid = [''.join(row) for row in grid]
+
+    path = list()
+    heading = (-1,0)  # Start heading N
+    x, y = start
+
+    visited_states = set()
+
+    while True:
+        # Create full state tuple
+        current_state = (x, y, heading)
+        path.append(current_state)
+
+        # Check for loop using full state
+        if current_state in visited_states:
+            return path
+
+        visited_states.add(current_state)
+
+        # Look ahead to next node
+        dx, dy = heading
+        xa, ya = x + dx, y + dy
+
+        if check_oob(xa, ya, grid):
+            return path
+
+        # Change heading if obstacle
+        if grid[xa][ya] == "#":
+            heading = DIRECTIONS.get(heading)
+
+        # Actually update position
+        dx, dy = heading
+        x += dx
+        y += dy
+
+def part2(inp: str) -> int:
+    """
+    Count potential loops by trying to add an obstacle at each '.' location
+    """
+    grid, start = parse(inp)
+    path = trace_path(inp)
+
+    # Find all possible obstacle locations (empty spaces)
+    potential_obstacles = [
+        (x,y)
+        for x in range(len(grid))
+        for y in range(len(grid[0]))
+        if grid[x][y] == "."
+    ]
+
+    loops = 0
+
+    for obstacle in potential_obstacles:
+        path = trace_path(inp, obstacle)
+
+        seen_states = set()
+        for state in path:
+            if state in seen_states:
+                loops += 1
+                break
+            seen_states.add(state)
+
+    return loops
+part2(eg)
+
+```
+
+
+```{python}
+eg = """....#.....
+.........#
+..........
+..#.......
+.......#..
+..........
+.#..^.....
+........#.
+#.........
+......#...
+"""
+
+DIRECTIONS = {
+    (-1,0) : (0,1), # N -> E
+    (0,1) : (1,0), # E -> S
+    (1,0) : (0,-1), # S -> W
+    (0,-1) : (-1,0) # W -> N
+}
+
+def parse(inp:str) -> list[str]:
+    """
+    Parse out grid and starting location
+    """
+    grid = [list(row) for row in inp.splitlines()]
+
+    # Starting location
+    for x in range(len(grid)):
+        for y in range(len(grid[0])):
+            if grid[x][y]=="^":
+                return grid, (x,y)
+
+def trace_path(inp:str, obstacle: tuple[int,int] = None) -> list[tuple[int, int, tuple[int, int]]]:
+    """
+    Returns path as (x , y, heading) and loop (True/False)
+    """
+    grid, start = parse(inp)
+    x, y = start
+    heading = (-1, 0) # N
+    path = []
+    visited = set()
+
+    if obstacle:
+        ox, oy = obstacle
+        grid[ox][oy] = "#"
+
+    in_bounds = lambda x,y : (x>=0) and (x<len(grid)) and (y>=0) and (y<len(grid[0]))
+
+    while True:
+
+        path.append((x,y,heading))
+        visited.add((x,y,heading))
+
+        # look ahead
+        dx, dy = heading
+        nx, ny = (x + dx, y + dy)
+
+        if not in_bounds(nx,ny):
+            return path, False
+
+        if (nx, ny, heading) in visited:
+            return path, True
+
+        if grid[nx][ny] == "#":
+            heading = DIRECTIONS.get(heading)
+
+        dx, dy = heading
+        x += dx
+        y += dy
+
+
+def part1(inp:str) -> int:
+    path, _ = trace_path(inp)
+    distinct_nodes = [(x,y) for (x,y,_) in path]
+    return len(set(distinct_nodes))
+
+# part1(eg)
+```
+
+```{python}
+# def part2(inp:str) -> int:
+#     grid, start = parse(inp)
+#     original_path = set(trace_path(inp))
+
+#     potential_obstacles = [
+#         (x,y)
+#         for x in range(len(grid))
+#         for y in range(len(grid[0]))
+#         if grid[x][y] == "."
+#     ]
+
+#     loops = 0
+#     for (ox, oy) in potential_obstacles:
+#         path, loop = trace_path(inp, (ox,oy))
+#         if loop: loops += 1
+
+#     return loops
+
+# part2(eg)
+
+```
